@@ -24,10 +24,10 @@ def runnablesLocalPath = gradle.ext.workspacePath + '/gradle-config/runnables.gr
 
 // The scripts to dispatch to each settings.gradle file -- N.B. is one directory level higher than others
 // due to the location of settings.gradle in each project
-ext.settingsScripts = gradle.ext.useLocalPaths ? [variablesLocalPath] : [variablesURL]
+ext.settingsScripts = [variablesURL]
 
 // The scripts to dispatch to each ODK_lib.gradle file
-ext.libraryScripts = gradle.ext.useLocalPaths ? [jacocoLocalPath,variablesLocalPath,runnablesLocalPath] : [jacocoURL,variablesURL,runnablesURL]
+ext.libraryScripts = [jacocoURL,variablesURL,runnablesURL]
 
 // The scripts to dispatch to each ODK_app.gradle files
-ext.applicationScripts = gradle.ext.useLocalPaths ? [jacocoLocalPath,variablesLocalPath,runnablesLocalPath] : [jacocoURL,variablesURL,runnablesURL]
+ext.applicationScripts = [jacocoURL,variablesURL,runnablesURL]
