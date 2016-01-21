@@ -11,7 +11,7 @@
 
 
 // Remote Paths
-def jacocoURL = 'https://raw.githubusercontent.com/opendatakit/gradle-config/' + gradle.ext.gradleConfigVersion + '/jacoco.gradle'
+def jacocoURL = 'https://raw.githubusercontent.com/KnoemaTeam/sixgraincollect/master/jacoco.gradle'
 def variablesURL = 'https://raw.githubusercontent.com/KnoemaTeam/sixgraincollect/master/variables.gradle'
 def runnablesURL = 'https://raw.githubusercontent.com/KnoemaTeam/sixgraincollect/master/runnables.gradle'
 
