@@ -19,7 +19,7 @@
 logger.warn('gradle-config/variables.gradle -- gradle.ext.workspacePath: ' + gradle.ext.workspacePath)
 
 // ODK Application versions
-ext.groupId = 'com.sixgrain.collect' // ApplicationID is groupId + appName
+ext.groupId = 'org.opendatakit' // ApplicationID is groupId + appName
 ext.versionCodeName = '2.0'
 
 // SDK versions
