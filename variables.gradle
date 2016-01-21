@@ -23,7 +23,7 @@ ext.groupId = 'com.sixgrain' // ApplicationID is groupId + appName
 ext.versionCodeName = '2.0'
 
 // SDK versions
-ext.compileVersion = 23
+ext.compileVersion = 22
 ext.minVersion = 15
 ext.targetVersion = 23
 
