@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:key="@string/server_preferences"
+        android:title="@string/server_preferences">
+
+        <EditTextPreference
+            android:id="@+id/surveySourceURL"
+            android:key="survey_source_url"
+            android:title="@string/server_url"
+            android:dialogTitle="@string/server_url"
+            android:defaultValue="http://formhub.6grain.com/sl"
+            android:summary="http://formhub.6grain.com/sl"
+            android:inputType="textUri"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="@string/survey_settings"
+        android:title="@string/survey_settings">
+
+        <ListPreference
+            android:key="survey_chosen_type"
+            android:title="@string/survey_chosen_type"
+            android:dialogTitle="@string/survey_chosen_type"
+            android:entries="@array/survey_type_entries"
+            android:entryValues="@array/survey_type_values"
+            android:defaultValue="@string/survey_default_type"
+            android:summary="@string/survey_default_type"/>
+
+    </PreferenceCategory>
+</PreferenceScreen>

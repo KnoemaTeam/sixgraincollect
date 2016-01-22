@@ -7,7 +7,7 @@
         android:title="@string/app_name" >
         <intent
             android:action="android.intent.action.VIEW"
-            android:data="http://opendatakit.org" />
+            android:data="http://6grain.com" />
     </PreferenceScreen>
 
     <PreferenceCategory
@@ -42,6 +42,7 @@
             android:key="password"
             android:title="@string/password" />
     </PreferenceCategory>
+
     <PreferenceCategory
         android:key="@string/autosend"
         android:title="@string/autosend" >

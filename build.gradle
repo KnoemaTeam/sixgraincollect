@@ -11,6 +11,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+
         maven {
             url 'http://cwe.cs.washington.edu:8082/artifactory/libs-release'
         }
@@ -20,3 +21,6 @@ allprojects {
     }
 }
 
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

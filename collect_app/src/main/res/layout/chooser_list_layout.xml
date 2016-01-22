@@ -13,14 +13,21 @@ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 License for the specific language governing permissions and limitations under
 the License.
 -->
-<LinearLayout
+<FrameLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent">
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_gravity="center">
+
 		<TextView
 			android:id="@+id/status_text"
-			android:layout_width="fill_parent"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:text="@string/form_scan_starting"
 			android:textSize="14sp"
@@ -31,14 +38,16 @@ the License.
 			android:paddingBottom="4dip"
 			android:paddingTop="4dip"
 			android:background="#DDDDDD"/>
+
 		<ListView
 			android:id="@id/android:list"
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"/>
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"/>
+
 		<TextView
 			android:id="@android:id/empty"
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
 			android:text="@string/no_items_display_forms"
 			android:textSize="21sp"
 			android:paddingStart="20dip"
@@ -48,4 +57,18 @@ the License.
 			android:gravity="center"
 			android:background="@drawable/white"
 			android:textColor="@drawable/black" />
-</LinearLayout>
+
+	</LinearLayout>
+
+	<ImageButton
+		android:id="@+id/fab"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="bottom|end"
+		android:layout_marginBottom="25dp"
+		android:layout_marginRight="25dp"
+		android:layout_marginEnd="25dp"
+        android:contentDescription="@null"
+		android:src="@drawable/ic_add_white_24dp" />
+
+</FrameLayout>

@@ -62,6 +62,7 @@
             android:exported="true"
             android:name="org.odk.collect.android.provider.FormsProvider"
             android:authorities="org.odk.collect.android.provider.odk.forms" />
+
         <provider
             android:exported="true"
             android:name="org.odk.collect.android.provider.InstanceProvider"
@@ -72,6 +73,7 @@
             android:configChanges="orientation"
             android:label="@string/app_name" >
         </activity>
+
         <activity
             android:name=".activities.FormEntryActivity"
             android:configChanges="orientation"
@@ -92,18 +94,21 @@
             android:label="@string/app_name"
             android:taskAffinity=""
             android:launchMode="singleTask"
-            android:excludeFromRecents="true"
-            />
+            android:excludeFromRecents="true" />
         <activity
             android:name=".activities.DrawActivity"
             android:label="@string/app_name" />
         <activity
             android:name=".activities.GoogleDriveActivity"
             android:label="@string/app_name" 
-            android:windowSoftInputMode="stateHidden"
-            />
+            android:windowSoftInputMode="stateHidden" />
+
         <activity
             android:name=".activities.InstanceChooserList"
+            android:label="@string/app_name" />
+
+        <activity
+            android:name=".activities.SettingsActivity"
             android:label="@string/app_name" />
 
         <intent-filter>
@@ -225,9 +230,10 @@
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
                 android:value="AIzaSyBS-JQ-dnaZ_8qsbvSyr_I3rTPFd5fJsYI"/>
+
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="7571000" />  <!-- integer/google_play_services_version -->
+            android:value="7571000" />
 
         <uses-library
             android:name="com.google.android.maps"

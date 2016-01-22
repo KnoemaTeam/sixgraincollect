@@ -13,6 +13,7 @@
 <string name="accept_location">Record Location</string>
 <string name="accuracy">Accuracy</string>
 <string name="activity_not_found">No activity found to handle: %s</string>
+    <string name="action_create_survey">Add new survey</string>
 <string name="add_another">Add Group</string>
 <string name="add_another_repeat">Add another \"%s\" group?</string>
 <string name="add_more">Add more</string>
@@ -141,7 +142,7 @@
 <string name="username">Username</string>
 <string name="view_hierarchy">Go To Prompt</string>
 <string name="general_preferences">General Settings</string>
-<string name="click_to_web">Tap to visit http://opendatakit.org</string>
+<string name="click_to_web">Tap to visit http://6grain.com</string>
 <string name="client">User Interface</string>
 <string name="show_splash">Show splash screen</string>
 <string name="show_splash_summary">Shows when application starts</string>
@@ -151,7 +152,7 @@
 <string name="use_odk_default">Use default image</string>
 <string name="change_splash_path">Change image</string>
 <string name="show_location">Show Location</string>
-<string name="app_url">http://opendatakit.org</string>
+<string name="app_url">http://6grain.com</string>
 <string name="keep_changes">Save Changes</string>
 <string name="go_to_location">Go to Location</string>
 <string name="change_formlist_url">Form list path (appended to URL)</string>
@@ -285,6 +286,21 @@
 <string name="fs_delete_media_path_if_file_error">Could not delete \'%s\'. Please delete the file manually and re-download the form.</string>
 <string name="fs_create_media_folder_error">Could not create media folder \'%s\'.</string>
 <string name="fs_file_copy_error">Could not copy \'%1$s\' over \'%2$s\'. Reason: %3$s</string>
+
+    <string name="survey_settings">Survey settings</string>
+    <string name="survey_chosen_type">Survey type</string>
+	<string name="survey_default_type">Zambia</string>
+
+    <string-array name="survey_type_entries">
+        <item>Zambia</item>
+        <item>Senegal</item>
+    </string-array>
+
+    <string-array name="survey_type_values">
+        <item>Zambia</item>
+        <item>Senegal</item>
+    </string-array>
+
 <string name="survey_internal_error">Internal error: step to prompt failed.</string>
 <string name="survey_multiple_forms_error">You have downloaded two different forms with the same form ID and version. Maybe they were the same form uploaded at different times or to different servers. In any case, you should delete one.</string>
 <string name="survey_loading_reading_form_message">Reading form definition…</string>
@@ -331,9 +347,9 @@
 <string name="google_sheets_access_denied">Access denied. Please make sure the spreadsheet owner has granted you access permission.</string>
 <string name="google_sheets_update_error">Error updating spreadsheet. Please make sure the spreadsheet owner has granted you write access permission.</string>
 <string name="google_sheets_missing_columns">Spreadsheet is missing the following columns: %1$s</string>
-    <string name="url_error_whitespace">whitespace is not allowed in urls</string>
-    <string name="password_error_whitespace">leading or trailing whitespace not allowed in passwords</string>
-    <string name="username_error_whitespace">leading or trailing whitespace not allowed in usernames</string>
-    <string name="google_play_services_error_occured">Unable to access Google Maps. Is Google Play Services installed?
-    </string>
+<string name="url_error_whitespace">whitespace is not allowed in urls</string>
+<string name="password_error_whitespace">leading or trailing whitespace not allowed in passwords</string>
+<string name="username_error_whitespace">leading or trailing whitespace not allowed in usernames</string>
+<string name="google_play_services_error_occured">Unable to access Google Maps. Is Google Play Services installed?
+</string>
 </resources>

@@ -14,7 +14,12 @@
 
 package org.odk.collect.android.application;
 
-import java.io.File;
+import android.app.Application;
+import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Environment;
+import android.preference.PreferenceManager;
 
 import org.odk.collect.android.R;
 import org.odk.collect.android.database.ActivityLogger;
@@ -30,12 +35,7 @@ import org.opendatakit.httpclientandroidlib.impl.client.BasicCookieStore;
 import org.opendatakit.httpclientandroidlib.protocol.BasicHttpContext;
 import org.opendatakit.httpclientandroidlib.protocol.HttpContext;
 
-import android.app.Application;
-import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.os.Environment;
-import android.preference.PreferenceManager;
+import java.io.File;
 
 /**
  * Extends the Application class to implement
@@ -46,7 +46,7 @@ public class Collect extends Application {
 
     // Storage paths
     public static final String ODK_ROOT = Environment.getExternalStorageDirectory()
-            + File.separator + "odk";
+            + File.separator + "6G Collect";
     public static final String FORMS_PATH = ODK_ROOT + File.separator + "forms";
     public static final String INSTANCES_PATH = ODK_ROOT + File.separator + "instances";
     public static final String CACHE_PATH = ODK_ROOT + File.separator + ".cache";
@@ -136,14 +136,14 @@ public class Collect extends Application {
             if (!dir.exists()) {
                 if (!dir.mkdirs()) {
                     RuntimeException e =
-                            new RuntimeException("ODK reports :: Cannot create directory: "
+                            new RuntimeException("6G Collect reports :: Cannot create directory: "
                                     + dirName);
                     throw e;
                 }
             } else {
                 if (!dir.isDirectory()) {
                     RuntimeException e =
-                            new RuntimeException("ODK reports :: " + dirName
+                            new RuntimeException("6G Collect reports :: " + dirName
                                     + " exists, but is not a directory");
                     throw e;
                 }

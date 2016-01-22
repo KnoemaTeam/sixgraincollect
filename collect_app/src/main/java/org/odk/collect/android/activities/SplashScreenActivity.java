@@ -109,9 +109,10 @@ public class SplashScreenActivity extends Activity {
 
 
     private void endSplashScreen() {
-
         // launch new activity and close splash screen
-        startActivity(new Intent(SplashScreenActivity.this, MainMenuActivity.class));
+        // Maybe need implement on another way
+        //startActivity(new Intent(SplashScreenActivity.this, MainMenuActivity.class));
+        startActivity(new Intent(SplashScreenActivity.this, InstanceChooserList.class));
         finish();
     }
 

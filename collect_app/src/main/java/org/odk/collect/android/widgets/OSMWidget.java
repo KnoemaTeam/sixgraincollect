@@ -5,7 +5,7 @@ import java.util.List;
 
 import android.view.ViewGroup;
 import android.widget.*;
-import org.apache.http.protocol.HTTP;
+//import org.apache.http.protocol.HTTP;
 import org.javarosa.core.model.QuestionDef;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.StringData;
@@ -16,6 +16,7 @@ import org.odk.collect.android.R;
 import org.odk.collect.android.activities.FormEntryActivity;
 import org.odk.collect.android.application.Collect;
 import org.odk.collect.android.logic.FormController;
+import org.opendatakit.httpclientandroidlib.protocol.HTTP;
 
 import android.app.Activity;
 import android.app.AlertDialog;

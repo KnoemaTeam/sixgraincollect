@@ -1,7 +1,3 @@
-/**************************************************************************************************
- GRADLE CONFIG
- *************************************************************************************************/
-
 if ((new File(gradle.local)).exists()) {
     apply from: gradle.local
 } else {
@@ -13,32 +9,31 @@ applicationScripts.each {
 }
 
 apply plugin: 'com.android.application'
-
 com.android.ddmlib.DdmPreferences.setTimeOut(60000)
 
 android {
     // The following are set in the common.gradle file
-    compileSdkVersion(compileVersion)
-    buildToolsVersion(buildTools)
+    compileSdkVersion compileVersion
+    buildToolsVersion buildTools
 
     defaultConfig {
-        applicationId("org.odk.collect.android")
-        minSdkVersion(15)
-        targetSdkVersion(23)
-        versionCode(1057)
-        versionName("1.4.8")
+        applicationId "com.sixgrain.collect"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "0.1.1"
     }
 
     buildTypes {
         release {
-            minifyEnabled(minify)
+            minifyEnabled minify
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
         snapshot {
             // Build type for snapshots
         }
         debug {
-            testCoverageEnabled(testCoverage) // Allows AndroidTest JaCoCo reports to be generated
+            //testCoverageEnabled(testCoverage) // Allows AndroidTest JaCoCo reports to be generated
         }
     }
 
@@ -52,6 +47,10 @@ android {
         sourceCompatibility javaVersion
         targetCompatibility javaVersion
     }
+
+    lintOptions {
+        abortOnError false
+    }
 }
 
 configurations.all {
@@ -63,17 +62,19 @@ configurations.all {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: '*.jar')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
     if (playServicesPath.exists() && gradle.useLocal) { // Local project is favoured
-        compile project(playServicesName)
+        compile project playServicesName
     } else {
-        releaseCompile(group: groupId, name: playServicesArtifactName,
-                version: playServicesRelease, ext: 'aar')
-        snapshotCompile(group: groupId, name: playServicesArtifactName,
-                version: playServicesSnapshot, ext: 'aar')
-        debugCompile(group: groupId, name: playServicesArtifactName,
-                version: playServicesSnapshot, ext: 'aar')
+        releaseCompile(group: groupId, name: playServicesArtifactName, version: playServicesRelease, ext: 'aar')
+        snapshotCompile(group: groupId, name: playServicesArtifactName, version: playServicesSnapshot, ext: 'aar')
+        debugCompile(group: groupId, name: playServicesArtifactName, version: playServicesSnapshot, ext: 'aar')
     }
+
+    // Need be changed in future
+    //compile 'com.android.support:appcompat-v7:23.1.1'
+    //compile 'com.android.support:support-annotations:23.1.1'
 
     // Testing-only dependencies
     androidTestCompile 'com.android.support.test:runner:0.3'
