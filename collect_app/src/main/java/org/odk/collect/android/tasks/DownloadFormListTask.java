@@ -14,6 +14,7 @@
 
 package org.odk.collect.android.tasks;
 
+import org.odk.collect.android.preferences.SettingsFragment;
 import org.opendatakit.httpclientandroidlib.client.HttpClient;
 import org.opendatakit.httpclientandroidlib.protocol.HttpContext;
 import org.javarosa.xform.parse.XFormParser;
@@ -58,14 +59,14 @@ public class DownloadFormListTask extends AsyncTask<Void, String, HashMap<String
         return e.getNamespace().equalsIgnoreCase(NAMESPACE_OPENROSA_ORG_XFORMS_XFORMS_LIST);
     }
 
-
     @Override
     protected HashMap<String, FormDetails> doInBackground(Void... values) {
         SharedPreferences settings =
             PreferenceManager.getDefaultSharedPreferences(Collect.getInstance().getBaseContext());
-        String downloadListUrl =
-            settings.getString(PreferencesActivity.KEY_SERVER_URL,
-                Collect.getInstance().getString(R.string.default_server_url));
+        String downloadListUrl = settings.getString(SettingsFragment.SURVEY_SOURCE_URL_KEY, Collect.getInstance().getString(R.string.default_server_url));
+
+                //settings.getString(PreferencesActivity.KEY_SERVER_URL,
+                //Collect.getInstance().getString(R.string.default_server_url));
         // NOTE: /formlist must not be translated! It is the well-known path on the server.
         String formListUrl = Collect.getInstance().getApplicationContext().getString(R.string.default_odk_formlist);
         String downloadPath = settings.getString(PreferencesActivity.KEY_FORMLIST_URL, formListUrl);

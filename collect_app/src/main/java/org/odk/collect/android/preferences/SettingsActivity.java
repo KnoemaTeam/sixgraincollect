@@ -1,4 +1,4 @@
-package org.odk.collect.android.activities;
+package org.odk.collect.android.preferences;
 
 import android.app.Activity;
 import android.os.Bundle;

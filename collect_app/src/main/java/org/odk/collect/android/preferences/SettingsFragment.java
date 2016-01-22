@@ -1,4 +1,4 @@
-package org.odk.collect.android.activities;
+package org.odk.collect.android.preferences;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,10 +8,13 @@ import android.preference.PreferenceFragment;
 import org.odk.collect.android.R;
 
 public class SettingsFragment extends PreferenceFragment {
+    public static final String SURVEY_FORM_DOWNLOADED_KEY = "survey_form_downloaded";
     public static final String SURVEY_SOURCE_URL_KEY = "survey_source_url";
     public static final String SURVEY_CHOSEN_TYPE_KEY = "survey_chosen_type";
 
-    protected SharedPreferences.OnSharedPreferenceChangeListener sharedPreferenceChangeListener = null;
+    protected SharedPreferences.OnSharedPreferenceChangeListener mSharedPreferenceChangeListener = null;
+    protected Preference mSurveySourceURL = null;
+    protected Preference mSurveyChosenType = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -19,7 +22,14 @@ public class SettingsFragment extends PreferenceFragment {
 
         // Load the preferences from an XML resource
         addPreferencesFromResource(R.xml.settings);
-        sharedPreferenceChangeListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+
+        mSurveySourceURL = findPreference(SURVEY_SOURCE_URL_KEY);
+        mSurveySourceURL.setSummary(getPreferenceManager().getSharedPreferences().getString(SURVEY_SOURCE_URL_KEY, null));
+
+        mSurveyChosenType = findPreference(SURVEY_CHOSEN_TYPE_KEY);
+        mSurveyChosenType.setSummary(getPreferenceManager().getSharedPreferences().getString(SURVEY_CHOSEN_TYPE_KEY, null));
+
+        mSharedPreferenceChangeListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
             @Override
             public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
                 if (key.equals(SURVEY_SOURCE_URL_KEY)) {
@@ -35,7 +45,7 @@ public class SettingsFragment extends PreferenceFragment {
 
         getPreferenceScreen()
                 .getSharedPreferences()
-                .registerOnSharedPreferenceChangeListener(sharedPreferenceChangeListener);
+                .registerOnSharedPreferenceChangeListener(mSharedPreferenceChangeListener);
     }
 
     @Override
@@ -44,7 +54,7 @@ public class SettingsFragment extends PreferenceFragment {
 
         getPreferenceScreen()
                 .getSharedPreferences()
-                .registerOnSharedPreferenceChangeListener(sharedPreferenceChangeListener);
+                .registerOnSharedPreferenceChangeListener(mSharedPreferenceChangeListener);
     }
 
     @Override
@@ -53,6 +63,6 @@ public class SettingsFragment extends PreferenceFragment {
 
         getPreferenceScreen()
                 .getSharedPreferences()
-                .unregisterOnSharedPreferenceChangeListener(sharedPreferenceChangeListener);
+                .unregisterOnSharedPreferenceChangeListener(mSharedPreferenceChangeListener);
     }
 }

@@ -107,7 +107,6 @@ public class SplashScreenActivity extends Activity {
 
     }
 
-
     private void endSplashScreen() {
         // launch new activity and close splash screen
         // Maybe need implement on another way

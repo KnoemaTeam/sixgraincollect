@@ -208,6 +208,7 @@ public class FormEntryActivity extends Activity implements AnimationListener,
 
 	private ImageButton mNextButton;
 	private ImageButton mBackButton;
+    private boolean mIsSurveyNew = false;
 
     private String stepMessage = "";
 
@@ -337,8 +338,13 @@ public class FormEntryActivity extends Activity implements AnimationListener,
 			CompatibilityUtils.invalidateOptionsMenu(this);
 
 			Intent intent = getIntent();
+            Bundle bundle = intent.getExtras();
+
 			if (intent != null) {
 				Uri uri = intent.getData();
+
+                if (bundle != null)
+                    mIsSurveyNew = bundle.getBoolean("CREATE_NEW_SURVEY", false);
 
 				if (getContentResolver().getType(uri).equals(InstanceColumns.CONTENT_ITEM_TYPE)) {
 					// get the formId and version for this instance...
@@ -2458,7 +2464,7 @@ public class FormEntryActivity extends Activity implements AnimationListener,
 			Intent reqIntent = getIntent();
 			boolean showFirst = reqIntent.getBooleanExtra("start", false);
 
-			if (!showFirst) {
+			if (!showFirst && !mIsSurveyNew) {
 				// we've just loaded a saved form, so start in the hierarchy
 				// view
 				Intent i = new Intent(this, FormHierarchyActivity.class);
