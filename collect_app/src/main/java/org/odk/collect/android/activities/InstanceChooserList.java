@@ -45,6 +45,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
+import android.support.design.widget.FloatingActionButton;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.SparseBooleanArray;
@@ -139,7 +140,7 @@ public class InstanceChooserList extends ListActivity implements FormListDownloa
         mSettings = PreferenceManager.getDefaultSharedPreferences(this);
         mIsFormDowloaded = mSettings.getBoolean(SettingsFragment.SURVEY_FORM_DOWNLOADED_KEY, false);
 
-        ImageButton addButton = (ImageButton) findViewById(R.id.fab);
+        FloatingActionButton addButton = (FloatingActionButton) findViewById(R.id.fab);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
