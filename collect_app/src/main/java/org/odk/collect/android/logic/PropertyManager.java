@@ -71,7 +71,7 @@ public class PropertyManager implements IPropertyManager {
 
         mContext = context;
 
-        mProperties = new HashMap<String, String>();
+        mProperties = new HashMap<>();
         mTelephonyManager = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
 
         String deviceId = mTelephonyManager.getDeviceId();
@@ -101,7 +101,7 @@ public class PropertyManager implements IPropertyManager {
         }
 
         // if it is still null, use ANDROID_ID
-        if ( deviceId == null ) {
+        if (deviceId == null) {
             deviceId =
                     Settings.Secure
                             .getString(mContext.getContentResolver(), Settings.Secure.ANDROID_ID);
@@ -114,17 +114,17 @@ public class PropertyManager implements IPropertyManager {
         String value;
 
         value = mTelephonyManager.getSubscriberId();
-        if ( value != null ) {
+        if (value != null) {
         	mProperties.put(SUBSCRIBER_ID_PROPERTY, value);
         	mProperties.put(OR_SUBSCRIBER_ID_PROPERTY, "imsi:" + value);
         }
         value = mTelephonyManager.getSimSerialNumber();
-        if ( value != null ) {
+        if (value != null) {
         	mProperties.put(SIM_SERIAL_PROPERTY, value);
         	mProperties.put(OR_SIM_SERIAL_PROPERTY, "simserial:" + value);
         }
         value = mTelephonyManager.getLine1Number();
-        if ( value != null ) {
+        if (value != null) {
         	mProperties.put(PHONE_NUMBER_PROPERTY, value);
         	mProperties.put(OR_PHONE_NUMBER_PROPERTY, "tel:" + value);
         }
@@ -132,12 +132,12 @@ public class PropertyManager implements IPropertyManager {
         // Get the username from the settings
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(mContext);
         value = settings.getString(PreferencesActivity.KEY_USERNAME, null);
-        if ( value != null ) {
+        if (value != null) {
         	mProperties.put(USERNAME, value);
         	mProperties.put(OR_USERNAME, "username:" + value);
         }
         value = settings.getString(PreferencesActivity.KEY_SELECTED_GOOGLE_ACCOUNT, null);
-        if ( value != null ) {
+        if (value != null) {
         	mProperties.put(EMAIL, value);
         	mProperties.put(OR_EMAIL, "mailto:" + value);
         }

@@ -218,12 +218,16 @@ public class Collect extends Application {
         // log.enableInfo(false);
         // log.enableDebug(false);
 
-        PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
+        PreferenceManager.setDefaultValues(this, R.xml.settings, false);
         super.onCreate();
 
         PropertyManager mgr = new PropertyManager(this);
-
-        FormController.initializeJavaRosa(mgr);
+        try {
+            FormController.initializeJavaRosa(mgr);
+        }
+        catch (Exception exception) {
+            exception.printStackTrace();
+        }
         
         mActivityLogger = new ActivityLogger(
                 mgr.getSingularProperty(PropertyManager.DEVICE_ID_PROPERTY));

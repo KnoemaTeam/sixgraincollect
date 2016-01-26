@@ -46,6 +46,8 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.SparseBooleanArray;
@@ -53,6 +55,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -70,8 +73,10 @@ import java.util.Map;
  * @author Yaw Anokwa (yanokwa@gmail.com)
  * @author Carl Hartung (carlhartung@gmail.com)
  */
-public class InstanceChooserList extends ListActivity implements FormListDownloaderListener, FormDownloaderListener {
+public class InstanceChooserList extends AppCompatActivity implements FormListDownloaderListener, FormDownloaderListener {
     private static final int PROGRESS_DIALOG = 1;
+
+    private static final int OPEN_PREFERENCES_CODE = 200;
 
     private static final int CREATE_SURVEY_CODE = 100;
     private static final int EDIT_SURVEY_CODE = 101;
@@ -100,6 +105,7 @@ public class InstanceChooserList extends ListActivity implements FormListDownloa
     private SharedPreferences mSettings;
     private boolean mIsFormDowloaded = false;
 
+    private ListView mDataListView = null;
     private ProgressDialog mProgressDialog;
     private AlertDialog mAlertDialog;
 
@@ -116,10 +122,41 @@ public class InstanceChooserList extends ListActivity implements FormListDownloa
         }
 
         setContentView(R.layout.chooser_list_layout);
-        setTitle(getString(R.string.app_name) + " > " + getString(R.string.review_data));
+
         TextView tv = (TextView) findViewById(R.id.status_text);
         tv.setVisibility(View.GONE);
 
+        setToolbar();
+        setFabButton();
+        setContentList();
+        setUserSettings();
+    }
+
+    protected void setToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setDisplayShowHomeEnabled(true);
+                getSupportActionBar().setDisplayShowTitleEnabled(false);
+                getSupportActionBar().setIcon(R.drawable.ic_app_logo);
+            }
+        }
+    }
+
+    protected void setFabButton() {
+        FloatingActionButton addButton = (FloatingActionButton) findViewById(R.id.fab);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createChosenSurvey();
+            }
+        });
+    }
+
+    protected void setContentList() {
         String selection = InstanceColumns.STATUS + " != ?";
         String[] selectionArgs = {InstanceProviderAPI.STATUS_SUBMITTED};
         String sortOrder = InstanceColumns.STATUS + " DESC, " + InstanceColumns.DISPLAY_NAME + " ASC";
@@ -134,19 +171,21 @@ public class InstanceChooserList extends ListActivity implements FormListDownloa
 
         // render total instance view
         SimpleCursorAdapter instances =
-            new SimpleCursorAdapter(this, R.layout.two_item, c, data, view);
-        setListAdapter(instances);
+                new SimpleCursorAdapter(this, R.layout.two_item, c, data, view);
 
-        mSettings = PreferenceManager.getDefaultSharedPreferences(this);
-        mIsFormDowloaded = mSettings.getBoolean(SettingsFragment.SURVEY_FORM_DOWNLOADED_KEY, false);
-
-        FloatingActionButton addButton = (FloatingActionButton) findViewById(R.id.fab);
-        addButton.setOnClickListener(new View.OnClickListener() {
+        mDataListView = (ListView) findViewById(R.id.dataListView);
+        mDataListView.setAdapter(instances);
+        mDataListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                createChosenSurvey();
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                onListItemClick(position);
             }
         });
+    }
+
+    protected void setUserSettings() {
+        mSettings = PreferenceManager.getDefaultSharedPreferences(this);
+        mIsFormDowloaded = mSettings.getBoolean(SettingsFragment.SURVEY_FORM_DOWNLOADED_KEY, false);
 
         if (!mIsFormDowloaded)
             downloadSurveyFormList();
@@ -167,9 +206,8 @@ public class InstanceChooserList extends ListActivity implements FormListDownloa
                         .logAction(this, "onOptionsItemSelected",
                                 "MENU_PREFERENCES");
 
-                Intent ig = new Intent(this, SettingsActivity.class);
-                startActivity(ig);
-                return true;
+                Intent preferences = new Intent(InstanceChooserList.this, SettingsActivity.class);
+                startActivity(preferences);
         }
 
         return super.onOptionsItemSelected(item);
@@ -183,9 +221,8 @@ public class InstanceChooserList extends ListActivity implements FormListDownloa
     /**
      * Stores the path of selected instance in the parent class and finishes.
      */
-    @Override
-    protected void onListItemClick(ListView listView, View view, int position, long id) {
-        Cursor c = (Cursor) getListAdapter().getItem(position);
+    protected void onListItemClick(int position) {
+        Cursor c = (Cursor) mDataListView.getAdapter().getItem(position);
         startManagingCursor(c);
         Uri instanceUri =
             ContentUris.withAppendedId(InstanceColumns.CONTENT_URI,

@@ -1,19 +1,31 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!--
-		Copyright (C) 2009 University of Washington Licensed under the Apache
-		License, Version 2.0 (the "License"); you may not use this file except
-		in compliance with the License. You may obtain a copy of the License
-		at http://www.apache.org/licenses/LICENSE-2.0 Unless required by
-		applicable law or agreed to in writing, software distributed under the
-		License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
-		CONDITIONS OF ANY KIND, either express or implied. See the License for
-		the specific language governing permissions and limitations under the
-		License.
---><resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-<string name="accept_location">Record Location</string>
-<string name="accuracy">Accuracy</string>
-<string name="activity_not_found">No activity found to handle: %s</string>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="accept_location">Record Location</string>
+    <string name="accuracy">Accuracy</string>
+    <string name="activity_not_found">No activity found to handle: %s</string>
     <string name="action_create_survey">Add new survey</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_update">Check for updates</string>
+    <string name="action_send_mail">Send info of app state</string>
+    <string name="action_send_mail_title">6G Data Terminal - Data Report</string>
+    <string name="action_send_mail_title_error">6G Data Terminal - Error Report</string>
+    <string name="action_send_mail_message">This file contains info which needed developers to understand what\'s wrong with your data.</string>
+    <string name="action_send_mail_exception">There is no email client installed.</string>
+    <string name="action_synchronization">Synchronize</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_dialog_no">No</string>
+    <string name="action_dialog_yes">Yes</string>
+    <string name="action_interviewer_info">Interviewer profile</string>
+    <string name="action_device_info">Device info</string>
+    <string name="action_add_new_item">Add new item</string>
+    <string name="action_previous_item">Previous item</string>
+    <string name="action_next_item">Next item</string>
+    <string name="action_previous_step">Previous</string>
+    <string name="action_next_step">Next</string>
+    <string name="action_done">Done</string>
+    <string name="action_finish">Close</string>
+
 <string name="add_another">Add Group</string>
 <string name="add_another_repeat">Add another \"%s\" group?</string>
 <string name="add_more">Add more</string>

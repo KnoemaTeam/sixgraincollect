@@ -70,6 +70,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore.Images;
+import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.util.DisplayMetrics;
@@ -108,7 +109,7 @@ import android.widget.Toast;
  * @author Carl Hartung (carlhartung@gmail.com)
  * @author Thomas Smyth, Sassafras Tech Collective (tom@sassafrastech.com; constraint behavior option)
  */
-public class FormEntryActivity extends Activity implements AnimationListener,
+public class FormEntryActivity extends AppCompatActivity implements AnimationListener,
 		FormLoaderListener, FormSavedListener, AdvanceToNextListener,
 		OnGestureListener, SavePointListener {
 	private static final String t = "FormEntryActivity";
@@ -335,7 +336,7 @@ public class FormEntryActivity extends Activity implements AnimationListener,
 
 			// Not a restart from a screen orientation change (or other).
 			Collect.getInstance().setFormController(null);
-			CompatibilityUtils.invalidateOptionsMenu(this);
+			//CompatibilityUtils.invalidateOptionsMenu(this);
 
 			Intent intent = getIntent();
             Bundle bundle = intent.getExtras();
@@ -949,6 +950,7 @@ public class FormEntryActivity extends Activity implements AnimationListener,
 	/**
 	 * If we're loading, then we pass the loading thread to our next instance.
 	 */
+	/*
 	@Override
 	public Object onRetainNonConfigurationInstance() {
 		FormController formController = Collect.getInstance()
@@ -969,6 +971,7 @@ public class FormEntryActivity extends Activity implements AnimationListener,
 		}
 		return null;
 	}
+	*/
 
 	/**
 	 * Creates a view given the View type and an event
