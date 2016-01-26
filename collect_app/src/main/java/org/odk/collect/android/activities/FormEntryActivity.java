@@ -71,6 +71,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore.Images;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.util.DisplayMetrics;
@@ -234,8 +235,9 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 		}
 
 		setContentView(R.layout.form_entry);
-		setTitle(getString(R.string.app_name) + " > "
-				+ getString(R.string.loading_form));
+        setToolbar();
+		//setTitle(getString(R.string.app_name) + " > "
+		//		+ getString(R.string.loading_form));
 
         mErrorMessage = null;
 
@@ -863,6 +865,20 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 		}
 		return super.onOptionsItemSelected(item);
 	}
+
+    protected void setToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        if (toolbar != null)
+            setSupportActionBar(toolbar);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setIcon(R.drawable.ic_app_logo);
+        }
+    }
 
 	/**
 	 * Attempt to save the answer(s) in the current screen to into the data
