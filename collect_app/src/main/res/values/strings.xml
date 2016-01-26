@@ -17,6 +17,7 @@
     <string name="action_dialog_no">No</string>
     <string name="action_dialog_yes">Yes</string>
     <string name="action_interviewer_info">Interviewer profile</string>
+    <string name="action_goto">Goto</string>
     <string name="action_device_info">Device info</string>
     <string name="action_add_new_item">Add new item</string>
     <string name="action_previous_item">Previous item</string>
@@ -154,7 +155,6 @@
 <string name="username">Username</string>
 <string name="view_hierarchy">Go To Prompt</string>
 <string name="general_preferences">General Settings</string>
-    <string name="menu_interviewer_profile">Interviewer profile</string>
 <string name="click_to_web">Tap to visit http://6grain.com</string>
 <string name="client">User Interface</string>
 <string name="show_splash">Show splash screen</string>

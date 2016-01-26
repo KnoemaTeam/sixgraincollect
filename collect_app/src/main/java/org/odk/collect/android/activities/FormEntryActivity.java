@@ -563,7 +563,6 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode,
 			Intent intent) {
-		super.onActivityResult(requestCode, resultCode, intent);
 		FormController formController = Collect.getInstance()
 				.getFormController();
 		if (formController == null) {
@@ -761,10 +760,12 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.form_entry_menu, menu);
+
 		Collect.getInstance().getActivityLogger()
 				.logInstanceAction(this, "onCreateOptionsMenu", "show");
-		super.onCreateOptionsMenu(menu);
 
+        /*
 		CompatibilityUtils.setShowAsAction(
 				menu.add(0, MENU_SAVE, 0, R.string.save_all_answers).setIcon(
 						android.R.drawable.ic_menu_save),
@@ -784,9 +785,12 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 				menu.add(0, MENU_PREFERENCES, 0, R.string.general_preferences)
 						.setIcon(R.drawable.ic_menu_preferences),
 				MenuItem.SHOW_AS_ACTION_NEVER);
+        */
+
 		return true;
 	}
 
+    /*
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		super.onPrepareOptionsMenu(menu);
@@ -822,6 +826,7 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 				.setEnabled(useability);
 		return true;
 	}
+	*/
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -834,26 +839,31 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 					.logInstanceAction(this, "onOptionsItemSelected",
 							"MENU_LANGUAGES");
 			createLanguageDialog();
-			return true;
-		case MENU_SAVE:
+			break;
+
+		case R.id.action_save:
 			Collect.getInstance()
 					.getActivityLogger()
 					.logInstanceAction(this, "onOptionsItemSelected",
 							"MENU_SAVE");
 			// don't exit
 			saveDataToDisk(DO_NOT_EXIT, isInstanceComplete(false), null);
-			return true;
-		case MENU_HIERARCHY_VIEW:
+			break;
+
+		case R.id.action_goto:
 			Collect.getInstance()
 					.getActivityLogger()
 					.logInstanceAction(this, "onOptionsItemSelected",
 							"MENU_HIERARCHY_VIEW");
+
 			if (formController.currentPromptIsQuestion()) {
 				saveAnswersForCurrentScreen(DO_NOT_EVALUATE_CONSTRAINTS);
 			}
+
 			Intent i = new Intent(this, FormHierarchyActivity.class);
 			startActivityForResult(i, HIERARCHY_ACTIVITY);
-			return true;
+		    break;
+
 		case MENU_PREFERENCES:
 			Collect.getInstance()
 					.getActivityLogger()
@@ -861,8 +871,9 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 							"MENU_PREFERENCES");
 			Intent pref = new Intent(this, PreferencesActivity.class);
 			startActivity(pref);
-			return true;
+            break;
 		}
+
 		return super.onOptionsItemSelected(item);
 	}
 
