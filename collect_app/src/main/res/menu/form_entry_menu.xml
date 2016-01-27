@@ -9,13 +9,13 @@
         android:icon="@drawable/ic_save_white_24dp"
         android:title="@string/action_interviewer_info"
         android:orderInCategory="100"
-        app:showAsAction="ifRoom|withText"/>
+        app:showAsAction="always"/>
 
     <item
         android:id="@+id/action_goto"
         android:title="@string/action_goto"
         android:icon="@drawable/ic_format_list_numbered_white_24dp"
         android:orderInCategory="100"
-        app:showAsAction="ifRoom|withText"/>
+        app:showAsAction="always"/>
 
 </menu>

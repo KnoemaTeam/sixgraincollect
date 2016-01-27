@@ -193,9 +193,18 @@
         <activity
             android:name=".preferences.AdminPreferencesActivity"
             android:label="@string/app_name" />
+
         <activity
             android:name=".activities.FormHierarchyActivity"
-            android:label="@string/app_name" />
+            android:label="@string/app_name"
+            android:parentActivityName=".activities.FormEntryActivity">
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".activities.FormEntryActivity" />
+
+        </activity>
+
         <activity
             android:name=".activities.GeoPointActivity"
             android:label="@string/app_name" />
@@ -208,19 +217,17 @@
         <activity
             android:name=".activities.BearingActivity"
             android:label="@string/app_name" />
+
         <activity
             android:name=".activities.SplashScreenActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/SplashTheme" >
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <!-- Enable Shortcuts for Command Actions -->
         <activity
             android:name=".activities.AndroidShortcuts"

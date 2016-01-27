@@ -15,6 +15,7 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -44,9 +45,18 @@ public class SplashScreenActivity extends AppCompatActivity {
             Collect.createODKDirs();
         } catch (RuntimeException e) {
             createErrorDialog(e.getMessage(), EXIT);
-            return;
         }
 
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(SplashScreenActivity.this, InstanceChooserList.class);
+                startActivity(intent);
+                finish();
+            }
+        }, 2 * 1000);
+
+        /*
         mImageMaxWidth = getWindowManager().getDefaultDisplay().getWidth();
 
         // this splash screen should be a blank slate
@@ -91,21 +101,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         } else {
             endSplashScreen();
         }
-
-    }
-
-    protected void setToolbar() {
-         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
-
-            if (getSupportActionBar() != null) {
-                getSupportActionBar().setDisplayShowHomeEnabled(true);
-                getSupportActionBar().setDisplayShowTitleEnabled(false);
-                getSupportActionBar().setIcon(R.drawable.ic_app_logo);
-            }
-        }
+        */
     }
 
     @Override
@@ -116,8 +112,8 @@ public class SplashScreenActivity extends AppCompatActivity {
     private void endSplashScreen() {
         // launch new activity and close splash screen
         // Maybe need implement on another way
-        //startActivity(new Intent(SplashScreenActivity.this, MainMenuActivity.class));
-        startActivity(new Intent(SplashScreenActivity.this, InstanceChooserList.class));
+        startActivity(new Intent(SplashScreenActivity.this, MainMenuActivity.class));
+        //startActivity(new Intent(SplashScreenActivity.this, InstanceChooserList.class));
         finish();
     }
 

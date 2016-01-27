@@ -100,14 +100,16 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
     private static final String FORM_VERSION_KEY = "formversion";
 
     private Map<String, FormDetails> mFormNamesAndURLs = new HashMap<>();
-    private List<HashMap<String, String>> mFormList = new ArrayList<>();
+    private List<Map<String, String>> mFormList = new ArrayList<>();
 
     private SharedPreferences mSettings;
-    private boolean mIsFormDowloaded = false;
+    private boolean mIsFormDownloaded = false;
 
     private ListView mDataListView = null;
-    private ProgressDialog mProgressDialog;
+    //private ProgressDialog mProgressDialog;
+
     private AlertDialog mAlertDialog;
+    private DialogConstructor mConstructor = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -185,9 +187,9 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
 
     protected void setUserSettings() {
         mSettings = PreferenceManager.getDefaultSharedPreferences(this);
-        mIsFormDowloaded = mSettings.getBoolean(SettingsFragment.SURVEY_FORM_DOWNLOADED_KEY, false);
+        mIsFormDownloaded = mSettings.getBoolean(SettingsFragment.SURVEY_FORM_DOWNLOADED_KEY, false);
 
-        if (!mIsFormDowloaded)
+        if (!mIsFormDownloaded)
             downloadSurveyFormList();
     }
 
@@ -292,6 +294,10 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
     }
 
     protected void createProgressDialog(String message) {
+        mConstructor = new DialogConstructor(this);
+        mConstructor.updateDialog(getString(R.string.downloading_data), message);
+
+        /*
         mProgressDialog = new ProgressDialog(this);
         DialogInterface.OnClickListener loadingButtonListener =
                 new DialogInterface.OnClickListener() {
@@ -320,6 +326,7 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
         mProgressDialog.setCancelable(false);
         mProgressDialog.setButton(getString(R.string.cancel), loadingButtonListener);
         mProgressDialog.show();
+        */
     }
 
     private void downloadSurveyFormList() {
@@ -354,7 +361,7 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
         int totalCount;
 
         for (Map<String, String> entry: mFormList) {
-            if (entry.get(FORM_ID_KEY).contains("Zambia") ||
+            if (entry.get(FORM_ID_KEY).contains("Zambia short") ||
                     entry.get(FORM_ID_KEY).contains("Senegal")) {
                 filesToDownload.add(mFormNamesAndURLs.get(entry.get(FORMDETAIL_KEY)));
             }
@@ -403,7 +410,7 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
         for (int i = 0; i < value.size(); i++) {
             String formDetailsKey = ids.get(i);
             FormDetails details = mFormNamesAndURLs.get(formDetailsKey);
-            HashMap<String, String> item = new HashMap<String, String>();
+            Map<String, String> item = new HashMap<>();
             item.put(FORMNAME, details.formName);
             item.put(FORMID_DISPLAY,
                     ((details.formVersion == null) ? "" : (getString(R.string.version) + " " + details.formVersion + " ")) +
@@ -418,7 +425,7 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
             } else {
                 int j;
                 for (j = 0; j < mFormList.size(); j++) {
-                    HashMap<String, String> compareMe = mFormList.get(j);
+                    Map<String, String> compareMe = mFormList.get(j);
                     String name = compareMe.get(FORMNAME);
                     if (name.compareTo(mFormNamesAndURLs.get(ids.get(i)).formName) > 0) {
                         break;
@@ -439,10 +446,15 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
             mDownloadFormsTask.setDownloaderListener(null);
         }
 
+        if (mConstructor != null)
+            mConstructor.stopAnimation();
+
+        /*
         if (mProgressDialog != null
                 && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
         }
+        */
 
         SharedPreferences.Editor editor = mSettings.edit();
         editor.putBoolean(SettingsFragment.SURVEY_FORM_DOWNLOADED_KEY, true);
@@ -451,7 +463,10 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
 
     @Override
     public void progressUpdate(String currentFile, int progress, int total) {
-        mProgressDialog.setMessage(getString(R.string.fetching_file, currentFile, progress, total));
+        //mProgressDialog.setMessage(getString(R.string.fetching_file, currentFile, progress, total));
+        mConstructor.updateDialog(
+                getString(R.string.downloading_data),
+                getString(R.string.fetching_file, currentFile, progress, total));
     }
 
     protected void createChosenSurvey() {

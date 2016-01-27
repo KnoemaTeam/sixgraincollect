@@ -27,22 +27,27 @@ import org.odk.collect.android.application.Collect;
 import org.odk.collect.android.exception.JavaRosaException;
 import org.odk.collect.android.logic.FormController;
 import org.odk.collect.android.logic.HierarchyElement;
+import org.odk.collect.android.provider.InstanceProviderAPI;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
-public class FormHierarchyActivity extends ListActivity {
-
+public class FormHierarchyActivity extends AppCompatActivity {
     private static final String t = "FormHierarchyActivity";
 
     private static final int CHILD = 1;
@@ -53,6 +58,7 @@ public class FormHierarchyActivity extends ListActivity {
     private static final String mIndent = "     ";
 
     private Button jumpPreviousButton;
+    private ListView mDataListView = null;
 
     List<HierarchyElement> formList;
     TextView mPath;
@@ -64,17 +70,16 @@ public class FormHierarchyActivity extends ListActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.hierarchy_layout);
+        setToolbar();
+        setContentList();
 
         FormController formController = Collect.getInstance().getFormController();
 
         // We use a static FormEntryController to make jumping faster.
         mStartIndex = formController.getFormIndex();
-
-        setTitle(getString(R.string.app_name) + " > "
-                + formController.getFormTitle());
-
-        mPath = (TextView) findViewById(R.id.pathtext);
+        //mPath = (TextView) findViewById(R.id.pathtext);
 
         jumpPreviousButton = (Button) findViewById(R.id.jumpPreviousButton);
         jumpPreviousButton.setOnClickListener(new OnClickListener() {
@@ -112,19 +117,20 @@ public class FormHierarchyActivity extends ListActivity {
 
         // kinda slow, but works.
         // this scrolls to the last question the user was looking at
-        if (getListAdapter() != null && getListView() != null) {
-            getListView().post(new Runnable() {
+        if (mDataListView != null && mDataListView.getAdapter() != null) {
+            mDataListView.post(new Runnable() {
                 @Override
                 public void run() {
                     int position = 0;
-                    for (int i = 0; i < getListAdapter().getCount(); i++) {
-                        HierarchyElement he = (HierarchyElement) getListAdapter().getItem(i);
+                    for (int i = 0; i < mDataListView.getAdapter().getCount(); i++) {
+                        HierarchyElement he = (HierarchyElement) mDataListView.getAdapter().getItem(i);
                         if (mStartIndex.equals(he.getFormIndex())) {
                             position = i;
                             break;
                         }
                     }
-                    getListView().setSelection(position);
+
+                    mDataListView.setSelection(position);
                 }
             });
         }
@@ -148,6 +154,29 @@ public class FormHierarchyActivity extends ListActivity {
         refreshView();
     }
 
+    protected void setToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        if (toolbar != null)
+            setSupportActionBar(toolbar);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setIcon(R.drawable.ic_app_logo);
+        }
+    }
+
+    protected void setContentList() {
+        mDataListView = (ListView) findViewById(R.id.dataListView);
+        mDataListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
+    }
 
     private String getCurrentPath() {
     	FormController formController = Collect.getInstance().getFormController();
@@ -220,11 +249,11 @@ public class FormHierarchyActivity extends ListActivity {
                 // The beginning of form has no valid prompt to display.
                 formController.stepToNextEvent(FormController.STEP_INTO_GROUP);
                 contextGroupRef = formController.getFormIndex().getReference().getParentRef().toString(true);
-                mPath.setVisibility(View.GONE);
+//                mPath.setVisibility(View.GONE);
                 jumpPreviousButton.setEnabled(false);
             } else {
-                mPath.setVisibility(View.VISIBLE);
-                mPath.setText(getCurrentPath());
+//                mPath.setVisibility(View.VISIBLE);
+//                mPath.setText(getCurrentPath());
                 jumpPreviousButton.setEnabled(true);
             }
 
@@ -324,7 +353,7 @@ public class FormHierarchyActivity extends ListActivity {
 
             HierarchyListAdapter itla = new HierarchyListAdapter(this);
             itla.setListItems(formList);
-            setListAdapter(itla);
+            mDataListView.setAdapter(itla);
 
             // set the controller back to the current index in case the user hits 'back'
             formController.jumpToIndex(currentIndex);
@@ -365,7 +394,6 @@ public class FormHierarchyActivity extends ListActivity {
         alertDialog.show();
     }
 
-    @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         HierarchyElement h = (HierarchyElement) l.getItemAtPosition(position);
         FormIndex index = h.getFormIndex();
@@ -423,8 +451,8 @@ public class FormHierarchyActivity extends ListActivity {
         // Should only get here if we've expanded or collapsed a group
         HierarchyListAdapter itla = new HierarchyListAdapter(this);
         itla.setListItems(formList);
-        setListAdapter(itla);
-        getListView().setSelection(position);
+        mDataListView.setAdapter(itla);
+        mDataListView.setSelection(position);
     }
 
 
