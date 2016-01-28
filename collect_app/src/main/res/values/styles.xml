@@ -39,4 +39,34 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="TitleTheme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/colorListViewTitleText</item>
+    </style>
+
+    <style name="SubtitleTheme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorListViewSubtitleText</item>
+    </style>
+
+    <style name="RoundedImageTheme">
+        <item name="android:layout_width">75dp</item>
+        <item name="android:layout_height">75dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:layout_marginLeft">25dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:contentDescription">@null</item>
+        <item name="android:background">@drawable/rounded_image_view</item>
+    </style>
+
 </resources>

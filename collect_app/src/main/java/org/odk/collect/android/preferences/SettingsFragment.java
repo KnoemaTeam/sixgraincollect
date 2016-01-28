@@ -8,11 +8,12 @@ import android.util.Log;
 
 import org.odk.collect.android.R;
 
-public class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
+public class SettingsFragment extends PreferenceFragment {
     public static final String SURVEY_FORM_DOWNLOADED_KEY = "survey_form_downloaded";
     public static final String SURVEY_SOURCE_URL_KEY = "survey_source_url";
     public static final String SURVEY_CHOSEN_TYPE_KEY = "survey_chosen_type";
 
+    protected SharedPreferences.OnSharedPreferenceChangeListener mPreferenceChangeListener = null;
     protected Preference mSurveySourceURL = null;
     protected Preference mSurveyChosenType = null;
 
@@ -29,9 +30,25 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
         mSurveyChosenType = findPreference(SURVEY_CHOSEN_TYPE_KEY);
         mSurveyChosenType.setSummary(getPreferenceManager().getSharedPreferences().getString(SURVEY_CHOSEN_TYPE_KEY, null));
 
+        mPreferenceChangeListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+            @Override
+            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+                Log.i(getClass().getSimpleName(), "Preferences was changed");
+
+                if (key.equals(SURVEY_SOURCE_URL_KEY)) {
+                    Preference sourcePreference = findPreference(key);
+                    sourcePreference.setSummary(sharedPreferences.getString(key, ""));
+                }
+                if (key.equals(SURVEY_CHOSEN_TYPE_KEY)) {
+                    Preference sourcePreference = findPreference(key);
+                    sourcePreference.setSummary(sharedPreferences.getString(key, ""));
+                }
+            }
+        };
+
         getPreferenceScreen()
                 .getSharedPreferences()
-                .registerOnSharedPreferenceChangeListener(this);
+                .registerOnSharedPreferenceChangeListener(mPreferenceChangeListener);
     }
 
     @Override
@@ -40,7 +57,7 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
 
         getPreferenceScreen()
                 .getSharedPreferences()
-                .registerOnSharedPreferenceChangeListener(this);
+                .registerOnSharedPreferenceChangeListener(mPreferenceChangeListener);
     }
 
     @Override
@@ -49,20 +66,6 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
 
         getPreferenceScreen()
                 .getSharedPreferences()
-                .unregisterOnSharedPreferenceChangeListener(this);
-    }
-
-    @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        Log.i(getClass().getSimpleName(), "Preferences was changed");
-
-        if (key.equals(SURVEY_SOURCE_URL_KEY)) {
-            Preference sourcePreference = findPreference(key);
-            sourcePreference.setSummary(sharedPreferences.getString(key, ""));
-        }
-        if (key.equals(SURVEY_CHOSEN_TYPE_KEY)) {
-            Preference sourcePreference = findPreference(key);
-            sourcePreference.setSummary(sharedPreferences.getString(key, ""));
-        }
+                .unregisterOnSharedPreferenceChangeListener(mPreferenceChangeListener);
     }
 }

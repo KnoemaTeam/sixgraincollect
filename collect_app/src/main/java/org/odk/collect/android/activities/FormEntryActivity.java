@@ -196,7 +196,8 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	private View mCurrentView;
 
 	private AlertDialog mAlertDialog;
-	private ProgressDialog mProgressDialog;
+	//private ProgressDialog mProgressDialog;
+    private DialogConstructor mConstructor = null;
 	private String mErrorMessage;
 
 	// used to limit forward/backward swipes to one per question
@@ -276,6 +277,7 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 		String instancePath = null;
 		Boolean newForm = true;
 		mAutoSaved = false;
+
 		if (savedInstanceState != null) {
 			if (savedInstanceState.containsKey(KEY_FORMPATH)) {
 				mFormPath = savedInstanceState.getString(KEY_FORMPATH);
@@ -341,185 +343,187 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 			//CompatibilityUtils.invalidateOptionsMenu(this);
 
 			Intent intent = getIntent();
+            Uri uri = intent.getData();
             Bundle bundle = intent.getExtras();
 
-			if (intent != null) {
-				Uri uri = intent.getData();
+            if (uri == null)
+                return;
 
-                if (bundle != null)
-                    mIsSurveyNew = bundle.getBoolean("CREATE_NEW_SURVEY", false);
+            Log.i(getClass().getSimpleName(), uri.toString());
 
-				if (getContentResolver().getType(uri).equals(InstanceColumns.CONTENT_ITEM_TYPE)) {
-					// get the formId and version for this instance...
-					String jrFormId = null;
-					String jrVersion = null;
-					{
-						Cursor instanceCursor = null;
-						try {
-							instanceCursor = getContentResolver().query(uri,
-									null, null, null, null);
-							if (instanceCursor.getCount() != 1) {
-								this.createErrorDialog("Bad URI: " + uri, EXIT);
-								return;
-							} else {
-								instanceCursor.moveToFirst();
-								instancePath = instanceCursor
-										.getString(instanceCursor
-												.getColumnIndex(InstanceColumns.INSTANCE_FILE_PATH));
-								Collect.getInstance()
-										.getActivityLogger()
-										.logAction(this, "instanceLoaded",
-												instancePath);
+            if (bundle != null)
+                mIsSurveyNew = bundle.getBoolean("CREATE_NEW_SURVEY", false);
 
-								jrFormId = instanceCursor
-										.getString(instanceCursor
-												.getColumnIndex(InstanceColumns.JR_FORM_ID));
-								int idxJrVersion = instanceCursor
-										.getColumnIndex(InstanceColumns.JR_VERSION);
+            if (getContentResolver().getType(uri).equals(InstanceColumns.CONTENT_ITEM_TYPE)) {
+                // get the formId and version for this instance...
+                String jrFormId = null;
+                String jrVersion = null;
+                {
+                    Cursor instanceCursor = null;
+                    try {
+                        instanceCursor = getContentResolver().query(uri,
+                                null, null, null, null);
+                        if (instanceCursor.getCount() != 1) {
+                            this.createErrorDialog("Bad URI: " + uri, EXIT);
+                            return;
+                        } else {
+                            instanceCursor.moveToFirst();
+                            instancePath = instanceCursor
+                                    .getString(instanceCursor
+                                            .getColumnIndex(InstanceColumns.INSTANCE_FILE_PATH));
+                            Collect.getInstance()
+                                    .getActivityLogger()
+                                    .logAction(this, "instanceLoaded",
+                                            instancePath);
 
-								jrVersion = instanceCursor.isNull(idxJrVersion) ? null
-										: instanceCursor
-												.getString(idxJrVersion);
-							}
-						} finally {
-							if (instanceCursor != null) {
-								instanceCursor.close();
-							}
-						}
-					}
+                            jrFormId = instanceCursor
+                                    .getString(instanceCursor
+                                            .getColumnIndex(InstanceColumns.JR_FORM_ID));
+                            int idxJrVersion = instanceCursor
+                                    .getColumnIndex(InstanceColumns.JR_VERSION);
 
-					String[] selectionArgs;
-					String selection;
+                            jrVersion = instanceCursor.isNull(idxJrVersion) ? null
+                                    : instanceCursor
+                                    .getString(idxJrVersion);
+                        }
+                    } finally {
+                        if (instanceCursor != null) {
+                            instanceCursor.close();
+                        }
+                    }
+                }
 
-					if (jrVersion == null) {
-						selectionArgs = new String[] { jrFormId };
-						selection = FormsColumns.JR_FORM_ID + "=? AND "
-								+ FormsColumns.JR_VERSION + " IS NULL";
-					} else {
-						selectionArgs = new String[] { jrFormId, jrVersion };
-						selection = FormsColumns.JR_FORM_ID + "=? AND "
-								+ FormsColumns.JR_VERSION + "=?";
-					}
+                String[] selectionArgs;
+                String selection;
 
-					{
-						Cursor formCursor = null;
-						try {
-							formCursor = getContentResolver().query(
-									FormsColumns.CONTENT_URI, null, selection,
-									selectionArgs, null);
-							if (formCursor.getCount() == 1) {
-								formCursor.moveToFirst();
-								mFormPath = formCursor
-										.getString(formCursor
-												.getColumnIndex(FormsColumns.FORM_FILE_PATH));
-							} else if (formCursor.getCount() < 1) {
-								this.createErrorDialog(
-										getString(
-												R.string.parent_form_not_present,
-												jrFormId)
-												+ ((jrVersion == null) ? ""
-														: "\n"
-																+ getString(R.string.version)
-																+ " "
-																+ jrVersion),
-										EXIT);
-								return;
-							} else if (formCursor.getCount() > 1) {
-								// still take the first entry, but warn that
-								// there are multiple rows.
-								// user will need to hand-edit the SQLite
-								// database to fix it.
-								formCursor.moveToFirst();
-								mFormPath = formCursor.getString(formCursor.getColumnIndex(FormsColumns.FORM_FILE_PATH));
-								this.createErrorDialog(getString(R.string.survey_multiple_forms_error),	EXIT);
-                                return;
-							}
-						} finally {
-							if (formCursor != null) {
-								formCursor.close();
-							}
-						}
-					}
-				} else if (getContentResolver().getType(uri).equals(FormsColumns.CONTENT_ITEM_TYPE)) {
-					Cursor c = null;
-					try {
-						c = getContentResolver().query(uri, null, null, null,
-								null);
-						if (c.getCount() != 1) {
-							this.createErrorDialog("Bad URI: " + uri, EXIT);
-							return;
-						} else {
-							c.moveToFirst();
-							mFormPath = c.getString(c.getColumnIndex(FormsColumns.FORM_FILE_PATH));
-							// This is the fill-blank-form code path.
-							// See if there is a savepoint for this form that
-							// has never been
-							// explicitly saved
-							// by the user. If there is, open this savepoint
-							// (resume this filled-in
-							// form).
-							// Savepoints for forms that were explicitly saved
-							// will be recovered
-							// when that
-							// explicitly saved instance is edited via
-							// edit-saved-form.
-							final String filePrefix = mFormPath.substring(
-									mFormPath.lastIndexOf('/') + 1,
-									mFormPath.lastIndexOf('.'))
-									+ "_";
-							final String fileSuffix = ".xml.save";
-							File cacheDir = new File(Collect.CACHE_PATH);
-							File[] files = cacheDir.listFiles(new FileFilter() {
-								@Override
-								public boolean accept(File pathname) {
-									String name = pathname.getName();
-									return name.startsWith(filePrefix)
-											&& name.endsWith(fileSuffix);
-								}
-							});
-							// see if any of these savepoints are for a
-							// filled-in form that has never been
-							// explicitly saved by the user...
-							for (int i = 0; i < files.length; ++i) {
-								File candidate = files[i];
-								String instanceDirName = candidate.getName()
-										.substring(
-												0,
-												candidate.getName().length()
-														- fileSuffix.length());
-								File instanceDir = new File(
-										Collect.INSTANCES_PATH + File.separator
-												+ instanceDirName);
-								File instanceFile = new File(instanceDir,
-										instanceDirName + ".xml");
-								if (instanceDir.exists()
-										&& instanceDir.isDirectory()
-										&& !instanceFile.exists()) {
-									// yes! -- use this savepoint file
-									instancePath = instanceFile
-											.getAbsolutePath();
-									break;
-								}
-							}
-						}
-					} finally {
-						if (c != null) {
-							c.close();
-						}
-					}
-				} else {
-					Log.e(t, "unrecognized URI");
-					this.createErrorDialog("Unrecognized URI: " + uri, EXIT);
-					return;
-				}
+                if (jrVersion == null) {
+                    selectionArgs = new String[] { jrFormId };
+                    selection = FormsColumns.JR_FORM_ID + "=? AND "
+                            + FormsColumns.JR_VERSION + " IS NULL";
+                } else {
+                    selectionArgs = new String[] { jrFormId, jrVersion };
+                    selection = FormsColumns.JR_FORM_ID + "=? AND "
+                            + FormsColumns.JR_VERSION + "=?";
+                }
 
-				mFormLoaderTask = new FormLoaderTask(instancePath, null, null);
-				Collect.getInstance().getActivityLogger()
-						.logAction(this, "formLoaded", mFormPath);
-				showDialog(PROGRESS_DIALOG);
-				// show dialog before we execute...
-				mFormLoaderTask.execute(mFormPath);
-			}
+                {
+                    Cursor formCursor = null;
+                    try {
+                        formCursor = getContentResolver().query(
+                                FormsColumns.CONTENT_URI, null, selection,
+                                selectionArgs, null);
+                        if (formCursor.getCount() == 1) {
+                            formCursor.moveToFirst();
+                            mFormPath = formCursor
+                                    .getString(formCursor
+                                            .getColumnIndex(FormsColumns.FORM_FILE_PATH));
+                        } else if (formCursor.getCount() < 1) {
+                            this.createErrorDialog(
+                                    getString(
+                                            R.string.parent_form_not_present,
+                                            jrFormId)
+                                            + ((jrVersion == null) ? ""
+                                            : "\n"
+                                            + getString(R.string.version)
+                                            + " "
+                                            + jrVersion),
+                                    EXIT);
+                            return;
+                        } else if (formCursor.getCount() > 1) {
+                            // still take the first entry, but warn that
+                            // there are multiple rows.
+                            // user will need to hand-edit the SQLite
+                            // database to fix it.
+                            formCursor.moveToFirst();
+                            mFormPath = formCursor.getString(formCursor.getColumnIndex(FormsColumns.FORM_FILE_PATH));
+                            this.createErrorDialog(getString(R.string.survey_multiple_forms_error),	EXIT);
+                            return;
+                        }
+                    } finally {
+                        if (formCursor != null) {
+                            formCursor.close();
+                        }
+                    }
+                }
+            } else if (getContentResolver().getType(uri).equals(FormsColumns.CONTENT_ITEM_TYPE)) {
+                Cursor c = null;
+                try {
+                    c = getContentResolver().query(uri, null, null, null,
+                            null);
+                    if (c.getCount() != 1) {
+                        this.createErrorDialog("Bad URI: " + uri, EXIT);
+                        return;
+                    } else {
+                        c.moveToFirst();
+                        mFormPath = c.getString(c.getColumnIndex(FormsColumns.FORM_FILE_PATH));
+                        // This is the fill-blank-form code path.
+                        // See if there is a savepoint for this form that
+                        // has never been
+                        // explicitly saved
+                        // by the user. If there is, open this savepoint
+                        // (resume this filled-in
+                        // form).
+                        // Savepoints for forms that were explicitly saved
+                        // will be recovered
+                        // when that
+                        // explicitly saved instance is edited via
+                        // edit-saved-form.
+                        final String filePrefix = mFormPath.substring(
+                                mFormPath.lastIndexOf('/') + 1,
+                                mFormPath.lastIndexOf('.'))
+                                + "_";
+                        final String fileSuffix = ".xml.save";
+                        File cacheDir = new File(Collect.CACHE_PATH);
+                        File[] files = cacheDir.listFiles(new FileFilter() {
+                            @Override
+                            public boolean accept(File pathname) {
+                                String name = pathname.getName();
+                                return name.startsWith(filePrefix)
+                                        && name.endsWith(fileSuffix);
+                            }
+                        });
+                        // see if any of these savepoints are for a
+                        // filled-in form that has never been
+                        // explicitly saved by the user...
+                        for (int i = 0; i < files.length; ++i) {
+                            File candidate = files[i];
+                            String instanceDirName = candidate.getName()
+                                    .substring(
+                                            0,
+                                            candidate.getName().length()
+                                                    - fileSuffix.length());
+                            File instanceDir = new File(
+                                    Collect.INSTANCES_PATH + File.separator
+                                            + instanceDirName);
+                            File instanceFile = new File(instanceDir,
+                                    instanceDirName + ".xml");
+                            if (instanceDir.exists()
+                                    && instanceDir.isDirectory()
+                                    && !instanceFile.exists()) {
+                                // yes! -- use this savepoint file
+                                instancePath = instanceFile
+                                        .getAbsolutePath();
+                                break;
+                            }
+                        }
+                    }
+                } finally {
+                    if (c != null) {
+                        c.close();
+                    }
+                }
+            } else {
+                Log.e(t, "unrecognized URI");
+                this.createErrorDialog("Unrecognized URI: " + uri, EXIT);
+                return;
+            }
+
+            mFormLoaderTask = new FormLoaderTask(instancePath, null, null);
+            Collect.getInstance().getActivityLogger()
+                    .logAction(this, "formLoaded", mFormPath);
+            showDialog(PROGRESS_DIALOG);
+            // show dialog before we execute...
+            mFormLoaderTask.execute(mFormPath);
 		}
 	}
 
@@ -540,17 +544,15 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 		outState.putString(KEY_FORMPATH, mFormPath);
-		FormController formController = Collect.getInstance()
-				.getFormController();
-		if (formController != null) {
-			outState.putString(KEY_INSTANCEPATH, formController
-					.getInstancePath().getAbsolutePath());
-			outState.putString(KEY_XPATH,
-					formController.getXPath(formController.getFormIndex()));
-			FormIndex waiting = formController.getIndexWaitingForData();
-			if (waiting != null) {
-				outState.putString(KEY_XPATH_WAITING_FOR_DATA,
-						formController.getXPath(waiting));
+		FormController formController = Collect.getInstance().getFormController();
+
+        if (formController != null) {
+			outState.putString(KEY_INSTANCEPATH, formController.getInstancePath().getAbsolutePath());
+			outState.putString(KEY_XPATH, formController.getXPath(formController.getFormIndex()));
+
+            FormIndex waiting = formController.getIndexWaitingForData();
+            if (waiting != null) {
+				outState.putString(KEY_XPATH_WAITING_FOR_DATA, formController.getXPath(waiting));
 			}
 			// save the instance to a temp path...
 			nonblockingCreateSavePointData();
@@ -563,8 +565,7 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode,
 			Intent intent) {
-		FormController formController = Collect.getInstance()
-				.getFormController();
+		FormController formController = Collect.getInstance().getFormController();
 		if (formController == null) {
 			// we must be in the midst of a reload of the FormController.
 			// try to save this callback data to the FormLoaderTask
@@ -736,8 +737,7 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	 * changes, so they're resynchronized here.
 	 */
 	public void refreshCurrentView() {
-		FormController formController = Collect.getInstance()
-				.getFormController();
+		FormController formController = Collect.getInstance().getFormController();
 		int event = formController.getEvent();
 
 		// When we refresh, repeat dialog state isn't maintained, so step back
@@ -830,48 +830,41 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		FormController formController = Collect.getInstance()
-				.getFormController();
+		FormController formController = Collect.getInstance().getFormController();
+
 		switch (item.getItemId()) {
-		case MENU_LANGUAGES:
-			Collect.getInstance()
-					.getActivityLogger()
-					.logInstanceAction(this, "onOptionsItemSelected",
-							"MENU_LANGUAGES");
-			createLanguageDialog();
-			break;
+			case android.R.id.home:
+				onBackPressed();
+				break;
 
-		case R.id.action_save:
-			Collect.getInstance()
-					.getActivityLogger()
-					.logInstanceAction(this, "onOptionsItemSelected",
-							"MENU_SAVE");
-			// don't exit
-			saveDataToDisk(DO_NOT_EXIT, isInstanceComplete(false), null);
-			break;
+            case MENU_LANGUAGES:
+                Collect.getInstance().getActivityLogger().logInstanceAction(this, "onOptionsItemSelected", "MENU_LANGUAGES");
+                createLanguageDialog();
+                break;
 
-		case R.id.action_goto:
-			Collect.getInstance()
-					.getActivityLogger()
-					.logInstanceAction(this, "onOptionsItemSelected",
-							"MENU_HIERARCHY_VIEW");
+            case R.id.action_save:
+                Collect.getInstance().getActivityLogger().logInstanceAction(this, "onOptionsItemSelected", "MENU_SAVE");
+                saveDataToDisk(DO_NOT_EXIT, isInstanceComplete(false), null);
+                break;
 
-			if (formController.currentPromptIsQuestion()) {
-				saveAnswersForCurrentScreen(DO_NOT_EVALUATE_CONSTRAINTS);
-			}
+            case R.id.action_goto:
+                Collect.getInstance().getActivityLogger().logInstanceAction(this, "onOptionsItemSelected", "MENU_HIERARCHY_VIEW");
 
-			Intent i = new Intent(this, FormHierarchyActivity.class);
-			startActivityForResult(i, HIERARCHY_ACTIVITY);
-		    break;
+                if (formController.currentPromptIsQuestion()) {
+                    saveAnswersForCurrentScreen(DO_NOT_EVALUATE_CONSTRAINTS);
+                }
 
-		case MENU_PREFERENCES:
-			Collect.getInstance()
-					.getActivityLogger()
-					.logInstanceAction(this, "onOptionsItemSelected",
-							"MENU_PREFERENCES");
-			Intent pref = new Intent(this, PreferencesActivity.class);
-			startActivity(pref);
-            break;
+                startActivity(new Intent(this, FormHierarchyActivity.class));
+                break;
+
+            case MENU_PREFERENCES:
+                Collect.getInstance()
+                        .getActivityLogger()
+                        .logInstanceAction(this, "onOptionsItemSelected",
+                                "MENU_PREFERENCES");
+                Intent pref = new Intent(this, PreferencesActivity.class);
+                startActivity(pref);
+                break;
 		}
 
 		return super.onOptionsItemSelected(item);
@@ -900,8 +893,7 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	 *         etc...), true otherwise.
 	 */
 	private boolean saveAnswersForCurrentScreen(boolean evaluateConstraints) {
-		FormController formController = Collect.getInstance()
-				.getFormController();
+		FormController formController = Collect.getInstance().getFormController();
 		// only try to save if the current event is a question or a field-list
 		// group
 		if (formController.currentPromptIsQuestion()) {
@@ -932,13 +924,10 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	}
 
 	@Override
-	public void onCreateContextMenu(ContextMenu menu, View v,
-			ContextMenuInfo menuInfo) {
+	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
 		super.onCreateContextMenu(menu, v, menuInfo);
-		Collect.getInstance().getActivityLogger()
-				.logInstanceAction(this, "onCreateContextMenu", "show");
-		FormController formController = Collect.getInstance()
-				.getFormController();
+		Collect.getInstance().getActivityLogger().logInstanceAction(this, "onCreateContextMenu", "show");
+		FormController formController = Collect.getInstance().getFormController();
 
 		menu.add(0, v.getId(), 0, getString(R.string.clear_answer));
 		if (formController.indexContainsRepeatableGroup()) {
@@ -1009,15 +998,11 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	 * @return newly created View
 	 */
 	private View createView(int event, boolean advancingPage) {
-		FormController formController = Collect.getInstance()
-				.getFormController();
-		setTitle(getString(R.string.app_name) + " > "
-				+ formController.getFormTitle());
+		FormController formController = Collect.getInstance().getFormController();
 
 		switch (event) {
 		case FormEntryController.EVENT_BEGINNING_OF_FORM:
-			View startView = View
-					.inflate(this, R.layout.form_entry_start, null);
+			View startView = View.inflate(this, R.layout.form_entry_start, null);
 			setTitle(getString(R.string.app_name) + " > "
 					+ formController.getFormTitle());
 
@@ -2099,15 +2084,14 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	/**
 	 * We use Android's dialog management for loading/saving progress dialogs
 	 */
+    /*
 	@Override
 	protected Dialog onCreateDialog(int id) {
 		switch (id) {
 		case PROGRESS_DIALOG:
 			Log.e(t, "Creating PROGRESS_DIALOG");
-			Collect.getInstance()
-					.getActivityLogger()
-					.logInstanceAction(this, "onCreateDialog.PROGRESS_DIALOG",
-							"show");
+			Collect.getInstance().getActivityLogger().logInstanceAction(this, "onCreateDialog.PROGRESS_DIALOG", "show");
+
 			mProgressDialog = new ProgressDialog(this);
 			DialogInterface.OnClickListener loadingButtonListener = new DialogInterface.OnClickListener() {
 				@Override
@@ -2169,6 +2153,7 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 		}
 		return null;
 	}
+    */
 
     private void cancelSaveToDiskTask() {
         synchronized (saveDialogLock) {
@@ -2190,8 +2175,11 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 
 	@Override
 	protected void onPause() {
-		FormController formController = Collect.getInstance()
-				.getFormController();
+		FormController formController = Collect.getInstance().getFormController();
+
+        if (mConstructor != null)
+            mConstructor.stopAnimation();
+
 		dismissDialogs();
 		// make sure we're not already saving to disk. if we are, currentPrompt
 		// is getting constantly updated
@@ -2228,13 +2216,17 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 
 		if (mFormLoaderTask != null) {
 			mFormLoaderTask.setFormLoaderListener(this);
-			if (formController == null
-					&& mFormLoaderTask.getStatus() == AsyncTask.Status.FINISHED) {
+
+            if (formController == null && mFormLoaderTask.getStatus() == AsyncTask.Status.FINISHED) {
 				FormController fec = mFormLoaderTask.getFormController();
 				if (fec != null) {
 					loadingComplete(mFormLoaderTask);
 				} else {
-					dismissDialog(PROGRESS_DIALOG);
+					//dismissDialog(PROGRESS_DIALOG);
+
+                    if (mConstructor != null)
+                        mConstructor.stopAnimation();
+
 					FormLoaderTask t = mFormLoaderTask;
 					mFormLoaderTask = null;
 					t.cancel(true);
@@ -2244,13 +2236,13 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 				}
 			}
 		} else {
-            if (formController == null) {
-                // there is no formController -- fire MainMenu activity?
-                startActivity(new Intent(this, MainMenuActivity.class));
-                return;
-            } else {
-                refreshCurrentView();
-            }
+            //if (formController == null) {
+            //    // there is no formController -- fire MainMenu activity?
+            //    startActivity(new Intent(this, MainMenuActivity.class));
+            //    return;
+            //} else {
+            refreshCurrentView();
+            //}
 		}
 
 		if (mSaveToDiskTask != null) {
@@ -2397,7 +2389,10 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	 */
 	@Override
 	public void loadingComplete(FormLoaderTask task) {
-		dismissDialog(PROGRESS_DIALOG);
+		//dismissDialog(PROGRESS_DIALOG);
+
+        if (mConstructor != null)
+            mConstructor.stopAnimation();
 
 		FormController formController = task.getFormController();
 		boolean pendingActivityResult = task.hasPendingActivityResult();
@@ -2497,8 +2492,7 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 			if (!showFirst && !mIsSurveyNew) {
 				// we've just loaded a saved form, so start in the hierarchy
 				// view
-				Intent i = new Intent(this, FormHierarchyActivity.class);
-				startActivity(i);
+				startActivity(new Intent(this, FormHierarchyActivity.class));
 				return; // so we don't show the intro screen before jumping to
 						// the hierarchy
 			}
@@ -2512,7 +2506,11 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	 */
 	@Override
 	public void loadingError(String errorMsg) {
-		dismissDialog(PROGRESS_DIALOG);
+		//dismissDialog(PROGRESS_DIALOG);
+
+        if (mConstructor != null)
+            mConstructor.stopAnimation();
+
 		if (errorMsg != null) {
 			createErrorDialog(errorMsg, EXIT);
 		} else {
@@ -2525,7 +2523,10 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	 */
 	@Override
 	public void savingComplete(SaveResult saveResult) {
-		dismissDialog(SAVING_DIALOG);
+		//dismissDialog(SAVING_DIALOG);
+
+        if (mConstructor != null)
+            mConstructor.stopAnimation();
 
         int saveStatus = saveResult.getSaveResult();
         switch (saveStatus) {
@@ -2574,9 +2575,16 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
     @Override
     public void onProgressStep(String stepMessage) {
         this.stepMessage = stepMessage;
+        /*
         if (mProgressDialog != null) {
             mProgressDialog.setMessage(getString(R.string.please_wait) + "\n\n" + stepMessage);
         }
+        */
+
+        if (mConstructor == null)
+            mConstructor = new DialogConstructor(this);
+
+        mConstructor.updateDialog(getString(R.string.loading_form), stepMessage);
     }
 
 	/**

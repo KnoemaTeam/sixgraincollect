@@ -31,6 +31,9 @@ public class HierarchyElementView extends RelativeLayout {
     private TextView mSecondaryTextView;
     private ImageView mIcon;
 
+    public HierarchyElementView(Context context) {
+        super(context);
+    }
 
     public HierarchyElementView(Context context, HierarchyElement it) {
         super(context);

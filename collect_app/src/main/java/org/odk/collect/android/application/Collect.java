@@ -14,7 +14,6 @@
 
 package org.odk.collect.android.application;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
@@ -69,10 +68,17 @@ public class Collect extends MultiDexApplication {
     private FormController mFormController = null;
     private ExternalDataManager externalDataManager;
 
+    private static Context mContext;
+
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         MultiDex.install(this);
+        Collect.mContext = base;
+    }
+
+    public static Context getContext () {
+        return mContext;
     }
 
     private static Collect singleton = null;

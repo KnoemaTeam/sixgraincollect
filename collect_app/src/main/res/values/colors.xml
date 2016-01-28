@@ -7,7 +7,7 @@
     <color name="colorAppBackground">#FAFAFA</color>
     <color name="colorAppBarPopupText">#FFFFFF</color>
     <color name="colorAppBarPopupBackground">@color/colorPrimary</color>
-    <color name="colorSplashBackground">#424242</color>
+    <color name="colorSplashBackground">#2087BB</color>
     <color name="colorListViewDivider">#F3F3F3</color>
     <color name="colorFabButton">#00B200</color>
     <color name="colorBackground">#FAFAFA</color>
@@ -19,6 +19,10 @@
     <color name="colorNavigationButtonFont">#FFFFFF</color>
     <color name="colorNavigationButtonNormal">#2087BB</color>
     <color name="colorNavigationButtonFocused">#0079A4</color>
+    <color name="colorListViewTitleText">@android:color/black</color>
+    <color name="colorListViewSubtitleText">#424242</color>
+    <color name="colorRoundedImageBackground">#D4D4D4</color>
+    <color name="colorRoundedImageBorder">#424242</color>
 
     <drawable name="white">#ffffffff</drawable>
     <drawable name="black">#ff000000</drawable>

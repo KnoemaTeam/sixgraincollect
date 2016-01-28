@@ -1,17 +1,3 @@
-/*
- * Copyright (C) 2009 University of Washington
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- */
-
 package org.odk.collect.android.activities;
 
 import java.util.ArrayList;
@@ -39,6 +25,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -65,7 +52,6 @@ public class FormHierarchyActivity extends AppCompatActivity {
 
     FormIndex mStartIndex;
     private FormIndex currentIndex;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -137,6 +123,16 @@ public class FormHierarchyActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     protected void onStart() {
     	super.onStart();
 		Collect.getInstance().getActivityLogger().logOnStart(this);
@@ -150,7 +146,6 @@ public class FormHierarchyActivity extends AppCompatActivity {
 
     private void goUpLevel() {
     	Collect.getInstance().getFormController().stepToOuterScreenEvent();
-
         refreshView();
     }
 
@@ -173,7 +168,7 @@ public class FormHierarchyActivity extends AppCompatActivity {
         mDataListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                onListItemClick(position);
             }
         });
     }
@@ -214,8 +209,7 @@ public class FormHierarchyActivity extends AppCompatActivity {
             // If we're currently at a repeat node, record the name of the node and step to the next
             // node to display.
             if (formController.getEvent() == FormEntryController.EVENT_REPEAT) {
-            	contextGroupRef =
-                        formController.getFormIndex().getReference().toString(true);
+            	contextGroupRef = formController.getFormIndex().getReference().toString(true);
                 formController.stepToNextEvent(FormController.STEP_INTO_GROUP);
             } else {
                 FormIndex startTest = formController.stepIndexOut(currentIndex);
@@ -228,8 +222,7 @@ public class FormHierarchyActivity extends AppCompatActivity {
                 if (startTest == null) {
                     // check to see if the question is at the first level of the hierarchy. If it is,
                     // display the root level from the beginning.
-                    formController.jumpToIndex(FormIndex
-                            .createBeginningOfFormIndex());
+                    formController.jumpToIndex(FormIndex.createBeginningOfFormIndex());
                 } else {
                     // otherwise we're at a repeated group
                     formController.jumpToIndex(startTest);
@@ -238,8 +231,7 @@ public class FormHierarchyActivity extends AppCompatActivity {
                 // now test again for repeat. This should be true at this point or we're at the
                 // beginning
                 if (formController.getEvent() == FormEntryController.EVENT_REPEAT) {
-                	contextGroupRef =
-                            formController.getFormIndex().getReference().toString(true);
+                	contextGroupRef = formController.getFormIndex().getReference().toString(true);
                     formController.stepToNextEvent(FormController.STEP_INTO_GROUP);
                 }
             }
@@ -394,8 +386,8 @@ public class FormHierarchyActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        HierarchyElement h = (HierarchyElement) l.getItemAtPosition(position);
+    protected void onListItemClick(int position) {
+        HierarchyElement h = (HierarchyElement) mDataListView.getItemAtPosition(position);
         FormIndex index = h.getFormIndex();
         if (index == null) {
             goUpLevel();
