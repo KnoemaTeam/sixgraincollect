@@ -25,6 +25,7 @@ import org.javarosa.core.model.data.helper.Selection;
 import org.javarosa.form.api.FormEntryCaption;
 import org.javarosa.form.api.FormEntryPrompt;
 import org.javarosa.xpath.expr.XPathFuncExpr;
+import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
 import org.odk.collect.android.external.ExternalDataUtil;
 import org.odk.collect.android.external.ExternalSelectChoice;
@@ -36,6 +37,7 @@ import android.content.Context;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
@@ -88,11 +90,12 @@ public class SelectOneWidget extends QuestionWidget implements
                 } else {
                   choiceDisplayName = "";
                 }
-				RadioButton r = new RadioButton(getContext());
+
+				RadioButton r = (RadioButton) LayoutInflater.from(context).inflate(R.layout.radio_button, buttonLayout, false); //new RadioButton(getContext());
                 r.setTextSize(TypedValue.COMPLEX_UNIT_DIP, mAnswerFontsize);
                 r.setText(choiceDisplayName);
 				r.setMovementMethod(LinkMovementMethod.getInstance());
-				r.setTag(Integer.valueOf(i));
+				r.setTag(i);
 				r.setId(QuestionWidget.newUniqueId());
 				r.setEnabled(!prompt.isReadOnly());
 				r.setFocusable(!prompt.isReadOnly());

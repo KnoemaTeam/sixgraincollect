@@ -96,7 +96,7 @@ public class ListWidget extends QuestionWidget implements OnCheckedChangeListene
                 RadioButton r = new RadioButton(getContext());
 
                 r.setId(QuestionWidget.newUniqueId());
-                r.setTag(Integer.valueOf(i));
+                r.setTag(i);
                 r.setEnabled(!prompt.isReadOnly());
                 r.setFocusable(!prompt.isReadOnly());
 

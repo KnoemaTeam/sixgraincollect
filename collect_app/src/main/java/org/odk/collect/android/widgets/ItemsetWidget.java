@@ -93,7 +93,7 @@ public class ItemsetWidget extends QuestionWidget implements
         selection.append("list_name=?");
 
         // check to see if there are any arguments
-        if (queryString.indexOf("=") != -1) {
+        if (queryString.contains("=")) {
             selection.append(" and ");
         }
 
@@ -282,10 +282,7 @@ public class ItemsetWidget extends QuestionWidget implements
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (event.isAltPressed() == true) {
-            return false;
-        }
-        return super.onKeyDown(keyCode, event);
+        return event.isAltPressed() ? false : super.onKeyDown(keyCode, event);
     }
 
     @Override

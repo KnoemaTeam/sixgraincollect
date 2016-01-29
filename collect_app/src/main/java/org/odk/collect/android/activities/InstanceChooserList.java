@@ -361,7 +361,7 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
         int totalCount;
 
         for (Map<String, String> entry: mFormList) {
-            if (entry.get(FORM_ID_KEY).contains("Zambia short") ||
+            if (entry.get(FORM_ID_KEY).contains("ZambiaShort") ||
                     entry.get(FORM_ID_KEY).contains("Senegal")) {
                 filesToDownload.add(mFormNamesAndURLs.get(entry.get(FORMDETAIL_KEY)));
             }

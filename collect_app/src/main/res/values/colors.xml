@@ -23,6 +23,8 @@
     <color name="colorListViewSubtitleText">#424242</color>
     <color name="colorRoundedImageBackground">#D4D4D4</color>
     <color name="colorRoundedImageBorder">#424242</color>
+    <color name="colorRadioButtonTint">#2087BB</color>
+    <color name="colorRadioButtonText">@android:color/black</color>
 
     <drawable name="white">#ffffffff</drawable>
     <drawable name="black">#ff000000</drawable>

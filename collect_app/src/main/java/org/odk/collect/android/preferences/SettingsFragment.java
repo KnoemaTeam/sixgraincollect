@@ -48,6 +48,11 @@ public class SettingsFragment extends PreferenceFragment {
                     Preference sourcePreference = findPreference(key);
                     sourcePreference.setSummary(sharedPreferences.getString(key, ""));
                 }
+
+                if (key.equals(SURVEY_UPLOAD_URL_KEY)) {
+                    Preference sourcePreference = findPreference(key);
+                    sourcePreference.setSummary(sharedPreferences.getString(key, ""));
+                }
             }
         };
 
