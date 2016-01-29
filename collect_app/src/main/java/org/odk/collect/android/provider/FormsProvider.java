@@ -99,14 +99,12 @@ public class FormsProvider extends ContentProvider {
 
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-			int initialVersion = oldVersion;
 			if (oldVersion < 2) {
 				Log.w(t, "Upgrading database from version " + oldVersion
 						+ " to " + newVersion
 						+ ", which will destroy all old data");
 				db.execSQL("DROP TABLE IF EXISTS " + FORMS_TABLE_NAME);
 				onCreate(db);
-				return;
 			} else {
 				// adding BASE64_RSA_PUBLIC_KEY and changing type and name of
 				// integer MODEL_VERSION to text VERSION
@@ -227,7 +225,7 @@ public class FormsProvider extends ContentProvider {
 				db.execSQL("DROP TABLE IF EXISTS " + TEMP_FORMS_TABLE_NAME);
 
 				Log.w(t, "Successfully upgraded database from version "
-						+ initialVersion + " to " + newVersion
+						+ oldVersion + " to " + newVersion
 						+ ", without destroying all the old data");
 			}
 		}
@@ -289,7 +287,7 @@ public class FormsProvider extends ContentProvider {
 
 		// Tell the cursor what uri to watch, so it knows when its source data
 		// changes
-		c.setNotificationUri(getContext().getContentResolver(), uri);
+		//c.setNotificationUri(getContext().getContentResolver(), uri);
 		return c;
 	}
 
@@ -379,8 +377,7 @@ public class FormsProvider extends ContentProvider {
 		String selection = FormsColumns.FORM_FILE_PATH + "=?";
 		Cursor c = null;
 		try {
-			c = db.query(FORMS_TABLE_NAME, projection, selection,
-					selectionArgs, null, null, null);
+			c = db.query(FORMS_TABLE_NAME, projection, selection, selectionArgs, null, null, null);
 			if (c.getCount() > 0) {
 				// already exists
 				throw new SQLException("FAILED Insert into " + uri
@@ -726,5 +723,4 @@ public class FormsProvider extends ContentProvider {
 				FormsColumns.JRCACHE_FILE_PATH);
 		sFormsProjectionMap.put(FormsColumns.LANGUAGE, FormsColumns.LANGUAGE);
 	}
-
 }

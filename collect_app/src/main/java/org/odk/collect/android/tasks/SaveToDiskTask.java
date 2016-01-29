@@ -179,9 +179,7 @@ public class SaveToDiskTask extends AsyncTask<Void, String, SaveResult> {
             String[] whereArgs = {
             		instancePath
             };
-            int updated =
-                Collect.getInstance().getContentResolver()
-                        .update(InstanceColumns.CONTENT_URI, values, where, whereArgs);
+            int updated = Collect.getInstance().getContentResolver().update(InstanceColumns.CONTENT_URI, values, where, whereArgs);
             if (updated > 1) {
                 Log.w(t, "Updated more than one entry, that's not good: " + instancePath);
             } else if (updated == 1) {
@@ -213,13 +211,18 @@ public class SaveToDiskTask extends AsyncTask<Void, String, SaveResult> {
 	                }
 	                values.put(InstanceColumns.JR_FORM_ID, jrformid);
 	                values.put(InstanceColumns.JR_VERSION, jrversion);
-                } finally {
-                    if ( c != null ) {
+
+                    mUri = Collect.getInstance().getContentResolver().insert(InstanceColumns.CONTENT_URI, values);
+
+                }
+                catch (Exception exception) {
+                    exception.printStackTrace();
+                }
+                finally {
+                    if (c != null) {
                         c.close();
                     }
                 }
-                mUri = Collect.getInstance().getContentResolver()
-                			.insert(InstanceColumns.CONTENT_URI, values);
             }
         }
     }

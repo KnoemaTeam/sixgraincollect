@@ -181,6 +181,7 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	private static final int SAVING_DIALOG = 2;
 	
 	private boolean mAutoSaved;
+    private boolean mAutoExit = false;
 
 	// Random ID
 	private static final int DELETE_REPEAT = 654321;
@@ -237,8 +238,6 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 
 		setContentView(R.layout.form_entry);
         setToolbar();
-		//setTitle(getString(R.string.app_name) + " > "
-		//		+ getString(R.string.loading_form));
 
         mErrorMessage = null;
 
@@ -326,10 +325,9 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 					Log.w(t, "Reloading form and restoring state.");
 					// we need to launch the form loader to load the form
 					// controller...
-					mFormLoaderTask = new FormLoaderTask(instancePath,
-							startingXPath, waitingXPath);
-					Collect.getInstance().getActivityLogger()
-							.logAction(this, "formReloaded", mFormPath);
+					mFormLoaderTask = new FormLoaderTask(instancePath, startingXPath, waitingXPath);
+					Collect.getInstance().getActivityLogger().logAction(this, "formReloaded", mFormPath);
+
 					// TODO: this doesn' work (dialog does not get removed):
 					// showDialog(PROGRESS_DIALOG);
 					// show dialog before we execute...
@@ -519,8 +517,7 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
             }
 
             mFormLoaderTask = new FormLoaderTask(instancePath, null, null);
-            Collect.getInstance().getActivityLogger()
-                    .logAction(this, "formLoaded", mFormPath);
+            Collect.getInstance().getActivityLogger().logAction(this, "formLoaded", mFormPath);
             showDialog(PROGRESS_DIALOG);
             // show dialog before we execute...
             mFormLoaderTask.execute(mFormPath);
@@ -764,28 +761,6 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 
 		Collect.getInstance().getActivityLogger()
 				.logInstanceAction(this, "onCreateOptionsMenu", "show");
-
-        /*
-		CompatibilityUtils.setShowAsAction(
-				menu.add(0, MENU_SAVE, 0, R.string.save_all_answers).setIcon(
-						android.R.drawable.ic_menu_save),
-				MenuItem.SHOW_AS_ACTION_IF_ROOM);
-
-		CompatibilityUtils.setShowAsAction(
-				menu.add(0, MENU_HIERARCHY_VIEW, 0, R.string.view_hierarchy)
-						.setIcon(R.drawable.ic_menu_goto),
-				MenuItem.SHOW_AS_ACTION_IF_ROOM);
-
-		CompatibilityUtils.setShowAsAction(
-				menu.add(0, MENU_LANGUAGES, 0, R.string.change_language)
-						.setIcon(R.drawable.ic_menu_start_conversation),
-				MenuItem.SHOW_AS_ACTION_NEVER);
-
-		CompatibilityUtils.setShowAsAction(
-				menu.add(0, MENU_PREFERENCES, 0, R.string.general_preferences)
-						.setIcon(R.drawable.ic_menu_preferences),
-				MenuItem.SHOW_AS_ACTION_NEVER);
-        */
 
 		return true;
 	}
@@ -1707,7 +1682,7 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 		Collect.getInstance()
 				.getActivityLogger()
 				.logInstanceAction(this, "createDeleteRepeatConfirmDialog",
-						"show");
+                        "show");
 		FormController formController = Collect.getInstance()
 				.getFormController();
 		mAlertDialog = new AlertDialog.Builder(this).create();
@@ -1767,15 +1742,13 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
         // save current answer
         if (current) {
             if (!saveAnswersForCurrentScreen(complete)) {
-                Toast.makeText(this, getString(R.string.data_saved_error), Toast.LENGTH_SHORT)
-                        .show();
+                Toast.makeText(this, getString(R.string.data_saved_error), Toast.LENGTH_SHORT).show();
                 return false;
             }
         }
 
         synchronized (saveDialogLock) {
-            mSaveToDiskTask = new SaveToDiskTask(getIntent().getData(), exit, complete,
-                    updatedSaveName);
+            mSaveToDiskTask = new SaveToDiskTask(getIntent().getData(), exit, complete, updatedSaveName);
             mSaveToDiskTask.setFormSavedListener(this);
             mAutoSaved = true;
             showDialog(SAVING_DIALOG);
@@ -1786,7 +1759,17 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
         return true;
     }
 
-	/**
+    @Override
+    public void onBackPressed() {
+        if (mAutoExit) {
+            super.onBackPressed();
+        }
+        else {
+            createQuitDialog();
+        }
+    }
+
+    /**
 	 * Create a dialog with options to save and exit, save, or quit without
 	 * saving
 	 */
@@ -1811,30 +1794,26 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 			items = one;
 		}
 
-		Collect.getInstance().getActivityLogger()
-				.logInstanceAction(this, "createQuitDialog", "show");
-		mAlertDialog = new AlertDialog.Builder(this)
-				.setIcon(android.R.drawable.ic_dialog_info)
-				.setTitle(
-						getString(R.string.quit_application, title))
+		Collect.getInstance().getActivityLogger().logInstanceAction(this, "createQuitDialog", "show");
+		mAlertDialog = new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_info)
+				.setTitle(getString(R.string.quit_application, title))
 				.setNeutralButton(getString(R.string.do_not_exit),
-						new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog, int id) {
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
 
-								Collect.getInstance()
-										.getActivityLogger()
-										.logInstanceAction(this,
-												"createQuitDialog", "cancel");
-								dialog.cancel();
+                                Collect.getInstance()
+                                        .getActivityLogger()
+                                        .logInstanceAction(this,
+                                                "createQuitDialog", "cancel");
+                                dialog.cancel();
 
-							}
-						})
+                            }
+                        })
 				.setItems(items, new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						switch (which) {
-
 						case 0: // save and exit
 							// this is slightly complicated because if the
 							// option is disabled in
@@ -1884,6 +1863,10 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 											"createQuitDialog", "cancel");
 							break;
 						}
+
+                        mAutoExit = true;
+                        onBackPressed();
+
 					}
 				}).create();
 		mAlertDialog.show();
@@ -2272,11 +2255,14 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		switch (keyCode) {
+
+            /*
 		case KeyEvent.KEYCODE_BACK:
 			Collect.getInstance().getActivityLogger()
 					.logInstanceAction(this, "onKeyDown.KEYCODE_BACK", "quit");
 			createQuitDialog();
 			return true;
+			*/
 		case KeyEvent.KEYCODE_DPAD_RIGHT:
 			if (event.isAltPressed() && !mBeenSwiped) {
 				mBeenSwiped = true;
@@ -2352,8 +2338,8 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	@Override
 	public void onAnimationEnd(Animation animation) {
 		Log.i(t, "onAnimationEnd "
-				+ ((animation == mInAnimation) ? "in"
-						: ((animation == mOutAnimation) ? "out" : "other")));
+                + ((animation == mInAnimation) ? "in"
+                : ((animation == mOutAnimation) ? "out" : "other")));
 		if (mInAnimation == animation) {
 			mAnimationCompletionSet |= 1;
 		} else if (mOutAnimation == animation) {
@@ -2371,8 +2357,8 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	public void onAnimationRepeat(Animation animation) {
 		// Added by AnimationListener interface.
 		Log.i(t, "onAnimationRepeat "
-				+ ((animation == mInAnimation) ? "in"
-						: ((animation == mOutAnimation) ? "out" : "other")));
+                + ((animation == mInAnimation) ? "in"
+                : ((animation == mOutAnimation) ? "out" : "other")));
 	}
 
 	@Override
@@ -2464,9 +2450,7 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 			runOnUiThread(new Runnable() {
 				@Override
 				public void run() {
-					Toast.makeText(FormEntryActivity.this,
-							getString(R.string.savepoint_used),
-							Toast.LENGTH_LONG).show();
+					Toast.makeText(FormEntryActivity.this, getString(R.string.savepoint_used), Toast.LENGTH_LONG).show();
 				}
 			});
 		}
@@ -2492,8 +2476,8 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 			if (!showFirst && !mIsSurveyNew) {
 				// we've just loaded a saved form, so start in the hierarchy
 				// view
-				startActivity(new Intent(this, FormHierarchyActivity.class));
-				return; // so we don't show the intro screen before jumping to
+				//startActivity(new Intent(this, FormHierarchyActivity.class));
+				//return; // so we don't show the intro screen before jumping to
 						// the hierarchy
 			}
 		}
@@ -2533,12 +2517,13 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 		case SaveToDiskTask.SAVED:
 			Toast.makeText(this, getString(R.string.data_saved_ok),
 					Toast.LENGTH_SHORT).show();
-			sendSavedBroadcast();
+			//sendSavedBroadcast();
 			break;
 		case SaveToDiskTask.SAVED_AND_EXIT:
 			Toast.makeText(this, getString(R.string.data_saved_ok),
 					Toast.LENGTH_SHORT).show();
-			sendSavedBroadcast();
+
+			//sendSavedBroadcast();
 			finishReturnInstance();
 			break;
 		case SaveToDiskTask.SAVE_ERROR:
@@ -2595,11 +2580,10 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	 * @param evaluateConstraints
 	 * @return status as determined in FormEntryController
 	 */
-	public int saveAnswer(IAnswerData answer, FormIndex index,
-			boolean evaluateConstraints) throws JavaRosaException {
-		FormController formController = Collect.getInstance()
-				.getFormController();
-		if (evaluateConstraints) {
+	public int saveAnswer(IAnswerData answer, FormIndex index, boolean evaluateConstraints) throws JavaRosaException {
+		FormController formController = Collect.getInstance().getFormController();
+
+        if (evaluateConstraints) {
 			return formController.answerQuestion(index, answer);
 		} else {
 			formController.saveAnswer(index, answer);
@@ -2623,16 +2607,13 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 		// if we're at the end of the form, then check the preferences
 		if (end) {
 			// First get the value from the preferences
-			SharedPreferences sharedPreferences = PreferenceManager
-					.getDefaultSharedPreferences(this);
-			complete = sharedPreferences.getBoolean(
-					PreferencesActivity.KEY_COMPLETED_DEFAULT, true);
+			SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+			complete = sharedPreferences.getBoolean(PreferencesActivity.KEY_COMPLETED_DEFAULT, true);
 		}
 
 		// Then see if we've already marked this form as complete before
 		String selection = InstanceColumns.INSTANCE_FILE_PATH + "=?";
-		String[] selectionArgs = { formController.getInstancePath()
-				.getAbsolutePath() };
+		String[] selectionArgs = { formController.getInstancePath().getAbsolutePath() };
 		Cursor c = null;
 		try {
 			c = getContentResolver().query(InstanceColumns.CONTENT_URI, null,
@@ -2650,6 +2631,7 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 				c.close();
 			}
 		}
+
 		return complete;
 	}
 
@@ -2665,34 +2647,34 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	 * requested.
 	 */
 	private void finishReturnInstance() {
-		FormController formController = Collect.getInstance()
-				.getFormController();
+		FormController formController = Collect.getInstance().getFormController();
 		String action = getIntent().getAction();
-		if (Intent.ACTION_PICK.equals(action)
-				|| Intent.ACTION_EDIT.equals(action)) {
+
+		if (Intent.ACTION_PICK.equals(action) || Intent.ACTION_EDIT.equals(action)) {
 			// caller is waiting on a picked form
 			String selection = InstanceColumns.INSTANCE_FILE_PATH + "=?";
-			String[] selectionArgs = { formController.getInstancePath()
-					.getAbsolutePath() };
+			String[] selectionArgs = {formController.getInstancePath().getAbsolutePath()};
+
 			Cursor c = null;
 			try {
-				c = getContentResolver().query(InstanceColumns.CONTENT_URI,
-						null, selection, selectionArgs, null);
-				if (c.getCount() > 0) {
-					// should only be one...
-					c.moveToFirst();
-					String id = c.getString(c
-							.getColumnIndex(InstanceColumns._ID));
-					Uri instance = Uri.withAppendedPath(
-							InstanceColumns.CONTENT_URI, id);
-					setResult(RESULT_OK, new Intent().setData(instance));
-				}
-			} finally {
-				if (c != null) {
-					c.close();
-				}
+				c = getContentResolver().query(InstanceColumns.CONTENT_URI, null, selection, selectionArgs, null);
+                if (c != null && c.getCount() > 0) {
+                    c.moveToFirst();
+                    String id = c.getString(c.getColumnIndex(InstanceColumns._ID));
+                    Uri instance = Uri.withAppendedPath(InstanceColumns.CONTENT_URI, id);
+
+                    setResult(RESULT_OK, new Intent().setData(instance));
+                }
 			}
-		}
+			catch (Exception exception) {
+				exception.printStackTrace();
+			}
+            finally {
+                if (c != null)
+                    c.close();
+            }
+        }
+
 		finish();
 	}
 
@@ -2705,16 +2687,17 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
 			float velocityY) {
 		// only check the swipe if it's enabled in preferences
-		SharedPreferences sharedPreferences = PreferenceManager
-				.getDefaultSharedPreferences(this);
+		SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 		String navigation = sharedPreferences.getString(
 				PreferencesActivity.KEY_NAVIGATION,
 				PreferencesActivity.NAVIGATION_SWIPE);
 		Boolean doSwipe = false;
-		if (navigation.contains(PreferencesActivity.NAVIGATION_SWIPE)) {
+
+        if (navigation.contains(PreferencesActivity.NAVIGATION_SWIPE)) {
 			doSwipe = true;
 		}
-		if (doSwipe) {
+
+        if (doSwipe) {
 			// Looks for user swipes. If the user has swiped, move to the
 			// appropriate screen.
 

@@ -19,7 +19,6 @@ import org.odk.collect.android.application.Collect;
 import org.odk.collect.android.listeners.FormDownloaderListener;
 import org.odk.collect.android.listeners.FormListDownloaderListener;
 import org.odk.collect.android.logic.FormDetails;
-import org.odk.collect.android.preferences.AdminPreferencesActivity;
 import org.odk.collect.android.preferences.SettingsActivity;
 import org.odk.collect.android.preferences.SettingsFragment;
 import org.odk.collect.android.provider.FormsProviderAPI;
@@ -27,11 +26,8 @@ import org.odk.collect.android.provider.InstanceProviderAPI;
 import org.odk.collect.android.provider.InstanceProviderAPI.InstanceColumns;
 import org.odk.collect.android.tasks.DownloadFormListTask;
 import org.odk.collect.android.tasks.DownloadFormsTask;
-import org.odk.collect.android.utilities.CompatibilityUtils;
 
 import android.app.AlertDialog;
-import android.app.ListActivity;
-import android.app.ProgressDialog;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -43,22 +39,22 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
-import android.util.SparseBooleanArray;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
-import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -73,9 +69,10 @@ import java.util.Map;
  * @author Yaw Anokwa (yanokwa@gmail.com)
  * @author Carl Hartung (carlhartung@gmail.com)
  */
-public class InstanceChooserList extends AppCompatActivity implements FormListDownloaderListener, FormDownloaderListener {
-    private static final int PROGRESS_DIALOG = 1;
+public class InstanceChooserList extends AppCompatActivity implements FormListDownloaderListener, FormDownloaderListener, LoaderManager.LoaderCallbacks<Cursor> {
+    private static final int DATA_LIST_VIEW_ID = 111111;
 
+    private static final int PROGRESS_DIALOG = 1;
     private static final int OPEN_PREFERENCES_CODE = 200;
 
     private static final int CREATE_SURVEY_CODE = 100;
@@ -106,6 +103,7 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
     private boolean mIsFormDownloaded = false;
 
     private ListView mDataListView = null;
+    private SimpleCursorAdapter mCursorAdapter = null;
     //private ProgressDialog mProgressDialog;
 
     private AlertDialog mAlertDialog;
@@ -134,6 +132,25 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
         setUserSettings();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Collect.getInstance().getActivityLogger().logOnStart(this);
+        getSupportLoaderManager().restartLoader(DATA_LIST_VIEW_ID, null, this);
+    }
+
+    @Override
+    protected void onStop() {
+        Collect.getInstance().getActivityLogger().logOnStop(this);
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        getSupportLoaderManager().destroyLoader(DATA_LIST_VIEW_ID);
+        super.onDestroy();
+    }
+
     protected void setToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
@@ -159,24 +176,14 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
     }
 
     protected void setContentList() {
-        String selection = InstanceColumns.STATUS + " != ?";
-        String[] selectionArgs = {InstanceProviderAPI.STATUS_SUBMITTED};
-        String sortOrder = InstanceColumns.STATUS + " DESC, " + InstanceColumns.DISPLAY_NAME + " ASC";
-        Cursor c = managedQuery(InstanceColumns.CONTENT_URI, null, selection, selectionArgs, sortOrder);
+        getSupportLoaderManager().initLoader(DATA_LIST_VIEW_ID, null, this);
 
-        String[] data = new String[] {
-                InstanceColumns.DISPLAY_NAME, InstanceColumns.DISPLAY_SUBTEXT
-        };
-        int[] view = new int[] {
-                R.id.text1, R.id.text2
-        };
+        String[] data = new String[] {InstanceColumns.DISPLAY_NAME, InstanceColumns.DISPLAY_SUBTEXT};
+        int[] view = new int[] {R.id.text1, R.id.text2};
 
-        // render total instance view
-        SimpleCursorAdapter instances =
-                new SimpleCursorAdapter(this, R.layout.two_item, c, data, view);
-
+        mCursorAdapter = new SimpleCursorAdapter(this, R.layout.two_item, null, data, view, Adapter.NO_SELECTION);
         mDataListView = (ListView) findViewById(R.id.dataListView);
-        mDataListView.setAdapter(instances);
+        mDataListView.setAdapter(mCursorAdapter);
         mDataListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -194,6 +201,25 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
     }
 
     @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        String selection = InstanceColumns.STATUS + " != ?";
+        String[] selectionArgs = {InstanceProviderAPI.STATUS_SUBMITTED};
+        String sortOrder = InstanceColumns.STATUS + " DESC, " + InstanceColumns.DISPLAY_NAME + " ASC";
+
+        return new CursorLoader(this, InstanceColumns.CONTENT_URI, null, null, null, sortOrder);
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+        mCursorAdapter.swapCursor(cursor);
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+        mCursorAdapter.swapCursor(null);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.instance_chooser_list_menu, menu);
         return true;
@@ -203,10 +229,7 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_interviewer_profile:
-                Collect.getInstance()
-                        .getActivityLogger()
-                        .logAction(this, "onOptionsItemSelected",
-                                "MENU_PREFERENCES");
+                Collect.getInstance().getActivityLogger().logAction(this, "onOptionsItemSelected", "MENU_PREFERENCES");
 
                 Intent preferences = new Intent(InstanceChooserList.this, SettingsActivity.class);
                 startActivity(preferences);
@@ -215,57 +238,28 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        super.onActivityResult(requestCode, resultCode, intent);
-    }
-
     /**
      * Stores the path of selected instance in the parent class and finishes.
      */
     protected void onListItemClick(int position) {
-        Cursor c = (Cursor) mDataListView.getAdapter().getItem(position);
-        startManagingCursor(c);
-        Uri instanceUri =
-            ContentUris.withAppendedId(InstanceColumns.CONTENT_URI,
-                c.getLong(c.getColumnIndex(InstanceColumns._ID)));
+        Cursor c = (Cursor) mCursorAdapter.getItem(position);
+        Uri instanceUri = ContentUris.withAppendedId(InstanceColumns.CONTENT_URI, c.getLong(c.getColumnIndex(InstanceColumns._ID)));
 
         Collect.getInstance().getActivityLogger().logAction(this, "onListItemClick", instanceUri.toString());
+        // the form can be edited if it is incomplete or if, when it was
+        // marked as complete, it was determined that it could be edited
+        // later.
+        String status = c.getString(c.getColumnIndex(InstanceColumns.STATUS));
+        String strCanEditWhenComplete = c.getString(c.getColumnIndex(InstanceColumns.CAN_EDIT_WHEN_COMPLETE));
 
-        String action = getIntent().getAction();
-        if (Intent.ACTION_PICK.equals(action)) {
-            // caller is waiting on a picked form
-            setResult(RESULT_OK, new Intent().setData(instanceUri));
-        } else {
-            // the form can be edited if it is incomplete or if, when it was
-            // marked as complete, it was determined that it could be edited
-            // later.
-            String status = c.getString(c.getColumnIndex(InstanceColumns.STATUS));
-            String strCanEditWhenComplete =
-                c.getString(c.getColumnIndex(InstanceColumns.CAN_EDIT_WHEN_COMPLETE));
-
-            boolean canEdit = status.equals(InstanceProviderAPI.STATUS_INCOMPLETE)
-                	           || Boolean.parseBoolean(strCanEditWhenComplete);
-            if (!canEdit) {
-            	createErrorDialog(getString(R.string.cannot_edit_completed_form),
-                    	          DO_NOT_EXIT);
-            	return;
-            }
-            // caller wants to view/edit a form, so launch formentryactivity
-            startActivityForResult(new Intent(Intent.ACTION_EDIT, instanceUri), EDIT_SURVEY_CODE);
+        boolean canEdit = status.equals(InstanceProviderAPI.STATUS_INCOMPLETE) || Boolean.parseBoolean(strCanEditWhenComplete);
+        if (!canEdit) {
+            createErrorDialog(getString(R.string.cannot_edit_completed_form), DO_NOT_EXIT);
         }
-    }
-
-    @Override
-    protected void onStart() {
-    	super.onStart();
-		Collect.getInstance().getActivityLogger().logOnStart(this);
-    }
-
-    @Override
-    protected void onStop() {
-		Collect.getInstance().getActivityLogger().logOnStop(this);
-    	super.onStop();
+        else {
+            //
+            startActivity(new Intent(Intent.ACTION_EDIT, instanceUri));
+        }
     }
 
     private void createErrorDialog(String errorMsg, final boolean shouldExit) {
@@ -473,13 +467,10 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
         Cursor cursor = null;
         Map<String, String> surveyMetaData = new HashMap<>();
 
-        String chosenSurveyName = PreferenceManager.getDefaultSharedPreferences(this)
-                .getString(SettingsFragment.SURVEY_CHOSEN_TYPE_KEY, null);
+        String chosenSurveyName = PreferenceManager.getDefaultSharedPreferences(this).getString(SettingsFragment.SURVEY_CHOSEN_TYPE_KEY, null);
 
         try {
-            String sortOrder = FormsProviderAPI.FormsColumns.DISPLAY_NAME + " ASC, " + FormsProviderAPI.FormsColumns.JR_VERSION + " DESC";
-            cursor = managedQuery(FormsProviderAPI.FormsColumns.CONTENT_URI, null, null, null, sortOrder);
-
+            cursor = managedQuery(FormsProviderAPI.FormsColumns.CONTENT_URI, null, null, null, null);
             while (cursor.moveToNext()) {
                 int formIdIndex = cursor.getColumnIndex("_id");
                 int formNameIndex = cursor.getColumnIndex("jrFormId");
@@ -504,20 +495,8 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
         for (Map.Entry<String, String> entry: surveyMetaData.entrySet()) {
             if (!TextUtils.isEmpty(chosenSurveyName) && entry.getKey().contains(chosenSurveyName)) {
                 Uri formUri = ContentUris.withAppendedId(FormsProviderAPI.FormsColumns.CONTENT_URI, Integer.valueOf(entry.getValue()));
-                Collect.getInstance().getActivityLogger().logAction(this, "onListItemClick", formUri.toString());
 
-                String action = getIntent().getAction();
-                if (Intent.ACTION_PICK.equals(action)) {
-                    // caller is waiting on a picked form
-                    setResult(RESULT_OK, new Intent().setData(formUri));
-                } else {
-                    // caller wants to view/edit a form, so launch formentryactivity
-                    Intent intent = new Intent(Intent.ACTION_EDIT, formUri);
-                    intent.putExtra("CREATE_NEW_SURVEY", true);
-
-                    startActivityForResult(intent, CREATE_SURVEY_CODE);
-                }
-
+                startActivity(new Intent(Intent.ACTION_EDIT, formUri));
                 break;
             }
         }
