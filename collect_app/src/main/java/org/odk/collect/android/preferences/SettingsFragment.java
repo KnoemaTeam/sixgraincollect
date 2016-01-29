@@ -11,10 +11,12 @@ import org.odk.collect.android.R;
 public class SettingsFragment extends PreferenceFragment {
     public static final String SURVEY_FORM_DOWNLOADED_KEY = "survey_form_downloaded";
     public static final String SURVEY_SOURCE_URL_KEY = "survey_source_url";
+    public static final String SURVEY_UPLOAD_URL_KEY = "survey_upload_url";
     public static final String SURVEY_CHOSEN_TYPE_KEY = "survey_chosen_type";
 
     protected SharedPreferences.OnSharedPreferenceChangeListener mPreferenceChangeListener = null;
     protected Preference mSurveySourceURL = null;
+    protected Preference mSurveyUploadURL = null;
     protected Preference mSurveyChosenType = null;
 
     @Override
@@ -26,6 +28,9 @@ public class SettingsFragment extends PreferenceFragment {
 
         mSurveySourceURL = findPreference(SURVEY_SOURCE_URL_KEY);
         mSurveySourceURL.setSummary(getPreferenceManager().getSharedPreferences().getString(SURVEY_SOURCE_URL_KEY, null));
+
+        mSurveyUploadURL = findPreference(SURVEY_UPLOAD_URL_KEY);
+        mSurveyUploadURL.setSummary(getPreferenceManager().getSharedPreferences().getString(SURVEY_UPLOAD_URL_KEY, null));
 
         mSurveyChosenType = findPreference(SURVEY_CHOSEN_TYPE_KEY);
         mSurveyChosenType.setSummary(getPreferenceManager().getSharedPreferences().getString(SURVEY_CHOSEN_TYPE_KEY, null));

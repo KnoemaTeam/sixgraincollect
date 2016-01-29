@@ -27,6 +27,10 @@
     <string name="action_done">Done</string>
     <string name="action_finish">Close</string>
 
+    <string name="pref_url">URL</string>
+    <string name="pref_source_url">Source URL</string>
+    <string name="pref_upload_url">Upload URL</string>
+
 <string name="add_another">Add Group</string>
 <string name="add_another_repeat">Add another \"%s\" group?</string>
 <string name="add_more">Add more</string>
