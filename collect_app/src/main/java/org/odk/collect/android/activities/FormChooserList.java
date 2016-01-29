@@ -54,8 +54,8 @@ import java.util.Map;
  * @author Carl Hartung (carlhartung@gmail.com)
  */
 public class FormChooserList extends AppCompatActivity implements DiskSyncListener, LoaderManager.LoaderCallbacks<Cursor> {
-    private static final int FORM_LIST_VIEW_ID = 111110;
-    private static final int DATA_LIST_VIEW_ID = 111111;
+    public static final int FORM_LIST_VIEW_ID = 111110;
+    public static final int DATA_LIST_VIEW_ID = 111111;
 
     private static final boolean EXIT = true;
     private static final boolean DO_NOT_EXIT = false;

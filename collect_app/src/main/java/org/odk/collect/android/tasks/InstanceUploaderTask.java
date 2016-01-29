@@ -30,16 +30,21 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.XMLFormatter;
 
+import org.json.JSONObject;
+import org.json.XML;
 import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
 import org.odk.collect.android.listeners.InstanceUploaderListener;
 import org.odk.collect.android.logic.PropertyManager;
 import org.odk.collect.android.preferences.PreferencesActivity;
+import org.odk.collect.android.preferences.SettingsFragment;
 import org.odk.collect.android.provider.InstanceProviderAPI;
 import org.odk.collect.android.provider.InstanceProviderAPI.InstanceColumns;
 import org.odk.collect.android.utilities.WebUtils;
 import org.opendatakit.httpclientandroidlib.Header;
+import org.opendatakit.httpclientandroidlib.HttpEntity;
 import org.opendatakit.httpclientandroidlib.HttpResponse;
 import org.opendatakit.httpclientandroidlib.HttpStatus;
 import org.opendatakit.httpclientandroidlib.client.ClientProtocolException;
@@ -48,10 +53,14 @@ import org.opendatakit.httpclientandroidlib.client.methods.HttpHead;
 import org.opendatakit.httpclientandroidlib.client.methods.HttpPost;
 import org.opendatakit.httpclientandroidlib.conn.ConnectTimeoutException;
 import org.opendatakit.httpclientandroidlib.conn.HttpHostConnectException;
+import org.opendatakit.httpclientandroidlib.entity.ContentType;
+import org.opendatakit.httpclientandroidlib.entity.FileEntity;
+import org.opendatakit.httpclientandroidlib.entity.StringEntity;
 import org.opendatakit.httpclientandroidlib.entity.mime.MultipartEntity;
 import org.opendatakit.httpclientandroidlib.entity.mime.content.FileBody;
 import org.opendatakit.httpclientandroidlib.entity.mime.content.StringBody;
 import org.opendatakit.httpclientandroidlib.protocol.HttpContext;
+import org.opendatakit.httpclientandroidlib.util.EntityUtils;
 
 import android.content.ContentValues;
 import android.content.SharedPreferences;
@@ -59,8 +68,15 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
+import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
+import android.util.Xml;
 import android.webkit.MimeTypeMap;
+
+import com.google.common.io.Files;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 /**
  * Background task for uploading completed forms.
@@ -93,9 +109,9 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
      * @return false if credentials are required and we should terminate immediately.
      */
     private boolean uploadOneSubmission(String urlString, String id, String instanceFilePath,
-    			Uri toUpdate, HttpContext localContext, Map<Uri, Uri> uriRemap, Outcome outcome) {
+                                        Uri toUpdate, HttpContext localContext, Map<Uri, Uri> uriRemap, Outcome outcome) {
 
-    	Collect.getInstance().getActivityLogger().logAction(this, urlString, instanceFilePath);
+        Collect.getInstance().getActivityLogger().logAction(this, urlString, instanceFilePath);
 
         File instanceFile = new File(instanceFilePath);
         ContentValues cv = new ContentValues();
@@ -113,7 +129,7 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
 
             // if https then enable preemptive basic auth...
             if ( u.getScheme().equals("https") ) {
-            	WebUtils.enablePreemptiveBasicAuth(localContext, u.getHost());
+                WebUtils.enablePreemptiveBasicAuth(localContext, u.getHost());
             }
 
             Log.i(t, "Using Uri remap for submission " + id + ". Now: " + u.toString());
@@ -121,7 +137,7 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
 
             // if https then enable preemptive basic auth...
             if ( u.getScheme() != null && u.getScheme().equals("https") ) {
-            	WebUtils.enablePreemptiveBasicAuth(localContext, u.getHost());
+                WebUtils.enablePreemptiveBasicAuth(localContext, u.getHost());
             }
 
             // we need to issue a head request
@@ -135,17 +151,17 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
                 response = httpclient.execute(httpHead, localContext);
                 int statusCode = response.getStatusLine().getStatusCode();
                 if (statusCode == HttpStatus.SC_UNAUTHORIZED) {
-            		// clear the cookies -- should not be necessary?
-            		Collect.getInstance().getCookieStore().clear();
+                    // clear the cookies -- should not be necessary?
+                    Collect.getInstance().getCookieStore().clear();
 
-                	WebUtils.discardEntityBytes(response);
-            		// we need authentication, so stop and return what we've
+                    WebUtils.discardEntityBytes(response);
+                    // we need authentication, so stop and return what we've
                     // done so far.
-                	outcome.mAuthRequestingServer = u;
+                    outcome.mAuthRequestingServer = u;
                     return false;
                 } else if (statusCode == 204) {
-                	Header[] locations = response.getHeaders("Location");
-                	WebUtils.discardEntityBytes(response);
+                    Header[] locations = response.getHeaders("Location");
+                    WebUtils.discardEntityBytes(response);
                     if (locations != null && locations.length == 1) {
                         try {
                             Uri uNew = Uri.parse(URLDecoder.decode(locations[0].getValue(), "utf-8"));
@@ -158,13 +174,13 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
                             } else {
                                 // Don't follow a redirection attempt to a different host.
                                 // We can't tell if this is a spoof or not.
-                            	outcome.mResults.put(
-                                    id,
-                                    fail
-                                            + "Unexpected redirection attempt to a different host: "
-                                            + uNew.toString());
+                                outcome.mResults.put(
+                                        id,
+                                        fail
+                                                + "Unexpected redirection attempt to a different host: "
+                                                + uNew.toString());
                                 cv.put(InstanceColumns.STATUS,
-                                    InstanceProviderAPI.STATUS_SUBMISSION_FAILED);
+                                        InstanceProviderAPI.STATUS_SUBMISSION_FAILED);
                                 Collect.getInstance().getContentResolver()
                                         .update(toUpdate, cv, null, null);
                                 return true;
@@ -173,7 +189,7 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
                             e.printStackTrace();
                             outcome.mResults.put(id, fail + urlString + " " + e.toString());
                             cv.put(InstanceColumns.STATUS,
-                                InstanceProviderAPI.STATUS_SUBMISSION_FAILED);
+                                    InstanceProviderAPI.STATUS_SUBMISSION_FAILED);
                             Collect.getInstance().getContentResolver()
                                     .update(toUpdate, cv, null, null);
                             return true;
@@ -181,16 +197,16 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
                     }
                 } else {
                     // may be a server that does not handle
-                	WebUtils.discardEntityBytes(response);
+                    WebUtils.discardEntityBytes(response);
 
                     Log.w(t, "Status code on Head request: " + statusCode);
-                    if (statusCode >= HttpStatus.SC_OK && statusCode < HttpStatus.SC_MULTIPLE_CHOICES) {
-                    	outcome.mResults.put(
-                            id,
-                            fail
-                                    + "Invalid status code on Head request.  If you have a web proxy, you may need to login to your network. ");
+                    if (statusCode > HttpStatus.SC_OK && statusCode < HttpStatus.SC_MULTIPLE_CHOICES) {
+                        outcome.mResults.put(
+                                id,
+                                fail
+                                        + "Invalid status code on Head request.  If you have a web proxy, you may need to login to your network. ");
                         cv.put(InstanceColumns.STATUS,
-                            InstanceProviderAPI.STATUS_SUBMISSION_FAILED);
+                                InstanceProviderAPI.STATUS_SUBMISSION_FAILED);
                         Collect.getInstance().getContentResolver()
                                 .update(toUpdate, cv, null, null);
                         return true;
@@ -279,7 +295,7 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
         }
 
         if (!instanceFile.exists() && !submissionFile.exists()) {
-        	outcome.mResults.put(id, fail + "instance XML file does not exist!");
+            outcome.mResults.put(id, fail + "instance XML file does not exist!");
             cv.put(InstanceColumns.STATUS, InstanceProviderAPI.STATUS_SUBMISSION_FAILED);
             Collect.getInstance().getContentResolver().update(toUpdate, cv, null, null);
             return true;
@@ -324,154 +340,21 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
             }
         }
 
-        boolean first = true;
-        int j = 0;
-        int lastJ;
-        while (j < files.size() || first) {
-        	lastJ = j;
-            first = false;
-
-            HttpPost httppost = WebUtils.createOpenRosaHttpPost(u);
-
-            MimeTypeMap m = MimeTypeMap.getSingleton();
-
-            long byteCount = 0L;
-
-            // mime post
-            MultipartEntity entity = new MultipartEntity();
-
-            // add the submission file first...
-            FileBody fb = new FileBody(submissionFile, "text/xml");
-            entity.addPart("xml_submission_file", fb);
-            Log.i(t, "added xml_submission_file: " + submissionFile.getName());
-            byteCount += submissionFile.length();
-
-            for (; j < files.size(); j++) {
-                File f = files.get(j);
-                String fileName = f.getName();
-                int idx = fileName.lastIndexOf(".");
-                String extension = "";
-                if (idx != -1) {
-                    extension = fileName.substring(idx + 1);
-                }
-                String contentType = m.getMimeTypeFromExtension(extension);
-
-                // we will be processing every one of these, so
-                // we only need to deal with the content type determination...
-                if (extension.equals("xml")) {
-                    fb = new FileBody(f, "text/xml");
-                    entity.addPart(f.getName(), fb);
-                    byteCount += f.length();
-                    Log.i(t, "added xml file " + f.getName());
-                } else if (extension.equals("jpg")) {
-                    fb = new FileBody(f, "image/jpeg");
-                    entity.addPart(f.getName(), fb);
-                    byteCount += f.length();
-                    Log.i(t, "added image file " + f.getName());
-                } else if (extension.equals("3gpp")) {
-                    fb = new FileBody(f, "audio/3gpp");
-                    entity.addPart(f.getName(), fb);
-                    byteCount += f.length();
-                    Log.i(t, "added audio file " + f.getName());
-                } else if (extension.equals("3gp")) {
-                    fb = new FileBody(f, "video/3gpp");
-                    entity.addPart(f.getName(), fb);
-                    byteCount += f.length();
-                    Log.i(t, "added video file " + f.getName());
-                } else if (extension.equals("mp4")) {
-                    fb = new FileBody(f, "video/mp4");
-                    entity.addPart(f.getName(), fb);
-                    byteCount += f.length();
-                    Log.i(t, "added video file " + f.getName());
-                } else if (extension.equals("csv")) {
-                    fb = new FileBody(f, "text/csv");
-                    entity.addPart(f.getName(), fb);
-                    byteCount += f.length();
-                    Log.i(t, "added csv file " + f.getName());
-                } else if (f.getName().endsWith(".amr")) {
-                    fb = new FileBody(f, "audio/amr");
-                    entity.addPart(f.getName(), fb);
-                    Log.i(t, "added audio file " + f.getName());
-                } else if (extension.equals("xls")) {
-                    fb = new FileBody(f, "application/vnd.ms-excel");
-                    entity.addPart(f.getName(), fb);
-                    byteCount += f.length();
-                    Log.i(t, "added xls file " + f.getName());
-                } else if (contentType != null) {
-                    fb = new FileBody(f, contentType);
-                    entity.addPart(f.getName(), fb);
-                    byteCount += f.length();
-                    Log.i(t,
-                        "added recognized filetype (" + contentType + ") " + f.getName());
-                } else {
-                    contentType = "application/octet-stream";
-                    fb = new FileBody(f, contentType);
-                    entity.addPart(f.getName(), fb);
-                    byteCount += f.length();
-                    Log.w(t, "added unrecognized file (" + contentType + ") " + f.getName());
-                }
-
-                // we've added at least one attachment to the request...
-                if (j + 1 < files.size()) {
-                    if ((j-lastJ+1 > 100) || (byteCount + files.get(j + 1).length() > 10000000L)) {
-                        // the next file would exceed the 10MB threshold...
-                        Log.i(t, "Extremely long post is being split into multiple posts");
-                        try {
-                            StringBody sb = new StringBody("yes", Charset.forName("UTF-8"));
-                            entity.addPart("*isIncomplete*", sb);
-                        } catch (Exception e) {
-                            e.printStackTrace(); // never happens...
-                        }
-                        ++j; // advance over the last attachment added...
-                        break;
-                    }
-                }
-            }
-
-            httppost.setEntity(entity);
-
-            // prepare response and return uploaded
-            HttpResponse response = null;
-            try {
-                Log.i(t, "Issuing POST request for " + id + " to: " + u.toString());
-                response = httpclient.execute(httppost, localContext);
-                int responseCode = response.getStatusLine().getStatusCode();
-                WebUtils.discardEntityBytes(response);
-
-                Log.i(t, "Response code:" + responseCode);
-                // verify that the response was a 201 or 202.
-                // If it wasn't, the submission has failed.
-                if (responseCode != HttpStatus.SC_CREATED && responseCode != HttpStatus.SC_ACCEPTED) {
-                    if (responseCode == HttpStatus.SC_OK) {
-                    	outcome.mResults.put(id, fail + "Network login failure? Again?");
-                    } else if (responseCode == HttpStatus.SC_UNAUTHORIZED) {
-                		// clear the cookies -- should not be necessary?
-                    	Collect.getInstance().getCookieStore().clear();
-                    	outcome.mResults.put(id, fail + response.getStatusLine().getReasonPhrase()
-                                + " (" + responseCode + ") at " + urlString);
-                    } else {
-                    	outcome.mResults.put(id, fail + response.getStatusLine().getReasonPhrase()
-                                + " (" + responseCode + ") at " + urlString);
-                    }
-                    cv.put(InstanceColumns.STATUS,
-                        InstanceProviderAPI.STATUS_SUBMISSION_FAILED);
-                    Collect.getInstance().getContentResolver()
-                            .update(toUpdate, cv, null, null);
-                    return true;
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                Log.e(t, e.toString());
-                WebUtils.clearHttpConnectionManager();
-                String msg = e.getMessage();
-                if (msg == null) {
-                    msg = e.toString();
-                }
-                outcome.mResults.put(id, fail + "Generic Exception: " + msg);
-                cv.put(InstanceColumns.STATUS, InstanceProviderAPI.STATUS_SUBMISSION_FAILED);
-                Collect.getInstance().getContentResolver().update(toUpdate, cv, null, null);
+        try {
+            if (!uploadFiles(submissionFile, files,  urlString, id, toUpdate, cv, httpclient, localContext, outcome))
                 return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e(t, e.toString());
+            WebUtils.clearHttpConnectionManager();
+            String msg = e.getMessage();
+            if (msg == null) {
+                msg = e.toString();
             }
+            outcome.mResults.put(id, fail + "Generic Exception: " + msg);
+            cv.put(InstanceColumns.STATUS, InstanceProviderAPI.STATUS_SUBMISSION_FAILED);
+            Collect.getInstance().getContentResolver().update(toUpdate, cv, null, null);
+            return true;
         }
 
         // if it got here, it must have worked
@@ -484,21 +367,21 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
     // TODO: This method is like 350 lines long, down from 400.
     // still. ridiculous. make it smaller.
     protected Outcome doInBackground(Long... values) {
-    	Outcome outcome = new Outcome();
+        Outcome outcome = new Outcome();
 
         String selection = InstanceColumns._ID + "=?";
         String[] selectionArgs = new String[(values == null) ? 0 : values.length];
         if ( values != null ) {
-	        for (int i = 0; i < values.length; i++) {
-	            if (i != values.length - 1) {
-	                selection += " or " + InstanceColumns._ID + "=?";
-	            }
-	            selectionArgs[i] = values[i].toString();
-	        }
+            for (int i = 0; i < values.length; i++) {
+                if (i != values.length - 1) {
+                    selection += " or " + InstanceColumns._ID + "=?";
+                }
+                selectionArgs[i] = values[i].toString();
+            }
         }
 
         String deviceId = new PropertyManager(Collect.getInstance().getApplicationContext())
-        						.getSingularProperty(PropertyManager.OR_DEVICE_ID_PROPERTY);
+                .getSingularProperty(PropertyManager.OR_DEVICE_ID_PROPERTY);
 
         // get shared HttpContext so that authentication and cookies are retained.
         HttpContext localContext = Collect.getInstance().getHttpContext();
@@ -507,53 +390,34 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
 
         Cursor c = null;
         try {
-        	c = Collect.getInstance().getContentResolver()
+            c = Collect.getInstance().getContentResolver()
                     .query(InstanceColumns.CONTENT_URI, null, selection, selectionArgs, null);
 
-	        if (c.getCount() > 0) {
-	            c.moveToPosition(-1);
-	            while (c.moveToNext()) {
-	                if (isCancelled()) {
-	                    return outcome;
-	                }
-	                publishProgress(c.getPosition() + 1, c.getCount());
-	                String instance = c.getString(c.getColumnIndex(InstanceColumns.INSTANCE_FILE_PATH));
-	                String id = c.getString(c.getColumnIndex(InstanceColumns._ID));
-	                Uri toUpdate = Uri.withAppendedPath(InstanceColumns.CONTENT_URI, id);
+            if (c.getCount() > 0) {
+                c.moveToPosition(-1);
+                while (c.moveToNext()) {
+                    if (isCancelled()) {
+                        return outcome;
+                    }
+                    publishProgress(c.getPosition() + 1, c.getCount());
+                    String instance = c.getString(c.getColumnIndex(InstanceColumns.INSTANCE_FILE_PATH));
+                    String id = c.getString(c.getColumnIndex(InstanceColumns._ID));
+                    Uri toUpdate = Uri.withAppendedPath(InstanceColumns.CONTENT_URI, id);
 
-	                int subIdx = c.getColumnIndex(InstanceColumns.SUBMISSION_URI);
-	                String urlString = c.isNull(subIdx) ? null : c.getString(subIdx);
-	                if (urlString == null) {
-	                    SharedPreferences settings =
-	                        PreferenceManager.getDefaultSharedPreferences(Collect.getInstance());
-	                    urlString = settings.getString(PreferencesActivity.KEY_SERVER_URL,
-	                    				Collect.getInstance().getString(R.string.default_server_url));
-	                    if ( urlString.charAt(urlString.length()-1) == '/') {
-	                    	urlString = urlString.substring(0, urlString.length()-1);
-	                    }
-	                    // NOTE: /submission must not be translated! It is the well-known path on the server.
-	                    String submissionUrl =
-	                        settings.getString(PreferencesActivity.KEY_SUBMISSION_URL,
-	                        		Collect.getInstance().getString(R.string.default_odk_submission));
-	                    if ( submissionUrl.charAt(0) != '/') {
-	                    	submissionUrl = "/" + submissionUrl;
-	                    }
+                    int subIdx = c.getColumnIndex(InstanceColumns.SUBMISSION_URI);
+                    String urlString = c.isNull(subIdx) ? null : c.getString(subIdx);
+                    if (urlString == null) {
+                        SharedPreferences settings =
+                                PreferenceManager.getDefaultSharedPreferences(Collect.getInstance());
 
-	                    urlString = urlString + submissionUrl;
-	                }
+                        urlString = PreferenceManager.getDefaultSharedPreferences(Collect.getContext()).getString(SettingsFragment.SURVEY_UPLOAD_URL_KEY, Collect.getInstance().getString(R.string.default_server_url_for_survey));
+                    }
 
-	                // add the deviceID to the request...
-	                try {
-						urlString += "?deviceID=" + URLEncoder.encode(deviceId, "UTF-8");
-					} catch (UnsupportedEncodingException e) {
-						// unreachable...
-					}
-
-	                if ( !uploadOneSubmission(urlString, id, instance, toUpdate, localContext, uriRemap, outcome) ) {
-	                	return outcome; // get credentials...
-	                }
-	            }
-	        }
+                    if ( !uploadOneSubmission(urlString, id, instance, toUpdate, localContext, uriRemap, outcome) ) {
+                        return outcome; // get credentials...
+                    }
+                }
+            }
         } finally {
             if (c != null) {
                 c.close();
@@ -572,7 +436,7 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
                     mStateListener.authRequest(outcome.mAuthRequestingServer, outcome.mResults);
                 } else {
                     mStateListener.uploadingComplete(outcome.mResults);
-                    
+
                     StringBuilder selection = new StringBuilder();
                     Set<String> keys = outcome.mResults.keySet();
                     Iterator<String> it = keys.iterator();
@@ -646,10 +510,10 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
             mStateListener = sl;
         }
     }
-    
-    
+
+
     public static void copyToBytes(InputStream input, OutputStream output,
-            int bufferSize) throws IOException {
+                                   int bufferSize) throws IOException {
         byte[] buf = new byte[bufferSize];
         int bytesRead = input.read(buf);
         while (bytesRead != -1) {
@@ -658,5 +522,89 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
         }
         output.flush();
     }
-    
+
+    private boolean uploadFiles(File submissionFile, List<File> files, String urlString, String id, Uri toUpdate, ContentValues cv, HttpClient httpclient, HttpContext localContext, Outcome outcome) throws Exception {
+        Integer key = postSurvey(submissionFile, urlString, id, toUpdate, cv, httpclient, localContext, outcome);
+        if (key == null)
+            return false;
+
+        for (File file : files) {
+            if (!postFile(file, key, urlString, id, toUpdate, cv, httpclient, localContext, outcome))
+                return false;
+        }
+
+        return true;
+    }
+
+    private Integer postSurvey (File file, String urlString, String id, Uri toUpdate, ContentValues cv, HttpClient httpclient, HttpContext localContext, Outcome outcome) throws Exception {
+        urlString += Collect.getInstance().getString(R.string.default_url_for_survey);
+        Uri uri = Uri.parse(urlString);
+
+        String xml = Files.toString(file, Charset.forName("UTF-8"));
+        JSONObject jsonObject = XML.toJSONObject(xml);
+        jsonObject = jsonObject.getJSONObject((String)jsonObject.names().get(0));
+        jsonObject.put("q_version", jsonObject.getString("id"));
+        jsonObject.put("app_version", Collect.getInstance().getAppVersionName());
+        String jsonSurvey = jsonObject.toString();
+
+        HttpPost httppost = WebUtils.createOpenRosaHttpPost(uri);
+
+        StringEntity entity = new StringEntity(jsonSurvey);
+
+        httppost.setEntity(entity);
+        httppost.setHeader("Content-type", "application/json");
+
+        HttpResponse response = httpclient.execute(httppost, localContext);
+        Integer key = Integer.parseInt(EntityUtils.toString(response.getEntity()));
+
+        if (checkFail(response, urlString, id, toUpdate, cv, outcome))
+            return null;
+
+        return key;
+    }
+
+    private boolean postFile (File file, Integer key, String urlString, String id, Uri toUpdate, ContentValues cv, HttpClient httpclient, HttpContext localContext, Outcome outcome) throws Exception {
+        urlString += String.format(Collect.getInstance().getString(R.string.default_url_for_file), key, file.getName());
+        Uri uri = Uri.parse(urlString);
+
+        HttpPost httppost = WebUtils.createOpenRosaHttpPost(uri);
+
+        FileEntity entity = new FileEntity(file, ContentType.create("image/jpeg"));
+
+        httppost.setEntity(entity);
+        httppost.setHeader("Accept", "application/json; charset=utf-8");
+
+        HttpResponse response = httpclient.execute(httppost, localContext);
+
+        WebUtils.discardEntityBytes(response);
+
+        if (checkFail(response, urlString, id, toUpdate, cv, outcome))
+            return false;
+
+        return true;
+    }
+
+    private boolean checkFail(HttpResponse response, String urlString, String id, Uri toUpdate, ContentValues cv, Outcome outcome) {
+        int responseCode = response.getStatusLine().getStatusCode();
+
+        Log.i(t, "Response code:" + responseCode);
+        if (responseCode != HttpStatus.SC_OK) {
+            if (responseCode == HttpStatus.SC_UNAUTHORIZED) {
+                // clear the cookies -- should not be necessary?
+                Collect.getInstance().getCookieStore().clear();
+                outcome.mResults.put(id, fail + response.getStatusLine().getReasonPhrase()
+                        + " (" + responseCode + ") at " + urlString);
+            } else {
+                outcome.mResults.put(id, fail + response.getStatusLine().getReasonPhrase()
+                        + " (" + responseCode + ") at " + urlString);
+            }
+            cv.put(InstanceColumns.STATUS,
+                    InstanceProviderAPI.STATUS_SUBMISSION_FAILED);
+            Collect.getInstance().getContentResolver()
+                    .update(toUpdate, cv, null, null);
+            return true;
+        }
+
+        return false;
+    }
 }

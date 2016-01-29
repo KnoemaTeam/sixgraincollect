@@ -131,6 +131,19 @@ public class Collect extends MultiDexApplication {
         return getString(R.string.app_name) + versionDetail;
     }
 
+    public String getAppVersionName() {
+        String versionName = "";
+        try {
+            PackageInfo pinfo;
+            pinfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+            versionName = pinfo.versionName;
+        } catch (NameNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return versionName;
+    }
+
     /**
      * Creates required directories on the SDCard (or other external storage)
      *

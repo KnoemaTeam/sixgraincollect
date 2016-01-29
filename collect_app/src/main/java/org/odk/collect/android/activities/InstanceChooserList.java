@@ -18,6 +18,7 @@ import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
 import org.odk.collect.android.listeners.FormDownloaderListener;
 import org.odk.collect.android.listeners.FormListDownloaderListener;
+import org.odk.collect.android.listeners.InstanceUploaderListener;
 import org.odk.collect.android.logic.FormDetails;
 import org.odk.collect.android.preferences.SettingsActivity;
 import org.odk.collect.android.preferences.SettingsFragment;
@@ -26,6 +27,8 @@ import org.odk.collect.android.provider.InstanceProviderAPI;
 import org.odk.collect.android.provider.InstanceProviderAPI.InstanceColumns;
 import org.odk.collect.android.tasks.DownloadFormListTask;
 import org.odk.collect.android.tasks.DownloadFormsTask;
+import org.odk.collect.android.tasks.InstanceUploaderTask;
+import org.odk.collect.android.utilities.CompatibilityUtils;
 
 import android.app.AlertDialog;
 import android.content.ContentUris;
@@ -60,8 +63,10 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Responsible for displaying all the valid instances in the instance directory.
@@ -69,9 +74,7 @@ import java.util.Map;
  * @author Yaw Anokwa (yanokwa@gmail.com)
  * @author Carl Hartung (carlhartung@gmail.com)
  */
-public class InstanceChooserList extends AppCompatActivity implements FormListDownloaderListener, FormDownloaderListener, LoaderManager.LoaderCallbacks<Cursor> {
-    private static final int DATA_LIST_VIEW_ID = 111111;
-
+public class InstanceChooserList extends AppCompatActivity implements FormListDownloaderListener, FormDownloaderListener, LoaderManager.LoaderCallbacks<Cursor>, InstanceUploaderListener {
     private static final int PROGRESS_DIALOG = 1;
     private static final int OPEN_PREFERENCES_CODE = 200;
 
@@ -136,7 +139,7 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
     protected void onStart() {
         super.onStart();
         Collect.getInstance().getActivityLogger().logOnStart(this);
-        getSupportLoaderManager().restartLoader(DATA_LIST_VIEW_ID, null, this);
+        getSupportLoaderManager().restartLoader(FormChooserList.DATA_LIST_VIEW_ID, null, this);
     }
 
     @Override
@@ -147,7 +150,7 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
 
     @Override
     protected void onDestroy() {
-        getSupportLoaderManager().destroyLoader(DATA_LIST_VIEW_ID);
+        getSupportLoaderManager().destroyLoader(FormChooserList.DATA_LIST_VIEW_ID);
         super.onDestroy();
     }
 
@@ -176,7 +179,7 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
     }
 
     protected void setContentList() {
-        getSupportLoaderManager().initLoader(DATA_LIST_VIEW_ID, null, this);
+        getSupportLoaderManager().initLoader(FormChooserList.DATA_LIST_VIEW_ID, null, this);
 
         String[] data = new String[] {InstanceColumns.DISPLAY_NAME, InstanceColumns.DISPLAY_SUBTEXT};
         int[] view = new int[] {R.id.text1, R.id.text2};
@@ -233,9 +236,57 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
 
                 Intent preferences = new Intent(InstanceChooserList.this, SettingsActivity.class);
                 startActivity(preferences);
+                break;
+
+            case R.id.action_synchronize:
+                if (mConstructor == null)
+                    mConstructor = new DialogConstructor(this);
+                mConstructor.updateDialog(getString(R.string.uploading_data), "Uploading data...");
+                InstanceUploaderTask instanceUploaderTask = new InstanceUploaderTask();
+                instanceUploaderTask.setUploaderListener(this);
+                instanceUploaderTask.execute(getInstanceIDs());
+                break;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private Long[] getInstanceIDs() {
+        ArrayList<Long> ids = new ArrayList<>();
+        Cursor c = null;
+        try {
+            c = getUnsentCursor();
+
+            if (c.getCount() > 0) {
+                c.moveToPosition(-1);
+                while (c.moveToNext()) {
+                    long id = c.getLong(c.getColumnIndex(InstanceProviderAPI.InstanceColumns._ID));
+                    ids.add(id);
+                }
+            }
+        } finally {
+            if ( c != null ) {
+                c.close();
+            }
+        }
+        return (Long[])ids.toArray(new Long[0]);
+    }
+
+    private Cursor getUnsentCursor() {
+        // get all complete or failed submission instances
+        String selection = InstanceColumns.STATUS + "=? or "
+                + InstanceColumns.STATUS + "=?";
+        String selectionArgs[] = { InstanceProviderAPI.STATUS_COMPLETE,
+                InstanceProviderAPI.STATUS_SUBMISSION_FAILED };
+        String sortOrder = InstanceColumns.DISPLAY_NAME + " ASC";
+        Cursor c = managedQuery(InstanceColumns.CONTENT_URI, null, selection,
+                selectionArgs, sortOrder);
+        return c;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
     }
 
     /**
@@ -246,20 +297,20 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
         Uri instanceUri = ContentUris.withAppendedId(InstanceColumns.CONTENT_URI, c.getLong(c.getColumnIndex(InstanceColumns._ID)));
 
         Collect.getInstance().getActivityLogger().logAction(this, "onListItemClick", instanceUri.toString());
-        // the form can be edited if it is incomplete or if, when it was
-        // marked as complete, it was determined that it could be edited
-        // later.
-        String status = c.getString(c.getColumnIndex(InstanceColumns.STATUS));
+            // the form can be edited if it is incomplete or if, when it was
+            // marked as complete, it was determined that it could be edited
+            // later.
+            String status = c.getString(c.getColumnIndex(InstanceColumns.STATUS));
         String strCanEditWhenComplete = c.getString(c.getColumnIndex(InstanceColumns.CAN_EDIT_WHEN_COMPLETE));
 
         boolean canEdit = status.equals(InstanceProviderAPI.STATUS_INCOMPLETE) || Boolean.parseBoolean(strCanEditWhenComplete);
-        if (!canEdit) {
+            if (!canEdit) {
             createErrorDialog(getString(R.string.cannot_edit_completed_form), DO_NOT_EXIT);
-        }
+            }
         else {
             //
             startActivity(new Intent(Intent.ACTION_EDIT, instanceUri));
-        }
+    }
 
         finish();
     }
@@ -497,10 +548,111 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
         for (Map.Entry<String, String> entry: surveyMetaData.entrySet()) {
             if (!TextUtils.isEmpty(chosenSurveyName) && entry.getKey().contains(chosenSurveyName)) {
                 Uri formUri = ContentUris.withAppendedId(FormsProviderAPI.FormsColumns.CONTENT_URI, Integer.valueOf(entry.getValue()));
+                Collect.getInstance().getActivityLogger().logAction(this, "onListItemClick", formUri.toString());
 
-                startActivity(new Intent(Intent.ACTION_EDIT, formUri));
+                String action = getIntent().getAction();
+                if (Intent.ACTION_PICK.equals(action)) {
+                    // caller is waiting on a picked form
+                    setResult(RESULT_OK, new Intent().setData(formUri));
+                } else {
+                    // caller wants to view/edit a form, so launch formentryactivity
+                    Intent intent = new Intent(Intent.ACTION_EDIT, formUri);
+                    intent.putExtra("CREATE_NEW_SURVEY", true);
+
+                    startActivityForResult(intent, CREATE_SURVEY_CODE);
+                }
+
                 break;
             }
         }
+    }
+
+    public void uploadingComplete(HashMap<String, String> result) {
+        //Log.i(t, "uploadingComplete: Processing results (" + result.size() + ") from upload of " + mInstancesToSend.length + " instances!");
+
+        mConstructor.stopAnimation();
+
+//        try {
+//            dismissDialog(PROGRESS_DIALOG);
+//        } catch (Exception e) {
+//            // tried to close a dialog not open. don't care.
+//        }
+
+        StringBuilder selection = new StringBuilder();
+        Set<String> keys = result.keySet();
+        Iterator<String> it = keys.iterator();
+
+        String[] selectionArgs = new String[keys.size()];
+        int i = 0;
+        while (it.hasNext()) {
+            String id = it.next();
+            selection.append(InstanceColumns._ID + "=?");
+            selectionArgs[i++] = id;
+            if (i != keys.size()) {
+                selection.append(" or ");
+            }
+        }
+
+        StringBuilder message = new StringBuilder();
+        {
+            Cursor results = null;
+            try {
+                results = getContentResolver().query(InstanceColumns.CONTENT_URI,
+                        null, selection.toString(), selectionArgs, null);
+                if (results.getCount() > 0) {
+                    results.moveToPosition(-1);
+                    while (results.moveToNext()) {
+                        String name =
+                                results.getString(results.getColumnIndex(InstanceColumns.DISPLAY_NAME));
+                        String id = results.getString(results.getColumnIndex(InstanceColumns._ID));
+                        message.append(name + " - " + result.get(id) + "\n\n");
+                    }
+                } else {
+                    message.append(getString(R.string.no_forms_uploaded));
+                }
+            } finally {
+                if ( results != null ) {
+                    results.close();
+                }
+            }
+        }
+
+        createAlertDialog(message.toString().trim());
+    }
+
+    public void progressUpdate(int progress, int total) {
+
+    }
+
+    public void authRequest(Uri url, HashMap<String, String> doneSoFar) {
+
+    }
+
+    private void createAlertDialog(String message) {
+        Collect.getInstance().getActivityLogger().logAction(this, "createAlertDialog", "show");
+
+        mAlertDialog = new AlertDialog.Builder(this).create();
+        mAlertDialog.setTitle(getString(R.string.upload_results));
+        mAlertDialog.setMessage(message);
+        DialogInterface.OnClickListener quitListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                switch (i) {
+                    case DialogInterface.BUTTON_POSITIVE: // ok
+                        Collect.getInstance().getActivityLogger().logAction(this, "createAlertDialog", "OK");
+                        // always exit this activity since it has no interface
+                        //mAlertShowing = false;
+                        //finish();
+                        mAlertDialog.dismiss();
+                break;
+            }
+        }
+        };
+        mAlertDialog.setCancelable(false);
+        mAlertDialog.setButton(getString(R.string.ok), quitListener);
+        mAlertDialog.setIcon(android.R.drawable.ic_dialog_info);
+//        mAlertShowing = true;
+//        mAlertMsg = message;
+        mAlertDialog.show();
     }
 }
