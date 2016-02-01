@@ -260,6 +260,8 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
             //
             startActivity(new Intent(Intent.ACTION_EDIT, instanceUri));
         }
+
+        finish();
     }
 
     private void createErrorDialog(String errorMsg, final boolean shouldExit) {
