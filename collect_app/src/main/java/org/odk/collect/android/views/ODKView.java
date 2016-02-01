@@ -161,10 +161,12 @@ public class ODKView extends ScrollView implements OnLongClickListener {
                     }
                 });
 
+                /*
                 View divider = new View(getContext());
                 divider.setBackgroundResource(android.R.drawable.divider_horizontal_bright);
                 divider.setMinimumHeight(3);
                 mView.addView(divider);
+                */
 
                 mView.addView(mLaunchIntentButton, mLayout);
             }
@@ -174,10 +176,10 @@ public class ODKView extends ScrollView implements OnLongClickListener {
         int id = 0;
         for (FormEntryPrompt p : questionPrompts) {
             if (!first) {
-                View divider = new View(getContext());
-                divider.setBackgroundResource(android.R.drawable.divider_horizontal_bright);
-                divider.setMinimumHeight(3);
-                mView.addView(divider);
+                //View divider = new View(getContext());
+                //divider.setBackgroundResource(android.R.drawable.divider_horizontal_bright);
+                //divider.setMinimumHeight(3);
+                //mView.addView(divider);
             } else {
                 first = false;
             }
@@ -191,8 +193,6 @@ public class ODKView extends ScrollView implements OnLongClickListener {
 
             widgets.add(qw);
             mView.addView(qw, mLayout);
-
-
         }
 
         addView(mView);
@@ -283,13 +283,11 @@ public class ODKView extends ScrollView implements OnLongClickListener {
         }
     }
 
-
     public void setFocus(Context context) {
         if (widgets.size() > 0) {
             widgets.get(0).setFocus(context);
         }
     }
-
 
     /**
      * Called when another activity returns information to answer this question.

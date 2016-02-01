@@ -135,12 +135,14 @@ public class SelectOneWidget extends QuestionWidget implements
 				mediaLayout.setPlayTextBackgroundColor(mPlayBackgroundColor);
 				playList.add(mediaLayout);
 
+				/*
 				if (i != mItems.size() - 1) {
 					// Last, add the dividing line (except for the last element)
 					ImageView divider = new ImageView(getContext());
 					divider.setBackgroundResource(android.R.drawable.divider_horizontal_bright);
 					mediaLayout.addDivider(divider);
 				}
+				*/
 				buttonLayout.addView(mediaLayout);
 			}
 		}

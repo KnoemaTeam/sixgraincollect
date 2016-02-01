@@ -402,7 +402,8 @@ public class MediaLayout extends RelativeLayout implements OnClickListener {
             Log.e(t, "Tried to add divider to uninitialized ATVWidget");
             return;
         }
-        addView(v, dividerParams);
+
+        //addView(v, dividerParams);
     }
 
     

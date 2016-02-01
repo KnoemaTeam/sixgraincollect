@@ -19,12 +19,15 @@ import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.text.method.LinkMovementMethod;
 import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.text.method.LinkMovementMethod;
+import android.widget.RadioButton;
+
 import org.javarosa.core.model.SelectChoice;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.SelectMultiData;
@@ -32,6 +35,7 @@ import org.javarosa.core.model.data.helper.Selection;
 import org.javarosa.form.api.FormEntryCaption;
 import org.javarosa.form.api.FormEntryPrompt;
 import org.javarosa.xpath.expr.XPathFuncExpr;
+import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
 import org.odk.collect.android.external.ExternalDataUtil;
 import org.odk.collect.android.external.ExternalSelectChoice;
@@ -88,7 +92,7 @@ public class SelectMultiWidget extends QuestionWidget {
                   choiceDisplayName = "";
                 }
                 // no checkbox group so id by answer + offset
-                CheckBox c = new CheckBox(getContext());
+                CheckBox c = (CheckBox) LayoutInflater.from(context).inflate(R.layout.check_box_button, answerLayout, false); //new CheckBox(getContext());
                 c.setTag(Integer.valueOf(i));
                 c.setId(QuestionWidget.newUniqueId());
                 c.setText(choiceDisplayName);
@@ -148,20 +152,20 @@ public class SelectMultiWidget extends QuestionWidget {
                 playList.add(mediaLayout);
 
                 // Last, add the dividing line between elements (except for the last element)
+                /*
                 if (i != mItems.size() - 1) {
                     ImageView divider = new ImageView(getContext());
                     divider.setBackgroundResource(android.R.drawable.divider_horizontal_bright);
                     mediaLayout.addDivider(divider);
                 }
+                */
                 answerLayout.addView(mediaLayout);
             }
             addAnswerView(answerLayout);
         }
 
         mCheckboxInit = false;
-
     }
-
 
     @Override
     public void clearAnswer() {

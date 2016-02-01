@@ -7,6 +7,7 @@
     <color name="colorAppBackground">#FAFAFA</color>
     <color name="colorAppBarPopupText">#FFFFFF</color>
     <color name="colorAppBarPopupBackground">@color/colorPrimary</color>
+    <color name="colorAppQuestionText">@android:color/black</color>
     <color name="colorSplashBackground">#2087BB</color>
     <color name="colorListViewDivider">#F3F3F3</color>
     <color name="colorFabButton">#00B200</color>
@@ -23,8 +24,10 @@
     <color name="colorListViewSubtitleText">#424242</color>
     <color name="colorRoundedImageBackground">#D4D4D4</color>
     <color name="colorRoundedImageBorder">#424242</color>
-    <color name="colorRadioButtonTint">#2087BB</color>
+    <color name="colorRadioButtonTint">#0079A4</color>
     <color name="colorRadioButtonText">@android:color/black</color>
+    <color name="colorCheckBoxButtonTint">#0079A4</color>
+    <color name="colorCheckBoxButtonText">@android:color/black</color>
 
     <drawable name="white">#ffffffff</drawable>
     <drawable name="black">#ff000000</drawable>

@@ -17,9 +17,11 @@ package org.odk.collect.android.widgets;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.support.v4.content.ContextCompat;
 import android.text.method.LinkMovementMethod;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.form.api.FormEntryPrompt;
+import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
 import org.odk.collect.android.listeners.AudioPlayListener;
 import org.odk.collect.android.utilities.TextUtils;
@@ -124,6 +126,7 @@ public abstract class QuestionWidget extends RelativeLayout implements AudioPlay
         questionText.setTypeface(null, Typeface.BOLD);
         questionText.setPadding(0, 0, 0, 7);
         questionText.setText(promptText == null ? "" : TextUtils.textToHtml(promptText));
+        questionText.setTextColor(ContextCompat.getColor(getContext(), R.color.colorAppQuestionText));
 
         // Wrap to the size of the parent view
         questionText.setHorizontallyScrolling(false);
@@ -323,7 +326,7 @@ public abstract class QuestionWidget extends RelativeLayout implements AudioPlay
         } else {
             params.addRule(RelativeLayout.BELOW, mQuestionMediaLayout.getId());
         }
-        params.setMargins(10, 0, 10, 0);
+        params.setMargins(10, 10, 10, 10);
         addView(v, params);
     }
 
