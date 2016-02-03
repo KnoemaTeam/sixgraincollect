@@ -496,13 +496,6 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
         if (mConstructor != null)
             mConstructor.stopAnimation();
 
-        /*
-        if (mProgressDialog != null
-                && mProgressDialog.isShowing()) {
-            mProgressDialog.dismiss();
-        }
-        */
-
         SharedPreferences.Editor editor = mSettings.edit();
         editor.putBoolean(SettingsFragment.SURVEY_FORM_DOWNLOADED_KEY, true);
         editor.apply();
@@ -510,10 +503,7 @@ public class InstanceChooserList extends AppCompatActivity implements FormListDo
 
     @Override
     public void progressUpdate(String currentFile, int progress, int total) {
-        //mProgressDialog.setMessage(getString(R.string.fetching_file, currentFile, progress, total));
-        mConstructor.updateDialog(
-                getString(R.string.downloading_data),
-                getString(R.string.fetching_file, currentFile, progress, total));
+        mConstructor.updateDialog(getString(R.string.downloading_data), getString(R.string.fetching_file, currentFile, progress, total));
     }
 
     protected void createChosenSurvey() {

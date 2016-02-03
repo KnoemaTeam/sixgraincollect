@@ -4,22 +4,31 @@ import org.javarosa.core.model.data.LongData;
 import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
 import org.odk.collect.android.listeners.DiskSyncListener;
+import org.odk.collect.android.listeners.FormDownloaderListener;
+import org.odk.collect.android.listeners.FormListDownloaderListener;
 import org.odk.collect.android.listeners.InstanceUploaderListener;
+import org.odk.collect.android.logic.FormDetails;
 import org.odk.collect.android.preferences.SettingsActivity;
 import org.odk.collect.android.preferences.SettingsFragment;
 import org.odk.collect.android.provider.FormsProviderAPI;
 import org.odk.collect.android.provider.FormsProviderAPI.FormsColumns;
 import org.odk.collect.android.provider.InstanceProviderAPI;
 import org.odk.collect.android.tasks.DiskSyncTask;
+import org.odk.collect.android.tasks.DownloadFormListTask;
+import org.odk.collect.android.tasks.DownloadFormsTask;
 import org.odk.collect.android.tasks.InstanceUploaderTask;
 import org.odk.collect.android.utilities.VersionHidingCursorAdapter;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.ContentUris;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -45,6 +54,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -60,7 +70,7 @@ import java.util.Set;
  * @author Yaw Anokwa (yanokwa@gmail.com)
  * @author Carl Hartung (carlhartung@gmail.com)
  */
-public class FormChooserList extends AppCompatActivity implements DiskSyncListener, LoaderManager.LoaderCallbacks<Cursor>, DialogConstructor.NotificationListener, InstanceUploaderListener {
+public class FormChooserList extends AppCompatActivity implements DiskSyncListener, LoaderManager.LoaderCallbacks<Cursor>, DialogConstructor.NotificationListener, InstanceUploaderListener, FormListDownloaderListener, FormDownloaderListener {
     public static final int FORM_LIST_VIEW_ID = 111110;
     public static final int DATA_LIST_VIEW_ID = 111111;
     public static final int INSTANCE_DATA_LIST_ID = 111112;
@@ -71,11 +81,25 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
     private static final String t = "FormChooserList";
     private static final String syncMsgKey = "syncmsgkey";
 
-    private ListView mDataListView = null;
-    private SparseArray<String> mFormList = new SparseArray<>();
-    private SimpleCursorAdapter mInstanceDataAdapter = null;
+    private static final String FORM_NAME = "formname";
+    private static final String FORM_DETAIL_KEY = "formdetailkey";
+    private static final String FORM_ID_DISPLAY = "formiddisplay";
+    private static final String FORM_ID_KEY = "formid";
+    private static final String FORM_VERSION_KEY = "formversion";
+
+    private SharedPreferences mSettings = null;
+
     private DiskSyncTask mDiskSyncTask = null;
     private InstanceUploaderTask mInstanceUploaderTask = null;
+    private DownloadFormListTask mDownloadFormListTask = null;
+    private DownloadFormsTask mDownloadFormsTask = null;
+
+    private ListView mDataListView = null;
+    private SparseArray<String> mFormList = new SparseArray<>();
+    private Map<String, FormDetails> mFormData = new HashMap<>();
+    private List<Map<String, String>> mFormDataList = new ArrayList<>();
+
+    private SimpleCursorAdapter mInstanceDataAdapter = null;
     private DialogConstructor mConstructor = null;
 
     @Override
@@ -96,51 +120,28 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
         setFormListView();
         setInstanceListView();
 
-        /*
-        String sortOrder = FormsColumns.DISPLAY_NAME + " ASC, " + FormsColumns.JR_VERSION + " DESC";
-        Cursor c = managedQuery(FormsColumns.CONTENT_URI, null, null, null, sortOrder);
-
-        String[] data = new String[] {
-                FormsColumns.DISPLAY_NAME, FormsColumns.DISPLAY_SUBTEXT, FormsColumns.JR_VERSION
-        };
-        int[] view = new int[] {
-                R.id.text1, R.id.text2, R.id.text3
-        };
-
-        // render total instance view
-        mFormDataAdapter = new VersionHidingCursorAdapter(FormsColumns.JR_VERSION, this, R.layout.two_item, c, data, view);
-        mDataListView = (ListView) findViewById(R.id.dataListView);
-        mDataListView.setAdapter(mFormDataAdapter);
-        mDataListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                onListItemClick(position);
-            }
-        });
-        */
-
         if (savedInstanceState != null && savedInstanceState.containsKey(syncMsgKey)) {
             TextView tv = (TextView) findViewById(R.id.status_text);
             tv.setText(savedInstanceState.getString(syncMsgKey));
         }
 
-        // DiskSyncTask checks the disk for any forms not already in the content provider
-        // that is, put here by dragging and dropping onto the SDCard
-        mDiskSyncTask = (DiskSyncTask) getLastNonConfigurationInstance();
-        if (mDiskSyncTask == null) {
-            Log.i(t, "Starting new disk sync task");
-            mDiskSyncTask = new DiskSyncTask();
-            mDiskSyncTask.setDiskSyncListener(this);
-            mDiskSyncTask.execute((Void[]) null);
+        mSettings = PreferenceManager.getDefaultSharedPreferences(this);
+        if (!mSettings.getBoolean(SettingsFragment.SURVEY_FORM_DOWNLOADED_KEY, false)) {
+            downloadSurveyFormList();
+        }
+        else {
+            runDiskSynchronizationTask();
         }
     }
 
     @Override
     protected void onResume() {
-        mDiskSyncTask.setDiskSyncListener(this);
+        if (mDiskSyncTask != null)
+            mDiskSyncTask.setDiskSyncListener(this);
+
         super.onResume();
 
-        if (mDiskSyncTask.getStatus() == AsyncTask.Status.FINISHED) {
+        if (mDiskSyncTask != null && mDiskSyncTask.getStatus() == AsyncTask.Status.FINISHED) {
             SyncComplete(mDiskSyncTask.getStatusMessage());
         }
     }
@@ -164,14 +165,6 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
         getSupportLoaderManager().destroyLoader(DATA_LIST_VIEW_ID);
         super.onStop();
     }
-
-    /*
-    @Override
-    public Object onRetainNonConfigurationInstance() {
-        // pass the thread on restart
-        return mDiskSyncTask;
-    }
-    */
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -202,6 +195,18 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    protected void runDiskSynchronizationTask () {
+        // DiskSyncTask checks the disk for any forms not already in the content provider
+        // that is, put here by dragging and dropping onto the SDCard
+        mDiskSyncTask = (DiskSyncTask) getLastNonConfigurationInstance();
+        if (mDiskSyncTask == null) {
+            Log.i(t, "Starting new disk sync task");
+            mDiskSyncTask = new DiskSyncTask();
+            mDiskSyncTask.setDiskSyncListener(this);
+            mDiskSyncTask.execute((Void[]) null);
+        }
     }
 
     protected void onListItemClick(int position) {
@@ -372,7 +377,6 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
             }
             else if (mConstructor != null) {
                 mConstructor.stopAnimation();
-                mConstructor = null;
             }
         }
     }
@@ -408,35 +412,11 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
      * @param shouldExit
      */
     private void createErrorDialog(String errorMsg, final boolean shouldExit) {
-
     	Collect.getInstance().getActivityLogger().logAction(this, "createErrorDialog", "show");
-
-        /*
-        mAlertDialog = new AlertDialog.Builder(this).create();
-        mAlertDialog.setIcon(android.R.drawable.ic_dialog_info);
-        mAlertDialog.setMessage(errorMsg);
-        DialogInterface.OnClickListener errorListener = new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int i) {
-                switch (i) {
-                    case DialogInterface.BUTTON_POSITIVE:
-                    	Collect.getInstance().getActivityLogger().logAction(this, "createErrorDialog",
-                    			shouldExit ? "exitApplication" : "OK");
-                        if (shouldExit) {
-                            finish();
-                        }
-                        break;
-                }
-            }
-        };
-        mAlertDialog.setCancelable(false);
-        mAlertDialog.setButton(getString(R.string.ok), errorListener);
-        mAlertDialog.show();
-        */
 
         mConstructor = new DialogConstructor(this);
         mConstructor.setButtonText(getString(R.string.ok));
-        mConstructor.updateDialog("", errorMsg);
+        mConstructor.updateDialog("Error", errorMsg);
     }
 
     @Override
@@ -446,7 +426,17 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
 
     @Override
     public void onNegativeClick() {
+        if (mDownloadFormListTask != null) {
+            mDownloadFormListTask.setDownloaderListener(null);
+            mDownloadFormListTask.cancel(true);
+            mDownloadFormListTask = null;
+        }
 
+        if (mDownloadFormsTask != null) {
+            mDownloadFormsTask.setDownloaderListener(null);
+            mDownloadFormsTask.cancel(true);
+            mDownloadFormsTask = null;
+        }
     }
 
     @Override
@@ -520,5 +510,144 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
             mInstanceUploaderTask.setUploaderListener(this);
             mInstanceUploaderTask.execute(data);
         }
+    }
+
+
+    private void downloadSurveyFormList() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo ni = connectivityManager.getActiveNetworkInfo();
+
+        if (ni == null || !ni.isConnected()) {
+            Toast.makeText(this, R.string.no_connection, Toast.LENGTH_SHORT).show();
+        } else {
+            mFormData = new HashMap<>();
+
+            if (mDownloadFormListTask != null &&
+                    mDownloadFormListTask.getStatus() != AsyncTask.Status.FINISHED) {
+                return;
+            }
+            else if (mDownloadFormListTask != null) {
+                mDownloadFormListTask.setDownloaderListener(null);
+                mDownloadFormListTask.cancel(true);
+                mDownloadFormListTask = null;
+            }
+
+            if (mConstructor == null)
+                mConstructor = new DialogConstructor(FormChooserList.this);
+
+            mConstructor.stopAnimation();
+            mConstructor.updateDialog(getString(R.string.downloading_data), "Preparing surveys");
+
+            mDownloadFormListTask = new DownloadFormListTask();
+            mDownloadFormListTask.setDownloaderListener(this);
+            mDownloadFormListTask.execute();
+        }
+    }
+
+    private void downloadSurveyForms() {
+        List<FormDetails> filesToDownload = new ArrayList<>();
+        int totalCount;
+
+        for (Map<String, String> entry: mFormDataList) {
+            if (entry.get(FORM_ID_KEY).contains("ZambiaShort") ||
+                    entry.get(FORM_ID_KEY).contains("Senegal")) {
+                filesToDownload.add(mFormData.get(entry.get(FORM_DETAIL_KEY)));
+            }
+        }
+
+        totalCount = filesToDownload.size();
+        Collect.getInstance().getActivityLogger().logAction(this, "downloadSelectedFiles", Integer.toString(totalCount));
+
+        if (totalCount > 0) {
+            mDownloadFormsTask = new DownloadFormsTask();
+            mDownloadFormsTask.setDownloaderListener(this);
+            mDownloadFormsTask.execute(filesToDownload);
+        }
+        else {
+            Toast.makeText(getApplicationContext(), R.string.noselect_error, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void progressUpdate(String currentFile, int progress, int total) {
+        if (mConstructor == null)
+            mConstructor = new DialogConstructor(FormChooserList.this);
+
+        mConstructor.updateDialog(getString(R.string.downloading_data), getString(R.string.fetching_file, currentFile, progress, total));
+    }
+
+    @Override
+    public void formListDownloadingComplete(HashMap<String, FormDetails> value) {
+        Log.i(getClass().getSimpleName(), "Downloaded Form List");
+
+        mDownloadFormListTask.setDownloaderListener(null);
+        mDownloadFormListTask = null;
+
+        if (value == null) {
+            Log.i(getClass().getSimpleName(), "Form List Downloading returned null.  That shouldn't happen");
+            return;
+        }
+
+        if (value.containsKey(DownloadFormListTask.DL_AUTH_REQUIRED)) {
+            Log.i(getClass().getSimpleName(), "Need authorization");
+            return;
+        }
+
+        if (value.containsKey(DownloadFormListTask.DL_ERROR_MSG)) {
+            Log.i(getClass().getSimpleName(), "Download Failed");
+            return;
+        }
+
+        mFormData = value;
+        mFormDataList.clear();
+
+        List<String> ids = new ArrayList<>(mFormData.keySet());
+        for (int i = 0; i < value.size(); i++) {
+            String formDetailsKey = ids.get(i);
+            FormDetails details = mFormData.get(formDetailsKey);
+
+            Map<String, String> item = new HashMap<>();
+            item.put(FORM_NAME, details.formName);
+            item.put(FORM_ID_DISPLAY, ((details.formVersion == null) ? "" : (getString(R.string.version) + " " + details.formVersion + " ")) + "ID: " + details.formID);
+            item.put(FORM_DETAIL_KEY, formDetailsKey);
+            item.put(FORM_ID_KEY, details.formID);
+            item.put(FORM_VERSION_KEY, details.formVersion);
+
+            // Insert the new form in alphabetical order.
+            if (mFormDataList.size() == 0) {
+                mFormDataList.add(item);
+            } else {
+                int j;
+                for (j = 0; j < mFormList.size(); j++) {
+                    Map<String, String> compareMe = mFormDataList.get(j);
+                    String name = compareMe.get(FORM_NAME);
+                    if (!name.equals(mFormData.get(ids.get(i)).formName)) {
+                        break;
+                    }
+                }
+
+                mFormDataList.add(j, item);
+            }
+        }
+
+        downloadSurveyForms();
+    }
+
+    @Override
+    public void formsDownloadingComplete(HashMap<FormDetails, String> result) {
+        Log.i(getClass().getSimpleName(), "Downloaded Forms");
+
+        if (mDownloadFormsTask != null) {
+            mDownloadFormsTask.setDownloaderListener(null);
+        }
+
+        if (mConstructor != null)
+            mConstructor.stopAnimation();
+
+        SharedPreferences.Editor editor = mSettings.edit();
+        editor.putBoolean(SettingsFragment.SURVEY_FORM_DOWNLOADED_KEY, true);
+        editor.apply();
+
+        runDiskSynchronizationTask();
     }
 }

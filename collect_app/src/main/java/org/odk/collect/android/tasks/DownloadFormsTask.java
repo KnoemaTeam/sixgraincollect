@@ -57,8 +57,7 @@ import android.util.Log;
  * @author msundt
  * @author carlhartung
  */
-public class DownloadFormsTask extends
-        AsyncTask<ArrayList<FormDetails>, String, HashMap<FormDetails, String>> {
+public class DownloadFormsTask extends AsyncTask<List<FormDetails>, String, HashMap<FormDetails, String>> {
 
     private static final String t = "DownloadFormsTask";
 
@@ -76,8 +75,8 @@ public class DownloadFormsTask extends
 
 
     @Override
-    protected HashMap<FormDetails, String> doInBackground(ArrayList<FormDetails>... values) {
-        ArrayList<FormDetails> toDownload = values[0];
+    protected HashMap<FormDetails, String> doInBackground(List<FormDetails>... values) {
+        List<FormDetails> toDownload = values[0];
 
         int total = toDownload.size();
         int count = 1;

@@ -55,53 +55,6 @@ public class SplashScreenActivity extends AppCompatActivity {
                 finish();
             }
         }, 2 * 1000);
-
-        /*
-        mImageMaxWidth = getWindowManager().getDefaultDisplay().getWidth();
-
-        // this splash screen should be a blank slate
-        //requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.splash_screen);
-
-        // get the shared preferences object
-        SharedPreferences mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        Editor editor = mSharedPreferences.edit();
-
-        // get the package info object with version number
-        PackageInfo packageInfo = null;
-        try {
-            packageInfo =
-                getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_META_DATA);
-        } catch (NameNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        boolean firstRun = mSharedPreferences.getBoolean(PreferencesActivity.KEY_FIRST_RUN, true);
-        boolean showSplash =
-            mSharedPreferences.getBoolean(PreferencesActivity.KEY_SHOW_SPLASH, false);
-        String splashPath =
-            mSharedPreferences.getString(PreferencesActivity.KEY_SPLASH_PATH,
-                getString(R.string.default_splash_path));
-
-        // if you've increased version code, then update the version number and set firstRun to true
-        if (mSharedPreferences.getLong(PreferencesActivity.KEY_LAST_VERSION, 0) < packageInfo.versionCode) {
-            editor.putLong(PreferencesActivity.KEY_LAST_VERSION, packageInfo.versionCode);
-            editor.apply();
-
-            firstRun = true;
-        }
-
-        setToolbar();
-
-        // do all the first run things
-        if (firstRun || showSplash) {
-            editor.putBoolean(PreferencesActivity.KEY_FIRST_RUN, false);
-            editor.apply();
-            startSplashScreen(splashPath);
-        } else {
-            endSplashScreen();
-        }
-        */
     }
 
     @Override
@@ -113,7 +66,6 @@ public class SplashScreenActivity extends AppCompatActivity {
         // launch new activity and close splash screen
         // Maybe need implement on another way
         startActivity(new Intent(SplashScreenActivity.this, MainMenuActivity.class));
-        //startActivity(new Intent(SplashScreenActivity.this, InstanceChooserList.class));
         finish();
     }
 

@@ -18,12 +18,12 @@
             android:key="survey_upload_url"
             android:title="@string/pref_upload_url"
             android:dialogTitle="@string/server_url"
-            android:defaultValue="http://6grain.com/api/farmSurvey"
-            android:summary="http://6grain.com/api/farmSurvey"
+            android:defaultValue="http://192.168.1.29/api/farmSurvey"
+            android:summary="http://192.168.1.29/api/farmSurvey"
             android:inputType="textUri"/>
 
     </PreferenceCategory>
-
+    <!--"http://6grain.com/api/farmSurvey"-->
     <PreferenceCategory
         android:key="@string/survey_settings"
         android:title="@string/survey_settings">
