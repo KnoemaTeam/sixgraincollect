@@ -26,6 +26,7 @@
     <string name="action_next_step">Next</string>
     <string name="action_done">Done</string>
     <string name="action_finish">Close</string>
+    <string name="dialog_title_information">Information</string>
 
     <string name="pref_url">URL</string>
     <string name="pref_source_url">Source URL</string>
@@ -123,7 +124,9 @@
 <string name="no_items_display">Nothing available to display.</string>
 <string name="no_items_display_forms">Nothing available to display.\n\nTry getting and filling out a blank form.</string>
 <string name="no_items_display_instances">Nothing available to display.\n\nTry finalizing saved forms before sending.</string>
-<string name="ok">OK</string>
+    <string name="ok">OK</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
 <string name="parse_error">Sorry, unable to parse form.</string>
 <string name="parse_legacy_formlist_failed">The server has not provided an available-forms document compatible with Aggregate 0.9.x. : %s</string>
 <string name="parse_openrosa_formlist_failed">The server has not provided an available-forms document compatible with the OpenRosa version 1.0 standard: %s</string>

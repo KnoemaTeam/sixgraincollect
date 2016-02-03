@@ -24,7 +24,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <ProgressBar xmlns:android="http://schemas.android.com/apk/res/android"
@@ -38,16 +38,34 @@
 
         </ProgressBar>
 
-        <TextView
-            android:id="@+id/message"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="15dp"
-            android:paddingBottom="20dp"
-            android:layout_gravity="center"
-            android:textColor="@color/colorAlertDialogText"
-            android:textSize="18sp"
-            android:gravity="center_vertical|start"/>
+            android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="15dp"
+                android:paddingBottom="20dp"
+                android:layout_gravity="center"
+                android:textColor="@color/colorAlertDialogText"
+                android:textSize="18sp"
+                android:gravity="center_vertical|start"/>
+
+        </ScrollView>
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorAlertDialogDivider"/>
+
+    <Button
+        style="@style/DialogButtonTheme"
+        android:id="@+id/cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel" />
+
 </LinearLayout>

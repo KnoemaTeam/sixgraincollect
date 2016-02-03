@@ -20,6 +20,9 @@
     <color name="colorNavigationButtonFont">#FFFFFF</color>
     <color name="colorNavigationButtonNormal">#2087BB</color>
     <color name="colorNavigationButtonFocused">#0079A4</color>
+    <color name="colorDialogButtonFont">#2087BB</color>
+    <color name="colorDialogButtonNormal">#FAFAFA</color>
+    <color name="colorDialogButtonFocused">#20000000</color>
     <color name="colorListViewTitleText">@android:color/black</color>
     <color name="colorListViewSubtitleText">#424242</color>
     <color name="colorRoundedImageBackground">#D4D4D4</color>

@@ -1,14 +1,17 @@
 package org.odk.collect.android.activities;
 
+import org.javarosa.core.model.data.LongData;
 import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
 import org.odk.collect.android.listeners.DiskSyncListener;
+import org.odk.collect.android.listeners.InstanceUploaderListener;
 import org.odk.collect.android.preferences.SettingsActivity;
 import org.odk.collect.android.preferences.SettingsFragment;
 import org.odk.collect.android.provider.FormsProviderAPI;
 import org.odk.collect.android.provider.FormsProviderAPI.FormsColumns;
 import org.odk.collect.android.provider.InstanceProviderAPI;
 import org.odk.collect.android.tasks.DiskSyncTask;
+import org.odk.collect.android.tasks.InstanceUploaderTask;
 import org.odk.collect.android.utilities.VersionHidingCursorAdapter;
 
 import android.app.AlertDialog;
@@ -43,8 +46,12 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Responsible for displaying all the valid forms in the forms directory. Stores the path to
@@ -53,9 +60,10 @@ import java.util.Map;
  * @author Yaw Anokwa (yanokwa@gmail.com)
  * @author Carl Hartung (carlhartung@gmail.com)
  */
-public class FormChooserList extends AppCompatActivity implements DiskSyncListener, LoaderManager.LoaderCallbacks<Cursor> {
+public class FormChooserList extends AppCompatActivity implements DiskSyncListener, LoaderManager.LoaderCallbacks<Cursor>, DialogConstructor.NotificationListener, InstanceUploaderListener {
     public static final int FORM_LIST_VIEW_ID = 111110;
     public static final int DATA_LIST_VIEW_ID = 111111;
+    public static final int INSTANCE_DATA_LIST_ID = 111112;
 
     private static final boolean EXIT = true;
     private static final boolean DO_NOT_EXIT = false;
@@ -66,8 +74,9 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
     private ListView mDataListView = null;
     private SparseArray<String> mFormList = new SparseArray<>();
     private SimpleCursorAdapter mInstanceDataAdapter = null;
-    private DiskSyncTask mDiskSyncTask;
-    private AlertDialog mAlertDialog;
+    private DiskSyncTask mDiskSyncTask = null;
+    private InstanceUploaderTask mInstanceUploaderTask = null;
+    private DialogConstructor mConstructor = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -185,28 +194,17 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
 
                 Intent preferences = new Intent(this, SettingsActivity.class);
                 startActivity(preferences);
+                break;
+
+            case R.id.action_synchronize:
+                synchronize();
+                break;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
     protected void onListItemClick(int position) {
-        /*
-        // get uri to form
-    	long idFormsTable = ((SimpleCursorAdapter) mDataListAdapter).getItemId(position);
-        Uri formUri = ContentUris.withAppendedId(FormsColumns.CONTENT_URI, idFormsTable);
-
-		Collect.getInstance().getActivityLogger().logAction(this, "onListItemClick", formUri.toString());
-
-        String action = getIntent().getAction();
-        if (Intent.ACTION_PICK.equals(action)) {
-            // caller is waiting on a picked form
-            setResult(RESULT_OK, new Intent().setData(formUri));
-        } else {
-            // caller wants to view/edit a form, so launch formentryactivity
-            startActivity(new Intent(Intent.ACTION_EDIT, formUri));
-        }
-        */
         Cursor c = (Cursor) mInstanceDataAdapter.getItem(position);
         Uri instanceUri = ContentUris.withAppendedId(InstanceProviderAPI.InstanceColumns.CONTENT_URI, c.getLong(c.getColumnIndex(InstanceProviderAPI.InstanceColumns._ID)));
 
@@ -222,7 +220,6 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
             createErrorDialog(getString(R.string.cannot_edit_completed_form), DO_NOT_EXIT);
         }
         else {
-            //
             startActivity(new Intent(Intent.ACTION_EDIT, instanceUri));
         }
     }
@@ -333,15 +330,19 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         if (id == DATA_LIST_VIEW_ID) {
-            //String selection = InstanceProviderAPI.InstanceColumns.STATUS + " != ?";
-            //String[] selectionArgs = {InstanceProviderAPI.STATUS_SUBMITTED};
             String sortOrder = InstanceProviderAPI.InstanceColumns.STATUS + " DESC, " + InstanceProviderAPI.InstanceColumns.DISPLAY_NAME + " ASC";
-
             return new CursorLoader(this, InstanceProviderAPI.InstanceColumns.CONTENT_URI, null, null, null, sortOrder);
         }
-        else {
+        else if (id == FORM_LIST_VIEW_ID) {
             String sortOrder = FormsColumns.DISPLAY_NAME + " ASC, " + FormsColumns.JR_VERSION + " DESC";
             return new CursorLoader(this, FormsColumns.CONTENT_URI, null, null, null, sortOrder);
+        }
+        else {
+            String selection = InstanceProviderAPI.InstanceColumns.STATUS + "=? or " + InstanceProviderAPI.InstanceColumns.STATUS + "=?";
+            String selectionArgs[] = { InstanceProviderAPI.STATUS_COMPLETE, InstanceProviderAPI.STATUS_SUBMISSION_FAILED };
+            String sortOrder = InstanceProviderAPI.InstanceColumns.DISPLAY_NAME + " ASC";
+
+            return new CursorLoader(this, InstanceProviderAPI.InstanceColumns.CONTENT_URI, null, selection, selectionArgs, sortOrder);
         }
     }
 
@@ -349,7 +350,7 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         if (loader.getId() == DATA_LIST_VIEW_ID)
             mInstanceDataAdapter.swapCursor(data);
-        else {
+        else if (loader.getId() == FORM_LIST_VIEW_ID) {
             if (data != null) {
                 while (data.moveToNext()) {
                     int formIdIndex = data.getColumnIndex("_id");
@@ -357,6 +358,21 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
 
                     mFormList.put(data.getInt(formIdIndex), data.getString(formNameIndex));
                 }
+            }
+        }
+        else {
+            if (data != null && data.getCount() > 0) {
+                List<Long> dataIdList = new ArrayList<>(data.getCount());
+                while (data.moveToNext()) {
+                    int index = data.getColumnIndex(InstanceProviderAPI.InstanceColumns._ID);
+                    dataIdList.add(data.getLong(index));
+                }
+
+                runInstanceUploaderTask(dataIdList.toArray(new Long[dataIdList.size()]));
+            }
+            else if (mConstructor != null) {
+                mConstructor.stopAnimation();
+                mConstructor = null;
             }
         }
     }
@@ -395,6 +411,7 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
 
     	Collect.getInstance().getActivityLogger().logAction(this, "createErrorDialog", "show");
 
+        /*
         mAlertDialog = new AlertDialog.Builder(this).create();
         mAlertDialog.setIcon(android.R.drawable.ic_dialog_info);
         mAlertDialog.setMessage(errorMsg);
@@ -415,5 +432,93 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
         mAlertDialog.setCancelable(false);
         mAlertDialog.setButton(getString(R.string.ok), errorListener);
         mAlertDialog.show();
+        */
+
+        mConstructor = new DialogConstructor(this);
+        mConstructor.setButtonText(getString(R.string.ok));
+        mConstructor.updateDialog("", errorMsg);
+    }
+
+    @Override
+    public void onPositiveClick() {
+
+    }
+
+    @Override
+    public void onNegativeClick() {
+
+    }
+
+    @Override
+    public void progressUpdate(int progress, int total) {
+
+    }
+
+    @Override
+    public void uploadingComplete(HashMap<String, String> result) {
+        String selection = "";
+        Set<String> keys = result.keySet();
+        Iterator<String> it = keys.iterator();
+        String[] selectionArgs = new String[keys.size()];
+
+        int i = 0;
+        while (it.hasNext()) {
+            String id = it.next();
+            selection += InstanceProviderAPI.InstanceColumns._ID + "=?";
+            selectionArgs[i++] = id;
+
+            if (i != keys.size()) {
+                selection += " or ";
+            }
+        }
+
+        String message = "";
+        Cursor results = null;
+        try {
+            results = getContentResolver().query(InstanceProviderAPI.InstanceColumns.CONTENT_URI, null, selection, selectionArgs, null);
+            if (results != null && results.getCount() > 0) {
+                results.moveToPosition(-1);
+
+                while (results.moveToNext()) {
+                    String name =
+                            results.getString(results.getColumnIndex(InstanceProviderAPI.InstanceColumns.DISPLAY_NAME));
+                    String id = results.getString(results.getColumnIndex(InstanceProviderAPI.InstanceColumns._ID));
+                    message += name + " - " + result.get(id) + "\n\n";
+                }
+            } else {
+                message = getString(R.string.no_forms_uploaded);
+            }
+        } finally {
+            if (results != null) {
+                results.close();
+            }
+        }
+
+        mConstructor.stopAnimation();
+        mConstructor = null;
+
+        mConstructor = new DialogConstructor(FormChooserList.this, DialogConstructor.DIALOG_SINGLE_ANSWER);
+        mConstructor.updateDialog(getString(R.string.dialog_title_information), message.trim());
+    }
+
+    @Override
+    public void authRequest(Uri url, HashMap<String, String> doneSoFar) {
+
+    }
+
+    protected void synchronize() {
+        if (mConstructor == null)
+            mConstructor = new DialogConstructor(this);
+
+        mConstructor.updateDialog(getString(R.string.uploading_data), "Uploading data...");
+        getSupportLoaderManager().initLoader(INSTANCE_DATA_LIST_ID, null, this);
+    }
+
+    protected void runInstanceUploaderTask (Long[] data) {
+        if (mInstanceUploaderTask == null || mInstanceUploaderTask.isCancelled()) {
+            mInstanceUploaderTask = new InstanceUploaderTask();
+            mInstanceUploaderTask.setUploaderListener(this);
+            mInstanceUploaderTask.execute(data);
+        }
     }
 }

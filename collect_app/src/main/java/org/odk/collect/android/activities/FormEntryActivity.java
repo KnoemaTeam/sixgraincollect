@@ -112,7 +112,7 @@ import android.widget.Toast;
  */
 public class FormEntryActivity extends AppCompatActivity implements AnimationListener,
 		FormLoaderListener, FormSavedListener, AdvanceToNextListener,
-		OnGestureListener, SavePointListener {
+		OnGestureListener, SavePointListener, DialogConstructor.NotificationListener {
 	private static final String t = "FormEntryActivity";
 
 	// save with every swipe forward or back. Timings indicate this takes .25
@@ -2567,7 +2567,7 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
         */
 
         if (mConstructor == null)
-            mConstructor = new DialogConstructor(this);
+            mConstructor = new DialogConstructor(FormEntryActivity.this);
 
         mConstructor.updateDialog(getString(R.string.loading_form), stepMessage);
     }
@@ -2816,4 +2816,14 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
             Toast.makeText(this, getString(R.string.save_point_error, errorMessage), Toast.LENGTH_LONG).show();
         }
     }
+
+	@Override
+	public void onPositiveClick() {
+
+	}
+
+	@Override
+	public void onNegativeClick() {
+
+	}
 }
