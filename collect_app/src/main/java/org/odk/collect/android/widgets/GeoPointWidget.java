@@ -16,6 +16,7 @@ package org.odk.collect.android.widgets;
 
 import java.text.DecimalFormat;
 
+import android.view.LayoutInflater;
 import android.widget.*;
 import org.javarosa.core.model.data.GeoPointData;
 import org.javarosa.core.model.data.IAnswerData;
@@ -116,7 +117,8 @@ public class GeoPointWidget extends QuestionWidget implements IBinaryWidget {
 		mAnswerDisplay.setGravity(Gravity.CENTER);
 
 		// setup play button
-		mViewButton = new Button(getContext());
+        mViewButton = (Button) LayoutInflater.from(context).inflate(R.layout.button_layout, null, false); //new CheckBox(getContext());
+		//mViewButton = new Button(getContext());
 		mViewButton.setId(QuestionWidget.newUniqueId());
 		mViewButton.setText(getContext().getString(R.string.show_location));
 		mViewButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, mAnswerFontsize);
@@ -156,7 +158,8 @@ public class GeoPointWidget extends QuestionWidget implements IBinaryWidget {
 			}
 		});
 
-		mGetLocationButton = new Button(getContext());
+        mGetLocationButton = (Button) LayoutInflater.from(context).inflate(R.layout.button_layout, null, false); //new CheckBox(getContext());
+		//mGetLocationButton = new Button(getContext());
 		mGetLocationButton.setId(QuestionWidget.newUniqueId());
 		mGetLocationButton.setPadding(20, 20, 20, 20);
 		mGetLocationButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP,

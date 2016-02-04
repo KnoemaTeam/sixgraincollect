@@ -50,7 +50,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreenActivity.this, FormChooserList.class);
+                Intent intent = new Intent(SplashScreenActivity.this, MainMenuActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -149,7 +149,6 @@ public class SplashScreenActivity extends AppCompatActivity {
         };
         t.start();
     }
-
 
     private void createErrorDialog(String errorMsg, final boolean shouldExit) {
 	    Collect.getInstance().getActivityLogger().logAction(this, "createErrorDialog", "show");

@@ -1,8 +1,8 @@
 package org.odk.collect.android.activities;
 
-import org.javarosa.core.model.data.LongData;
 import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.listeners.DeleteInstancesListener;
 import org.odk.collect.android.listeners.DiskSyncListener;
 import org.odk.collect.android.listeners.FormDownloaderListener;
 import org.odk.collect.android.listeners.FormListDownloaderListener;
@@ -10,20 +10,17 @@ import org.odk.collect.android.listeners.InstanceUploaderListener;
 import org.odk.collect.android.logic.FormDetails;
 import org.odk.collect.android.preferences.SettingsActivity;
 import org.odk.collect.android.preferences.SettingsFragment;
-import org.odk.collect.android.provider.FormsProviderAPI;
 import org.odk.collect.android.provider.FormsProviderAPI.FormsColumns;
 import org.odk.collect.android.provider.InstanceProviderAPI;
+import org.odk.collect.android.tasks.DeleteInstancesTask;
 import org.odk.collect.android.tasks.DiskSyncTask;
 import org.odk.collect.android.tasks.DownloadFormListTask;
 import org.odk.collect.android.tasks.DownloadFormsTask;
 import org.odk.collect.android.tasks.InstanceUploaderTask;
-import org.odk.collect.android.utilities.VersionHidingCursorAdapter;
+import org.odk.collect.android.views.DialogConstructor;
 
-import android.app.AlertDialog;
-import android.app.ListActivity;
 import android.content.ContentUris;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -70,7 +67,7 @@ import java.util.Set;
  * @author Yaw Anokwa (yanokwa@gmail.com)
  * @author Carl Hartung (carlhartung@gmail.com)
  */
-public class FormChooserList extends AppCompatActivity implements DiskSyncListener, LoaderManager.LoaderCallbacks<Cursor>, DialogConstructor.NotificationListener, InstanceUploaderListener, FormListDownloaderListener, FormDownloaderListener {
+public class FormChooserList extends AppCompatActivity implements DiskSyncListener, DeleteInstancesListener, LoaderManager.LoaderCallbacks<Cursor>, DialogConstructor.NotificationListener, InstanceUploaderListener, FormListDownloaderListener, FormDownloaderListener {
     public static final int FORM_LIST_VIEW_ID = 111110;
     public static final int DATA_LIST_VIEW_ID = 111111;
     public static final int INSTANCE_DATA_LIST_ID = 111112;
@@ -91,6 +88,7 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
 
     private DiskSyncTask mDiskSyncTask = null;
     private InstanceUploaderTask mInstanceUploaderTask = null;
+    private DeleteInstancesTask mDeleteInstancesTask = null;
     private DownloadFormListTask mDownloadFormListTask = null;
     private DownloadFormsTask mDownloadFormsTask = null;
 
@@ -98,6 +96,7 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
     private SparseArray<String> mFormList = new SparseArray<>();
     private Map<String, FormDetails> mFormData = new HashMap<>();
     private List<Map<String, String>> mFormDataList = new ArrayList<>();
+    private List<Long> mSelectedDataList = new ArrayList<>();
 
     private SimpleCursorAdapter mInstanceDataAdapter = null;
     private DialogConstructor mConstructor = null;
@@ -130,6 +129,7 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
             downloadSurveyFormList();
         }
         else {
+            mDeleteInstancesTask = (DeleteInstancesTask) getLastNonConfigurationInstance();
             runDiskSynchronizationTask();
         }
     }
@@ -139,16 +139,32 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
         if (mDiskSyncTask != null)
             mDiskSyncTask.setDiskSyncListener(this);
 
+        if (mDeleteInstancesTask != null) {
+            mDeleteInstancesTask.setDeleteListener(this);
+        }
+
         super.onResume();
 
         if (mDiskSyncTask != null && mDiskSyncTask.getStatus() == AsyncTask.Status.FINISHED) {
             SyncComplete(mDiskSyncTask.getStatusMessage());
         }
+
+        if (mDeleteInstancesTask != null
+                && mDeleteInstancesTask.getStatus() == AsyncTask.Status.FINISHED) {
+            deleteComplete(mDeleteInstancesTask.getDeleteCount());
+        }
     }
 
     @Override
     protected void onPause() {
-        mDiskSyncTask.setDiskSyncListener(null);
+        if (mDiskSyncTask != null) {
+            mDiskSyncTask.setDiskSyncListener(null);
+        }
+
+        if (mDeleteInstancesTask != null ) {
+            mDeleteInstancesTask.setDeleteListener(null);
+        }
+
         super.onPause();
     }
 
@@ -268,6 +284,8 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
                             // caller wants to view/edit a form, so launch formentryactivity
                             startActivity(new Intent(Intent.ACTION_EDIT, formUri));
                         }
+
+                        break;
                     }
                 }
             }
@@ -291,7 +309,17 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
         mDataListView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
             @Override
             public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
+                Cursor c = (Cursor) mInstanceDataAdapter.getItem(position);
+                long instanceId = c.getLong(c.getColumnIndex(InstanceProviderAPI.InstanceColumns._ID));
 
+                if (mSelectedDataList.contains(instanceId)) {
+                    mSelectedDataList.remove(instanceId);
+                    mDataListView.setSelected(false);
+                }
+                else {
+                    mSelectedDataList.add(instanceId);
+                    mDataListView.setSelection(position);
+                }
             }
 
             @Override
@@ -310,6 +338,7 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
             public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_delete:
+                        deleteSelectedInstances();
                         break;
                     default:
                         break;
@@ -550,7 +579,7 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
 
         for (Map<String, String> entry: mFormDataList) {
             if (entry.get(FORM_ID_KEY).contains("ZambiaShort") ||
-                    entry.get(FORM_ID_KEY).contains("Senegal")) {
+                    entry.get(FORM_ID_KEY).contains("FieldFormSenegal2")) {
                 filesToDownload.add(mFormData.get(entry.get(FORM_DETAIL_KEY)));
             }
         }
@@ -648,6 +677,36 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
         editor.putBoolean(SettingsFragment.SURVEY_FORM_DOWNLOADED_KEY, true);
         editor.apply();
 
+        mDeleteInstancesTask = (DeleteInstancesTask) getLastNonConfigurationInstance();
         runDiskSynchronizationTask();
+    }
+
+    private void deleteSelectedInstances() {
+        if (mDeleteInstancesTask == null) {
+            mDeleteInstancesTask = new DeleteInstancesTask();
+            mDeleteInstancesTask.setContentResolver(getContentResolver());
+            mDeleteInstancesTask.setDeleteListener(this);
+            mDeleteInstancesTask.execute(mSelectedDataList.toArray(new Long[mSelectedDataList.size()]));
+        } else {
+            Toast.makeText(this, getString(R.string.file_delete_in_progress),
+                    Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void deleteComplete(int deletedInstances) {
+        Log.i(t, "Delete instances complete");
+        Collect.getInstance().getActivityLogger().logAction(this, "deleteComplete", Integer.toString(deletedInstances));
+        if (deletedInstances == mSelectedDataList.size()) {
+            Toast.makeText(this, getString(R.string.file_deleted_ok, deletedInstances), Toast.LENGTH_SHORT).show();
+        } else {
+            Log.e(t, "Failed to delete " + (mSelectedDataList.size() - deletedInstances) + " instances");
+            Toast.makeText(this, getString(R.string.file_deleted_error, mSelectedDataList.size() - deletedInstances, mSelectedDataList.size()), Toast.LENGTH_LONG).show();
+        }
+
+        mDeleteInstancesTask = null;
+        mSelectedDataList.clear();
+
+        getSupportLoaderManager().restartLoader(DATA_LIST_VIEW_ID, null, this);
     }
 }

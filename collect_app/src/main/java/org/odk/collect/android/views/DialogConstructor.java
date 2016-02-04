@@ -1,4 +1,4 @@
-package org.odk.collect.android.activities;
+package org.odk.collect.android.views;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -35,6 +35,7 @@ public class DialogConstructor {
 
         mEventButton = (Button) contentView.findViewById(R.id.cancel);
         mEventButton.setText(activity.getString(R.string.cancel));
+        mEventButton.setVisibility(View.GONE);
         mEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

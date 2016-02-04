@@ -17,6 +17,7 @@ package org.odk.collect.android.widgets;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.StringData;
 import org.javarosa.form.api.FormEntryPrompt;
+import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
 
 import android.content.Context;
@@ -28,7 +29,9 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TableLayout;
 
@@ -51,7 +54,8 @@ public class StringWidget extends QuestionWidget {
 
     protected StringWidget(Context context, FormEntryPrompt prompt, boolean readOnlyOverride, boolean derived) {
         super(context, prompt);
-        mAnswer = new EditText(context);
+        //mAnswer = new EditText(context);
+        mAnswer = (EditText) LayoutInflater.from(context).inflate(R.layout.edit_text_layout, null, false); //new CheckBox(getContext());
         mAnswer.setId(QuestionWidget.newUniqueId());
         mReadOnly = prompt.isReadOnly() || readOnlyOverride;
 
@@ -81,7 +85,7 @@ public class StringWidget extends QuestionWidget {
         	}
         }
 
-        params.setMargins(7, 5, 7, 5);
+        params.setMargins(10, 5, 10, 5);
         mAnswer.setLayoutParams(params);
 
         // capitalize the first letter of the sentence

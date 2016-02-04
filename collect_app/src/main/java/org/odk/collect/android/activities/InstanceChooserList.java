@@ -28,7 +28,7 @@ import org.odk.collect.android.provider.InstanceProviderAPI.InstanceColumns;
 import org.odk.collect.android.tasks.DownloadFormListTask;
 import org.odk.collect.android.tasks.DownloadFormsTask;
 import org.odk.collect.android.tasks.InstanceUploaderTask;
-import org.odk.collect.android.utilities.CompatibilityUtils;
+import org.odk.collect.android.views.DialogConstructor;
 
 import android.app.AlertDialog;
 import android.content.ContentUris;

@@ -61,6 +61,13 @@
         <item name="android:textColor">@color/colorCheckBoxButtonText</item>
     </style>
 
+    <style name="ButtonTheme" parent="Theme.AppCompat.Light">
+        <item name="android:background">@drawable/navigation_button</item>
+        <item name="android:textColor">@color/colorNavigationButtonFont</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
     <style name="NavigationButtonTheme" parent="Theme.AppCompat.Light">
         <item name="android:background">@drawable/navigation_button</item>
         <item name="android:textColor">@color/colorNavigationButtonFont</item>
@@ -73,6 +80,17 @@
         <item name="android:textColor">@color/colorDialogButtonFont</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="EditTextTheme" parent="Theme.AppCompat.Light">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:textColor">@color/colorEditTextFont</item>
+        <item name="android:textSize">24sp</item>
     </style>
 
     <style name="TitleTheme" parent="Theme.AppCompat.Light">

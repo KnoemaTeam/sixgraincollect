@@ -16,6 +16,7 @@ package org.odk.collect.android.widgets;
 
 import java.io.File;
 
+import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.*;
 import org.javarosa.core.model.data.IAnswerData;
@@ -76,7 +77,8 @@ public class ImageWidget extends QuestionWidget implements IBinaryWidget {
         mErrorTextView.setText("Selected file is not a valid image");
 
         // setup capture button
-        mCaptureButton = new Button(getContext());
+        mCaptureButton = (Button) LayoutInflater.from(context).inflate(R.layout.button_layout, null, false);
+        //mCaptureButton = new Button(getContext());
         mCaptureButton.setId(QuestionWidget.newUniqueId());
         mCaptureButton.setText(getContext().getString(R.string.capture_image));
         mCaptureButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, mAnswerFontsize);
@@ -119,7 +121,8 @@ public class ImageWidget extends QuestionWidget implements IBinaryWidget {
         });
 
         // setup chooser button
-        mChooseButton = new Button(getContext());
+        mChooseButton = (Button) LayoutInflater.from(context).inflate(R.layout.button_layout, null, false);
+        //mChooseButton = new Button(getContext());
         mChooseButton.setId(QuestionWidget.newUniqueId());
         mChooseButton.setText(getContext().getString(R.string.choose_image));
         mChooseButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, mAnswerFontsize);
