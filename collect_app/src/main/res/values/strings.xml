@@ -28,6 +28,13 @@
     <string name="action_finish">Close</string>
     <string name="dialog_title_information">Information</string>
 
+    <string name="app_version">Version</string>
+    <string name="app_device_id">Device ID</string>
+    <string name="app_device_imei">IMEI</string>
+    <string name="app_device_subscriber_id">Subscriber ID</string>
+    <string name="app_device_sim_serial">Sim serial number</string>
+    <string name="app_device_phone_number">Phone number</string>
+
     <string name="pref_url">URL</string>
     <string name="pref_source_url">Source URL</string>
     <string name="pref_upload_url">Upload URL</string>

@@ -205,6 +205,10 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
                 startActivity(preferences);
                 break;
 
+            case R.id.action_device:
+                startActivity(new Intent(this, DeviceActivity.class));
+                break;
+
             case R.id.action_synchronize:
                 synchronize();
                 break;

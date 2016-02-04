@@ -32,6 +32,7 @@
     <color name="colorCheckBoxButtonTint">#0079A4</color>
     <color name="colorCheckBoxButtonText">@android:color/black</color>
     <color name="colorEditTextFont">#2093ee</color>
+    <color name="colorTitleFont">#424242</color>
 
     <drawable name="white">#ffffffff</drawable>
     <drawable name="black">#ff000000</drawable>
