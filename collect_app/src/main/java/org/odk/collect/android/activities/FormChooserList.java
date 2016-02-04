@@ -319,6 +319,7 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
                 else {
                     mSelectedDataList.add(instanceId);
                     mDataListView.setSelection(position);
+                    mDataListView.setSelected(true);
                 }
             }
 
