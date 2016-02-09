@@ -536,14 +536,13 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
         return true;
     }
 
-    private Integer postSurvey (File file, String urlString, String id, Uri toUpdate, ContentValues cv, HttpClient httpclient, HttpContext localContext, Outcome outcome) throws Exception {
+    private Integer postSurvey(File file, String urlString, String id, Uri toUpdate, ContentValues cv, HttpClient httpclient, HttpContext localContext, Outcome outcome) throws Exception {
         urlString += Collect.getInstance().getString(R.string.default_url_for_survey);
         Uri uri = Uri.parse(urlString);
 
         String xml = Files.toString(file, Charset.forName("UTF-8"));
         JSONObject jsonObject = XML.toJSONObject(xml);
         jsonObject = jsonObject.getJSONObject((String)jsonObject.names().get(0));
-        jsonObject.put("q_version", jsonObject.getString("id"));
         jsonObject.put("app_version", Collect.getInstance().getAppVersionName());
         String jsonSurvey = jsonObject.toString();
 
@@ -563,7 +562,7 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
         return key;
     }
 
-    private boolean postFile (File file, Integer key, String urlString, String id, Uri toUpdate, ContentValues cv, HttpClient httpclient, HttpContext localContext, Outcome outcome) throws Exception {
+    private boolean postFile(File file, Integer key, String urlString, String id, Uri toUpdate, ContentValues cv, HttpClient httpclient, HttpContext localContext, Outcome outcome) throws Exception {
         urlString += String.format(Collect.getInstance().getString(R.string.default_url_for_file), key, file.getName());
         Uri uri = Uri.parse(urlString);
 

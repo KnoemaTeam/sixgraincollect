@@ -321,11 +321,13 @@
     <string-array name="survey_type_entries">
         <item>Zambia</item>
         <item>Senegal</item>
+        <item>Cameroon</item>
     </string-array>
 
     <string-array name="survey_type_values">
         <item>Zambia</item>
         <item>Senegal</item>
+        <item>Cameroon</item>
     </string-array>
 
 <string name="survey_internal_error">Internal error: step to prompt failed.</string>

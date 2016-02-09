@@ -402,6 +402,7 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
         else {
             if (data != null && data.getCount() > 0) {
                 List<Long> dataIdList = new ArrayList<>(data.getCount());
+                data.moveToPosition(-1);
                 while (data.moveToNext()) {
                     int index = data.getColumnIndex(InstanceProviderAPI.InstanceColumns._ID);
                     dataIdList.add(data.getLong(index));
@@ -584,7 +585,8 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
 
         for (Map<String, String> entry: mFormDataList) {
             if (entry.get(FORM_ID_KEY).contains("ZambiaShort") ||
-                    entry.get(FORM_ID_KEY).contains("FieldFormSenegal2")) {
+                    entry.get(FORM_ID_KEY).contains("FieldFormSenegal2") ||
+                    entry.get(FORM_ID_KEY).contains("FieldFormCameroon")) {
                 filesToDownload.add(mFormData.get(entry.get(FORM_DETAIL_KEY)));
             }
         }
