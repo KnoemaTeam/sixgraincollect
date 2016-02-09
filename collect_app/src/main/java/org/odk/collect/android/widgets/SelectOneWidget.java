@@ -38,12 +38,14 @@ import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 /**
  * SelectOneWidgets handles select-one fields using radio buttons.
@@ -71,11 +73,11 @@ public class SelectOneWidget extends QuestionWidget implements
         } else {
             mItems = prompt.getSelectChoices();
         }
-		buttons = new ArrayList<RadioButton>();
+
+		buttons = new ArrayList<>();
 
 		// Layout holds the vertical list of buttons
-		LinearLayout buttonLayout = new LinearLayout(context);
-
+		RadioGroup buttonLayout = new RadioGroup(context);
 		String s = null;
 		if (prompt.getAnswerValue() != null) {
 			s = ((Selection) prompt.getAnswerValue().getValue()).getValue();
@@ -147,7 +149,6 @@ public class SelectOneWidget extends QuestionWidget implements
 			}
 		}
 		buttonLayout.setOrientation(LinearLayout.VERTICAL);
-
 		// The buttons take up the right half of the screen
 		addAnswerView(buttonLayout);
 	}
@@ -176,8 +177,7 @@ public class SelectOneWidget extends QuestionWidget implements
 	@Override
 	public void setFocus(Context context) {
 		// Hide the soft keyboard if it's showing.
-		InputMethodManager inputManager = (InputMethodManager) context
-				.getSystemService(Context.INPUT_METHOD_SERVICE);
+		InputMethodManager inputManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
 		inputManager.hideSoftInputFromWindow(this.getWindowToken(), 0);
 	}
 
@@ -257,7 +257,6 @@ public class SelectOneWidget extends QuestionWidget implements
 
     }
     
-    
     @Override
     public void playAllPromptText() {
         // set up to play the items when the
@@ -282,5 +281,4 @@ public class SelectOneWidget extends QuestionWidget implements
             layout.resetTextFormatting();
         }   
     }
- 
 }

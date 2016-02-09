@@ -39,14 +39,16 @@
             android:text="text2"/>
 
     <CheckBox
-            android:id="@+id/checkbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:focusable="false"
-            android:clickable="false"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:visibility="gone"
-            />
+        style="@style/AppTheme.CheckBoxButtonTheme"
+        android:id="@+id/checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:focusable="false"
+        android:clickable="false"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:visibility="gone" />
+
 </RelativeLayout>

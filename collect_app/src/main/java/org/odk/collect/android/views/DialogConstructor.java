@@ -82,8 +82,10 @@ public class DialogConstructor {
             }
         });
 
-        if (type == DIALOG_SINGLE_ANSWER)
+        if (type == DIALOG_SINGLE_ANSWER) {
+            ok.setText("OK");
             no.setVisibility(View.GONE);
+        }
 
         mDialog = new Dialog(activity);
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

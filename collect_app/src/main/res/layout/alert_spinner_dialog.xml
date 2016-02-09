@@ -23,25 +23,27 @@
         android:layout_height="1dp"
         android:background="@color/colorAlertDialogDivider"/>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
-        <ProgressBar xmlns:android="http://schemas.android.com/apk/res/android"
-            style="?android:attr/progressBarStyleLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="25dp"
-            android:layout_gravity="center"
-            android:background="@android:color/transparent"
-            android:indeterminateDrawable="@drawable/spinner">
-
-        </ProgressBar>
-
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:layout_gravity="top|center_horizontal"
+            android:orientation="horizontal">
+
+            <ProgressBar xmlns:android="http://schemas.android.com/apk/res/android"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="25dp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:indeterminateDrawable="@drawable/spinner">
+
+            </ProgressBar>
 
             <TextView
                 android:id="@+id/message"
@@ -54,21 +56,29 @@
                 android:layout_gravity="center"
                 android:textColor="@color/colorAlertDialogText"
                 android:textSize="18sp"
+                android:maxLines="100"
                 android:gravity="center_vertical|start"/>
 
-        </ScrollView>
-    </LinearLayout>
+        </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorAlertDialogDivider"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:orientation="vertical">
 
-    <Button
-        style="@style/DialogButtonTheme"
-        android:id="@+id/cancel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/cancel" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorAlertDialogDivider"/>
 
+            <Button
+                style="@style/DialogButtonTheme"
+                android:id="@+id/cancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel" />
+
+        </LinearLayout>
+    </FrameLayout>
 </LinearLayout>

@@ -20,6 +20,7 @@ import android.media.MediaPlayer.OnCompletionListener;
 import android.text.method.LinkMovementMethod;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -81,6 +82,9 @@ public class SelectMultiWidget extends QuestionWidget {
         }
 
         LinearLayout answerLayout = new LinearLayout(getContext());
+        LinearLayout.LayoutParams checkboxParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        checkboxParams.setMargins(0, 5, 0, 0);
+
         answerLayout.setOrientation(LinearLayout.VERTICAL);
         if (mItems != null) {
             for (int i = 0; i < mItems.size(); i++) {
@@ -93,13 +97,14 @@ public class SelectMultiWidget extends QuestionWidget {
                 }
                 // no checkbox group so id by answer + offset
                 CheckBox c = (CheckBox) LayoutInflater.from(context).inflate(R.layout.check_box_button, answerLayout, false); //new CheckBox(getContext());
-                c.setTag(Integer.valueOf(i));
+                c.setTag(i);
                 c.setId(QuestionWidget.newUniqueId());
                 c.setText(choiceDisplayName);
                 c.setMovementMethod(LinkMovementMethod.getInstance());
                 c.setTextSize(TypedValue.COMPLEX_UNIT_DIP, mAnswerFontsize);
                 c.setFocusable(!prompt.isReadOnly());
                 c.setEnabled(!prompt.isReadOnly());
+                c.setLayoutParams(checkboxParams);
                 
                 for (int vi = 0; vi < ve.size(); vi++) {
                     // match based on value, not key

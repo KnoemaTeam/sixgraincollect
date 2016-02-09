@@ -4,4 +4,4 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/AppTheme.RadioButtonTheme"
     android:buttonTint="@color/colorRadioButtonTint"
-    app:backgroundTint="@color/colorRadioButtonTint" />
+    app:buttonTint="@color/colorRadioButtonTint" />

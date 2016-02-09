@@ -2,5 +2,5 @@
 <CheckBox xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/AppTheme.CheckBoxButtonTheme"
-    app:backgroundTint="@color/colorCheckBoxButtonTint"
-    android:backgroundTint="@color/colorCheckBoxButtonTint"/>
+    android:buttonTint="@color/colorCheckBoxButtonTint"
+    app:buttonTint="@color/colorCheckBoxButtonTint" />

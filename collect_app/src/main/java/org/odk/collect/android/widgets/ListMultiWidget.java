@@ -98,8 +98,9 @@ public class ListMultiWidget extends QuestionWidget {
 
         if (mItems != null) {
             for (int i = 0; i < mItems.size(); i++) {
-                CheckBox c = new CheckBox(getContext());
-                c.setTag(Integer.valueOf(i));
+                //CheckBox c = new CheckBox(getContext());
+                CheckBox c = (CheckBox) LayoutInflater.from(context).inflate(R.layout.check_box_button, null, false);
+                c.setTag(i);
                 c.setId(QuestionWidget.newUniqueId());
                 c.setFocusable(!prompt.isReadOnly());
                 c.setEnabled(!prompt.isReadOnly());

@@ -522,7 +522,7 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
         mConstructor = null;
 
         mConstructor = new DialogConstructor(FormChooserList.this, DialogConstructor.DIALOG_SINGLE_ANSWER);
-        mConstructor.updateDialog(getString(R.string.dialog_title_information), message.trim());
+        mConstructor.updateDialog(getString(R.string.dialog_title_information), message);
     }
 
     @Override
