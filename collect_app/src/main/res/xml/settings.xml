@@ -9,8 +9,8 @@
             android:key="survey_source_url"
             android:title="@string/pref_source_url"
             android:dialogTitle="@string/server_url"
-            android:defaultValue="http://formhub.6grain.com/sl"
-            android:summary="http://formhub.6grain.com/sl"
+            android:defaultValue="http://formhub.6grain.com/manikeev"
+            android:summary="http://formhub.6grain.com/manikeev"
             android:inputType="textUri"/>
 
         <EditTextPreference

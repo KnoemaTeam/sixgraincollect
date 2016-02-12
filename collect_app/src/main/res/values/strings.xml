@@ -316,7 +316,7 @@
 
     <string name="survey_settings">Survey settings</string>
     <string name="survey_chosen_type">Survey type</string>
-	<string name="survey_default_type">Zambia</string>
+	<string name="survey_default_type">za20160210</string>
 
     <string-array name="survey_type_entries">
         <item>Zambia</item>
@@ -325,9 +325,9 @@
     </string-array>
 
     <string-array name="survey_type_values">
-        <item>Zambia</item>
-        <item>Senegal</item>
-        <item>Cameroon</item>
+        <item>za20160210</item>
+        <item>sn20160210</item>
+        <item>cm20160208</item>
     </string-array>
 
 <string name="survey_internal_error">Internal error: step to prompt failed.</string>

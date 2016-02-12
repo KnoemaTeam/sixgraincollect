@@ -14,37 +14,29 @@
 
 package org.odk.collect.android.tasks;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.SocketTimeoutException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.net.UnknownHostException;
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.logging.XMLFormatter;
+import android.content.ContentValues;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.preference.PreferenceManager;
+import android.util.Log;
+
+import com.google.common.io.Files;
 
 import org.json.JSONObject;
-import org.json.XML;
 import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
 import org.odk.collect.android.listeners.InstanceUploaderListener;
 import org.odk.collect.android.logic.PropertyManager;
 import org.odk.collect.android.preferences.PreferencesActivity;
 import org.odk.collect.android.preferences.SettingsFragment;
+import org.odk.collect.android.provider.FormsProviderAPI;
 import org.odk.collect.android.provider.InstanceProviderAPI;
 import org.odk.collect.android.provider.InstanceProviderAPI.InstanceColumns;
 import org.odk.collect.android.utilities.WebUtils;
+import org.odk.collect.android.utilities.XMLUtils;
 import org.opendatakit.httpclientandroidlib.Header;
-import org.opendatakit.httpclientandroidlib.HttpEntity;
 import org.opendatakit.httpclientandroidlib.HttpResponse;
 import org.opendatakit.httpclientandroidlib.HttpStatus;
 import org.opendatakit.httpclientandroidlib.client.ClientProtocolException;
@@ -56,27 +48,23 @@ import org.opendatakit.httpclientandroidlib.conn.HttpHostConnectException;
 import org.opendatakit.httpclientandroidlib.entity.ContentType;
 import org.opendatakit.httpclientandroidlib.entity.FileEntity;
 import org.opendatakit.httpclientandroidlib.entity.StringEntity;
-import org.opendatakit.httpclientandroidlib.entity.mime.MultipartEntity;
-import org.opendatakit.httpclientandroidlib.entity.mime.content.FileBody;
-import org.opendatakit.httpclientandroidlib.entity.mime.content.StringBody;
 import org.opendatakit.httpclientandroidlib.protocol.HttpContext;
 import org.opendatakit.httpclientandroidlib.util.EntityUtils;
 
-import android.content.ContentValues;
-import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.AsyncTask;
-import android.preference.PreferenceManager;
-import android.provider.MediaStore;
-import android.text.TextUtils;
-import android.util.Log;
-import android.util.Xml;
-import android.webkit.MimeTypeMap;
-
-import com.google.common.io.Files;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.SocketTimeoutException;
+import java.net.URLDecoder;
+import java.net.UnknownHostException;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Background task for uploading completed forms.
@@ -108,7 +96,7 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
      * @param uriRemap - mapping of Uris to avoid redirects on subsequent invocations
      * @return false if credentials are required and we should terminate immediately.
      */
-    private boolean uploadOneSubmission(String urlString, String id, String instanceFilePath,
+    private boolean uploadOneSubmission(String urlString, String id, String formId, String instanceFilePath,
                                         Uri toUpdate, HttpContext localContext, Map<Uri, Uri> uriRemap, Outcome outcome) {
 
         Collect.getInstance().getActivityLogger().logAction(this, urlString, instanceFilePath);
@@ -341,7 +329,7 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
         }
 
         try {
-            if (!uploadFiles(submissionFile, files,  urlString, id, toUpdate, cv, httpclient, localContext, outcome))
+            if (!uploadFiles(submissionFile, files,  urlString, id, formId, toUpdate, cv, httpclient, localContext, outcome))
                 return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -402,6 +390,7 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
                     publishProgress(c.getPosition() + 1, c.getCount());
                     String instance = c.getString(c.getColumnIndex(InstanceColumns.INSTANCE_FILE_PATH));
                     String id = c.getString(c.getColumnIndex(InstanceColumns._ID));
+                    String formId = c.getString(c.getColumnIndex(InstanceColumns.JR_FORM_ID));
                     Uri toUpdate = Uri.withAppendedPath(InstanceColumns.CONTENT_URI, id);
 
                     int subIdx = c.getColumnIndex(InstanceColumns.SUBMISSION_URI);
@@ -413,7 +402,7 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
                         urlString = PreferenceManager.getDefaultSharedPreferences(Collect.getContext()).getString(SettingsFragment.SURVEY_UPLOAD_URL_KEY, Collect.getInstance().getString(R.string.default_server_url_for_survey));
                     }
 
-                    if ( !uploadOneSubmission(urlString, id, instance, toUpdate, localContext, uriRemap, outcome) ) {
+                    if ( !uploadOneSubmission(urlString, id, formId, instance, toUpdate, localContext, uriRemap, outcome) ) {
                         return outcome; // get credentials...
                     }
                 }
@@ -523,8 +512,8 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
         output.flush();
     }
 
-    private boolean uploadFiles(File submissionFile, List<File> files, String urlString, String id, Uri toUpdate, ContentValues cv, HttpClient httpclient, HttpContext localContext, Outcome outcome) throws Exception {
-        Integer key = postSurvey(submissionFile, urlString, id, toUpdate, cv, httpclient, localContext, outcome);
+    private boolean uploadFiles(File submissionFile, List<File> files, String urlString, String id, String formId, Uri toUpdate, ContentValues cv, HttpClient httpclient, HttpContext localContext, Outcome outcome) throws Exception {
+        Integer key = postSurvey(submissionFile, urlString, id, formId, toUpdate, cv, httpclient, localContext, outcome);
         if (key == null)
             return false;
 
@@ -536,12 +525,16 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
         return true;
     }
 
-    private Integer postSurvey(File file, String urlString, String id, Uri toUpdate, ContentValues cv, HttpClient httpclient, HttpContext localContext, Outcome outcome) throws Exception {
+    private Integer postSurvey(File file, String urlString, String id, String formId, Uri toUpdate, ContentValues cv, HttpClient httpclient, HttpContext localContext, Outcome outcome) throws Exception {
         urlString += Collect.getInstance().getString(R.string.default_url_for_survey);
         Uri uri = Uri.parse(urlString);
 
+        String formFilePath = getFormFilePath(formId);
+        String formXml = Files.toString(new File(formFilePath), Charset.forName("UTF-8"));
+        String[] arrayProperties = XMLUtils.getArrayProperties(formXml);
+
         String xml = Files.toString(file, Charset.forName("UTF-8"));
-        JSONObject jsonObject = XML.toJSONObject(xml);
+        JSONObject jsonObject = XMLUtils.toJSONObject(xml, arrayProperties);
         jsonObject = jsonObject.getJSONObject((String)jsonObject.names().get(0));
         jsonObject.put("app_version", Collect.getInstance().getAppVersionName());
         String jsonSurvey = jsonObject.toString();
@@ -605,5 +598,29 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
         }
 
         return false;
+    }
+
+    private String getFormFilePath(String formId) throws Exception {
+        String[] selectionArgs = { formId };
+        String selection = FormsProviderAPI.FormsColumns.JR_FORM_ID + "=?";
+        String[] fields = { FormsProviderAPI.FormsColumns.FORM_FILE_PATH };
+
+        Cursor formCursor = null;
+        try {
+            formCursor = Collect.getInstance().getContentResolver().query(FormsProviderAPI.FormsColumns.CONTENT_URI, fields, selection, selectionArgs, null);
+            if ( formCursor.getCount() == 0 )
+                throw new Exception("No form with id = " + formId);
+
+            formCursor.moveToFirst();
+            int idxFormFilePath = formCursor.getColumnIndex(fields[0]);
+            if ( formCursor.isNull(idxFormFilePath) )
+                throw new Exception("Form file path in null for form with id = " + formId);
+
+            return formCursor.getString(idxFormFilePath);
+        } finally {
+            if (formCursor != null) {
+                formCursor.close();
+            }
+        }
     }
 }

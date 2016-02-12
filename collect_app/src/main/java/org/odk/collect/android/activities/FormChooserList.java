@@ -125,13 +125,14 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
         }
 
         mSettings = PreferenceManager.getDefaultSharedPreferences(this);
-        if (!mSettings.getBoolean(SettingsFragment.SURVEY_FORM_DOWNLOADED_KEY, false)) {
+        // Temporary commented
+//        if (mSettings.getBoolean(SettingsFragment.SURVEY_FORM_DOWNLOADED_KEY, false)) {
             downloadSurveyFormList();
-        }
-        else {
-            mDeleteInstancesTask = (DeleteInstancesTask) getLastNonConfigurationInstance();
-            runDiskSynchronizationTask();
-        }
+//        }
+//        else {
+//            mDeleteInstancesTask = (DeleteInstancesTask) getLastNonConfigurationInstance();
+//            runDiskSynchronizationTask();
+//        }
     }
 
     @Override
@@ -584,9 +585,9 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
         int totalCount;
 
         for (Map<String, String> entry: mFormDataList) {
-            if (entry.get(FORM_ID_KEY).contains("ZambiaShort") ||
-                    entry.get(FORM_ID_KEY).contains("FieldFormSenegal2") ||
-                    entry.get(FORM_ID_KEY).contains("FieldFormCameroon")) {
+            if (entry.get(FORM_ID_KEY).contains("za20160210") ||
+                    entry.get(FORM_ID_KEY).contains("sn20160210") ||
+                    entry.get(FORM_ID_KEY).contains("cm20160208")) {
                 filesToDownload.add(mFormData.get(entry.get(FORM_DETAIL_KEY)));
             }
         }

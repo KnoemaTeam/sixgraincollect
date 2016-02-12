@@ -61,12 +61,12 @@
         <provider
             android:exported="true"
             android:name="org.odk.collect.android.provider.FormsProvider"
-            android:authorities="org.odk.collect.android.provider.odk.forms" />
+            android:authorities="com.sixgrain.collect.android.provider.odk.forms" />
 
         <provider
             android:exported="true"
             android:name="org.odk.collect.android.provider.InstanceProvider"
-            android:authorities="org.odk.collect.android.provider.odk.instances" />
+            android:authorities="com.sixgrain.collect.android.provider.odk.instances" />
 
         <activity
             android:name=".activities.MainMenuActivity"
@@ -85,8 +85,8 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
 
-                <data android:mimeType="vnd.android.cursor.item/vnd.odk.form" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.odk.instance" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.sixgrain.form" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.sixgrain.instance" />
             </intent-filter>
         </activity>
 
@@ -154,7 +154,7 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
 
-                <data android:mimeType="vnd.android.cursor.dir/vnd.odk.form" />
+                <data android:mimeType="vnd.android.cursor.dir/vnd.sixgrain.form" />
             </intent-filter>
         </activity>
         <activity

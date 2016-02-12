@@ -13,7 +13,7 @@
 	<string translatable="false" name="protocol_google_sheets">google_sheets</string>
     <string translatable="false" name="default_form_processing_logic">-1</string>
     <string translatable="false" name="protocol_other">other_protocol</string>
-	<string translatable="false" name="default_server_url">http://formhub.6grain.com/sl</string>
+	<string translatable="false" name="default_server_url">http://formhub.6grain.com/manikeev</string>
 	<string translatable="false" name="default_odk_formlist">/formList</string>
 	<string translatable="false" name="default_odk_submission">/submission</string>
 	<string translatable="false" name="default_server_url_for_survey">http://6grain.org/api/farmSurvey</string>
