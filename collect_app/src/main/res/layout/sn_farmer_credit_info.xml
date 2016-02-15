@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/TitleTheme"
+            android:text="@string/farmer_credit_title"/>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/hasCreditTitle"
+            android:text="@string/farmer_has_credit"/>
+
+        <RadioGroup
+            style="@style/RadioGroupTheme"
+            android:id="@+id/hasCreditGroup"
+            android:orientation="horizontal"/>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/creditTypeTitle"
+            android:text="@string/farmer_credit_type"/>
+
+        <LinearLayout
+            android:id="@+id/creditTypeGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"/>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/creditAmountTitle"
+            android:text="@string/farmer_credit_amount"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/creditAmountText"
+            android:inputType="numberDecimal" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/creditSourceTitle"
+            android:text="@string/farmer_credit_source"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/creditSourceGroup1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"/>
+
+            <LinearLayout
+                android:id="@+id/creditSourceGroup2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"/>
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/creditDateCompletionTitle"
+            android:text="@string/farmer_credit_completion_date"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/creditDateCompletionText"
+            android:hint="@string/hint_date"
+            android:inputType="date" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/creditFirstDateTitle"
+            android:text="@string/farmer_credit_repayment_first_year"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/creditFirstDateText"
+            android:hint="@string/hint_date"
+            android:inputType="date" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/creditLastDateTitle"
+            android:text="@string/farmer_credit_repayment_last_year"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/creditLastDateText"
+            android:hint="@string/hint_date"
+            android:inputType="date" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/creditDestinationTitle"
+            android:text="@string/farmer_credit_destination"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/creditDestinationGroup1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"/>
+
+            <LinearLayout
+                android:id="@+id/creditDestinationGroup2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

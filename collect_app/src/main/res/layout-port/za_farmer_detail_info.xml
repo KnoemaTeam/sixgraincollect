@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/headNameTitle"
+            android:text="@string/farmer_head_name"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/headNameText"
+            android:inputType="text" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/farmerNameTitle"
+            android:text="@string/farmer_main_name"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/farmerNameText"
+            android:inputType="text" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/genderTitle"
+            android:text="@string/farmer_gender"/>
+
+        <RadioGroup
+            style="@style/RadioGroupTheme"
+            android:id="@+id/genderGroup"
+            android:orientation="horizontal"/>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/farmerDateTitle"
+            android:text="@string/farmer_date_of_birth"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/farmerDateText"
+            android:hint="@string/hint_date"
+            android:inputType="date" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/farmerPhoneTitle"
+            android:text="@string/farmer_phone"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/farmerPhoneText"
+            android:hint="@string/hint_phone_number"
+            android:inputType="phone" />
+
+    </LinearLayout>
+</ScrollView>

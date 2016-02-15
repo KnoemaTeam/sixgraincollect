@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dictionary>
+    <item id="adamawa_region" name="Adamawa Region" group="region"/>
+    <item id="centre_region" name="Centre Region" group="region"/>
+    <item id="east_region" name="East Region" group="region"/>
+    <item id="far_north_region" name="Far North Region" group="region"/>
+    <item id="littoral_region" name="Littoral Region" group="region"/>
+    <item id="north_region" name="North Region" group="region"/>
+    <item id="northwest_region" name="Northwest Region" group="region"/>
+    <item id="south_region" name="South Region" group="region"/>
+    <item id="southwest_region" name="Southwest Region" group="region"/>
+    <item id="west_region" name="West Region" group="region"/>
+    <item id="d_djerm" name="Djérem" group="department"/>
+    <item id="d_faro_deo" name="Faro-et-Déo" group="department"/>
+    <item id="d_mayo_banyo" name="Mayo-Banyo" group="department"/>
+    <item id="d_mbere" name="Mbéré" group="department"/>
+    <item id="d_vina" name="Vina" group="department"/>
+    <item id="d_haute_sanaga" name="Haute-Sanaga" group="department"/>
+    <item id="d_lekie" name="Lekié" group="department"/>
+    <item id="d_mbam_inoubou" name="Mbam-et-Inoubou" group="department"/>
+    <item id="d_mbam_kim" name="Mbam-et-Kim" group="department"/>
+    <item id="d_mefou_afamba" name="Méfou-et-Afamba" group="department"/>
+    <item id="d_mefou_akono" name="Méfou-et-Akono" group="department"/>
+    <item id="d_mfoundi" name="Mfoundi" group="department"/>
+    <item id="d_nyong_kelle" name="Nyong-et-Kéllé" group="department"/>
+    <item id="d_nyong_mfoumou" name="Nyong-et-Mfoumou" group="department"/>
+    <item id="d_nyong_so" name="Nyong-et-So'o" group="department"/>
+    <item id="d_boumba_ngoko" name="Boumba-et-Ngoko" group="department"/>
+    <item id="d_haut_nyong" name="Haut-Nyong" group="department"/>
+    <item id="d_kadey" name="Kadey" group="department"/>
+    <item id="d_lom_djerem" name="Lom-et-Djerem" group="department"/>
+    <item id="d_diamare" name="Diamaré" group="department"/>
+    <item id="d_logone_chari" name="Logone-et-Chari" group="department"/>
+    <item id="d_mayo_danay" name="Mayo-Danay" group="department"/>
+    <item id="d_mayo_kani" name="Mayo-Kani" group="department"/>
+    <item id="d_mayo_sava" name="Mayo-Sava" group="department"/>
+    <item id="d_mayo_tsanga" name="Mayo-Tsanaga" group="department"/>
+    <item id="d_moungo" name="Moungo" group="department"/>
+    <item id="d_nkam" name="Nkam" group="department"/>
+    <item id="d_sanaga_maritime" name="Sanaga-Maritime" group="department"/>
+    <item id="d_wouri" name="Wouri" group="department"/>
+    <item id="d_benoue" name="Bénoué" group="department"/>
+    <item id="d_faro" name="Faro" group="department"/>
+    <item id="d_mayo_louti" name="Mayo-Louti" group="department"/>
+    <item id="d_mayo_rey" name="Mayo-Rey" group="department"/>
+    <item id="d_boyo" name="Boyo" group="department"/>
+    <item id="d_bui" name="Bui" group="department"/>
+    <item id="d_donga_mantung" name="Donga-Mantung" group="department"/>
+    <item id="d_menchum" name="Menchum" group="department"/>
+    <item id="d_mezam" name="Mezam" group="department"/>
+    <item id="d_momo" name="Momo" group="department"/>
+    <item id="d_ng0_ketunjia" name="Ngo-ketunjia" group="department"/>
+    <item id="d_dja_lobo" name="Dja-et-Lobo" group="department"/>
+    <item id="d_mvila" name="Mvila" group="department"/>
+    <item id="d_ocean" name="Océan" group="department"/>
+    <item id="d_vallee_ntem" name="Vallée-du-Ntem" group="department"/>
+    <item id="d_fako" name="Fako" group="department"/>
+    <item id="d_koupe_manengouba" name="Koupé-Manengouba" group="department"/>
+    <item id="d_lebialem" name="Lebialem" group="department"/>
+    <item id="d_manyu" name="Manyu" group="department"/>
+    <item id="d_meme" name="Meme" group="department"/>
+    <item id="d_ndian" name="Ndian" group="department"/>
+    <item id="d_bamboutos" name="Bamboutos" group="department"/>
+    <item id="d_haut_nkam" name="Haut-Nkam" group="department"/>
+    <item id="d_hauts_plateaux" name="Hauts-Plateaux" group="department"/>
+    <item id="d_koun" name="Koung-Khi" group="department"/>
+    <item id="d_menoua" name="Menoua" group="department"/>
+    <item id="d_mifi" name="Mifi" group="department"/>
+    <item id="d_nde" name="Ndé" group="department"/>
+    <item id="d_noun" name="Noun" group="department"/>
+    <item id="english" name="English" group="local_language"/>
+    <item id="french" name="French" group="local_language"/>
+    <item id="abo" name="Abo" group="local_language"/>
+    <item id="afade" name="Afade" group="local_language"/>
+    <item id="aghem" name="Aghem" group="local_language"/>
+    <item id="akoose" name="Akoose" group="local_language"/>
+    <item id="akum" name="Akum" group="local_language"/>
+    <item id="ambele" name="Ambele" group="local_language"/>
+    <item id="atong" name="Atong" group="local_language"/>
+    <item id="awing" name="Awing" group="local_language"/>
+    <item id="babanki" name="Babanki" group="local_language"/>
+    <item id="bafanji" name="Bafanji" group="local_language"/>
+    <item id="bafaw_balong" name="Bafaw-balong" group="local_language"/>
+    <item id="bafia" name="Bafia" group="local_language"/>
+    <item id="bafut" name="Bafut" group="local_language"/>
+    <item id="baghante" name="Baghante" group="local_language"/>
+    <item id="baka" name="Baka" group="local_language"/>
+    <item id="bakoo" name="Bakoo" group="local_language"/>
+    <item id="bakole" name="Bakole" group="local_language"/>
+    <item id="bakundu_balue" name="Bakundu-balue" group="local_language"/>
+    <item id="bakweri" name="Bakweri" group="local_language"/>
+    <item id="baldamu" name="Baldamu" group="local_language"/>
+    <item id="balo" name="Balo" group="local_language"/>
+    <item id="balundu_bima" name="Balundu-bima" group="local_language"/>
+    <item id="bamali" name="Bamali" group="local_language"/>
+    <item id="bambalang" name="Bambalang" group="local_language"/>
+    <item id="bambili" name="Bambili" group="local_language"/>
+    <item id="bamenyam" name="Bamenyam" group="local_language"/>
+    <item id="bamiléké" name="Bamiléké" group="local_language"/>
+    <item id="bamukumbit" name="Bamukumbit" group="local_language"/>
+    <item id="bamoun" name="Bamoun" group="local_language"/>
+    <item id="bamumbu" name="Bamumbu" group="local_language"/>
+    <item id="bamunka" name="Bamunka" group="local_language"/>
+    <item id="bana" name="Bana" group="local_language"/>
+    <item id="bangandu" name="Bangandu" group="local_language"/>
+    <item id="bangolan" name="Bangolan" group="local_language"/>
+    <item id="bangwa" name="Bangwa" group="local_language"/>
+    <item id="bansop" name="Bansop" group="local_language"/>
+    <item id="barombi" name="Barombi" group="local_language"/>
+    <item id="bassa" name="Bassa" group="local_language"/>
+    <item id="bassossi" name="Bassossi" group="local_language"/>
+    <item id="bata" name="Bata" group="local_language"/>
+    <item id="batanga" name="Batanga" group="local_language"/>
+    <item id="bati" name="Bati" group="local_language"/>
+    <item id="bebe" name="Bebe" group="local_language"/>
+    <item id="bebele" name="Bebele" group="local_language"/>
+    <item id="bebil" name="Bebil" group="local_language"/>
+    <item id="beezen" name="Beezen" group="local_language"/>
+    <item id="befang" name="Befang" group="local_language"/>
+    <item id="bekwel" name="Bekwel" group="local_language"/>
+    <item id="beti" name="Beti" group="local_language"/>
+    <item id="bikya" name="Bikya" group="local_language"/>
+    <item id="bishuo" name="Bishuo" group="local_language"/>
+    <item id="bitare" name="Bitare" group="local_language"/>
+    <item id="bokyi" name="Bokyi" group="local_language"/>
+    <item id="bomwali" name="Bomwali" group="local_language"/>
+    <item id="bu" name="Bu" group="local_language"/>
+    <item id="bubia" name="Bubia" group="local_language"/>
+    <item id="buduma" name="Buduma" group="local_language"/>
+    <item id="bulu" name="Bulu" group="local_language"/>
+    <item id="bumbung" name="Bumbung" group="local_language"/>
+    <item id="busam" name="Busam" group="local_language"/>
+    <item id="busuu" name="Busuu" group="local_language"/>
+    <item id="buwal" name="Buwal" group="local_language"/>
+    <item id="byep" name="Byep" group="local_language"/>
+    <item id="caka" name="Caka" group="local_language"/>
+    <item id="chadian_arabic" name="Chadian Arabic" group="local_language"/>
+    <item id="cung" name="Cung" group="local_language"/>
+    <item id="cuvok" name="Cuvok" group="local_language"/>
+    <item id="daba" name="Daba" group="local_language"/>
+    <item id="dama" name="Dama" group="local_language"/>
+    <item id="dek" name="Dek" group="local_language"/>
+    <item id="denya" name="Denya" group="local_language"/>
+    <item id="dii" name="Dii" group="local_language"/>
+    <item id="dimbong" name="Dimbong" group="local_language"/>
+    <item id="doyayo" name="Doyayo" group="local_language"/>
+    <item id="duala" name="Duala" group="local_language"/>
+    <item id="dugwor" name="Dugwor" group="local_language"/>
+    <item id="duli" name="Duli" group="local_language"/>
+    <item id="duupa" name="Duupa" group="local_language"/>
+    <item id="dzodinka" name="Dzodinka" group="local_language"/>
+    <item id="efik" name="Efik" group="local_language"/>
+    <item id="ejagham" name="Ejagham" group="local_language"/>
+    <item id="elip" name="Elip" group="local_language"/>
+    <item id="eman" name="Eman" group="local_language"/>
+    <item id="esimbi" name="Esimbi" group="local_language"/>
+    <item id="eton" name="Eton" group="local_language"/>
+    <item id="evand" name="Evand" group="local_language"/>
+    <item id="ewondo" name="Ewondo" group="local_language"/>
+    <item id="fali" name="Fali" group="local_language"/>
+    <item id="fang" name="Fang" group="local_language"/>
+    <item id="fefe" name="Fe'fe'" group="local_language"/>
+    <item id="fulfulde" name="Fulfulde" group="local_language"/>
+    <item id="fungom" name="Fungom" group="local_language"/>
+    <item id="gaduwa" name="Gaduwa" group="local_language"/>
+    <item id="gavar" name="Gavar" group="local_language"/>
+    <item id="gbaya" name="Gbaya" group="local_language"/>
+    <item id="ghomala" name="Ghomala" group="local_language"/>
+    <item id="guiziga" name="Guiziga" group="local_language"/>
+    <item id="kotoko" name="Kotoko" group="local_language"/>
+    <item id="mambila" name="Mambila" group="local_language"/>
+    <item id="massa" name="Massa" group="local_language"/>
+    <item id="mousgoum" name="Mousgoum" group="local_language"/>
+    <item id="mousseye" name="Mousseye" group="local_language"/>
+    <item id="medumba" name="Medumba" group="local_language"/>
+    <item id="moghamo" name="Moghamo" group="local_language"/>
+    <item id="mundani" name="Mundani" group="local_language"/>
+    <item id="ndanda" name="Nda'nda'" group="local_language"/>
+    <item id="nso" name="Nso'" group="local_language"/>
+    <item id="tikar" name="Tikar" group="local_language"/>
+    <item id="toupouri" name="Toupouri" group="local_language"/>
+    <item id="wute" name="Wuté" group="local_language"/>
+    <item id="yabassi" name="Yabassi" group="local_language"/>
+    <item id="yamba" name="Yamba" group="local_language"/>
+    <item id="inter_english" name="English" group="prefered_international_language"/>
+    <item id="inter_french" name="French" group="prefered_international_language"/>
+    <item id="none" name="none" group="prefered_international_language"/>
+    <item id="yes" name="Yes" group="yes_no"/>
+    <item id="no" name="No" group="yes_no"/>
+    <item id="dealers" name="dealers" group="ccp_orders"/>
+    <item id="market" name="market" group="ccp_orders"/>
+    <item id="cooperative" name="cooperative" group="cpp_orders"/>
+    <item id="me" name="me" group="cpp_buy"/>
+    <item id="buy_cooperative" name="cooperative" group="cpp_buy"/>
+    <item id="buy_officer" name="officer" group="cpp_buy"/>
+    <item id="buy_dealer" name="dealer" group="cpp_buy"/>
+    <item id="t_officer" name="officer" group="technic_provide"/>
+    <item id="t_cooperative" name="cooperative" group="technic_provide"/>
+    <item id="t_dealer" name="dealers" group="technic_provide"/>
+    <item id="no_not_really" name="No, not really" group="cpp_usage"/>
+    <item id="yes_f" name="yes, full body" group="cpp_usage"/>
+    <item id="yes_gl" name="yes, gloves" group="cpp_usage"/>
+    <item id="yes_masks" name="yes masks" group="cpp_usage"/>
+    <item id="yes_combination" name="yes, in combination" group="cpp_usage"/>
+    <item id="not_aware" name="not aware" group="main_reason"/>
+    <item id="not_available" name="not availabel" group="main_reason"/>
+    <item id="not_comfortable" name="not comfortable" group="main_reason"/>
+    <item id="too_expensive" name="too expensive" group="main_reason"/>
+    <item id="other" name="other" group="main_reason"/>
+    <item id="mrs_b" name="Mrs. B" group="extension"/>
+</dictionary>

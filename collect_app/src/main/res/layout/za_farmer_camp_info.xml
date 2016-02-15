@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/campInfo"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/blockNameTitle"
+            android:text="@string/farmer_block_name"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/blockNameText"
+            android:inputType="text" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/vetCampNameTitle"
+            android:text="@string/farmer_vet_camp_name"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/vetCampNameText"
+            android:inputType="text" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/agrCampNameTitle"
+            android:text="@string/farmer_agr_camp_name"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/agrCampNameText"
+            android:inputType="text" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/villageNameTitle"
+            android:text="@string/farmer_village_name"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/villageNameText"
+            android:inputType="text" />
+
+    </LinearLayout>
+</ScrollView>

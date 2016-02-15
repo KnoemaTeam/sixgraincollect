@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/isPesticideUsedTitle"
+            android:text="@string/zambia_pesticide_used"/>
+
+        <RadioGroup
+            style="@style/RadioGroupTheme"
+            android:id="@+id/isPesticideUsedGroup"
+            android:orientation="horizontal"/>
+
+    </LinearLayout>
+</ScrollView>

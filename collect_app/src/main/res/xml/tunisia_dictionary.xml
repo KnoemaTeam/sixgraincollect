@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dictionary>
+    <item id="masculin" name="Masculin" group="male_female"/>
+    <item id="féminin" name="Féminin" group="male_female"/>
+    <item id="oui" name="Oui" group="yes_no"/>
+    <item id="non" name="Non" group="yes_no"/>
+    <item id="Dans_la_ferme" name="Dans la ferme" group="on_farm_off_farm"/>
+    <item id="Hors_ferme" name="Hors ferme" group="on_farm_off_farm"/>
+    <item id="familiale" name="Main d'œuvre familiale" group="farm_labour"/>
+    <item id="main_oeuvre_salariale" name="Main d'œuvre Salariale" group="farm_labour"/>
+    <item id="occasionnel" name="Main d'œuvre Occasionnelle" group="farm_labour"/>
+    <item id="bac" name="Baccalauréat" group="level_skill"/>
+    <item id="diplôme_superieur" name="Diplôme de technicien supérieur" group="level_skill"/>
+    <item id="diplôme_premier_cycle" name="Diplôme d’Etudes Universitaires de Premier Cycle (DEUPC)" group="level_skill"/>
+    <item id="maitrise" name="Maîtrise" group="level_skill"/>
+    <item id="master" name="Master-Master spécialisé- Diplômes d’études Supérieures spécialisées (DESS)" group="level_skill"/>
+    <item id="dea" name="Diplôme d’Etudes Approfondies (DEA)" group="level_skill"/>
+    <item id="doctorat" name="Doctorat" group="level_skill"/>
+    <item id="non_qualifié" name="Pas de Diplôme" group="level_skill"/>
+    <item id="crda" name="CRDA" group="information"/>
+    <item id="multimedia" name="Multimédia" group="information"/>
+    <item id="journal_publication" name="Journaux / Publications" group="information"/>
+    <item id="internet" name="Internet" group="information"/>
+    <item id="chef" name="Chef" group="relationship"/>
+    <item id="époux" name="époux" group="relationship"/>
+    <item id="Enfant" name="Enfant" group="relationship"/>
+    <item id="Parent_Belle_famille" name="Parent/Belle famille" group="relationship"/>
+    <item id="Frère_Soeur" name="Frère/Soeur" group="relationship"/>
+    <item id="Autres_Relations" name="Autres Relations" group="relationship"/>
+    <item id="Sans_rapport" name="Sans rapport" group="relationship"/>
+    <item id="ble_dur" name="Blé Dur" group="crop"/>
+    <item id="ble_tendre" name="Blé Tendre" group="crop"/>
+    <item id="orge" name="Orge" group="crop"/>
+    <item id="triticale" name="Triticale" group="crop"/>
+    <item id="autre_cereales" name="Autres Céréales" group="crop"/>
+    <item id="feve" name="Fève" group="crop"/>
+    <item id="feve_rôle" name="Fève rôle" group="crop"/>
+    <item id="pois_chiche" name="Pommes de terre" group="crop"/>
+    <item id="autres" name="Autres" group="crop"/>
+    <item id="Orge_en_Vert" name="Orge en Vert" group="crop"/>
+    <item id="foin" name="Foin" group="crop"/>
+    <item id="ensilage" name="Ensilage" group="crop"/>
+    <item id="Tomate_de_saison" name="Tomate de saison" group="crop"/>
+    <item id="Tomate_arrière_saison" name="Tomate d’arrière saison" group="crop"/>
+    <item id="Pomme_de_terre_de_saison" name="Pomme de terre de saison" group="crop"/>
+    <item id="Pomme_de_terre_arrière_saison" name="Pomme de terre d’arrière saison" group="crop"/>
+    <item id="artichaut" name="Artichaut" group="crop"/>
+    <item id="oignon" name="Oignon" group="crop"/>
+    <item id="ail" name="Ail" group="crop"/>
+    <item id="melon" name="Melon" group="crop"/>
+    <item id="pasteque" name="Pastèque" group="crop"/>
+    <item id="petit_pois" name="Petit Pois" group="crop"/>
+    <item id="olive_huile" name="Olive à Huile" group="crop"/>
+    <item id="olive_table" name="Olive de Table" group="crop"/>
+    <item id="agrumes" name="Agrumes" group="crop"/>
+    <item id="amandier" name="Amandier" group="crop"/>
+    <item id="raisin_de_table" name="Raisin de Table" group="crop"/>
+    <item id="pommier" name="Pommier" group="crop"/>
+    <item id="prunier" name="Prunier" group="crop"/>
+    <item id="jachère" name="Jachère" group="crop"/>
+    <item id="tonne" name="Tonne" group="unit"/>
+    <item id="hectare" name="Hectare" group="unit"/>
+    <item id="mètres_carrés" name="Mètres carrés" group="unit"/>
+    <item id="pluviale" name="Pluviale" group="rainfed_irrigation"/>
+    <item id="irrigation" name="Irrigation" group="rainfed_irrigation"/>
+    <item id="consommation_domestique" name="Consommation domestique" group="domestic_income"/>
+    <item id="génération_de_revenus" name="Génération de revenus" group="domestic_income"/>
+    <item id="tracteur_2RM_4RM" name="Tracteur_2RM_4RM" group="agricultural_machinery"/>
+    <item id="planteur" name="Planteur" group="agricultural_machinery"/>
+    <item id="disque_ridger_charrue" name="Disque_ridger charrue" group="agricultural_machinery"/>
+    <item id="disque_herse" name="Disque herse" group="agricultural_machinery"/>
+    <item id="bineuse_à_main" name="Bineuse à main" group="agricultural_machinery"/>
+    <item id="hache" name="Hache" group="agricultural_machinery"/>
+    <item id="moissonneuse_batteuse" name="Moissonneuse-batteuse" group="agricultural_machinery"/>
+    <item id="éventreur" name="Éventreur" group="agricultural_machinery"/>
+    <item id="pulvérisateur" name="Pulvérisateur" group="agricultural_machinery"/>
+    <item id="semi-remorque" name="Semi-remorque" group="agricultural_machinery"/>
+    <item id="endroit_pour_imobiliser_lesanimaux_afin_de_les_pulvériser_avec_un_insecticide" name="Endroit pour imobiliser les animaux afin de les  pulvériser avec un insecticide" group="agricultural_machinery"/>
+    <item id="récipient_immersion" name="Récipient d'immersion" group="agricultural_machinery"/>
+    <item id="gouvernorat_de_Ariana" name="Gouvernorat de l'Ariana" group="gouvernorat"/>
+    <item id="gouvernorat_de_Béja" name="Gouvernorat de Béja" group="gouvernorat"/>
+    <item id="gouvernorat_de_Ben_Arous" name="Gouvernorat de Ben Arous" group="gouvernorat"/>
+    <item id="gouvernorat_de_Bizerte" name="Gouvernorat de Bizerte" group="gouvernorat"/>
+    <item id="gouvernorat_de_Gabès" name="Gouvernorat de Gabès" group="gouvernorat"/>
+    <item id="gouvernorat_de_Gafsa" name="Gouvernorat de Gafsa" group="gouvernorat"/>
+    <item id="gouvernorat_de_Jendouba" name="Gouvernorat de Jendouba" group="gouvernorat"/>
+    <item id="gouvernorat_de_Kairouan" name="Gouvernorat de Kairouan" group="gouvernorat"/>
+    <item id="gouvernorat_de_Kasserine" name="Gouvernorat de Kasserine" group="gouvernorat"/>
+    <item id="gouvernorat_de_Kébili" name="Gouvernorat de Kébili" group="gouvernorat"/>
+    <item id="gouvernorat_du_Kef" name="Gouvernorat du Kef" group="gouvernorat"/>
+    <item id="gouvernorat_de_Mahdia" name="Gouvernorat de Mahdia" group="gouvernorat"/>
+    <item id="gouvernorat_de_la_Manouba" name="Gouvernorat de la Manouba" group="gouvernorat"/>
+    <item id="gouvernorat_de_Médenine" name="Gouvernorat de Médenine" group="gouvernorat"/>
+    <item id="gouvernorat_de_Monastir" name="Gouvernorat de Monastir" group="gouvernorat"/>
+    <item id="gouvernorat_de_Nabeul" name="Gouvernorat de Nabeul" group="gouvernorat"/>
+    <item id="gouvernorat_de_Sfax" name="Gouvernorat de Sfax" group="gouvernorat"/>
+    <item id="gouvernorat_de_Sidi_Bouzid" name="Gouvernorat de Sidi Bouzid" group="gouvernorat"/>
+    <item id="gouvernorat_de_Siliana" name="Gouvernorat de Siliana" group="gouvernorat"/>
+    <item id="gouvernorat_de_Sousse" name="Gouvernorat de Sousse" group="gouvernorat"/>
+    <item id="gouvernorat_de_Tataouine" name="Gouvernorat de Tataouine" group="gouvernorat"/>
+    <item id="gouvernorat_de_Tozeur" name="Gouvernorat de Tozeur" group="gouvernorat"/>
+    <item id="gouvernorat_de_Tunis" name="Gouvernorat de Tunis" group="gouvernorat"/>
+    <item id="gouvernorat_de_Zaghouan" name="Gouvernorat de Zaghouan" group="gouvernorat"/>
+    <item id="ariana_ville" name="Ariana Ville" group="delegation"/>
+    <item id="ettadhamen" name="Ettadhamen" group="delegation"/>
+    <item id="kalâat_el_andalous" name="Kalâat el-Andalous" group="delegation"/>
+    <item id="soukra" name="Soukra" group="delegation"/>
+    <item id="mnihla" name="Mnihla" group="delegation"/>
+    <item id="raoued" name="Raoued" group="delegation"/>
+    <item id="sidi_thabet" name="Sidi Thabet" group="delegation"/>
+    <item id="amdoun" name="Amdoun" group="delegation"/>
+    <item id="béja_nord" name="Béja Nord" group="delegation"/>
+    <item id="béja_sud" name="Béja Sud" group="delegation"/>
+    <item id="goubellat" name="Goubellat" group="delegation"/>
+    <item id="medjez_el_bab" name="Medjez el-Bab" group="delegation"/>
+    <item id="nefza" name="Nefza" group="delegation"/>
+    <item id="téboursouk" name="Téboursouk" group="delegation"/>
+    <item id="testour" name="Testour" group="delegation"/>
+    <item id="thibar" name="Thibar" group="delegation"/>
+    <item id="ben_arous" name="Ben Arous" group="delegation"/>
+    <item id="bou_mhel_el_bassatine" name="Bou Mhel el-Bassatine" group="delegation"/>
+    <item id="el_mourouj" name="El Mourouj" group="delegation"/>
+    <item id="ezzahra" name="Ezzahra" group="delegation"/>
+    <item id="fouchana" name="Fouchana" group="delegation"/>
+    <item id="hammam_chott" name="Hammam Chott" group="delegation"/>
+    <item id="hammam_lif" name="Hammam Lif" group="delegation"/>
+    <item id="mohamedia" name="Mohamedia" group="delegation"/>
+    <item id="medina_jedida" name="Medina Jedida" group="delegation"/>
+    <item id="mégrine" name="Mégrine" group="delegation"/>
+    <item id="mornag" name="Mornag" group="delegation"/>
+    <item id="radès" name="Radès" group="delegation"/>
+    <item id="bizerte_nord" name="Bizerte Nord" group="delegation"/>
+    <item id="bizerte_sud" name="Bizerte Sud" group="delegation"/>
+    <item id="el_alia" name="El Alia" group="delegation"/>
+    <item id="ghar_el_melh" name="Ghar El Melh" group="delegation"/>
+    <item id="ghezala" name="Ghezala" group="delegation"/>
+    <item id="joumine" name="Joumine" group="delegation"/>
+    <item id="mateur" name="Mateur" group="delegation"/>
+    <item id="menzel_bourguiba" name="Menzel Bourguiba" group="delegation"/>
+    <item id="menzel_jemil" name="Menzel Jemil" group="delegation"/>
+    <item id="ras_jebel" name="Ras Jebel" group="delegation"/>
+    <item id="sejnane" name="Sejnane" group="delegation"/>
+    <item id="tinja" name="Tinja" group="delegation"/>
+    <item id="utique" name="Utique" group="delegation"/>
+    <item id="zarzouna" name="Zarzouna" group="delegation"/>
+    <item id="gabès_médina" name="Gabès Médina" group="delegation"/>
+    <item id="gabès_ouest" name="Gabès Ouest" group="delegation"/>
+    <item id="gabès_sud" name="Gabès Sud" group="delegation"/>
+    <item id="ghannouch" name="Ghannouch" group="delegation"/>
+    <item id="el_hamma" name="El Hamma" group="delegation"/>
+    <item id="matmata" name="Matmata" group="delegation"/>
+    <item id="mareth" name="Mareth" group="delegation"/>
+    <item id="menzel_el_habib" name="Menzel El Habib" group="delegation"/>
+    <item id="métouia" name="Métouia" group="delegation"/>
+    <item id="nouvelle_matmata" name="Nouvelle Matmata" group="delegation"/>
+    <item id="belkhir" name="Belkhir" group="delegation"/>
+    <item id="el_guettar" name="El Guettar" group="delegation"/>
+    <item id="el_ksar" name="El Ksar" group="delegation"/>
+    <item id="gafsa_nord" name="Gafsa Nord" group="delegation"/>
+    <item id="gafsa_sud" name="Gafsa Sud" group="delegation"/>
+    <item id="mdhila" name="Mdhila" group="delegation"/>
+    <item id="métlaoui" name="Métlaoui" group="delegation"/>
+    <item id="moularès" name="Moularès" group="delegation"/>
+    <item id="redeyef" name="Redeyef" group="delegation"/>
+    <item id="sened" name="Sened" group="delegation"/>
+    <item id="sidi_aïch" name="Sidi Aïch" group="delegation"/>
+    <item id="aïn_draham" name="Aïn Draham" group="delegation"/>
+    <item id="balta_bou_aouane" name="Balta-Bou Aouane" group="delegation"/>
+    <item id="bou_salem" name="Bou Salem" group="delegation"/>
+    <item id="fernana" name="Fernana" group="delegation"/>
+    <item id="ghardimaou" name="Ghardimaou" group="delegation"/>
+    <item id="jendouba_sud" name="Jendouba Sud" group="delegation"/>
+    <item id="jendouba_nord" name="Jendouba Nord" group="delegation"/>
+    <item id="oued_meliz" name="Oued Meliz" group="delegation"/>
+    <item id="tabarka" name="Tabarka" group="delegation"/>
+    <item id="bou_hajla" name="Bou Hajla" group="delegation"/>
+    <item id="chebika" name="Chebika" group="delegation"/>
+    <item id="echrarda" name="Echrarda" group="delegation"/>
+    <item id="el_alâa" name="El Alâa" group="delegation"/>
+    <item id="haffouz" name="Haffouz" group="delegation"/>
+    <item id="hajeb_el_ayoun" name="Hajeb El Ayoun" group="delegation"/>
+    <item id="kairouan_nord" name="Kairouan Nord" group="delegation"/>
+    <item id="kairouan_sud" name="Kairouan Sud" group="delegation"/>
+    <item id="nasrallah" name="Nasrallah" group="delegation"/>
+    <item id="oueslatia" name="Oueslatia" group="delegation"/>
+    <item id="sbikha" name="Sbikha" group="delegation"/>
+    <item id="el_ayoun" name="El Ayoun" group="delegation"/>
+    <item id="ezzouhour" name="Ezzouhour" group="delegation"/>
+    <item id="fériana" name="Fériana" group="delegation"/>
+    <item id="foussana" name="Foussana" group="delegation"/>
+    <item id="haïdra" name="Haïdra" group="delegation"/>
+    <item id="hassi_el_ferid" name="Hassi El Ferid" group="delegation"/>
+    <item id="jedelienne" name="Jedelienne" group="delegation"/>
+    <item id="kasserine_nord" name="Kasserine Nord" group="delegation"/>
+    <item id="kasserine_sud" name="Kasserine Sud" group="delegation"/>
+    <item id="majel_bel_abbès" name="Majel Bel Abbès" group="delegation"/>
+    <item id="sbeïtla" name="Sbeïtla" group="delegation"/>
+    <item id="sbiba" name="Sbiba" group="delegation"/>
+    <item id="thala" name="Thala" group="delegation"/>
+    <item id="douz_nord" name="Douz Nord" group="delegation"/>
+    <item id="douz_sud" name="Douz Sud" group="delegation"/>
+    <item id="faouar" name="Faouar" group="delegation"/>
+    <item id="kébili_nord" name="Kébili Nord" group="delegation"/>
+    <item id="kébili_nord" name="Kébili Nord" group="delegation"/>
+    <item id="souk_lahad" name="Souk Lahad" group="delegation"/>
+    <item id="dahmani" name="Dahmani" group="delegation"/>
+    <item id="jérissa" name="Jérissa" group="delegation"/>
+    <item id="el_ksour" name="El Ksour" group="delegation"/>
+    <item id="sers" name="Sers" group="delegation"/>
+    <item id="kalâat_khasba" name="Kalâat Khasba" group="delegation"/>
+    <item id="kalaat_senan" name="Kalaat Senan" group="delegation"/>
+    <item id="kef_est" name="Kef Est" group="delegation"/>
+    <item id="kef_ouest" name="Kef Ouest" group="delegation"/>
+    <item id="nebeur" name="Nebeur" group="delegation"/>
+    <item id="sakiet_sidi_youssef" name="Sakiet Sidi Youssef" group="delegation"/>
+    <item id="tajerouine" name="Tajerouine" group="delegation"/>
+    <item id="bou_merdes" name="Bou Merdes" group="delegation"/>
+    <item id="chebba" name="Chebba" group="delegation"/>
+    <item id="chorbane" name="Chorbane" group="delegation"/>
+    <item id="el_jem" name="El Jem" group="delegation"/>
+    <item id="essouassi" name="Essouassi" group="delegation"/>
+    <item id="hebira" name="Hebira" group="delegation"/>
+    <item id="ksour_essef" name="Ksour Essef" group="delegation"/>
+    <item id="mahdia" name="Mahdia" group="delegation"/>
+    <item id="melloulèche" name="Melloulèche" group="delegation"/>
+    <item id="ouled_chamekh" name="Ouled Chamekh" group="delegation"/>
+    <item id="sidi_alouane" name="Sidi Alouane" group="delegation"/>
+    <item id="borj_el_amri" name="Borj El Amri" group="delegation"/>
+    <item id="djedeida" name="Djedeida" group="delegation"/>
+    <item id="douar_hicher" name="Douar Hicher" group="delegation"/>
+    <item id="el_batan" name="El Batan" group="delegation"/>
+    <item id="la_manouba" name="La Manouba" group="delegation"/>
+    <item id="mornaguia" name="Mornaguia" group="delegation"/>
+    <item id="oued_ellil" name="Oued Ellil" group="delegation"/>
+    <item id="tebourba" name="Tebourba" group="delegation"/>
+    <item id="ben_gardane" name="Ben Gardane" group="delegation"/>
+    <item id="beni_khedache" name="Beni Khedache" group="delegation"/>
+    <item id="djerba_ajim" name="Djerba - Ajim" group="delegation"/>
+    <item id="djerba_houmtsouk" name="Djerba - Houmt Souk" group="delegation"/>
+    <item id="djerba_midoun" name="Djerba - Midoun" group="delegation"/>
+    <item id="médenine_nord" name="Médenine Nord" group="delegation"/>
+    <item id="médenine_sud" name="Médenine Sud" group="delegation"/>
+    <item id="sidi_makhlouf" name="Sidi Makhlouf" group="delegation"/>
+    <item id="zarzis" name="Zarzis" group="delegation"/>
+    <item id="bekalta" name="Bekalta" group="delegation"/>
+    <item id="bembla" name="Bembla" group="delegation"/>
+    <item id="beni_hassen" name="Beni Hassen" group="delegation"/>
+    <item id="jemmal" name="Jemmal" group="delegation"/>
+    <item id="ksar_hellal" name="Ksar Hellal" group="delegation"/>
+    <item id="ksibet_el_médiouni_" name="Ksibet el-Médiouni" group="delegation"/>
+    <item id="moknine" name="Moknine" group="delegation"/>
+    <item id="monastir" name="Monastir" group="delegation"/>
+    <item id="ouerdanine" name="Ouerdanine" group="delegation"/>
+    <item id="sahline" name="Sahline" group="delegation"/>
+    <item id="sayada_lamta_bou_hajar" name="Sayada-Lamta-Bou Hajar" group="delegation"/>
+    <item id="téboulba" name="Téboulba" group="delegation"/>
+    <item id="zéramdine" name="Zéramdine" group="delegation"/>
+    <item id="béni_khalled" name="Béni Khalled" group="delegation"/>
+    <item id="béni_khiar" name="Béni Khiar" group="delegation"/>
+    <item id="bou_argoub" name="Bou Argoub" group="delegation"/>
+    <item id="dar_châabane_el_fehri" name="Dar Châabane El Fehri" group="delegation"/>
+    <item id="el_haouaria" name="El Haouaria" group="delegation"/>
+    <item id="el_mida" name="El Mida" group="delegation"/>
+    <item id="grombalia" name="Grombalia" group="delegation"/>
+    <item id="hammam_ghezèze" name="Hammam Ghezèze" group="delegation"/>
+    <item id="hammamet" name="Hammamet" group="delegation"/>
+    <item id="kélibia" name="Kélibia" group="delegation"/>
+    <item id="korba" name="Korba" group="delegation"/>
+    <item id="menzel_bouzelfa" name="Menzel Bouzelfa" group="delegation"/>
+    <item id="menzel_temime" name="Menzel Temime" group="delegation"/>
+    <item id="nabeul" name="Nabeul" group="delegation"/>
+    <item id="soliman" name="Soliman" group="delegation"/>
+    <item id="takelsa" name="Takelsa" group="delegation"/>
+    <item id="agareb" name="Agareb" group="delegation"/>
+    <item id="bir_ali_ben_khalifa" name="Bir Ali Ben Khalifa" group="delegation"/>
+    <item id="elamra" name="El Amra" group="delegation"/>
+    <item id="elhencha" name="El Hencha" group="delegation"/>
+    <item id="graïba" name="Graïba" group="delegation"/>
+    <item id="jebiniana" name="Jebiniana" group="delegation"/>
+    <item id="kerkennah" name="Kerkennah" group="delegation"/>
+    <item id="mahrès" name="Mahrès" group="delegation"/>
+    <item id="menzel_chaker" name="Menzel Chaker" group="delegation"/>
+    <item id="sakiet_eddaïer" name="Sakiet Eddaïer" group="delegation"/>
+    <item id="sakiet_ezzit" name="Sakiet Ezzit" group="delegation"/>
+    <item id="sfax_ouest" name="Sfax Ouest" group="delegation"/>
+    <item id="sfax_sud" name="Sfax Sud" group="delegation"/>
+    <item id="sfax_ville" name="Sfax Ville" group="delegation"/>
+    <item id="skhira" name="Skhira" group="delegation"/>
+    <item id="thyna" name="Thyna" group="delegation"/>
+    <item id="bir_el_hafey" name="Bir El Hafey" group="delegation"/>
+    <item id="cebbala_ouled_asker" name="Cebbala Ouled Asker" group="delegation"/>
+    <item id="jilma" name="Jilma" group="delegation"/>
+    <item id="meknassy" name="Meknassy" group="delegation"/>
+    <item id="menzel_bouzaiane" name="Menzel Bouzaiane" group="delegation"/>
+    <item id="mezzouna" name="Mezzouna" group="delegation"/>
+    <item id="ouled_haffouz" name="Ouled Haffouz" group="delegation"/>
+    <item id="regueb" name="Regueb" group="delegation"/>
+    <item id="sidi_ali_ben_aoun" name="Sidi Ali Ben Aoun" group="delegation"/>
+    <item id="sidi_bouzid_est" name="Sidi Bouzid Est" group="delegation"/>
+    <item id="sidi_bouzid_ouest" name="Sidi Bouzid Ouest" group="delegation"/>
+    <item id="souk_jedid" name="Souk Jedid" group="delegation"/>
+    <item id="bargou" name="Bargou" group="delegation"/>
+    <item id="bou_arada" name="Bou Arada" group="delegation"/>
+    <item id="el_aroussa" name="El Aroussa" group="delegation"/>
+    <item id="el_krib" name="El Krib" group="delegation"/>
+    <item id="gaâfour" name="Gaâfour" group="delegation"/>
+    <item id="kesra" name="Kesra" group="delegation"/>
+    <item id="makthar" name="Makthar" group="delegation"/>
+    <item id="rouhia" name="Rouhia" group="delegation"/>
+    <item id="sidi_bou_rouis" name="Sidi Bou Rouis" group="delegation"/>
+    <item id="siliana_nord" name="Siliana Nord" group="delegation"/>
+    <item id="siliana_sud" name="Siliana Sud" group="delegation"/>
+    <item id="akouda" name="Akouda" group="delegation"/>
+    <item id="bouficha" name="Bouficha" group="delegation"/>
+    <item id="enfida" name="Enfida" group="delegation"/>
+    <item id="hammam_sousse" name="Hammam Sousse" group="delegation"/>
+    <item id="hergla" name="Hergla" group="delegation"/>
+    <item id="kalâa_kebira" name="Kalâa Kebira" group="delegation"/>
+    <item id="kalâa_seghira" name="Kalâa Seghira" group="delegation"/>
+    <item id="kondar" name="Kondar" group="delegation"/>
+    <item id="m'saken" name="M'saken" group="delegation"/>
+    <item id="sidi_bou_ali" name="Sidi Bou Ali" group="delegation"/>
+    <item id="sidi_el_hani" name="Sidi El Hani" group="delegation"/>
+    <item id="sousse_jawhara" name="Sousse Jawhara" group="delegation"/>
+    <item id="sousse_médina" name="Sousse Médina" group="delegation"/>
+    <item id="sousse_riadh" name="Sousse Riadh" group="delegation"/>
+    <item id="sousse_sidi_abdelhamid" name="Sousse Sidi Abdelhamid" group="delegation"/>
+    <item id="bir_lahmar" name="Bir Lahmar" group="delegation"/>
+    <item id="dehiba" name="Dehiba" group="delegation"/>
+    <item id="ghomrassen" name="Ghomrassen" group="delegation"/>
+    <item id="remada" name="Remada" group="delegation"/>
+    <item id="smâr" name="Smâr" group="delegation"/>
+    <item id="tataouine_nord" name="Tataouine Nord" group="delegation"/>
+    <item id="tataouine_sud" name="Tataouine Sud" group="delegation"/>
+    <item id="degache" name="Degache" group="delegation"/>
+    <item id="hazoua" name="Hazoua" group="delegation"/>
+    <item id="nefta" name="Nefta" group="delegation"/>
+    <item id="tameghza" name="Tameghza" group="delegation"/>
+    <item id="tozeur" name="Tozeur" group="delegation"/>
+    <item id="bab_el_bhar" name="Bab El Bhar" group="delegation"/>
+    <item id="bab_souika" name="Bab Souika" group="delegation"/>
+    <item id="carthage" name="Carthage" group="delegation"/>
+    <item id="cité_el_khadra" name="Cité El Khadra" group="delegation"/>
+    <item id="djebel_jelloud" name="Djebel Jelloud" group="delegation"/>
+    <item id="el_kabaria" name="El Kabaria" group="delegation"/>
+    <item id="el_menzah" name="El Menzah" group="delegation"/>
+    <item id="el_omrane" name="El Omrane" group="delegation"/>
+    <item id="el_omrane_supérieur" name="El Omrane supérieur" group="delegation"/>
+    <item id="el_ouardia" name="El Ouardia" group="delegation"/>
+    <item id="ettahrir" name="Ettahrir" group="delegation"/>
+    <item id="ezzouhour" name="Ezzouhour" group="delegation"/>
+    <item id="hraïria" name="Hraïria" group="delegation"/>
+    <item id="la_goulette" name="La Goulette" group="delegation"/>
+    <item id="la_marsa" name="La Marsa" group="delegation"/>
+    <item id="le_bardo" name="Le Bardo" group="delegation"/>
+    <item id="le_kram" name="Le Kram" group="delegation"/>
+    <item id="médina" name="Médina" group="delegation"/>
+    <item id="séjoumi" name="Séjoumi" group="delegation"/>
+    <item id="sidi_el_béchir" name="Sidi El Béchir" group="delegation"/>
+    <item id="sidi_hassine" name="Sidi Hassine" group="delegation"/>
+    <item id="bir_mcherga" name="Bir Mcherga" group="delegation"/>
+    <item id="el_fahs" name="El Fahs" group="delegation"/>
+    <item id="nadhour" name="Nadhour" group="delegation"/>
+    <item id="saouaf" name="Saouaf" group="delegation"/>
+    <item id="zaghouan" name="Zaghouan" group="delegation"/>
+    <item id="zriba" name="Zriba" group="delegation"/>
+    <item id="bovins_vache" name="Vache" group="livestock"/>
+    <item id="bovins_genisses_18_30" name="Génisses (18-30)" group="livestock"/>
+    <item id="bovins_genisses_6_18" name="Génisses (6-18)" group="livestock"/>
+    <item id="bovins_taureaux" name="Taureaux" group="livestock"/>
+    <item id="bovins_autres" name="Autres" group="livestock"/>
+    <item id="ovin_brenis" name="Brebis" group="livestock"/>
+    <item id="ovin_antenaises" name="Antenaises" group="livestock"/>
+    <item id="ovin_beliers" name="Béliers" group="livestock"/>
+    <item id="ovin_autre" name="Autres" group="livestock"/>
+    <item id="caprin_chevres" name="Chèvres" group="livestock"/>
+    <item id="caprin_chevrettes" name="Chevrettes" group="livestock"/>
+    <item id="caprin_boucs" name="Boucs" group="livestock"/>
+    <item id="caprin_autres" name="Autres" group="livestock"/>
+    <item id="lapines_traditionnelles" name="Lapines Traditionnelles" group="livestock"/>
+    <item id="lapines_industrielles" name="Lapines Industrielles" group="livestock"/>
+    <item id="ruches_modernes" name="Ruches Modernes" group="livestock"/>
+    <item id="ruches_traditionnelles" name="Ruches Traditionnelles" group="livestock"/>
+    <item id="poulet_de_chair" name="Poulet de chair" group="livestock"/>
+    <item id="pule_pondeuse" name="Pule pondeuse" group="livestock"/>
+    <item id="dorade_repéré" name="Dorade  repéré" group="fish"/>
+    <item id="dorade_à_poitrine_rouge" name="Dorade  à poitrine rouge" group="fish"/>
+    <item id="dorade_à_têtes_vert" name="Dorade  à têtes vert" group="fish"/>
+    <item id="poissons_eau_douce" name="Poisson d'eau douce" group="fish"/>
+    <item id="mixte" name="Mixte" group="fish"/>
+    <item id="barbotte" name="Barbotte" group="fish"/>
+    <item id="carpe" name="Carpe" group="fish"/>
+    <item id="écrevisse" name="Écrevisse" group="fish"/>
+    <item id="terres_cultivées" name="Terres cultivées (champs en jachère et la végétation naturelle est active  entre les champs)" group="non_field"/>
+    <item id="pâturages" name="Pâturages (non cultivées)" group="non_field"/>
+    <item id="arbustaie_ouverte" name="Arbustives / savanes (quelques arbustes de moins de cinq mètres de haut, herbe)" group="non_field"/>
+    <item id="arbustaie_dense" name="Arbustives, fermé (arbuste couvert continue, peu d'herbe)" group="non_field"/>
+    <item id="forêt_ouverte" name="Forêt, ouverte / savane boisée (mosaïque naturelle d'arbustes, d'arbres et de l'herbe)" group="non_field"/>
+    <item id="forêt_modérée" name="Forêt, modérée (couvert mixte d'arbres et arbustes, peu d'herbe)" group="non_field"/>
+    <item id="forêt_dense" name="Forêt, dense (canopée fermée d'arbres, quelques arbustes et herbe)" group="non_field"/>
+    <item id="zone_humide_permanente" name="Zone humide permanente (sols gorgés d'eau et la végétation)" group="non_field"/>
+    <item id="urbaine_continue" name="Urbaine, continue (maisons, rues, quelques arbres ou des herbe patch)" group="non_field"/>
+    <item id="urbaine_discontinue" name="Urban, discontinue (principalement l'herbe ou les arbres avec quelques maisons)" group="non_field"/>
+    <item id="stérile" name="Stérile ou la végétation clairsemée" group="non_field"/>
+    <item id="eau" name="Plan d'eau" group="non_field"/>
+    <item id="autre_non_cultivable" name="Autre" group="non_field"/>
+    <item id="engrais_léger" name="1-10 kg" group="fertilizer_amount"/>
+    <item id="engrais_forte" name="11-20kg" group="fertilizer_amount"/>
+</dictionary>

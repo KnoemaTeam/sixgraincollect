@@ -1,5 +1,6 @@
 package org.odk.collect.android.activities;
 
+import org.graindataterminal.controllers.BaseActivity;
 import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
 import org.odk.collect.android.listeners.DeleteInstancesListener;
@@ -67,7 +68,7 @@ import java.util.Set;
  * @author Yaw Anokwa (yanokwa@gmail.com)
  * @author Carl Hartung (carlhartung@gmail.com)
  */
-public class FormChooserList extends AppCompatActivity implements DiskSyncListener, DeleteInstancesListener, LoaderManager.LoaderCallbacks<Cursor>, DialogConstructor.NotificationListener, InstanceUploaderListener, FormListDownloaderListener, FormDownloaderListener {
+public class FormChooserList extends BaseActivity implements DiskSyncListener, DeleteInstancesListener, LoaderManager.LoaderCallbacks<Cursor>, DialogConstructor.NotificationListener, InstanceUploaderListener, FormListDownloaderListener, FormDownloaderListener {
     public static final int FORM_LIST_VIEW_ID = 111110;
     public static final int DATA_LIST_VIEW_ID = 111111;
     public static final int INSTANCE_DATA_LIST_ID = 111112;
@@ -113,7 +114,6 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
             return;
         }
 
-        setContentView(R.layout.chooser_list_layout);
         setToolbar();
         setFabButton();
         setFormListView();
@@ -126,13 +126,18 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
 
         mSettings = PreferenceManager.getDefaultSharedPreferences(this);
         // Temporary commented
-//        if (mSettings.getBoolean(SettingsFragment.SURVEY_FORM_DOWNLOADED_KEY, false)) {
+        if (mSettings.getBoolean(SettingsFragment.SURVEY_FORM_DOWNLOADED_KEY, false)) {
             downloadSurveyFormList();
-//        }
-//        else {
-//            mDeleteInstancesTask = (DeleteInstancesTask) getLastNonConfigurationInstance();
-//            runDiskSynchronizationTask();
-//        }
+        }
+        else {
+            mDeleteInstancesTask = (DeleteInstancesTask) getLastNonConfigurationInstance();
+            runDiskSynchronizationTask();
+        }
+    }
+
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.chooser_list_layout;
     }
 
     @Override
@@ -524,7 +529,7 @@ public class FormChooserList extends AppCompatActivity implements DiskSyncListen
         mConstructor = null;
 
         mConstructor = new DialogConstructor(FormChooserList.this, DialogConstructor.DIALOG_SINGLE_ANSWER);
-        mConstructor.updateDialog(getString(R.string.dialog_title_information), message);
+        mConstructor.updateDialog(getString(R.string.information_message), message);
     }
 
     @Override

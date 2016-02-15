@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/fieldCropPhotoInfo"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/photoTitle"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="25dp"
+            android:layout_gravity="center"
+            android:text="@string/field_corners_location"
+            android:gravity="center"/>
+
+        <FrameLayout
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center_horizontal">
+
+            <View
+                android:id="@+id/animationView"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:alpha="0.0"
+                android:background="@drawable/view_round_view"/>
+
+            <ImageButton
+                android:id="@+id/takeLocationButton"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:layout_gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:clickable="true"
+                android:src="@drawable/ic_location_on_white_48dp"
+                android:background="@drawable/view_round_button"
+                android:contentDescription="@null"/>
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/cornerGPSText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:textColor="@color/color_edit_text"
+            android:textSize="18sp"
+            android:gravity="center_vertical"
+            android:visibility="gone"/>
+    </LinearLayout>
+</ScrollView>

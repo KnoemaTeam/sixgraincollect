@@ -4,319 +4,288 @@
     <string name="accuracy">Accuracy</string>
     <string name="activity_not_found">No activity found to handle: %s</string>
     <string name="action_create_survey">Add new survey</string>
-    <string name="action_settings">Settings</string>
-    <string name="action_update">Check for updates</string>
-    <string name="action_send_mail">Send info of app state</string>
-    <string name="action_send_mail_title">6G Data Terminal - Data Report</string>
-    <string name="action_send_mail_title_error">6G Data Terminal - Error Report</string>
-    <string name="action_send_mail_message">This file contains info which needed developers to understand what\'s wrong with your data.</string>
-    <string name="action_send_mail_exception">There is no email client installed.</string>
-    <string name="action_synchronization">Synchronize</string>
-    <string name="action_delete">Delete</string>
-    <string name="action_edit">Edit</string>
-    <string name="action_dialog_no">No</string>
-    <string name="action_dialog_yes">Yes</string>
-    <string name="action_interviewer_info">Interviewer profile</string>
-    <string name="action_goto">Goto</string>
-    <string name="action_device_info">Device info</string>
-    <string name="action_add_new_item">Add new item</string>
-    <string name="action_previous_item">Previous item</string>
-    <string name="action_next_item">Next item</string>
-    <string name="action_previous_step">Previous</string>
-    <string name="action_next_step">Next</string>
-    <string name="action_done">Done</string>
-    <string name="action_finish">Close</string>
-    <string name="dialog_title_information">Information</string>
-
-    <string name="app_version">Version</string>
-    <string name="app_device_id">Device ID</string>
-    <string name="app_device_imei">IMEI</string>
-    <string name="app_device_subscriber_id">Subscriber ID</string>
-    <string name="app_device_sim_serial">Sim serial number</string>
-    <string name="app_device_phone_number">Phone number</string>
-
     <string name="pref_url">URL</string>
     <string name="pref_source_url">Source URL</string>
     <string name="pref_upload_url">Upload URL</string>
 
-<string name="add_another">Add Group</string>
-<string name="add_another_repeat">Add another \"%s\" group?</string>
-<string name="add_more">Add more</string>
-<string name="add_repeat">Add a new \"%s\" group?</string>
-<string name="add_repeat_no">Do Not Add</string>
-<string name="advance">forward to\nnext\nprompt</string>
-<string name="altitude">Altitude</string>
-<string name="audio_file_error">No audio file was specified.</string>
-<string name="audio_file_invalid">File: %s is not a valid audio file.</string>
-<string name="backup">backward to\nprevious\nprompt</string>
-<string name="barcode_scanner_error">Sorry, Barcode Scanner is not installed!</string>
-<string name="cancel">Cancel</string>
-<string name="cancel_loading_form">Cancel</string>
-<string name="cancel_location">Cancel</string>
-<string name="cannot_edit_completed_form">This form cannot be edited once it has been marked as complete. It may be encrypted.</string>
-<string name="capture_audio">Record Sound</string>
-<string name="capture_image">Take Picture</string>
-<string name="capture_osm">Launch OpenMapKit</string>
-<string name="recapture_osm">Redo OSM Tagging</string>
-<string name="capture_video">Record Video</string>
-<string name="change_language">Change Language</string>
-<string name="change_password">ODK Password</string>
-<string name="change_protocol_settings_default">Platform Settings</string>
-<string name="change_username">ODK Username</string>
-<string name="clearanswer_confirm">Remove the response to \"%s\"?</string>
-<string name="clear_answer">Remove response</string>
-<string name="clear_answer_ask">Remove This Response?</string>
-<string name="clear_answer_no">Cancel</string>
-<string name="completed_data">Complete (%s)</string>
-<string name="data">Saved Forms</string>
-<string name="data_saved_error">Sorry, form save failed!</string>
-<string name="data_saved_ok">Form successfully saved!</string>
-<string name="save_point_error">Error saving recovery point: %s</string>
-<string name="default_completed">Default to finalized</string>
-<string name="default_completed_summary">Mark form as finalized by default</string>
-<string name="delete_confirm">Delete %s form(s)?</string>
-<string name="delete_file">Delete Selected</string>
-<string name="delete_no">Do Not Delete</string>
-<string name="delete_repeat">Remove group</string>
-<string name="delete_repeat_ask">Remove This Group?</string>
-<string name="delete_repeat_confirm">Remove group \"%s\" and all of its sub-groups?</string>
-<string name="delete_repeat_no">Cancel</string>
-<string name="delete_yes">Delete Forms</string>
-<string name="discard_answer">Remove response</string>
-<string name="discard_group">Remove group</string>
-<string name="download">Get Selected</string>
-<string name="download_forms_result">Download Result</string>
-<string name="downloading_data">Connecting to Server</string>
-<string name="do_not_change">Cancel</string>
-<string name="do_not_exit">Cancel</string>
-<string name="do_not_save">Ignore Changes</string>
-<string name="entering_repeat">Add Group</string>
-<string name="entering_repeat_ask">Add New Group?</string>
-<string name="enter_data">Fill Blank Form</string>
-<string name="enter_data_button">Fill Blank Form</string>
-<string name="error_occured">Error Occurred</string>
-<string name="error_attaching_binary_file">An error occurred while attaching the media: %s</string>
-<string name="fetching_file">Getting %1$s.\n\nForm %2$s of %3$s form(s).</string>
-<string name="file_deleted_error">Sorry, %1$s of %2$s selected form(s) failed to delete!</string>
-<string name="file_deleted_ok">%s form(s) successfully deleted!</string>
-<string name="file_delete_in_progress">Sorry, a form delete action is already in progress!</string>
-<string name="file_invalid">File: %s is invalid.</string>
-<string name="file_missing">File: %s is missing.</string>
-<string name="finished_disk_scan">Finished scanning. All forms loaded.</string>
-<string name="forms">Blank Forms</string>
-<string name="getting_location">Loading Location</string>
-<string name="get_barcode">Get Barcode</string>
-<string name="get_forms">Get Blank Form</string>
-<string name="get_location">Record Location</string>
-<string name="provider_disabled_error">Sorry, Location providers are disabled!</string>
-<string name="invalid_answer_error">Sorry, this response is invalid!</string>
-<string name="jump_to_beginning">Go To Start</string>
-<string name="jump_to_end">Go To End</string>
-<string name="jump_to_previous">Go Up</string>
-<string name="latitude">Latitude</string>
-<string name="leave_repeat_yes">Do Not Add</string>
-<string name="leaving_repeat_ask">Add One More Group?</string>
-<string name="list_failed_with_error">Form listing failed. %s.</string>
-<string name="loading_form">Loading Form</string>
-<string name="load_remote_form_error">Error Getting Form List</string>
-<string name="location_provider_accuracy">Using %1$s. Accuracy is %2$s m.</string>
-<string name="location_accuracy">Accuracy is %1$s m</string>
-<string name="longitude">Longitude</string>
-<string name="main_menu">Main Menu</string>
-<string name="main_menu_details">Data collection made easier…</string>
-<string name="manage_files">Delete Saved Form</string>
-<string name="mark_finished">Mark form as finalized</string>
-<string name="noselect_error">Sorry, you have not selected any forms!</string>
-<string name="no_connection">No network connection available</string>
-<string name="no_items_display">Nothing available to display.</string>
-<string name="no_items_display_forms">Nothing available to display.\n\nTry getting and filling out a blank form.</string>
-<string name="no_items_display_instances">Nothing available to display.\n\nTry finalizing saved forms before sending.</string>
+    <string name="add_another">Add Group</string>
+    <string name="add_another_repeat">Add another \"%s\" group?</string>
+    <string name="add_more">Add more</string>
+    <string name="add_repeat">Add a new \"%s\" group?</string>
+    <string name="add_repeat_no">Do Not Add</string>
+    <string name="advance">forward to\nnext\nprompt</string>
+    <string name="altitude">Altitude</string>
+    <string name="audio_file_error">No audio file was specified.</string>
+    <string name="audio_file_invalid">File: %s is not a valid audio file.</string>
+    <string name="backup">backward to\nprevious\nprompt</string>
+    <string name="barcode_scanner_error">Sorry, Barcode Scanner is not installed!</string>
+    <string name="cancel">Cancel</string>
+    <string name="cancel_loading_form">Cancel</string>
+    <string name="cancel_location">Cancel</string>
+    <string name="cannot_edit_completed_form">This form cannot be edited once it has been marked as complete. It may be encrypted.</string>
+    <string name="capture_audio">Record Sound</string>
+    <string name="capture_image">Take Picture</string>
+    <string name="capture_osm">Launch OpenMapKit</string>
+    <string name="recapture_osm">Redo OSM Tagging</string>
+    <string name="capture_video">Record Video</string>
+    <string name="change_language">Change Language</string>
+    <string name="change_password">ODK Password</string>
+    <string name="change_protocol_settings_default">Platform Settings</string>
+    <string name="change_username">ODK Username</string>
+    <string name="clearanswer_confirm">Remove the response to \"%s\"?</string>
+    <string name="clear_answer">Remove response</string>
+    <string name="clear_answer_ask">Remove This Response?</string>
+    <string name="clear_answer_no">Cancel</string>
+    <string name="completed_data">Complete (%s)</string>
+    <string name="data">Saved Forms</string>
+    <string name="data_saved_error">Sorry, form save failed!</string>
+    <string name="data_saved_ok">Form successfully saved!</string>
+    <string name="save_point_error">Error saving recovery point: %s</string>
+    <string name="default_completed">Default to finalized</string>
+    <string name="default_completed_summary">Mark form as finalized by default</string>
+    <string name="delete_confirm">Delete %s form(s)?</string>
+    <string name="delete_file">Delete Selected</string>
+    <string name="delete_no">Do Not Delete</string>
+    <string name="delete_repeat">Remove group</string>
+    <string name="delete_repeat_ask">Remove This Group?</string>
+    <string name="delete_repeat_confirm">Remove group \"%s\" and all of its sub-groups?</string>
+    <string name="delete_repeat_no">Cancel</string>
+    <string name="delete_yes">Delete Forms</string>
+    <string name="discard_answer">Remove response</string>
+    <string name="discard_group">Remove group</string>
+    <string name="download">Get Selected</string>
+    <string name="download_forms_result">Download Result</string>
+    <string name="downloading_data">Connecting to Server</string>
+    <string name="do_not_change">Cancel</string>
+    <string name="do_not_exit">Cancel</string>
+    <string name="do_not_save">Ignore Changes</string>
+    <string name="entering_repeat">Add Group</string>
+    <string name="entering_repeat_ask">Add New Group?</string>
+    <string name="enter_data">Fill Blank Form</string>
+    <string name="enter_data_button">Fill Blank Form</string>
+    <string name="error_occured">Error Occurred</string>
+    <string name="error_attaching_binary_file">An error occurred while attaching the media: %s</string>
+    <string name="fetching_file">Getting %1$s.\n\nForm %2$s of %3$s form(s).</string>
+    <string name="file_deleted_error">Sorry, %1$s of %2$s selected form(s) failed to delete!</string>
+    <string name="file_deleted_ok">%s form(s) successfully deleted!</string>
+    <string name="file_delete_in_progress">Sorry, a form delete action is already in progress!</string>
+    <string name="file_invalid">File: %s is invalid.</string>
+    <string name="file_missing">File: %s is missing.</string>
+    <string name="finished_disk_scan">Finished scanning. All forms loaded.</string>
+    <string name="forms">Blank Forms</string>
+    <string name="getting_location">Loading Location</string>
+    <string name="get_barcode">Get Barcode</string>
+    <string name="get_forms">Get Blank Form</string>
+    <string name="get_location">Record Location</string>
+    <string name="provider_disabled_error">Sorry, Location providers are disabled!</string>
+    <string name="invalid_answer_error">Sorry, this response is invalid!</string>
+    <string name="jump_to_beginning">Go To Start</string>
+    <string name="jump_to_end">Go To End</string>
+    <string name="jump_to_previous">Go Up</string>
+    <string name="latitude">Latitude</string>
+    <string name="leave_repeat_yes">Do Not Add</string>
+    <string name="leaving_repeat_ask">Add One More Group?</string>
+    <string name="list_failed_with_error">Form listing failed. %s.</string>
+    <string name="loading_form">Loading Form</string>
+    <string name="load_remote_form_error">Error Getting Form List</string>
+    <string name="location_provider_accuracy">Using %1$s. Accuracy is %2$s m.</string>
+    <string name="location_accuracy">Accuracy is %1$s m</string>
+    <string name="longitude">Longitude</string>
+    <string name="main_menu">Main Menu</string>
+    <string name="main_menu_details">Data collection made easier…</string>
+    <string name="manage_files">Delete Saved Form</string>
+    <string name="mark_finished">Mark form as finalized</string>
+    <string name="noselect_error">Sorry, you have not selected any forms!</string>
+    <string name="no_connection">No network connection available</string>
+    <string name="no_items_display">Nothing available to display.</string>
+    <string name="no_items_display_forms">Nothing available to display.\n\nTry getting and filling out a blank form.</string>
+    <string name="no_items_display_instances">Nothing available to display.\n\nTry finalizing saved forms before sending.</string>
     <string name="ok">OK</string>
     <string name="yes">YES</string>
     <string name="no">NO</string>
-<string name="parse_error">Sorry, unable to parse form.</string>
-<string name="parse_legacy_formlist_failed">The server has not provided an available-forms document compatible with Aggregate 0.9.x. : %s</string>
-<string name="parse_openrosa_formlist_failed">The server has not provided an available-forms document compatible with the OpenRosa version 1.0 standard: %s</string>
-<string name="password">Password</string>
-<string name="play_audio">Play Sound</string>
-<string name="play_video">Play Video</string>
-<string name="please_wait">Please wait a few moments.</string>
-<string name="please_wait_long">Please wait. This could take a few minutes.</string>
-<string name="quit_application">Exit %s</string>
-<string name="quit_entry">Save Form and Exit</string>
-<string name="refresh">Refresh</string>
-<string name="replace_barcode">Replace Barcode</string>
-<string name="replace_location">Replace Location</string>
-<string name="required_answer_error">Sorry, this response is required!</string>
-<string name="review_data">Edit Saved Form</string>
-<string name="review_data_button">Edit Saved Form (%s)</string>
-<string name="saved_data">Incomplete (%s)</string>
-<string name="save_all_answers">Save Form</string>
-<string name="save_enter_data_description">You are at the end of %s.</string>
-<string name="saving_form">Saving Form</string>
-<string name="sending_items">Sending %1$s of %2$s form(s)</string>
-<string name="send_data">Send Finalized Form</string>
-<string name="send_data_button">Send Finalized Form (%s)</string>
-<string name="send_selected_data">Send Selected</string>
-<string name="server_auth_credentials">Please enter username and password for server:\n%s</string>
-<string name="server_requires_auth">Server Requires Authentication</string>
-<string name="server_url">URL</string>
-<string name="server_preferences">Server Settings</string>
-<string name="toggle_selected">Toggle All</string>
-<string name="trigger">OK. Please continue.</string>
-<string name="uploading_data">Sending Form</string>
-<string name="url_error">Sorry, invalid URL!</string>
-<string name="username">Username</string>
-<string name="view_hierarchy">Go To Prompt</string>
-<string name="general_preferences">General Settings</string>
-<string name="click_to_web">Tap to visit http://6grain.com</string>
-<string name="client">User Interface</string>
-<string name="show_splash">Show splash screen</string>
-<string name="show_splash_summary">Shows when application starts</string>
-<string name="splash_path">Selected splash image</string>
-<string name="default_splash_path">ODK Default</string>
-<string name="select_another_image">Select another image</string>
-<string name="use_odk_default">Use default image</string>
-<string name="change_splash_path">Change image</string>
-<string name="show_location">Show Location</string>
-<string name="app_url">http://6grain.com</string>
-<string name="keep_changes">Save Changes</string>
-<string name="go_to_location">Go to Location</string>
-<string name="change_formlist_url">Form list path (appended to URL)</string>
-<string name="protocol">Platform</string>
-<string name="change_protocol">Platform</string>
-<string name="change_submission_url">Submission path (appended to URL)</string>
-<string name="formlist_url">Form list path</string>
-<string name="submission_url">Submission path</string>
-<string name="font_size">Text font size</string>
-<string name="change_font_size">Text font size</string>
-<string name="form_scan_starting">Scanning for forms…</string>
-<string name="access_error">Error while accessing %s: </string>
-<string name="manifest_server_error">Manifest reply does not report an OpenRosa version — bad server?</string>
-<string name="root_element_error">Root element is not &lt;manifest\&gt; — was %s</string>
-<string name="root_namespace_error">Root element Namespace is incorrect: %s</string>
-<string name="manifest_tag_error">Manifest entry %s is missing one or more tags: filename, hash, or downloadUrl</string>
-<string name="form_download_progress">%1$s. Getting media files: %2$s of %3$s</string>
-<string name="file_fetch_failed">Error: %2$s (%3$s) at %1$s</string>
-<string name="fetching_manifest">%s. Getting manifest </string>
-<string name="success">Success</string>
-<string name="no_forms_uploaded">Sorry, no form was uploaded.</string>
-<string name="upload_results">Upload Results</string>
-<string name="xform_parse_error">XForm parse error. %1$s is missing element %2$s</string>
-<string name="choose_sound">Choose Sound</string>
-<string name="choose_video">Choose Video</string>
-<string name="choose_image">Choose Image</string>
-<string name="selected">Selected: </string>
-<string name="select_answer">Select Answer</string>
-<string name="save_form_as">Name this form</string>
-<string name="save_as_error">Saved name must not be blank!</string>
-<string name="edit_prompt">Edit Prompt</string>
-<string name="selected_google_account_text">Google account</string>
-<string name="server_platform_odk_aggregate">ODK Aggregate</string>
-<string name="server_platform_other">Other</string>
-<string name="font_size_extra_large">Extra Large</string>
-<string name="font_size_large">Large</string>
-<string name="font_size_medium">Medium</string>
-<string name="font_size_small">Small</string>
-<string name="font_size_extra_small">Extra Small</string>
-<string name="change_view">Change View</string>
-<string name="show_sent_and_unsent_forms">Show Sent and Unsent Forms</string>
-<string name="show_unsent_forms">Show Unsent Forms</string>
-<string name="added_on_date_at_time">\'Added on\' EEE, MMM dd, yyyy \'at\' HH:mm</string> <!-- http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html -->
-<string name="saved_on_date_at_time">\'Saved on\' EEE, MMM dd, yyyy \'at\' HH:mm</string> <!-- http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html -->
-<string name="finalized_on_date_at_time">\'Finalized on\' EEE, MMM dd, yyyy \'at\' HH:mm</string> <!-- http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html -->
-<string name="sent_on_date_at_time">\'Sent on\' EEE, MMM dd, yyyy \'at\' HH:mm</string> <!-- http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html -->
-<string name="sending_failed_on_date_at_time">\'Sending failed on\' EEE, MMM dd, yyyy \'at\' HH:mm</string> <!-- http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html -->
-<string name="version">Version:</string>
-<string name="parent_form_not_present">Unable to edit this saved form because the corresponding blank form is not present or was deleted.\n\nForm ID: %1$s</string>
-<string name="launch_app">Launch</string>
-<string name="no_app">The requested application is missing. Please manually enter the reading.</string>
-<string name="select_one">Select One Answer</string>
-<string name="savepoint_used">Unsaved changes recovered from savepoint!</string>
-<string name="save_and_close">Save and Close</string>
-<string name="sign_button">Gather Signature</string>
-<string name="markup_image">Markup Image</string>
-<string name="draw_image">Sketch Image</string>
-<string name="reset_image">Reset</string>
-<string name="set_color">Set Color</string>
-<string name="select_drawing_color">Select Drawing Color</string>
-<string name="user_access_main_menu">User can access Main Menu items:</string>
-<string name="user_access_preferences">User can access Change Settings items:</string>
-<string name="change_server">Platform</string>
-<string name="change_username_default">Username</string>
-<string name="admin_preferences">Admin Settings</string>
-<string name="admin_access_settings">Tap for admin access to settings</string>
-<string name="user_access_form_entry">User can access Form Entry items:</string>
-<string name="admin_advanced_settings">Advanced settings (when advised):</string>
-<string name="save_mid">Save Form</string>
-<string name="enter_new_password">Enter new password</string>
-<string name="verify_new_password">Re-enter new password</string>
-<string name="admin_password_changed">Admin password successfully changed</string>
-<string name="admin_password_disabled">Admin password disabled</string>
-<string name="admin_password_mismatch">Sorry, passwords do not match!</string>
-<string name="admin_password_incorrect">Sorry, password is incorrect!</string>
-<string name="enter_admin_password">Enter Admin Password</string>
-<string name="found_in_menu">Uncheck to hide from menu in Form Entry</string>
-<string name="autosend">Auto Send</string>
-<string name="autosend_wifi">Auto send with Wi-Fi</string>
-<string name="autosend_wifi_summary">Auto send when Wi-Fi is available</string>
-<string name="autosend_network">Auto send with network</string>
-<string name="autosend_network_summary">Auto send when network is available</string>
-<string name="found_in_main">Uncheck to hide from Main Menu</string>
-<string name="found_in_settings">Uncheck to hide from General Settings</string>
-<string name="found_at_end">Uncheck to hide from end of Form Entry</string>
-<string name="no_account">No account</string>
-<string name="save_preferences">Save Settings to Disk</string>
-<string name="form_forward">Next</string>
-<string name="form_backward">Prev</string>
-<string name="navigation">Navigation</string>
-<string name="swipe_navigation">Use horizontal swipes</string>
-<string name="buttons_navigation">Use forward/backward buttons</string>
-<string name="swipe_buttons_navigation">Use swipes and buttons</string>
-<string name="swipe_instructions">You are at the start of %s. Swipe the screen as shown below to go backward and forward.</string>
-<string name="buttons_instructions">You are at the start of %s. Tap the arrow buttons below to go backward and forward.</string>
-<string name="swipe_buttons_instructions">You are at the start of %s. Swipe the screen as shown below or tap the arrow buttons to go backward and forward.</string>
-<string name="form_processing_logic">Form processing logic</string>
-<string name="form_processing_logic_recommended">Recommended (default)</string>
-<string name="form_processing_logic_0">January 2015 (fastest)</string>
-<string name="form_processing_logic_1">January 2015 (safest)</string>
-<string name="form_processing_logic_2">Mid 2014 (slow)</string>
-<string name="form_processing_logic_3">Early 2014 (fast)</string>
-<string name="launch_printer">Initiate Printing</string>
-<string name="no_printer">The requested printer is not installed. Please install the printer.</string>
-<string name="constraint_behavior">Constraint processing behavior</string>
-<string name="constraint_behavior_on_swipe">Validate upon forward swipe</string>
-<string name="constraint_behavior_on_finalize">Defer validation until finalized</string>
-<string name="view_change_location">View or Change Location</string>
-<string name="open_url">Open Url</string>
-<string name="get_bearing">Record Bearing</string>
-<string name="replace_bearing">Replace Bearing</string>
-<string name="getting_bearing">Loading Bearing</string>
-<string name="accept_bearing">Record Bearing</string>
-<string name="sdcard_unmounted">Collect cannot access the SD card. Perhaps it is mounted via USB? (Current state: %s)</string>
-<string name="ext_file_no_data_error">The file contains no data!</string>
-<string name="ext_conflicting_columns_error">Columns %s match!</string>
-<string name="ext_sortBy_numeric_error">Your sortby column should contain only numeric values. Conflicting value was \'%s\'.</string>
-<string name="ext_search_wrong_arguments_error">"Syntax error in search() function: The function needs 1, 4 or 6 arguments."</string>
-<string name="ext_search_wrong_function_error">Syntax error in search() function : Unrecognised function \'%s\'.</string>
-<string name="ext_search_bad_function_error">Syntax error in search() function: \'%s\' was not evaluated as a function.</string>
-<string name="ext_search_return_error">The search handler returned a object of type \'%s\'.</string>
-<string name="ext_import_generic_error">Could not import data from %1$s. Reason: %2$s</string>
-<string name="ext_import_progress_message">Pre-loading data from \'%1$s\', please wait… %2$s</string>
-<string name="ext_import_cancelled_message">Reading data cancelled!</string>
-<string name="ext_import_finalizing_message">Finalizing pre-loaded data…</string>
-<string name="ext_import_completed_message">Reading data completed!</string>
-<string name="ext_not_initialized_error">The ExternalDataManager has not been initialized.</string>
-<string name="ext_import_csv_missing_error">External data for %1$s has not been imported. Perhaps you forgot to include the %2$s.csv file with your form?</string>
-<string name="ext_search_generic_error">Syntax error in search() function: %s</string>
-<string name="ext_assign_value_error">Cannot assign the value at \'%s\'.</string>
-<string name="fs_delete_media_path_if_file_error">Could not delete \'%s\'. Please delete the file manually and re-download the form.</string>
-<string name="fs_create_media_folder_error">Could not create media folder \'%s\'.</string>
-<string name="fs_file_copy_error">Could not copy \'%1$s\' over \'%2$s\'. Reason: %3$s</string>
+    <string name="parse_error">Sorry, unable to parse form.</string>
+    <string name="parse_legacy_formlist_failed">The server has not provided an available-forms document compatible with Aggregate 0.9.x. : %s</string>
+    <string name="parse_openrosa_formlist_failed">The server has not provided an available-forms document compatible with the OpenRosa version 1.0 standard: %s</string>
+    <string name="password">Password</string>
+    <string name="play_audio">Play Sound</string>
+    <string name="play_video">Play Video</string>
+    <string name="please_wait">Please wait a few moments.</string>
+    <string name="please_wait_long">Please wait. This could take a few minutes.</string>
+    <string name="quit_application">Exit %s</string>
+    <string name="quit_entry">Save Form and Exit</string>
+    <string name="refresh">Refresh</string>
+    <string name="replace_barcode">Replace Barcode</string>
+    <string name="replace_location">Replace Location</string>
+    <string name="required_answer_error">Sorry, this response is required!</string>
+    <string name="review_data">Edit Saved Form</string>
+    <string name="review_data_button">Edit Saved Form (%s)</string>
+    <string name="saved_data">Incomplete (%s)</string>
+    <string name="save_all_answers">Save Form</string>
+    <string name="save_enter_data_description">You are at the end of %s.</string>
+    <string name="saving_form">Saving Form</string>
+    <string name="sending_items">Sending %1$s of %2$s form(s)</string>
+    <string name="send_data">Send Finalized Form</string>
+    <string name="send_data_button">Send Finalized Form (%s)</string>
+    <string name="send_selected_data">Send Selected</string>
+    <string name="server_auth_credentials">Please enter username and password for server:\n%s</string>
+    <string name="server_requires_auth">Server Requires Authentication</string>
+    <string name="server_url">URL</string>
+    <string name="server_preferences">Server Settings</string>
+    <string name="toggle_selected">Toggle All</string>
+    <string name="trigger">OK. Please continue.</string>
+    <string name="uploading_data">Sending Form</string>
+    <string name="url_error">Sorry, invalid URL!</string>
+    <string name="username">Username</string>
+    <string name="view_hierarchy">Go To Prompt</string>
+    <string name="general_preferences">General Settings</string>
+    <string name="click_to_web">Tap to visit http://6grain.com</string>
+    <string name="client">User Interface</string>
+    <string name="show_splash">Show splash screen</string>
+    <string name="show_splash_summary">Shows when application starts</string>
+    <string name="splash_path">Selected splash image</string>
+    <string name="default_splash_path">ODK Default</string>
+    <string name="select_another_image">Select another image</string>
+    <string name="use_odk_default">Use default image</string>
+    <string name="change_splash_path">Change image</string>
+    <string name="show_location">Show Location</string>
+    <string name="app_url">http://6grain.com</string>
+    <string name="keep_changes">Save Changes</string>
+    <string name="go_to_location">Go to Location</string>
+    <string name="change_formlist_url">Form list path (appended to URL)</string>
+    <string name="protocol">Platform</string>
+    <string name="change_protocol">Platform</string>
+    <string name="change_submission_url">Submission path (appended to URL)</string>
+    <string name="formlist_url">Form list path</string>
+    <string name="submission_url">Submission path</string>
+    <string name="font_size">Text font size</string>
+    <string name="change_font_size">Text font size</string>
+    <string name="form_scan_starting">Scanning for forms…</string>
+    <string name="access_error">Error while accessing %s: </string>
+    <string name="manifest_server_error">Manifest reply does not report an OpenRosa version — bad server?</string>
+    <string name="root_element_error">Root element is not &lt;manifest\&gt; — was %s</string>
+    <string name="root_namespace_error">Root element Namespace is incorrect: %s</string>
+    <string name="manifest_tag_error">Manifest entry %s is missing one or more tags: filename, hash, or downloadUrl</string>
+    <string name="form_download_progress">%1$s. Getting media files: %2$s of %3$s</string>
+    <string name="file_fetch_failed">Error: %2$s (%3$s) at %1$s</string>
+    <string name="fetching_manifest">%s. Getting manifest </string>
+    <string name="success">Success</string>
+    <string name="no_forms_uploaded">Sorry, no form was uploaded.</string>
+    <string name="upload_results">Upload Results</string>
+    <string name="xform_parse_error">XForm parse error. %1$s is missing element %2$s</string>
+    <string name="choose_sound">Choose Sound</string>
+    <string name="choose_video">Choose Video</string>
+    <string name="choose_image">Choose Image</string>
+    <string name="selected">Selected: </string>
+    <string name="select_answer">Select Answer</string>
+    <string name="save_form_as">Name this form</string>
+    <string name="save_as_error">Saved name must not be blank!</string>
+    <string name="edit_prompt">Edit Prompt</string>
+    <string name="selected_google_account_text">Google account</string>
+    <string name="server_platform_odk_aggregate">ODK Aggregate</string>
+    <string name="server_platform_other">Other</string>
+    <string name="font_size_extra_large">Extra Large</string>
+    <string name="font_size_large">Large</string>
+    <string name="font_size_medium">Medium</string>
+    <string name="font_size_small">Small</string>
+    <string name="font_size_extra_small">Extra Small</string>
+    <string name="change_view">Change View</string>
+    <string name="show_sent_and_unsent_forms">Show Sent and Unsent Forms</string>
+    <string name="show_unsent_forms">Show Unsent Forms</string>
+    <string name="added_on_date_at_time">\'Added on\' EEE, MMM dd, yyyy \'at\' HH:mm</string> <!-- http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html -->
+    <string name="saved_on_date_at_time">\'Saved on\' EEE, MMM dd, yyyy \'at\' HH:mm</string> <!-- http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html -->
+    <string name="finalized_on_date_at_time">\'Finalized on\' EEE, MMM dd, yyyy \'at\' HH:mm</string> <!-- http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html -->
+    <string name="sent_on_date_at_time">\'Sent on\' EEE, MMM dd, yyyy \'at\' HH:mm</string> <!-- http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html -->
+    <string name="sending_failed_on_date_at_time">\'Sending failed on\' EEE, MMM dd, yyyy \'at\' HH:mm</string> <!-- http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html -->
+    <string name="version">Version:</string>
+    <string name="parent_form_not_present">Unable to edit this saved form because the corresponding blank form is not present or was deleted.\n\nForm ID: %1$s</string>
+    <string name="launch_app">Launch</string>
+    <string name="no_app">The requested application is missing. Please manually enter the reading.</string>
+    <string name="select_one">Select One Answer</string>
+    <string name="savepoint_used">Unsaved changes recovered from savepoint!</string>
+    <string name="save_and_close">Save and Close</string>
+    <string name="sign_button">Gather Signature</string>
+    <string name="markup_image">Markup Image</string>
+    <string name="draw_image">Sketch Image</string>
+    <string name="reset_image">Reset</string>
+    <string name="set_color">Set Color</string>
+    <string name="select_drawing_color">Select Drawing Color</string>
+    <string name="user_access_main_menu">User can access Main Menu items:</string>
+    <string name="user_access_preferences">User can access Change Settings items:</string>
+    <string name="change_server">Platform</string>
+    <string name="change_username_default">Username</string>
+    <string name="admin_preferences">Admin Settings</string>
+    <string name="admin_access_settings">Tap for admin access to settings</string>
+    <string name="user_access_form_entry">User can access Form Entry items:</string>
+    <string name="admin_advanced_settings">Advanced settings (when advised):</string>
+    <string name="save_mid">Save Form</string>
+    <string name="enter_new_password">Enter new password</string>
+    <string name="verify_new_password">Re-enter new password</string>
+    <string name="admin_password_changed">Admin password successfully changed</string>
+    <string name="admin_password_disabled">Admin password disabled</string>
+    <string name="admin_password_mismatch">Sorry, passwords do not match!</string>
+    <string name="admin_password_incorrect">Sorry, password is incorrect!</string>
+    <string name="enter_admin_password">Enter Admin Password</string>
+    <string name="found_in_menu">Uncheck to hide from menu in Form Entry</string>
+    <string name="autosend">Auto Send</string>
+    <string name="autosend_wifi">Auto send with Wi-Fi</string>
+    <string name="autosend_wifi_summary">Auto send when Wi-Fi is available</string>
+    <string name="autosend_network">Auto send with network</string>
+    <string name="autosend_network_summary">Auto send when network is available</string>
+    <string name="found_in_main">Uncheck to hide from Main Menu</string>
+    <string name="found_in_settings">Uncheck to hide from General Settings</string>
+    <string name="found_at_end">Uncheck to hide from end of Form Entry</string>
+    <string name="no_account">No account</string>
+    <string name="save_preferences">Save Settings to Disk</string>
+    <string name="form_forward">Next</string>
+    <string name="form_backward">Prev</string>
+    <string name="navigation">Navigation</string>
+    <string name="swipe_navigation">Use horizontal swipes</string>
+    <string name="buttons_navigation">Use forward/backward buttons</string>
+    <string name="swipe_buttons_navigation">Use swipes and buttons</string>
+    <string name="swipe_instructions">You are at the start of %s. Swipe the screen as shown below to go backward and forward.</string>
+    <string name="buttons_instructions">You are at the start of %s. Tap the arrow buttons below to go backward and forward.</string>
+    <string name="swipe_buttons_instructions">You are at the start of %s. Swipe the screen as shown below or tap the arrow buttons to go backward and forward.</string>
+    <string name="form_processing_logic">Form processing logic</string>
+    <string name="form_processing_logic_recommended">Recommended (default)</string>
+    <string name="form_processing_logic_0">January 2015 (fastest)</string>
+    <string name="form_processing_logic_1">January 2015 (safest)</string>
+    <string name="form_processing_logic_2">Mid 2014 (slow)</string>
+    <string name="form_processing_logic_3">Early 2014 (fast)</string>
+    <string name="launch_printer">Initiate Printing</string>
+    <string name="no_printer">The requested printer is not installed. Please install the printer.</string>
+    <string name="constraint_behavior">Constraint processing behavior</string>
+    <string name="constraint_behavior_on_swipe">Validate upon forward swipe</string>
+    <string name="constraint_behavior_on_finalize">Defer validation until finalized</string>
+    <string name="view_change_location">View or Change Location</string>
+    <string name="open_url">Open Url</string>
+    <string name="get_bearing">Record Bearing</string>
+    <string name="replace_bearing">Replace Bearing</string>
+    <string name="getting_bearing">Loading Bearing</string>
+    <string name="accept_bearing">Record Bearing</string>
+    <string name="sdcard_unmounted">Collect cannot access the SD card. Perhaps it is mounted via USB? (Current state: %s)</string>
+    <string name="ext_file_no_data_error">The file contains no data!</string>
+    <string name="ext_conflicting_columns_error">Columns %s match!</string>
+    <string name="ext_sortBy_numeric_error">Your sortby column should contain only numeric values. Conflicting value was \'%s\'.</string>
+    <string name="ext_search_wrong_arguments_error">"Syntax error in search() function: The function needs 1, 4 or 6 arguments."</string>
+    <string name="ext_search_wrong_function_error">Syntax error in search() function : Unrecognised function \'%s\'.</string>
+    <string name="ext_search_bad_function_error">Syntax error in search() function: \'%s\' was not evaluated as a function.</string>
+    <string name="ext_search_return_error">The search handler returned a object of type \'%s\'.</string>
+    <string name="ext_import_generic_error">Could not import data from %1$s. Reason: %2$s</string>
+    <string name="ext_import_progress_message">Pre-loading data from \'%1$s\', please wait… %2$s</string>
+    <string name="ext_import_cancelled_message">Reading data cancelled!</string>
+    <string name="ext_import_finalizing_message">Finalizing pre-loaded data…</string>
+    <string name="ext_import_completed_message">Reading data completed!</string>
+    <string name="ext_not_initialized_error">The ExternalDataManager has not been initialized.</string>
+    <string name="ext_import_csv_missing_error">External data for %1$s has not been imported. Perhaps you forgot to include the %2$s.csv file with your form?</string>
+    <string name="ext_search_generic_error">Syntax error in search() function: %s</string>
+    <string name="ext_assign_value_error">Cannot assign the value at \'%s\'.</string>
+    <string name="fs_delete_media_path_if_file_error">Could not delete \'%s\'. Please delete the file manually and re-download the form.</string>
+    <string name="fs_create_media_folder_error">Could not create media folder \'%s\'.</string>
+    <string name="fs_file_copy_error">Could not copy \'%1$s\' over \'%2$s\'. Reason: %3$s</string>
 
     <string name="survey_settings">Survey settings</string>
     <string name="survey_chosen_type">Survey type</string>
-	<string name="survey_default_type">za20160210</string>
+    <string name="survey_default_type">za20160210</string>
 
     <string-array name="survey_type_entries">
         <item>Zambia</item>
@@ -330,55 +299,3362 @@
         <item>cm20160208</item>
     </string-array>
 
-<string name="survey_internal_error">Internal error: step to prompt failed.</string>
-<string name="survey_multiple_forms_error">You have downloaded two different forms with the same form ID and version. Maybe they were the same form uploaded at different times or to different servers. In any case, you should delete one.</string>
-<string name="survey_loading_reading_form_message">Reading form definition…</string>
-<string name="survey_loading_reading_data_message">Reading survey data…</string>
-<string name="survey_loading_reading_csv_message">Reading CSV files…</string>
-<string name="survey_saving_validating_message">Validating answers…</string>
-<string name="survey_saving_collecting_message">Collecting data…</string>
-<string name="survey_saving_saving_message">Saving to SD card…</string>
-<string name="survey_saving_finalizing_message">Finalizing to SD card…</string>
-<string name="survey_saving_encrypting_message">Encrypting data…</string>
-<string name="high_resolution_summary">Enable high-resolution video recordings</string>
-<string name="high_resolution">Enable hi-res video</string>
-<string name="server_platform_google_sheets">Google Drive, Google Sheets</string>
-<string name="google_drive">Google Drive</string>
-<string name="go_drive">My Drive</string>
-<string name="go_shared">Shared with Me</string>
-<string name="modified_on_date_at_time">\'Modified on\' EEE, MMM dd, yyyy \'at\' HH:mm</string>
-<string name="protocol_settings">Configure platform settings</string>
-<string name="aggregate_preferences">ODK Aggregate settings</string>
-<string name="other_preferences">Other platform settings</string>
-<string name="google_preferences">Google Sheets settings</string>
-<string name="drive_get_file">Getting %1$s and media files.</string>
-<string name="no_google_account">No Google Account Selected!</string>
-<string name="google_set_account">You have selected Google Sheets as your server, please select a corresponding Google account in the General Settings before continuing</string>
-<string name="invalid_oauth">Invalid OAuth 2 token</string>
-<string name="google_repeat_error">Repeats are not supported by Google Sheets at this time.</string>
-<string name="google_audio_error">Audio files are not supported by Google Sheets at this time.</string>
-<string name="google_video_error">Video files are not supported by Google Sheets at this time.</string>
-<string name="picasa_upload_error">Failed to upload photo that does not exist: %1$s</string>
-<string name="odk_auth_auth_fail">ODK Autosend authentication failure, please make sure your settings are correct</string>
-<string name="odk_auto_note">ODK Autosend Notification</string>
-<string name="notification_error">Error displaying notification text</string>
-<string name="delete_after_send">Delete after send</string>
-<string name="delete_after_send_summary">Deletes finalized forms and media after sending to server</string>
-<string name="change_server_url">Server URL</string>
-<string name="google_search_browse">Search for forms. Or select \'My Drive\' below to browse.</string>
-<string name="no_blank_search">Search field cannot be blank.</string>
-<string name="google_sheets_url">Google Sheets URL</string>
-<string name="default_google_sheets_url"></string>
-<string name="send_in_progress">Background send running, please try again shortly</string>
-<string name="sheets_google_account_needed">You have selected Google Sheets as your server, please select a corresponding Google Account in the General Settings before continuing</string>
-<string name="sheets_max_columns">Max number of columns is 255, your form has %1%s. Unable to upload to spreadsheet.</string>
-<string name="invalid_sheet_id">invalid sheet id: %1$s</string>
-<string name="google_sheets_access_denied">Access denied. Please make sure the spreadsheet owner has granted you access permission.</string>
-<string name="google_sheets_update_error">Error updating spreadsheet. Please make sure the spreadsheet owner has granted you write access permission.</string>
-<string name="google_sheets_missing_columns">Spreadsheet is missing the following columns: %1$s</string>
-<string name="url_error_whitespace">whitespace is not allowed in urls</string>
-<string name="password_error_whitespace">leading or trailing whitespace not allowed in passwords</string>
-<string name="username_error_whitespace">leading or trailing whitespace not allowed in usernames</string>
-<string name="google_play_services_error_occured">Unable to access Google Maps. Is Google Play Services installed?
-</string>
+    <string name="survey_internal_error">Internal error: step to prompt failed.</string>
+    <string name="survey_multiple_forms_error">You have downloaded two different forms with the same form ID and version. Maybe they were the same form uploaded at different times or to different servers. In any case, you should delete one.</string>
+    <string name="survey_loading_reading_form_message">Reading form definition…</string>
+    <string name="survey_loading_reading_data_message">Reading survey data…</string>
+    <string name="survey_loading_reading_csv_message">Reading CSV files…</string>
+    <string name="survey_saving_validating_message">Validating answers…</string>
+    <string name="survey_saving_collecting_message">Collecting data…</string>
+    <string name="survey_saving_saving_message">Saving to SD card…</string>
+    <string name="survey_saving_finalizing_message">Finalizing to SD card…</string>
+    <string name="survey_saving_encrypting_message">Encrypting data…</string>
+    <string name="high_resolution_summary">Enable high-resolution video recordings</string>
+    <string name="high_resolution">Enable hi-res video</string>
+    <string name="server_platform_google_sheets">Google Drive, Google Sheets</string>
+    <string name="google_drive">Google Drive</string>
+    <string name="go_drive">My Drive</string>
+    <string name="go_shared">Shared with Me</string>
+    <string name="modified_on_date_at_time">\'Modified on\' EEE, MMM dd, yyyy \'at\' HH:mm</string>
+    <string name="protocol_settings">Configure platform settings</string>
+    <string name="aggregate_preferences">ODK Aggregate settings</string>
+    <string name="other_preferences">Other platform settings</string>
+    <string name="google_preferences">Google Sheets settings</string>
+    <string name="drive_get_file">Getting %1$s and media files.</string>
+    <string name="no_google_account">No Google Account Selected!</string>
+    <string name="google_set_account">You have selected Google Sheets as your server, please select a corresponding Google account in the General Settings before continuing</string>
+    <string name="invalid_oauth">Invalid OAuth 2 token</string>
+    <string name="google_repeat_error">Repeats are not supported by Google Sheets at this time.</string>
+    <string name="google_audio_error">Audio files are not supported by Google Sheets at this time.</string>
+    <string name="google_video_error">Video files are not supported by Google Sheets at this time.</string>
+    <string name="picasa_upload_error">Failed to upload photo that does not exist: %1$s</string>
+    <string name="odk_auth_auth_fail">ODK Autosend authentication failure, please make sure your settings are correct</string>
+    <string name="odk_auto_note">ODK Autosend Notification</string>
+    <string name="notification_error">Error displaying notification text</string>
+    <string name="delete_after_send">Delete after send</string>
+    <string name="delete_after_send_summary">Deletes finalized forms and media after sending to server</string>
+    <string name="change_server_url">Server URL</string>
+    <string name="google_search_browse">Search for forms. Or select \'My Drive\' below to browse.</string>
+    <string name="no_blank_search">Search field cannot be blank.</string>
+    <string name="google_sheets_url">Google Sheets URL</string>
+    <string name="default_google_sheets_url"></string>
+    <string name="send_in_progress">Background send running, please try again shortly</string>
+    <string name="sheets_google_account_needed">You have selected Google Sheets as your server, please select a corresponding Google Account in the General Settings before continuing</string>
+    <string name="sheets_max_columns">Max number of columns is 255, your form has %1%s. Unable to upload to spreadsheet.</string>
+    <string name="invalid_sheet_id">invalid sheet id: %1$s</string>
+    <string name="google_sheets_access_denied">Access denied. Please make sure the spreadsheet owner has granted you access permission.</string>
+    <string name="google_sheets_update_error">Error updating spreadsheet. Please make sure the spreadsheet owner has granted you write access permission.</string>
+    <string name="google_sheets_missing_columns">Spreadsheet is missing the following columns: %1$s</string>
+    <string name="url_error_whitespace">whitespace is not allowed in urls</string>
+    <string name="password_error_whitespace">leading or trailing whitespace not allowed in passwords</string>
+    <string name="username_error_whitespace">leading or trailing whitespace not allowed in usernames</string>
+    <string name="google_play_services_error_occured">Unable to access Google Maps. Is Google Play Services installed?</string>
+
+    <!-- 6G Data Terminal -->
+    <string name="survey_name">Survey</string>
+    <string name="survey_name_zambia">Zambia</string>
+    <string name="survey_name_tunisia">Tunisia</string>
+
+    <string name="title_required_field"><small><i>This field is required</i></small></string>
+
+    <string name="label_field">field</string>
+    <string name="label_fields">fields</string>
+
+    <string name="title_activity_farmers_list">List of farmers</string>
+    <string name="title_activity_farmer">Farmer profile</string>
+
+    <string name="title_activity_interviewer">Interviewer profile</string>
+    <string name="title_activity_device">Device info</string>
+
+    <string name="title_activity_fields_list">List of fields</string>
+    <string name="title_activity_field">Field profile</string>
+
+    <!-- App -->
+    <string name="app_name">6G Data Terminal</string>
+    <string name="app_title">6Grain Data Terminal</string>
+    <string name="app_action_bar_title">Data Terminal</string>
+    <string name="app_preferences_name">6G_data_terminal</string>
+
+    <string name="app_version">Version</string>
+    <string name="app_device_id">Device ID</string>
+    <string name="app_device_imei">IMEI</string>
+    <string name="app_device_subscriber_id">Subscriber ID</string>
+    <string name="app_device_sim_serial">Sim serial number</string>
+    <string name="app_device_phone_number">Phone number</string>
+
+    <string name="app_welcome_start">Let\'s start!</string>
+    <string name="app_welcome_message">To create a new farmer\'s profile use this button</string>
+    <string name="app_crop_list_empty">No info about crop</string>
+    <string name="app_crop_list_create">Use this button to add info about crop</string>
+
+    <string name="app_update_type_title">Update channel</string>
+
+    <string-array name="survey_state_list">
+        <item>SUBMITTED</item>
+        <item>NEW</item>
+        <item>SYNCHRONIZATION FAILED</item>
+    </string-array>
+
+    <string-array name="survey_name_list">
+        <item>Zambia</item>
+        <item>Tunisia</item>
+        <item>Senegal</item>
+        <item>Cameroon</item>
+    </string-array>
+
+    <string-array name="update_channel_list">
+        <item>Default</item>
+        <item>Beta</item>
+    </string-array>
+    <!-- App -->
+
+    <!-- Action -->
+    <string name="action_settings">Settings</string>
+    <string name="action_update">Check for updates</string>
+    <string name="action_send_mail">Send info of app state</string>
+    <string name="action_send_mail_title">6G Data Terminal - Data Report</string>
+    <string name="action_send_mail_title_error">6G Data Terminal - Error Report</string>
+    <string name="action_send_mail_message">This file contains info which needed developers to understand what\'s wrong with your data.</string>
+    <string name="action_send_mail_exception">There is no email client installed.</string>
+    <string name="action_synchronization">Synchronize</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_dialog_no">No</string>
+    <string name="action_dialog_yes">Yes</string>
+    <string name="action_interviewer_info">Interviewer profile</string>
+    <string name="action_device_info">Device info</string>
+    <string name="action_add_new_item">Add new item</string>
+    <string name="action_previous_item">Previous item</string>
+    <string name="action_next_item">Next item</string>
+    <string name="action_previous_step">Previous</string>
+    <string name="action_next_step">Next</string>
+    <string name="action_done">Done</string>
+    <string name="action_finish">Close</string>
+    <string name="action_goto">Goto</string>
+    <string name="action_capture_photo">Take a photo</string>
+    <string name="action_edit_survey">Edit current survey</string>
+    <string name="action_delete_survey">Delete current survey</string>
+    <string name="action_edit_field">Edit current field</string>
+    <string name="action_delete_field">Delete current field</string>
+    <string name="action_edit_crop">Edit current crop</string>
+    <string name="action_delete_crop">Delete current crop</string>
+    <string name="action_edit_employee">Edit current employee</string>
+    <string name="action_delete_employee">Delete current employee</string>
+    <string name="action_edit_equipment">Edit current equipment</string>
+    <string name="action_delete_equipment">Delete current equipment</string>
+    <string name="action_edit_expense">Edit current expense</string>
+    <string name="action_delete_expense">Delete current expense</string>
+    <string name="action_edit_infrastructure">Edit current infrastructure</string>
+    <string name="action_delete_infrastructure">Delete current infrastructure</string>
+    <string name="action_edit_expenditure">Edit current expenditure</string>
+    <string name="action_delete_expenditure">Delete current expenditure</string>
+    <string name="action_edit_production">Edit current production</string>
+    <string name="action_delete_production">Delete current production</string>
+    <string name="action_edit_movement">Edit current movement</string>
+    <string name="action_delete_movement">Delete current movement</string>
+    <string name="action_edit_owner">Edit current owner</string>
+    <string name="action_delete_owner">Delete current owner</string>
+    <string name="action_take_coordinates">Take coordinates</string>
+    <string name="action_searching_coordinates">Searching coordinates...</string>
+    <!-- Action -->
+
+    <!-- Hint -->
+    <string name="hint_post_box"><small><i> 123456 </i></small></string>
+    <string name="hint_phone_number"><small><i> e.g. +221 33 8224569 </i></small></string>
+    <string name="hint_fax_number"><small><i> e.g. +221 76 6887898 </i></small></string>
+    <string name="hint_email"><small><i> example@mail.com </i></small></string>
+    <string name="hint_web_site"><small><i> http://www.example.com </i></small></string>
+    <string name="hint_date"><small><i> dd-MM-yyyy </i></small></string>
+    <!-- Hint -->
+
+    <!-- Dialogs -->
+    <string name="confirmation_message">Confirmation</string>
+    <string name="information_message">Information</string>
+    <string name="information_message_center_gps"></string>
+    <string name="update_message">Update available</string>
+    <string name="update_message_text">Do you want download the latest update?</string>
+    <string name="update_message_text_not_available">You have the latest version of 6G Data Terminal</string>
+    <string name="update_message_progress_title">Downloading update</string>
+    <string name="update_message_progress_value">%d%%</string>
+    <string name="error_message_title">Error</string>
+    <string name="error_message_text">Something went wrong! Help us improve your experience by sending an error report</string>
+
+    <string name="confirmation_message_close_survey">Are you sure want to cancel filling this survey?\nAll progress will be lost.</string>
+    <string name="confirmation_message_close_field">Are you sure want to cancel filling this field?\nAll progress will be lost.</string>
+    <string name="confirmation_message_close_crop">Are you sure want to cancel filling this crop?\nAll progress will be lost.</string>
+    <string name="confirmation_message_close_employee">Are you sure want to cancel filling info about employee?\nAll progress will be lost.</string>
+    <string name="confirmation_message_close_equipment">Are you sure want to cancel filling info about equipment?\nAll progress will be lost.</string>
+    <string name="confirmation_message_close_expense">Are you sure want to cancel filling info about expense?\nAll progress will be lost.</string>
+    <string name="confirmation_message_close_infrastructure">Are you sure want to cancel filling info about infrastructure?\nAll progress will be lost.</string>
+    <string name="confirmation_message_close_expenditure">Are you sure want to cancel filling info about expenditure?\nAll progress will be lost.</string>
+    <string name="confirmation_message_close_production">Are you sure want to cancel filling info about production?\nAll progress will be lost.</string>
+    <string name="confirmation_message_close_movement">Are you sure want to cancel filling info about movement?\nAll progress will be lost.</string>
+    <string name="confirmation_message_close_owner">Are you sure want to cancel filling info about owner?\nAll progress will be lost.</string>
+
+    <string name="confirmation_message_delete_survey">Are you sure to want delete current survey?</string>
+    <string name="confirmation_message_delete_field">Are you sure to want delete current field?</string>
+    <string name="confirmation_message_delete_crop">Are you sure to want delete current crop?</string>
+    <string name="confirmation_message_delete_animal">Are you sure to want delete current animal?</string>
+    <string name="confirmation_message_delete_employee">Are you sure to want delete current employee?</string>
+    <string name="confirmation_message_delete_equipment">Are you sure to want delete current equipment?</string>
+    <string name="confirmation_message_delete_expense">Are you sure to want delete current expense?</string>
+    <string name="confirmation_message_delete_infrastructure">Are you sure to want delete current infrastructure?</string>
+    <string name="confirmation_message_delete_expenditure">Are you sure to want delete current expenditure?</string>
+    <string name="confirmation_message_delete_production">Are you sure to want delete current production?</string>
+    <string name="confirmation_message_delete_movement">Are you sure to want delete current movement?</string>
+    <string name="confirmation_message_delete_owner">Are you sure to want delete current owner?</string>
+
+    <string name="information_message_interviewer">Please enter the name of interviewer</string>
+    <string name="information_message_uploading_surveys">Uploading surveys</string>
+    <string name="information_message_uploading_surveys_for">Uploading surveys for</string>
+    <string name="information_message_uploading_image">Saving %1$s image for %2$s</string>
+
+    <string name="network_type_mobile">Mobile</string>
+    <string name="network_type_ethernet">Ethernet</string>
+    <string name="network_type_wifi">Wi-Fi</string>
+    <string name="network_type_wimax">WiMAX</string>
+    <string name="network_type_undefined">Undefined</string>
+    <!-- Dialogs -->
+
+    <string name="interviewer_name">Name of the interviewer</string>
+    <string name="controller_name">Name of the controller</string>
+    <string name="supervisor_name">Name of the supervisor</string>
+    <string name="interviewer_geo_position">Location details</string>
+
+    <string name="farmer_reg_card_number">Number of the National Identity Card</string>
+    <string name="farmer_province">Province</string>
+    <string name="farmer_delegation">Delegation</string>
+
+    <string name="tunisia_farmer_governorate">Governorate</string>
+    <string name="tunisia_farmer_delegation">Delegation</string>
+
+    <string name="farmer_region">Region</string>
+    <string name="farmer_department">Department</string>
+    <string name="farmer_district">District</string>
+    <string name="farmer_town">Town</string>
+
+    <string name="farmer_block_name">Block</string>
+    <string name="farmer_vet_camp_name">Vet camp name</string>
+    <string name="farmer_agr_camp_name">Agriculture camp name</string>
+    <string name="farmer_village_name">Village/locality name</string>
+
+    <string name="tunisia_farmer_village_name">IMADA</string>
+
+    <string name="farmer_zone_census">Census area</string>
+    <string name="farmer_zone">Zoned</string>
+    <string name="farmer_post_box">Post box</string>
+    <string name="farmer_fax">Fax</string>
+    <string name="farmer_phone">Phone</string>
+    <string name="farmer_cell_phone">Cell phone</string>
+    <string name="farmer_mobile_phone">Mobile phone</string>
+    <string name="farmer_mail">E-mail</string>
+    <string name="farmer_web_site">Website</string>
+    <string name="farmer_regime_of_exploitation">Legal regime of exploitation</string>
+
+    <string name="farmer_photo_zambia">Take a photo of the main farmer</string>
+    <string name="farmer_photo_senegal">Take a photo of the chief operating officer</string>
+
+    <string name="farmer_head_name">Name of household head</string>
+    <string name="farmer_main_name">Name of the main farmer in the household</string>
+    <string name="farmer_first_name">First Name</string>
+    <string name="farmer_last_name">Last Name</string>
+    <string name="farmer_extension_officer">Associated extension officer</string>
+    <string name="farmer_cooperative">Associated cooperative</string>
+
+    <string name="farmer_activities_title">Was the household engaged in any of the following activities in current season?</string>
+    <string name="farmer_activities_last_title">Was the household engaged in any of the following activities last season?</string>
+    <string name="farmer_crop_production">Crop production(field crops, fruits, sugarcane or vegetables)</string>
+    <string name="farmer_livestock_production">Livestock production</string>
+    <string name="farmer_fishing_production">Fish farming</string>
+
+    <string name="farmer_livelihood_source">What is your main source of livelihood?</string>
+    <string name="farmer_labour_source">What is your main source of farm labour?</string>
+
+    <string name="farmer_education_levels">What is the level of agricultural management skill?</string>
+    <string name="farmer_source_information">What is your source of agricultural information?</string>
+    <string name="cameroon_farmer_local_language">Preferred local language</string>
+    <string name="cameroon_farmer_inter_language">Preferred international language</string>
+    <string name="cameroon_farmer_education_level">Education level</string>
+
+    <string name="farmer_manager_name">Name of manager</string>
+    <string name="farmer_operating_officer_name">Name of chief operating officer</string>
+    <string name="farmer_date_of_birth">Date of birth</string>
+    <string name="farmer_place_of_birth">Place of birth</string>
+    <string name="farmer_passport_number">National identity card or passport number/separate into two sections</string>
+    <string name="farmer_date_of_issue_passport">Date of issue of the CNI (or passport)</string>
+    <string name="farmer_gender">Gender</string>
+    <string name="farmer_marital_status">Marital status</string>
+    <string name="farmer_nationality">Nationality</string>
+
+    <string name="farmer_education_level">Instructional Level</string>
+    <string name="farmer_other_education">Other education</string>
+
+    <string name="farmer_ninea">Do you have a NINEA?</string>
+    <string name="farmer_ninea_number">NINEA code</string>
+
+    <string name="farmer_company_created_date">Company year established</string>
+    <string name="farmer_farm_facilities_type">Type of farm facilities</string>
+    <string name="farmer_farm_facilities_other_type">Other type of farm facilities</string>
+    <string name="farmer_exploitation_water_source">Main source of the exploitation of water supply</string>
+    <string name="farmer_exploitation_water_other_source">Another source of the operation of water supply</string>
+    <string name="farmer_operating_power_source">Main operating power source</string>
+    <string name="farmer_operating_power_other_source">Another source of energy exploitation</string>
+
+    <string name="farmer_has_agr_activity">Get an agricultural activity on the farm</string>
+    <string name="farmer_has_prof_organization">Do you belong to a professional organization of farmers</string>
+    <string name="farmer_agr_organization_name">Organization Name</string>
+
+    <string name="farmer_soil_type">What is the soil type of your farm?</string>
+    <string name="farmer_other_soil_type">Other soil type</string>
+    <string name="farmer_relief_type">What is the type of relief associated with the operation site?</string>
+    <string name="farmer_other_relief_type">Other relief type</string>
+    <string name="farmer_land_tenure">What is the land tenure?</string>
+
+    <string name="farmer_activities">The following activities have been carried out in the operation during the campaign 2014/2015</string>
+    <string name="farmer_main_source_of_livelihood">What is your main source of livelihood?</string>
+    <string name="farmer_total_number_of_plots">What is the total number of plots on the farm?</string>
+
+    <string name="farmer_total_area_of_holding">What is the total area of the holding (in hectare)?</string>
+    <string name="farmer_total_area_of_holding_unit">Unit of measure of the total area of the holding</string>
+
+    <string name="farmer_cultivable_area">What is the cultivable area?</string>
+    <string name="farmer_cultivable_area_unit">Unit of measure of cultivable area</string>
+
+    <string name="farmer_harvested_area">What is the area harvested?</string>
+    <string name="farmer_harvested_area_unit">Unit of measure of area harvested</string>
+
+    <string name="farmer_exploited_reasons">If the total area has not been exploited, what are the reasons</string>
+    <string name="farmer_exploited_other_reasons">Other reason</string>
+
+    <string name="farmer_has_operating_equipment">Do you have materials in your operation?</string>
+    <string name="farmer_operating_equipment_name">Equipment name</string>
+    <string name="farmer_operating_equipment_count">Number for this equipment selects</string>
+    <string name="farmer_operating_equipment_cost">Material costs (in thousands FCFA)</string>
+    <string name="farmer_operating_equipment_year_acquisition">Year of the last acquisition</string>
+    <string name="farmer_operating_equipment_mode_acquisition">Acquisition mode</string>
+    <string name="farmer_operating_equipment_has_subsitized">Has it the newest equipment was subsidized</string>
+    <string name="farmer_operating_equipment_state_purchase">State purchase</string>
+
+    <string name="farmer_service_name">Are you using a mechanized service to perform the following works?</string>
+    <string name="farmer_service_other_name">Another mechanized service used</string>
+
+    <string name="farmer_has_infrastructure">Do you have any infrastructure in your operation?</string>
+    <string name="farmer_infrastructure_name">Infrastructure name</string>
+    <string name="farmer_infrastructure_acquisition">Date of infrastructure acquisition</string>
+    <string name="farmer_infrastructure_acquisition_mode">Acquisition mode infrastructure</string>
+    <string name="farmer_infrastructure_cost">Cost(in thousands of FCFA)</string>
+
+    <string name="farmer_nature_expenditure">Nature expenditure</string>
+    <string name="farmer_expense_amount">Expense amount</string>
+
+    <string name="farmer_credit_title">Agricultural services</string>
+    <string name="farmer_has_credit">Did you get a credit?</string>
+    <string name="farmer_credit_type">What is the type of credit obtained?</string>
+    <string name="farmer_credit_amount">Amount last credit(in thousands FCFA)</string>
+    <string name="farmer_credit_source">Source of the last credit</string>
+    <string name="farmer_credit_completion_date">Date of completion of the last credit</string>
+    <string name="farmer_credit_repayment_first_year">First year of repayment of the last loan</string>
+    <string name="farmer_credit_repayment_last_year">Last year of the last credit repayment</string>
+    <string name="farmer_credit_destination">Destination of credit obtained</string>
+
+    <string name="farmer_has_policy">Have you subscribed to an insurance policy for your crops?</string>
+    <string name="farmer_agricultural_information">Do you use the following sources for your agricultural information?</string>
+
+    <string name="farmer_marketing_method">Marketing method</string>
+    <string name="farmer_marketing_other_method">Other marketing method</string>
+    <string name="farmer_marketing_constraints">Marketing constraints</string>
+    <string name="farmer_marketing_other_constraints">Other marketing constraints</string>
+
+    <string name="farmer_employee_qualification">Qualification</string>
+    <string name="farmer_employee_qualification_total_headcount">Total headcount for this qualification</string>
+    <string name="farmer_employee_qualification_male_count">Male workforce by qualification</string>
+    <string name="farmer_employee_qualification_female_count">Female workforce by qualification</string>
+    <string name="farmer_employee_qualification_permanent_count">Permanent workforce by qualification</string>
+    <string name="farmer_employee_qualification_seasonal_count">Seasonal workforce by qualification</string>
+
+    <string name="farmer_livestock_operation_title">Farming practice</string>
+    <string name="farmer_has_livestock_operation">Do you in your livestock operation?</string>
+    <string name="farmer_practice_forage_crops_title">Characteristics and farming practices in the operation</string>
+    <string name="farmer_has_practice_forage_crops">Do you practice forage crops for livestock feed?</string>
+    <string name="farmer_has_professional_organization_breeders">Do you belong to a professional organization of breeders (OPE)?</string>
+    <string name="farmer_professional_organization_breeders_name">Organization name</string>
+
+    <string name="farmer_securing_livestock">Securing livestock</string>
+    <string name="farmer_has_insurance_policy">Have you subscribed to an insurance policy for your herd?</string>
+    <string name="farmer_insurance_company_name">Name of the company</string>
+
+    <string name="farmer_has_practice_microchips">Have you identified your herd by microchips?</string>
+    <string name="farmer_identification_methods">Through what medium did you identify?</string>
+    <string name="farmer_other_identification_method">Middle another</string>
+
+    <string name="farmer_animal_race">Race high</string>
+    <string name="farmer_animal_trained_production">Trained Production</string>
+    <string name="farmer_animal_race_held">Races held</string>
+    <string name="farmer_animal_power_mode">On power mode</string>
+    <string name="farmer_animal_complementation_type">Type complementation supplementation used</string>
+    <string name="farmer_animal_vaccination_practice">Practice of vaccination</string>
+    <string name="farmer_animal_deworming_practice">Practice Deworming</string>
+    <string name="farmer_animal_genetic_improvement_practice">Practice of genetic improvement</string>
+    <string name="farmer_animal_sanitary_control">Sanitary control and frequency</string>
+    <string name="farmer_animal_main_production">Main use production</string>
+
+    <string name="farmer_trained_production_title">Trained Production</string>
+    <string name="farmer_trained_production_type">What type of production do you practice in your operation?</string>
+    <string name="farmer_livestock_producer">Which species are involved in the production: Livestock Producer</string>
+    <string name="farmer_meat_production">Which species are involved in the production: fattening (meat production)</string>
+    <string name="farmer_milk_production">Which species are involved in the production: Milk Production</string>
+    <string name="farmer_draught_animals">Which species are involved in the production: Draught animals</string>
+
+    <string name="farmer_employee_livestock_speciality">Specialty farming jobs</string>
+    <string name="farmer_employee_livestock_total_workforce">Total staff in the area of livestock</string>
+    <string name="farmer_employee_livestock_male_workforce">Workforce man by specialty in the field of livestock</string>
+    <string name="farmer_employee_livestock_female_workforce">Actual woman by specialty in the field of livestock</string>
+    <string name="farmer_employee_livestock_permanent_workforce">Permanent employment by specialty in the field of livestock</string>
+    <string name="farmer_employee_livestock_seasonal_workforce">Seasonal employment by specialty in the field of livestock</string>
+
+    <string name="farmer_production_equipment_name">Equipment name</string>
+    <string name="farmer_production_equipment_number">Number of equipment</string>
+    <string name="farmer_production_equipment_cost">Cost of each equipment(in thousands of FCFA)</string>
+    <string name="farmer_production_equipment_age">Age of equipment(years)</string>
+    <string name="farmer_production_equipment_operating">Acquisition equipment fashion</string>
+    <string name="farmer_production_equipment_state">State acquisition of equipment</string>
+
+    <string name="farmer_livestock_equipment_name">Equipment name</string>
+    <string name="farmer_livestock_equipment_number">Number of production equipment</string>
+    <string name="farmer_livestock_equipment_cost">Cost per equipment(in thousands of FCFA)</string>
+    <string name="farmer_livestock_equipment_age">Age of equipment(years)</string>
+    <string name="farmer_livestock_equipment_financing_source">Equipment financing source</string>
+    <string name="farmer_livestock_equipment_area">Area per equipment(in square meters)</string>
+
+    <string name="farmer_owner_species_name">Name high species</string>
+    <string name="farmer_owner_employee_count">Employees of selected species</string>
+
+    <string name="farmer_livestock_production_name">Production name</string>
+    <string name="farmer_livestock_productions_product">Productions selects product (average)</string>
+
+    <string name="farmer_expenses_nature_name">Nature expenditure</string>
+    <string name="farmer_expenses_nature_amount">Expenditure by type (in thousands FCFA)</string>
+
+    <string name="field_fertilizer_used">Did you use fertilizer in this plot?</string>
+    <string name="field_fertilizer_type">What kind of fertilizer?</string>
+    <string name="field_fertilizer_amount">How much fertilizer per hectare did you use in this plot? (kg/ha)</string>
+    <string name="field_fertilizer_acquisition_mode">What is the main mode of acquisition of fertilizers?</string>
+    <string name="field_fertilizer_cost">What is the cost of fertilizer used in the plot (in thousands CFA)?</string>
+
+    <string name="field_pesticide_used">Did you use a pesticide or fungicide in the plot?</string>
+    <string name="field_pesticide_cost">What is the cost of pesticides (in thousands CFA)?</string>
+
+    <string name="field_restoration_used">Did you make sustainable soil restoration practices?</string>
+    <string name="field_restoration_methods">What are the methods used natural soil conservation?</string>
+    <string name="field_restoration_cost">What is the cost of sustainable soil restoration?(FCFA)</string>
+
+    <string name="field_crop_list">Speculation</string>
+    <string name="field_info">Is this location a non-field?</string>
+    <string name="field_type">Please specify what type of non-field this is</string>
+    <string name="field_photo">Take a photo of the field</string>
+    <string name="field_center_gps_location">Please verify your GPS coordinates</string>
+    <string name="field_center_gps_values">Latitude: %1$s \nLongitude: %2$s</string>
+    <string name="field_center_gps_new_values">Using %3$s. Accuracy: %4$sm\nLatitude: %1$s \nLongitude: %2$s</string>
+    <string name="field_obtaining_location">Obtaining location&#8230;</string>
+    <string name="field_retake_gps_values">Retake</string>
+    <string name="field_corners_location">Please press the button and walk across field borders</string>
+    <string name="field_corners_location_values">Please take GPS coordinates of the field</string>
+
+    <string name="zambia_crop_name">Name of crop</string>
+    <string name="zambia_crop_name_last">Name of crop for last season</string>
+    <string name="zambia_crop_photo">Take a close-up photo of the crop in the field</string>
+    <string name="zambia_crop_area">What is the area cultivated under this crop?</string>
+    <string name="zambia_crop_quantity">Quantity</string>
+    <string name="zambia_crop_unit">Unit</string>
+
+    <string name="zambia_seed_date">When did you plant this crop?</string>
+    <string name="zambia_seed_used">Did you purchase the seeds being used for the crop in this field?</string>
+    <string name="zambia_seed_name">What is the name of the purchased seed?</string>
+    <string name="zambia_seed_cost">Cost of seed purchase (in Kwacha)</string>
+
+    <string name="tunisia_seed_date">When did you plant this crop?</string>
+    <string name="tunisia_seed_used">Did you purchase the seeds being used for the crop in this field?</string>
+    <string name="tunisia_seed_name">What is the name of the purchased seed?</string>
+    <string name="tunisia_seed_cost">Cost of seed purchase (in Kwacha)</string>
+
+    <string name="zambia_water_source">What is the main source of water for the cultivated crop?</string>
+    <string name="zambia_main_motive">What is the main motive for planting this crop?</string>
+
+    <string name="zambia_fertilizer_used">Did you use fertilizer on the field?</string>
+    <string name="zambia_fertilizer_amount">Amount of fertilizer used on field</string>
+    <string name="zambia_fertilizer_cost">Cost of fertilizer used on field (in Kwacha)</string>
+
+    <string name="tunisia_fertilizer_used">Did you use fertilizer on the field?</string>
+    <string name="tunisia_fertilizer_amount">Amount of fertilizer used on the field</string>
+    <string name="tunisia_fertilizer_cost">Cost of fertilizer used on the field (in Tunisian Dinar)</string>
+
+    <string name="zambia_pesticide_used">Did you use any pesticide or fungicide on this field?</string>
+    <string name="zambia_harvested">Last season, how much of this crop was harvested from this field</string>
+    <string name="zambia_harvested_quantity">Quantity</string>
+    <string name="zambia_harvested_unit">Unit</string>
+
+    <string name="senegal_crop_name">Name speculation</string>
+    <string name="senegal_crop_photo">Take a close-up photo of this speculation</string>
+    <string name="senegal_crop_area">What is the area sown/planted (ha)?</string>
+
+    <string name="senegal_crop_water_source">What is the main water source?</string>
+    <string name="senegal_crop_irrigation_source">What type do you use irrigation?</string>
+    <string name="senegal_crop_harvested_amount">What is the amount harvested? (in tons)</string>
+    <string name="senegal_crop_production_reason">What is the main reason for producing this speculation?</string>
+
+    <string name="senegal_crop_planted_date">When did you planted this speculation? (specify the month)?</string>
+    <string name="senegal_crop_seed_used">Have you bought seeds/nurseries to this speculation?</string>
+    <string name="senegal_crop_seed_cost">Cost of purchasing seed (in thousands CFA)</string>
+    <string name="senegal_crop_seed_received">Did you use personal reserves or received seeds/nursery gifts?</string>
+    <string name="senegal_crop_seed_received_amount">What amount of reserves or seed donations/nurseries have you used?</string>
+
+    <string name="senegal_crop_attack_type">Give frequent attacks</string>
+    <string name="senegal_crop_attack_date">Generally what month you have for each speculative attacks?</string>
+
+    <string name="farmer_livestock_credit_title">Livestock Services</string>
+    <string name="farmer_has_livestock_credit">Do you use credit?</string>
+    <string name="farmer_livestock_credit_amount">Amount last credit (in thousands of FCFA)</string>
+    <string name="farmer_livestock_credit_source">Source of the last credit</string>
+    <string name="farmer_livestock_credit_completion_date">Year of completion of the last credit</string>
+    <string name="farmer_livestock_credit_repayment_first_date">First year of repayment of the last loan</string>
+    <string name="farmer_livestock_credit_repayment_last_date">Last year of the last credit repayment</string>
+    <string name="farmer_livestock_credit_usage">Use of credit obtained</string>
+    <string name="farmer_livestock_credit_info">Do you use the following sources for your information livestock?</string>
+
+    <string name="farmer_movements_title">Movements in the herd during the past 12 months</string>
+    <string name="farmer_movements_species">Select a species</string>
+    <string name="farmer_movements_birth_number">Number of birth</string>
+    <string name="farmer_movements_heritage">Heritage</string>
+    <string name="farmer_movements_shopping">Shopping</string>
+    <string name="farmer_movements_donations">Donations</string>
+    <string name="farmer_movements_cofiage">Confiage</string>
+    <string name="farmer_movements_other_entries">Other entries</string>
+
+    <string name="farmer_race_held_title">Races held</string>
+    <string name="farmer_race_type">What are the races you have in your farm?</string>
+    <string name="farmer_race_local">What species do you have to: Local race?</string>
+    <string name="farmer_race_exotic_breed">What species do you have to: Exotic breed?</string>
+    <string name="farmer_race_mixed_race">What species do you have to: Mixed race?</string>
+
+    <string name="farmer_pets_food_title">Pets food</string>
+    <string name="farmer_pets_food_feed">How do you feed your farm animals?</string>
+    <string name="farmer_pets_food_driving">What species are affected by food: driving to pasture?</string>
+    <string name="farmer_pets_food_trought">What species are affected by food: Food at the trough?</string>
+
+    <string name="farmer_dietary_supplement_title">Dietary supplement</string>
+    <string name="farmer_dietary_supplement_usage">Do you use supplementation in the diet of your animals?</string>
+    <string name="farmer_dietary_supplement_type">What supplement do you use?</string>
+    <string name="farmer_dietary_supplement_products">To what species do you use: agricultural by-products</string>
+    <string name="farmer_dietary_supplement_factory">To what species do you use: Food products factory</string>
+    <string name="farmer_dietary_supplement_minerals">To what species do you use: Minerals Supplements Vitamins (CMV)</string>
+
+    <string name="farmer_vaccines_title">Vaccines</string>
+    <string name="farmer_vaccines_usage">Do you use vaccinate for your animals?</string>
+    <string name="farmer_vaccines_type">What species were vaccinated?</string>
+    <string name="farmer_deworming_usage">Do you practice deworming for your animals?</string>
+    <string name="farmer_deworming_type">What species affected by its deworming?</string>
+
+    <string name="farmer_genetic_title">Genetic</string>
+    <string name="farmer_genetic_usage">Do you practice breeding in your operation?</string>
+    <string name="farmer_genetic_type">What species affected by its genetics?</string>
+    <string name="farmer_sanitary_control_usage">Your animals they are the subject of a health check?</string>
+    <string name="farmer_sanitary_control_type">What species concerned by his health control?</string>
+
+    <string name="farmer_destination_production_title">Destination of your production</string>
+    <string name="farmer_destination_meat_production">What is the main destination of your meat production?</string>
+    <string name="farmer_destination_milk_production">What is the main destination of your milk?</string>
+    <string name="farmer_destination_eggs_production">What is the main destination of your production of eggs for consumption?</string>
+    <string name="farmer_destination_honey_production">What is the main destination for honey production?</string>
+
+    <string name="farmer_cocoa">Cocoa (Ha)</string>
+    <string name="farmer_yield">Yield (Kg)</string>
+    <string name="farmer_other_crops">Significant other crops</string>
+
+    <string name="farmer_fungicides_used">Fungicides used</string>
+    <string name="farmer_fungicides_used_in_small_season">Fungicides used during the season of small/weak rain (contact products: Sulphur, &#8230;)</string>
+    <string name="farmer_fungicides_used_number_in_small_season">Number of fungicides applications during the season of small/weak rain (contact products: Sulphur, &#8230;)</string>
+    <string name="farmer_fungicides_used_in_big_season">Fungicides used during the season of big/heavy rain (systemic products)</string>
+    <string name="farmer_fungicides_used_number_in_big_season">Number of fungicides applications during the season of large/heavy rain (systemic products)</string>
+    <string name="farmer_insecticide_used">Insecticide used</string>
+    <string name="farmer_insecticide_used_type">Insecticide type</string>
+    <string name="farmer_insecticide_used_number">Number of insecticides applications</string>
+    <string name="farmer_main_issue_cocoa_plantation">What is your main issue for a profitable cocoa plantation?</string>
+
+    <string name="farmer_know_basf">Do you Know BASF?</string>
+    <string name="farmer_basf_products">Which BASF products do you already know?</string>
+
+    <string name="farmer_cpp_orders_source">From where are you getting your CPP?</string>
+    <string name="farmer_cpp_orders_buyer">Who decide on CPP to buy?</string>
+    <string name="farmer_cpp_orders_advice_received">Do you receive technical advice/recommendation from somebody?</string>
+    <string name="farmer_cpp_orders_advice_source">Who is providing you with technical advice/recommendation?</string>
+
+    <string name="farmer_cpp_protective_gear">Protective gear on during CPP usage</string>
+    <string name="farmer_cpp_main_reason">What is the main reason?</string>
+
+    <string-array name="senegal_zone_list">
+        <item>Urban</item>
+        <item>Rural</item>
+    </string-array>
+
+    <string-array name="senegal_regime_exploitation_list">
+        <item>Individual company</item>
+        <item>Company capital</item>
+        <item>Cooperative Society</item>
+        <item>GIE</item>
+        <item>Association</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="senegal_gender_list">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="senegal_marital_status_list">
+        <item>Single</item>
+        <item>Married(and)</item>
+        <item>Divorcee(and)</item>
+        <item>Widower(Widow)</item>
+        <item>Union libre</item>
+        <item>Separated(e)</item>
+    </string-array>
+
+    <string-array name="senegal_nationality_list">
+        <item>Senegalese</item>
+        <item>Burkinabe</item>
+        <item>Ivorian</item>
+        <item>Guinea (Conakry)</item>
+        <item>Malian</item>
+        <item>Beninese</item>
+        <item>Nigerian</item>
+        <item>Togolese</item>
+        <item>Bissau Guinean</item>
+        <item>Other African nationalities of the Franc Zone</item>
+        <item>Other Nationality. African</item>
+        <item>French</item>
+        <item>Other European nationalities</item>
+        <item>American</item>
+        <item>Canadian</item>
+        <item>Other American nationalities</item>
+        <item>Asians</item>
+        <item>Other nationalities</item>
+    </string-array>
+
+    <string-array name="senegal_education_list">
+        <item>Uneducated</item>
+        <item>Primary</item>
+        <item>Secondary</item>
+        <item>Superior</item>
+        <item>Educated in Arabic</item>
+        <item>National literate language</item>
+        <item>Other(s) to be specified</item>
+    </string-array>
+
+    <string-array name="zambia_answers_list">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+
+    <string-array name="senegal_answers_list">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+
+    <string-array name="senegal_facilities_types_list">
+        <item>Owner</item>
+        <item>Part owner</item>
+        <item>Tenant</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="senegal_water_source_list">
+        <item>SADE</item>
+        <item>Drilling</item>
+        <item>Well</item>
+        <item>Water surface</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="senegal_power_source_list">
+        <item>Any</item>
+        <item>Electricity</item>
+        <item>Solar</item>
+        <item>Generator</item>
+        <item>Other specify</item>
+    </string-array>
+
+    <string-array name="senegal_soil_type_list">
+        <item>Dior</item>
+        <item>Deck Dior</item>
+        <item>Deck</item>
+        <item>Slimy</item>
+        <item>Other, specify</item>
+    </string-array>
+
+    <string-array name="senegal_relief_type_list">
+        <item>Plain/Board</item>
+        <item>Shallows</item>
+        <item>Bowl</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="senegal_land_tenure_list">
+        <item>Property</item>
+        <item>Share tenancy or lease</item>
+        <item>Loan or usufruct</item>
+    </string-array>
+
+    <string-array name="senegal_activities_list">
+        <item>Mainfed agriculture</item>
+        <item>Maraichage</item>
+        <item>Fruit Trees</item>
+        <item>Floriculture - Ornamentals</item>
+        <item>Floriculture - Cut flowers</item>
+        <item>Floriculture - Greens</item>
+        <item>Cereal production or annuity</item>
+        <item>Aviculture</item>
+        <item>Cattle farming</item>
+        <item>Breeding of small ruminants</item>
+        <item>Beekeeping</item>
+        <item>Fish farming</item>
+    </string-array>
+
+    <string-array name="senegal_livelihood_list">
+        <item>On-farm</item>
+        <item>Off-farm</item>
+    </string-array>
+
+    <string-array name="senegal_exploited_reasons_list">
+        <item>Fallow fields and natural vegetation between fields is active</item>
+        <item>Pastures</item>
+        <item>Shrublands/savannas (some shrubs under five meters tall grass)</item>
+        <item>Shrubby closed (covered shrub continues, little grass)</item>
+        <item>Forest, open/woodland (natural mosaic of shrubs, trees and grass)</item>
+        <item>Forest, moderate (combined cover of trees and shrubs, some grass)</item>
+        <item>Forest, dense (closed canopy of trees, some shrubs and grass)</item>
+        <item>Permanent wetland (waterlogged soils and vegetation)</item>
+        <item>Urban continues (houses, streets, few trees or grass patch)</item>
+        <item>Urban, discontinuous (mainly grass and trees with some houses)</item>
+        <item>Barren or sparsely vegetated</item>
+        <item>Waterhole</item>
+        <item>Limited financial resources</item>
+        <item>Limited work force</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="senegal_unit_list">
+        <item>HA</item>
+        <item>m2</item>
+        <item>a</item>
+    </string-array>
+
+    <string-array name="senegal_operating_equipment_list">
+        <item>Tractor (CV)</item>
+        <item>Combine (m)</item>
+        <item>Ramasseuse Press</item>
+        <item>Tiller (CV)</item>
+        <item>Seeder (m)</item>
+        <item>Truck/van (Tonne)</item>
+        <item>Motor pump/electric pump</item>
+        <item>Sprayer</item>
+        <item>Cart</item>
+        <item>Generator</item>
+        <item>Polyculteur</item>
+        <item>Hoe</item>
+        <item>Lifter</item>
+        <item>Built arara</item>
+        <item>Plow</item>
+        <item>Offset</item>
+        <item>Oil Press</item>
+        <item>Grain mill</item>
+        <item>Sheller</item>
+        <item>Powder/Spray</item>
+        <item>Abreuvoir</item>
+        <item>Manger</item>
+        <item>Ramps</item>
+        <item>Reefer</item>
+        <item>Couseuse</item>
+    </string-array>
+
+    <string-array name="senegal_operating_equipment_mode_acquisition_list">
+        <item>Spot</item>
+        <item>Credit</item>
+        <item>Cash and credit</item>
+        <item>Of</item>
+        <item>Renting</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="senegal_operating_equipment_state_acquisition_list">
+        <item>New</item>
+        <item>Opportunity</item>
+    </string-array>
+
+    <string-array name="senegal_infrastructure_list">
+        <item>Filtration plants</item>
+        <item>Technical-administrative building</item>
+        <item>Warehouse</item>
+        <item>Cold room</item>
+        <item>Water reservoir</item>
+        <item>Fixed Abreuvoir</item>
+        <item>Outhouse</item>
+        <item>Conditioning unit</item>
+        <item>Water storage basin</item>
+        <item>Booth or home keeper</item>
+        <item>Drilling</item>
+        <item>Well</item>
+        <item>Greenhouse tunnel</item>
+        <item>Irrigation network</item>
+        <item>Pumping station</item>
+        <item>Solar installation / Post Processors</item>
+        <item>other infrastructure</item>
+    </string-array>
+
+    <string-array name="senegal_service_list">
+        <item>Tillage</item>
+        <item>Sowing</item>
+        <item>Harvest</item>
+        <item>Other(s) to be specified</item>
+    </string-array>
+
+    <string-array name="senegal_nature_list">
+        <item>Works and maintenance</item>
+        <item>Employee workforce</item>
+        <item>Energy - Electricity</item>
+        <item>Energy - Fuel Purchases</item>
+        <item>Energy - Other</item>
+        <item>Water</item>
+        <item>Total</item>
+    </string-array>
+
+    <string-array name = "senegal_credit_type_list">
+        <item>Investment Credit(over the last five years)</item>
+        <item>Country Credit(for the 2014/2015 campaign)</item>
+    </string-array>
+
+    <string-array name="senegal_credit_source_list">
+        <item>Bank</item>
+        <item>SFD</item>
+        <item>Project (grant)</item>
+        <item>Tontine</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="senegal_credit_destination_list">
+        <item>Extension of operation</item>
+        <item>Land development works</item>
+        <item>Installation of irrigation systems</item>
+        <item>Infrastructure construction</item>
+        <item>Purchase of agricultural equipment</item>
+        <item>Operating Expenses</item>
+        <item>Other specify</item>
+    </string-array>
+
+    <string-array name="senegal_livestock_credit_destination_list">
+        <item>Extension of operation</item>
+        <item>Operating Expenses</item>
+        <item>Acquisition of equipment/material</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="senegal_agricultural_information_list">
+        <item>Public gathering</item>
+        <item>Radio/Television</item>
+        <item>Journal/Publication</item>
+        <item>Internet</item>
+        <item>Other(s) to be specified</item>
+    </string-array>
+
+    <string-array name="senegal_marketing_method_list">
+        <item>Field edge</item>
+        <item>Grouped sales</item>
+        <item>Direct sales</item>
+        <item>by commissions</item>
+        <item>Contractualization</item>
+        <item>Export</item>
+        <item>Other(s) to be specified</item>
+    </string-array>
+
+    <string-array name="senegal_marketing_constraints_list">
+        <item>No constraints</item>
+        <item>High availability</item>
+        <item>Conservation/transformation</item>
+        <item>Packaging</item>
+        <item>Transport</item>
+        <item>Isolation</item>
+        <item>Other(s) to be specified</item>
+    </string-array>
+
+    <string-array name="senegal_qualification_list">
+        <item>Agronomist</item>
+        <item>Agricultural technician</item>
+        <item>Civil engineer</item>
+        <item>Commercial</item>
+        <item>Accountant</item>
+        <item>Secretary</item>
+        <item>Worker</item>
+        <item>Maneuver</item>
+        <item>Planton</item>
+        <item>Driver</item>
+        <item>Guardian</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="senegal_breeding_organization_list">
+        <item>Association of young farmers and ranchers Development Niayes</item>
+        <item>National Association of Professional Meat and Livestock of Senegal (ANPROVBS)</item>
+        <item>National Federation of the actors in the dairy sector (FENAFILS)</item>
+        <item>National Association of Dairy Industrialists (ANIPL)</item>
+        <item>National Union of Cooperatives of farmers (Unce)</item>
+        <item>Senegalese Association of Cattle Breeders and Dealers</item>
+        <item>Poultry Inter professional du Senegal (IPAS)</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="senegal_identification_method_list">
+        <item>Curls</item>
+        <item>Microchips</item>
+        <item>Marking Fire</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="senegal_animal_race_list">
+        <item>Cattle</item>
+        <item>Ovine</item>
+        <item>Goat</item>
+        <item>Equine</item>
+        <item>Porcine</item>
+        <item>Poultry</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="senegal_animal_race_1_list">
+        <item>Cattle</item>
+        <item>Ovine</item>
+        <item>Goat</item>
+        <item>Porcine</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="senegal_animal_race_2_list">
+        <item>Cattle</item>
+        <item>Ovine</item>
+        <item>Goat</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="senegal_animal_race_3_list">
+        <item>Cattle</item>
+        <item>Equine</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="senegal_animal_race_4_list">
+        <item>Cattle</item>
+        <item>Ovine</item>
+        <item>Goat</item>
+        <item>Equine</item>
+        <item>Porcine</item>
+        <item>Poultry</item>
+        <item>Rabbit</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="senegal_animal_trainde_production_list">
+        <item>Livestock breeder</item>
+        <item>Fattening (meat production)</item>
+        <item>Milk</item>
+        <item>Production of eggs for consumption</item>
+        <item>Horse racing</item>
+        <item>Draft animals</item>
+        <item>Honey production</item>
+    </string-array>
+
+    <string-array name="senegal_animal_races_held_list">
+        <item>Locale</item>
+        <item>Exotic</item>
+        <item>Métis</item>
+    </string-array>
+
+    <string-array name="senegal_animal_power_mode_list">
+        <item>Pasture</item>
+        <item>In the trough</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="senegal_animal_complementation_type_list">
+        <item>No</item>
+        <item>Agricultural by-products</item>
+        <item>Food products factory</item>
+        <item>Supplements Minerals Vitamins(CMV)</item>
+    </string-array>
+
+    <string-array name="senegal_animal_vaccination_list">
+        <item>No practice</item>
+        <item>Systematic</item>
+        <item>Occasional</item>
+    </string-array>
+
+    <string-array name="senegal_animal_deworming_list">
+        <item>No practice</item>
+        <item>Systematic</item>
+        <item>Occasional</item>
+    </string-array>
+
+    <string-array name="senegal_animal_genetic_improvement_list">
+        <item>No practice</item>
+        <item>Spawners introduction</item>
+        <item>Artificial insemination</item>
+        <item>Mixed</item>
+    </string-array>
+
+    <string-array name="senegal_animal_sanitary_control_list">
+        <item>No control</item>
+        <item>By day</item>
+        <item>Per week</item>
+        <item>Per month</item>
+        <item>By semester</item>
+        <item>By quarter</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="senegal_animal_main_production_list">
+        <item>Internal consumption</item>
+        <item>Income generator</item>
+    </string-array>
+
+    <string-array name="senegal_employee_livestock_speciality_list">
+        <item>Veterinary</item>
+        <item>Zootechnician</item>
+        <item>Agronomist</item>
+        <item>Agricultural Engineering</item>
+        <item>ITE/ITA</item>
+        <item>ITE/ATA</item>
+        <item>Commercial</item>
+        <item>Accountant</item>
+        <item>Human Resource Management</item>
+        <item>Secretary</item>
+        <item>Worker</item>
+        <item>Maneuver</item>
+        <item>Planton</item>
+        <item>Driver</item>
+        <item>Guardian</item>
+    </string-array>
+
+    <string-array name="senegal_production_equipment_name_list">
+        <item>Silo</item>
+        <item>Reaper</item>
+        <item>Thresher</item>
+        <item>Milking equipment (milk)</item>
+        <item>Incubator (fodder production)</item>
+        <item>Milking equipment (milk)</item>
+        <item>Rolling stock</item>
+    </string-array>
+
+    <string-array name="senegal_livestock_equipment_name_list">
+        <item>Henhouse</item>
+        <item>Stable</item>
+        <item>Food store</item>
+        <item>Molasses pit</item>
+        <item>Hangar</item>
+        <item>Feed mill unit</item>
+        <item>Processing unit</item>
+        <item>Living veterinary care</item>
+        <item>Office use building</item>
+        <item>Sheepfold</item>
+        <item>Abreuvoir</item>
+        <item>Piggery</item>
+        <item>Manger</item>
+    </string-array>
+
+    <string-array name="senegal_equipment_finance_source_list">
+        <item>Credit</item>
+        <item>Equity</item>
+        <item>Clean and Credit Fund</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="senegal_species_name_list">
+        <item>Cattle - Cow (4 years old and female)</item>
+        <item>Cattle - Bull (male and 4 years +)</item>
+        <item>Cattle - Male neutered of any age</item>
+        <item>Cattle - Young female (heifer 1 to 3 years)</item>
+        <item>Cattle - Young male (bull 1 to 3 years)</item>
+        <item>Cattle - Female unweaned (Velle -1 year)</item>
+        <item>Cattle - Male unweaned (Calf -1 year)</item>
+        <item>Cattle trait of all ages</item>
+        <item>Sheep - Male unweaned (6 months)</item>
+        <item>Sheep - Female unweaned (6 months)</item>
+        <item>Sheep - Male (6&#8211;11 months)</item>
+        <item>Sheep - Male (6&#8211;11 months)</item>
+        <item>Sheep - Young Male (1 year)</item>
+        <item>Sheep - young female (1 year)</item>
+        <item>Sheep - Aries (+ 1 year)</item>
+        <item>Sheep - Ewes + 1 year)</item>
+        <item>Goat - Male unweaned (6 months)</item>
+        <item>Goat - Female unweaned (6 months)</item>
+        <item>Goat - Male (6&#8211;11 months)</item>
+        <item>Goat - Female (6&#8211;11 months)</item>
+        <item>Goat - Young Male (1 year)</item>
+        <item>Goat - Young Female (1 year)</item>
+        <item>Goat -Bouc (+ 1 year)</item>
+        <item>Goat -Chèvre (+ 1 year)</item>
+        <item>Equine - Male unweaned</item>
+        <item>Equine - Female unweaned</item>
+        <item>Equine - Young male (1&#8211;3 years)</item>
+        <item>Equine - Young female (1&#8211;3 years)</item>
+        <item>Equine - Adult male (stallion)</item>
+        <item>Equine - Adult female (mare)</item>
+        <item>Equine - Adult female (mare) - for racing</item>
+        <item>Equine - Adult female (mare) - for traction</item>
+        <item>Piggy - Male unweaned</item>
+        <item>Piggy - Female unweaned</item>
+        <item>Piggy - Male (6&#8211;11 months)</item>
+        <item>Piggy - Female (6&#8211;11 months)</item>
+        <item>Piggy - Male + 1 year (boar)</item>
+        <item>Piggy - Female + 1 year (Sow)</item>
+        <item>Hen or Rooster</item>
+        <item>Quail</item>
+        <item>Guinea fowl</item>
+        <item>Cane or duck</item>
+        <item>Pigeon</item>
+        <item>Poultry - Other</item>
+        <item>Bees - Number of hives</item>
+        <item>Asins - Young Male</item>
+        <item>Asins - Young Female</item>
+        <item>Asins - Adult male</item>
+        <item>Asins - Adult female</item>
+    </string-array>
+
+    <string-array name="senegal_escape_species_name_list">
+        <item>Cattle - Males</item>
+        <item>Cattle - Females</item>
+        <item>Sheep - Males</item>
+        <item>Sheep - Females</item>
+        <item>Goat - Males</item>
+        <item>Goat - Females</item>
+        <item>Equine - Males</item>
+        <item>Equine - Females</item>
+        <item>Piggy - Males</item>
+        <item>Piggy - Females</item>
+        <item>Poultry (chicken) - Males</item>
+        <item>Poultry (chicken) - Females</item>
+        <item>Bees - Males</item>
+        <item>Bees - Females</item>
+        <item>Rabbits - Males</item>
+        <item>Rabbits - Females</item>
+    </string-array>
+
+    <string-array name="senegal_production_name_list">
+        <item>Chicks (number/month)</item>
+        <item>Table eggs (number/day)</item>
+        <item>Milk (liter/day)</item>
+        <item>Honey (kg/hive/cycle)</item>
+        <item>Fattened animals (number of heads/band)</item>
+        <item>Broilers (heads/band)</item>
+    </string-array>
+
+    <string-array name="senegal_expenses_nature_name_list">
+        <item>Feeding animals (average/month)</item>
+        <item>Purchases of farm animals (for the period 2014&#8211;2015 or 2015)</item>
+        <item>Health and reproduction costs (insemination) (for the period 2014&#8211;2015 or 2015)</item>
+        <item>Maintenance of equipment (for 2014&#8211;2015 or 2015)</item>
+        <item>Main work of employee (average/month)</item>
+        <item>Energy (average/month)</item>
+        <item>Electricity</item>
+        <item>Fuel purchases</item>
+        <item>Water</item>
+    </string-array>
+
+    <string-array name="senegal_fertilizer_type_list">
+        <item>NPK</item>
+        <item>DAP</item>
+        <item>UREA</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="senegal_fertilizer_acquisition_mode_list">
+        <item>Total purchase</item>
+        <item>Partial Redemption(grant)</item>
+        <item>Don</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="senegal_restoration_methods_list">
+        <item>Compost</item>
+        <item>Parking</item>
+        <item>Other(s) to be specified</item>
+    </string-array>
+
+    <string-array name="senegal_crop_name_list">
+        <item>Rice</item>
+        <item>Mil</item>
+        <item>Corn</item>
+        <item>Sorghum</item>
+        <item>Fonio</item>
+        <item>Peanut</item>
+        <item>Sesame</item>
+        <item>Cotton</item>
+        <item>Sugar cane</item>
+        <item>Cowpea</item>
+        <item>Béref</item>
+        <item>Cassava</item>
+        <item>Bissap chalice</item>
+        <item>Tomato against cold season</item>
+        <item>Tomato against hot season</item>
+        <item>Potato against cold season</item>
+        <item>Potato against hot season</item>
+        <item>Onion against cold season</item>
+        <item>Onion against hot season</item>
+        <item>Pepper</item>
+        <item>Carrot</item>
+        <item>Green bean</item>
+        <item>Bitter eggplant (diaxatu)</item>
+        <item>Choux</item>
+        <item>Okra</item>
+        <item>Pimento</item>
+        <item>Aubergine</item>
+        <item>Turnip</item>
+        <item>Yam</item>
+        <item>Bissap</item>
+        <item>Banana</item>
+        <item>Mango</item>
+        <item>Mandarin</item>
+        <item>Orange</item>
+        <item>Citron/Limon</item>
+        <item>Papaya</item>
+        <item>Grapefruit</item>
+        <item>Watermelon</item>
+        <item>Melon</item>
+        <item>Cashew</item>
+    </string-array>
+
+    <string-array name="senegal_crop_water_source_list">
+        <item>Rainforest</item>
+        <item>Well</item>
+        <item>Céanes</item>
+        <item>Large Dams</item>
+        <item>Surveys</item>
+        <item>Hilly dam</item>
+        <item>Hill lake</item>
+        <item>Drilling</item>
+        <item>Retention Basin</item>
+        <item>Water surface</item>
+        <item>SDE</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="senegal_crop_irrigation_source_list">
+        <item>Surface irrigation</item>
+        <item>Spray irrigation</item>
+        <item>Drip irrigation/drip</item>
+        <item>Spate irrigation water</item>
+        <item>Mixed</item>
+    </string-array>
+
+    <string-array name="senegal_crop_vermit_attack_list">
+        <item>Bugs</item>
+        <item>Centipede</item>
+        <item>Mushrooms</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="zambia_livelihood_source_list">
+        <item>On-farm</item>
+        <item>Off-farm</item>
+    </string-array>
+
+    <string-array name="zambia_labour_source_list">
+        <item>Family</item>
+        <item>Seasonally hired</item>
+        <item>Permanently hired</item>
+    </string-array>
+
+    <string-array name="zambia_education_list">
+        <item>Self taught with no formal education</item>
+        <item>College certificate</item>
+        <item>College diploma</item>
+        <item>University Degree</item>
+    </string-array>
+
+    <string-array name="zambia_information_source_list">
+        <item>Public gathering</item>
+        <item>Radio</item>
+        <item>Newspaper/publication</item>
+        <item>Internet</item>
+        <item>Friends and relatives</item>
+    </string-array>
+
+    <string-array name="zambia_field_type_list">
+        <item>Croplands (fallow and active fields with natural vegetation in between fields)</item>
+        <item>Grasslands (not cultivated)</item>
+        <item>Shrubland/Savannas (few shrubs less than 5 feet high, grass)</item>
+        <item>Shrublands, Closed (continuous shrub canopy, little grass)</item>
+        <item>Forest, open/woody savanna (natural mosaic of shrubs, trees and grass)</item>
+        <item>Forest, moderate (mixed canopy of trees and shrubs, little grass)</item>
+        <item>Forest, dense (closed canopy of trees, few shrubs and grass)</item>
+        <item>Permanent wetland (water-logged soils and vegetation)</item>
+        <item>Urban, Continuous (houses, streets, few trees or grass patches)</item>
+        <item>Urban, Discontinuous (mostly grass or trees with few houses)</item>
+        <item>Barren or sparsely vegetated</item>
+        <item>Water body</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="zambia_crop_name_list">
+        <item>Maize</item>
+        <item>Sorghum</item>
+        <item>Rice</item>
+        <item>Millet</item>
+        <item>Sunflower</item>
+        <item>Groundnuts</item>
+        <item>Soybeans</item>
+        <item>Seed Cotton</item>
+        <item>Irish potatoes</item>
+        <item>V. Tobacco</item>
+        <item>B. Tobacco</item>
+        <item>Mixed beans</item>
+        <item>Sweet Potatoes</item>
+        <item>Cassava</item>
+        <item>Cabbage</item>
+        <item>Rape</item>
+        <item>Spinach</item>
+        <item>Tomato</item>
+        <item>Onion</item>
+        <item>Okra</item>
+        <item>Eggplant</item>
+        <item>Pumpkin</item>
+        <item>Chilies</item>
+        <item>Cauliflower</item>
+        <item>Carrots</item>
+        <item>Impwa</item>
+        <item>Chinese cabbage</item>
+        <item>Sugar Cane</item>
+    </string-array>
+
+    <string-array name="zambia_crop_unit_list">
+        <item>Hectare</item>
+        <item>Lima</item>
+        <item>Acre</item>
+        <item>Sq Metres</item>
+    </string-array>
+
+    <string-array name="zambia_water_source_list">
+        <item>Rainfed</item>
+        <item>Irrigation</item>
+    </string-array>
+
+    <string-array name="zambia_motive_source_list">
+        <item>Domestic consumption</item>
+        <item>Income generation</item>
+    </string-array>
+
+    <string-array name="tunisia_gender_list">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="tunisia_livelihood_source_list">
+        <item>On-farm</item>
+        <item>Off-farm</item>
+    </string-array>
+
+    <string-array name="tunisia_labour_source_list">
+        <item>Family labor</item>
+        <item>Workforce employee</item>
+        <item>Casual labor</item>
+    </string-array>
+
+    <string-array name="tunisia_education_source_list">
+        <item>Baccalaureate</item>
+        <item>Higher technician diploma</item>
+        <item>Completion of Undergraduate Studies University (DEUPC)</item>
+        <item>Mastery</item>
+        <item>Master - Specialized Master - Diplomas of Specialized Higher Studies (DESS)</item>
+        <item>Diploma of Advanced Studies (DEA)</item>
+        <item>Ph.D.</item>
+        <item>No Degree</item>
+    </string-array>
+
+    <string-array name="tunisia_information_source_list">
+        <item>CRDA</item>
+        <item>Multimedia</item>
+        <item>Newspapers/Publications</item>
+        <item>Internet</item>
+    </string-array>
+
+    <string-array name="tunisia_field_type_list">
+        <item>Cultivation (fallow fields and natural vegetation between fields is active)</item>
+        <item>Pasture (uncultivated)</item>
+        <item>Shrublands/savannas (some shrubs under five meters tall grass)</item>
+        <item>Shrubby closed (covered shrub continues, little grass)</item>
+        <item>Forest, open/woodland (natural mosaic of shrubs, trees and grass)</item>
+        <item>Forest, moderate(combined cover of trees and shrubs, some grass)</item>
+        <item>Forest, dense(closed canopy of trees, some shrubs and grass)</item>
+        <item>Permanent wetland(waterlogged soils and vegetation)</item>
+        <item>Urban continues(houses, streets, few trees or grass patch)</item>
+        <item>Urban, discontinuous (mainly grass and trees with some houses)</item>
+        <item>Barren or sparsely vegetated</item>
+        <item>Body of water</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="tunisia_crop_name_list">
+        <item>Durum wheat</item>
+        <item>Soft wheat</item>
+        <item>Barley</item>
+        <item>Triticale</item>
+        <item>Other Cereals</item>
+        <item>Bean</item>
+        <item>bean role</item>
+        <item>Potatoes</item>
+        <item>Other</item>
+        <item>Barley Green</item>
+        <item>Hay</item>
+        <item>Ensilage</item>
+        <item>Tomato season</item>
+        <item>Rear tomato season</item>
+        <item>Season potato</item>
+        <item>Back end potato</item>
+        <item>Artichoke</item>
+        <item>Onion</item>
+        <item>Garlic</item>
+        <item>Melon</item>
+        <item>Watermelon</item>
+        <item>Pea</item>
+        <item>Olive Oil</item>
+        <item>Olive Table</item>
+        <item>Citrus</item>
+        <item>Almond</item>
+        <item>Table grape</item>
+        <item>Apple tree</item>
+        <item>Plum</item>
+        <item>Fallow</item>
+    </string-array>
+
+    <string-array name="tunisia_crop_unit_list">
+        <item>Tonne</item>
+        <item>Hectare</item>
+        <item>Square meters</item>
+    </string-array>
+
+    <string-array name="tunisia_water_source_list">
+        <item>Rainforest</item>
+        <item>Irrigation</item>
+    </string-array>
+
+    <string-array name="tunisia_motive_source_list">
+        <item>Domestic consumption</item>
+        <item>Income Generation</item>
+    </string-array>
+
+    <string-array name="cameroon_extension_officer_list">
+        <item>Mrs.B</item>
+    </string-array>
+
+    <string-array name="cameroon_local_language_list">
+        <item>English</item>
+        <item>French</item>
+        <item>Abo</item>
+        <item>Afade</item>
+        <item>Aghem</item>
+        <item>Akoose</item>
+        <item>Akum</item>
+        <item>Ambele</item>
+        <item>Atong</item>
+        <item>Awing</item>
+        <item>Babanki</item>
+        <item>Bafanji</item>
+        <item>Bafaw-balong</item>
+        <item>Bafia</item>
+        <item>Bafut</item>
+        <item>Baghante</item>
+        <item>Baka</item>
+        <item>Bakoo</item>
+        <item>Bakole</item>
+        <item>Bakundu-balue</item>
+        <item>Bakweri</item>
+        <item>Baldamu</item>
+        <item>Balo</item>
+        <item>Balundu-bima</item>
+        <item>Bamali</item>
+        <item>Bambalang</item>
+        <item>Bambili</item>
+        <item>Bamenyam</item>
+        <item>Bamiléké</item>
+        <item>Bamukumbit</item>
+        <item>Bamoun</item>
+        <item>Bamumbu</item>
+        <item>Bamunka</item>
+        <item>Bana</item>
+        <item>Bangandu</item>
+        <item>Bangolan</item>
+        <item>Bangwa</item>
+        <item>Bansop</item>
+        <item>Barombi</item>
+        <item>Bassa</item>
+        <item>Bassossi</item>
+        <item>Bata</item>
+        <item>Batanga</item>
+        <item>Bati</item>
+        <item>Bebe</item>
+        <item>Bebele</item>
+        <item>Bebil</item>
+        <item>Beezen</item>
+        <item>Befang</item>
+        <item>Bekwel</item>
+        <item>Beti</item>
+        <item>Bikya</item>
+        <item>Bishuo</item>
+        <item>Bitare</item>
+        <item>Bokyi</item>
+        <item>Bomwali</item>
+        <item>Bu</item>
+        <item>Bubia</item>
+        <item>Buduma</item>
+        <item>Bulu</item>
+        <item>Bumbung</item>
+        <item>Busam</item>
+        <item>Busuu</item>
+        <item>Buwal</item>
+        <item>Byep</item>
+        <item>Caka</item>
+        <item>Chadian Arabic</item>
+        <item>Cung</item>
+        <item>Cuvok</item>
+        <item>Daba</item>
+        <item>Dama</item>
+        <item>Dek</item>
+        <item>Denya</item>
+        <item>Dii</item>
+        <item>Dimbong</item>
+        <item>Doyayo</item>
+        <item>Duala</item>
+        <item>Dugwor</item>
+        <item>Duli</item>
+        <item>Duupa</item>
+        <item>Dzodinka</item>
+        <item>Efik</item>
+        <item>Ejagham</item>
+        <item>Elip</item>
+        <item>Eman</item>
+        <item>Esimbi</item>
+        <item>Eton</item>
+        <item>Evand</item>
+        <item>Ewondo</item>
+        <item>Fali</item>
+        <item>Fang</item>
+        <item>Fe\'fe\'</item>
+        <item>Fulfulde</item>
+        <item>Fungom</item>
+        <item>Gaduwa</item>
+        <item>Gavar</item>
+        <item>Gbaya</item>
+        <item>Ghomala</item>
+        <item>Guiziga</item>
+        <item>Kotoko</item>
+        <item>Mambila</item>
+        <item>Massa</item>
+        <item>Mousgoum</item>
+        <item>Mousseye</item>
+        <item>Medumba</item>
+        <item>Moghamo</item>
+        <item>Mundani</item>
+        <item>Nda\'nda\'</item>
+        <item>Nso\'</item>
+        <item>Tikar</item>
+        <item>Toupouri</item>
+        <item>Wuté</item>
+        <item>Yabassi</item>
+        <item>Yamba</item>
+    </string-array>
+
+    <string-array name="cameroon_inter_language_list">
+        <item>English</item>
+        <item>French</item>
+        <item>None</item>
+    </string-array>
+
+    <string-array name="app_tab_name_list">
+        <item>Fields</item>
+        <item>Equipment</item>
+        <item>Infrastructure</item>
+        <item>Expenses</item>
+        <item>Employment</item>
+        <item>Animals</item>
+        <item>Employment (Livestock)</item>
+        <item>Equipment (Production)</item>
+        <item>Equipment (Livestock)</item>
+        <item>Employees (Farm)</item>
+        <item>Livestock production</item>
+        <item>Livestock expenses</item>
+        <item>Saved entries</item>
+    </string-array>
+    <!-- New -->
+
+    <string-array name="governorate_array">
+        <item>Gouvernorat de l\'Ariana</item>
+        <item>Gouvernorat de Béja</item>
+        <item>Gouvernorat de Ben Arous</item>
+        <item>Gouvernorat de Bizerte</item>
+        <item>Gouvernorat de Gabès</item>
+        <item>Gouvernorat de Gafsa</item>
+        <item>Gouvernorat de Jendouba</item>
+        <item>Gouvernorat de Kairouan</item>
+        <item>Gouvernorat de Kasserine</item>
+        <item>Gouvernorat de Kébili</item>
+        <item>Gouvernorat du Kef</item>
+        <item>Gouvernorat de Mahdia</item>
+        <item>Gouvernorat de la Manouba</item>
+        <item>Gouvernorat de Médenine</item>
+        <item>Gouvernorat de Monastir</item>
+        <item>Gouvernorat de Nabeul</item>
+        <item>Gouvernorat de Sfax</item>
+        <item>Gouvernorat de Sidi Bouzid</item>
+        <item>Gouvernorat de Siliana</item>
+        <item>Gouvernorat de Sousse</item>
+        <item>Gouvernorat de Tataouine</item>
+        <item>Gouvernorat de Tozeur</item>
+        <item>Gouvernorat de Tunis</item>
+        <item>Gouvernorat de Zaghouan</item>
+    </string-array>
+
+    <string-array name="governorate_ariana">
+        <item>Ariana Ville</item>
+        <item>Ettadhamen</item>
+        <item>Kalâat el-Andalous</item>
+        <item>Soukra</item>
+        <item>Mnihla</item>
+        <item>Raoued</item>
+        <item>Sidi Thabet</item>
+    </string-array>
+
+    <string-array name="governorate_beja">
+        <item>Amdoun</item>
+        <item>Béja Nord</item>
+        <item>Béja Sud</item>
+        <item>Goubellat</item>
+        <item>Medjez el-Bab</item>
+        <item>Nefza</item>
+        <item>Téboursouk</item>
+        <item>Testour</item>
+        <item>Thibar</item>
+    </string-array>
+
+    <string-array name="governorate_ben_arous">
+        <item>Ben Arous</item>
+        <item>Bou Mhel el-Bassatine</item>
+        <item>El Mourouj</item>
+        <item>Ezzahra</item>
+        <item>Fouchana</item>
+        <item>Hammam Chott</item>
+        <item>Hammam Lif</item>
+        <item>Mohamedia</item>
+        <item>Medina Jedida</item>
+        <item>Mégrine</item>
+        <item>Mornag</item>
+        <item>Radès</item>
+    </string-array>
+
+    <string-array name="governorate_bizerte">
+        <item>Bizerte Nord</item>
+        <item>Bizerte Sud</item>
+        <item>El Alia</item>
+        <item>Ghar El Melh</item>
+        <item>Ghezala</item>
+        <item>Joumine</item>
+        <item>Mateur</item>
+        <item>Menzel Bourguiba</item>
+        <item>Menzel Jemil</item>
+        <item>Ras Jebel</item>
+        <item>Sejnane</item>
+        <item>Tinja</item>
+        <item>Utique</item>
+        <item>Zarzouna</item>
+    </string-array>
+
+    <string-array name="governorate_gabes">
+        <item>Gabès Médina</item>
+        <item>Gabès Ouest</item>
+        <item>Gabès Sud</item>
+        <item>Ghannouch</item>
+        <item>El Hamma</item>
+        <item>Matmata</item>
+        <item>Mareth</item>
+        <item>Menzel El Habib</item>
+        <item>Métouia</item>
+        <item>Nouvelle Matmata</item>
+    </string-array>
+
+    <string-array name="governorate_gafsa">
+        <item>Belkhir</item>
+        <item>El Guettar</item>
+        <item>El Ksar</item>
+        <item>Gafsa Nord</item>
+        <item>Gafsa Sud</item>
+        <item>Mdhila</item>
+        <item>Métlaoui</item>
+        <item>Moularès</item>
+        <item>Redeyef</item>
+        <item>Sened</item>
+        <item>Sidi Aïch</item>
+    </string-array>
+
+    <string-array name="governorate_jendouba">
+        <item>Aïn Draham</item>
+        <item>Balta-Bou Aouane</item>
+        <item>Bou Salem</item>
+        <item>Fernana</item>
+        <item>Ghardimaou</item>
+        <item>Jendouba Sud</item>
+        <item>Jendouba Nord</item>
+        <item>Oued Meliz</item>
+        <item>Tabarka</item>
+    </string-array>
+
+    <string-array name="governorate_kairouan">
+        <item>Bou Hajla</item>
+        <item>Chebika</item>
+        <item>Echrarda</item>
+        <item>El Alâa</item>
+        <item>Haffouz</item>
+        <item>Hajeb El Ayoun</item>
+        <item>Kairouan Nord</item>
+        <item>Kairouan Sud</item>
+        <item>Nasrallah</item>
+        <item>Oueslatia</item>
+        <item>Sbikha</item>
+    </string-array>
+
+    <string-array name="governorate_kasserine">
+        <item>El Ayoun</item>
+        <item>Ezzouhour</item>
+        <item>Fériana</item>
+        <item>Foussana</item>
+        <item>Haïdra</item>
+        <item>Hassi El Ferid</item>
+        <item>Jedelienne</item>
+        <item>Kasserine Nord</item>
+        <item>Kasserine Sud</item>
+        <item>Majel Bel Abbès</item>
+        <item>Sbeïtla</item>
+        <item>Sbiba</item>
+        <item>Thala</item>
+    </string-array>
+
+    <string-array name="governorate_kebili">
+        <item>Douz Nord</item>
+        <item>Douz Sud</item>
+        <item>Faouar</item>
+        <item>Kébili Nord</item>
+        <item>Kébili Nord</item>
+        <item>Souk Lahad</item>
+    </string-array>
+
+    <string-array name="governorate_kef">
+        <item>Dahmani</item>
+        <item>Jérissa</item>
+        <item>El Ksour</item>
+        <item>Sers</item>
+        <item>Kalâat Khasba</item>
+        <item>Kalaat Senan</item>
+        <item>Kef Est</item>
+        <item>Kef Ouest</item>
+        <item>Nebeur</item>
+        <item>Sakiet Sidi Youssef</item>
+        <item>Tajerouine</item>
+    </string-array>
+
+    <string-array name="governorate_mahdia">
+        <item>Bou Merdes</item>
+        <item>Chebba</item>
+        <item>Chorbane</item>
+        <item>El Jem</item>
+        <item>Essouassi</item>
+        <item>Hebira</item>
+        <item>Ksour Essef</item>
+        <item>Mahdia</item>
+        <item>Melloulèche</item>
+        <item>Ouled Chamekh</item>
+        <item>Sidi Alouane</item>
+    </string-array>
+
+    <string-array name="governorate_manouba">
+        <item>Borj El Amri</item>
+        <item>Djedeida</item>
+        <item>Douar Hicher</item>
+        <item>El Batan</item>
+        <item>La Manouba</item>
+        <item>Mornaguia</item>
+        <item>Oued Ellil</item>
+        <item>Tebourba</item>
+    </string-array>
+
+    <string-array name="governorate_medenine">
+        <item>Ben Gardane</item>
+        <item>Beni Khedache</item>
+        <item>Djerba - Ajim</item>
+        <item>Djerba - Houmt Souk</item>
+        <item>Djerba - Midoun</item>
+        <item>Médenine Nord</item>
+        <item>Médenine Sud</item>
+        <item>Sidi Makhlouf</item>
+        <item>Zarzis</item>
+    </string-array>
+
+    <string-array name="governorate_monastir">
+        <item>Bekalta</item>
+        <item>Bembla</item>
+        <item>Beni Hassen</item>
+        <item>Jemmal</item>
+        <item>Ksar Hellal</item>
+        <item>Ksibet el-Médiouni</item>
+        <item>Moknine</item>
+        <item>Monastir</item>
+        <item>Ouerdanine</item>
+        <item>Sahline</item>
+        <item>Sayada-Lamta-Bou Hajar</item>
+        <item>Téboulba</item>
+        <item>Zéramdine</item>
+    </string-array>
+
+    <string-array name="governorate_nabeul">
+        <item>Béni Khalled</item>
+        <item>Béni Khiar</item>
+        <item>Bou Argoub</item>
+        <item>Dar Châabane El Fehri</item>
+        <item>El Haouaria</item>
+        <item>El Mida</item>
+        <item>Grombalia</item>
+        <item>Hammam Ghezèze</item>
+        <item>Hammamet</item>
+        <item>Kélibia</item>
+        <item>Korba</item>
+        <item>Menzel Bouzelfa</item>
+        <item>Menzel Temime</item>
+        <item>Nabeul</item>
+        <item>Soliman</item>
+        <item>Takelsa</item>
+    </string-array>
+
+    <string-array name="governorate_sfax">
+        <item>Agareb</item>
+        <item>Bir Ali Ben Khalifa</item>
+        <item>El Amra</item>
+        <item>El Hencha</item>
+        <item>Graïba</item>
+        <item>Jebiniana</item>
+        <item>Kerkennah</item>
+        <item>Mahrès</item>
+        <item>Menzel Chaker</item>
+        <item>Sakiet Eddaïer</item>
+        <item>Sakiet Ezzit</item>
+        <item>Sfax Ouest</item>
+        <item>Sfax Sud</item>
+        <item>Sfax Ville</item>
+        <item>Skhira</item>
+        <item>Thyna</item>
+    </string-array>
+
+    <string-array name="governorate_sidi_bouzid">
+        <item>Bir El Hafey</item>
+        <item>Cebbala Ouled Asker</item>
+        <item>Jilma</item>
+        <item>Meknassy</item>
+        <item>Menzel Bouzaiane</item>
+        <item>Mezzouna</item>
+        <item>Ouled Haffouz</item>
+        <item>Regueb</item>
+        <item>Sidi Ali Ben Aoun</item>
+        <item>Sidi Bouzid Est</item>
+        <item>Sidi Bouzid Ouest</item>
+        <item>Souk Jedid</item>
+    </string-array>
+
+    <string-array name="governorate_siliana">
+        <item>Bargou</item>
+        <item>Bou Arada</item>
+        <item>El Aroussa</item>
+        <item>El Krib</item>
+        <item>Gaâfour</item>
+        <item>Kesra</item>
+        <item>Makthar</item>
+        <item>Rouhia</item>
+        <item>Sidi Bou Rouis</item>
+        <item>Siliana Nord</item>
+        <item>Siliana Sud</item>
+    </string-array>
+
+    <string-array name="governorate_sousse">
+        <item>Akouda</item>
+        <item>Bouficha</item>
+        <item>Enfida</item>
+        <item>Hammam Sousse</item>
+        <item>Hergla</item>
+        <item>Kalâa Kebira</item>
+        <item>Kalâa Seghira</item>
+        <item>Kondar</item>
+        <item>M\'saken</item>
+        <item>Sidi Bou Ali</item>
+        <item>Sidi El Hani</item>
+        <item>Sousse Jawhara</item>
+        <item>Sousse Médina</item>
+        <item>Sousse Riadh</item>
+        <item>Sousse Sidi Abdelhamid</item>
+    </string-array>
+
+    <string-array name="governorate_tataouine">
+        <item>Bir Lahmar</item>
+        <item>Dehiba</item>
+        <item>Ghomrassen</item>
+        <item>Remada</item>
+        <item>Smâr</item>
+        <item>Tataouine Nord</item>
+        <item>Tataouine Sud</item>
+    </string-array>
+
+    <string-array name="governorate_tozeur">
+        <item>Degache</item>
+        <item>Hazoua</item>
+        <item>Nefta</item>
+        <item>Tameghza</item>
+        <item>Tozeur</item>
+    </string-array>
+
+    <string-array name="governorate_tunis">
+        <item>Bab El Bhar</item>
+        <item>Bab Souika</item>
+        <item>Carthage</item>
+        <item>Cité El Khadra</item>
+        <item>Djebel Jelloud</item>
+        <item>El Kabaria</item>
+        <item>El Menzah</item>
+        <item>El Omrane</item>
+        <item>El Omrane supérieur</item>
+        <item>El Ouardia</item>
+        <item>Ettahrir</item>
+        <item>Ezzouhour</item>
+        <item>Hraïria</item>
+        <item>La Goulette</item>
+        <item>La Marsa</item>
+        <item>Le Bardo</item>
+        <item>Le Kram</item>
+        <item>Médina</item>
+        <item>Séjoumi</item>
+        <item>Sidi El Béchir</item>
+        <item>Sidi Hassine</item>
+    </string-array>
+
+    <string-array name="governorate_zaghouan">
+        <item>Bir Mcherga</item>
+        <item>El Fahs</item>
+        <item>Nadhour</item>
+        <item>Saouaf</item>
+        <item>Zaghouan</item>
+        <item>Zriba</item>
+    </string-array>
+
+    <!-- Senegal regions -->
+    <string-array name="senegal_region_list">
+        <item>DAKAR</item>
+        <item>DIOURBEL</item>
+        <item>FATICK</item>
+        <item>KAFFRINE</item>
+        <item>KAOLACK</item>
+        <item>KEDOUGOU</item>
+        <item>KOLDA</item>
+        <item>LOUGA</item>
+        <item>MATAM</item>
+        <item>SAINT LOUIS</item>
+        <item>SEDHIOU</item>
+        <item>TAMBACOUNDA</item>
+        <item>THIES</item>
+        <item>ZIGUINCHOR</item>
+    </string-array>
+
+    <!-- Senegal departments -->
+    <string-array name="senegal_department_dakar_list">
+        <item>DEPARTEMENT DE DAKAR</item>
+        <item>DEPARTEMENT DE GUEDIAWAYE</item>
+        <item>DEPARTEMENT DE PIKINE</item>
+        <item>DEPARTEMENT DE RUFISQUE</item>
+    </string-array>
+
+    <string-array name="senegal_department_thies_list">
+        <item>DEPARTEMENT TIVAOUANE</item>
+        <item>DEPARTEMENT MBOUR</item>
+        <item>DEPARTEMENT THIES</item>
+    </string-array>
+
+    <string-array name="senegal_department_diourbel_list">
+        <item>DEPARTEMENT BAMBEY</item>
+        <item>DEPARTEMENT DIOURBEL</item>
+        <item>DEPARTEMENT MBACKE</item>
+    </string-array>
+
+    <string-array name="senegal_department_fatick_list">
+        <item>DEPARTEMENT FATICK</item>
+        <item>DEPARTEMENT FOUNDIOUNGNE</item>
+        <item>DEPARTEMENT GOSSAS</item>
+    </string-array>
+
+    <string-array name="senegal_department_kaolack_list">
+        <item>DEPARTEMENT GUINGUINEO</item>
+        <item>DEPARTEMENT KAOLACK</item>
+        <item>DEPARTEMENT NIORO</item>
+    </string-array>
+
+    <string-array name="senegal_department_kedougou_list">
+        <item>DEPARTEMENT KEDOUGOU</item>
+        <item>DEPARTEMENT SALEMATA</item>
+        <item>DEPARTEMENT SARAYA</item>
+    </string-array>
+
+    <string-array name="senegal_department_kolda_list">
+        <item>DEPARTEMENT KOLDA</item>
+        <item>DEPARTEMENT MEDINA YORO FOULAH</item>
+        <item>DEPARTEMENT VELINGARA</item>
+    </string-array>
+
+    <string-array name="senegal_department_louga_list">
+        <item>DEPARTEMENT KEBEMER</item>
+        <item>DEPARTEMENT LINGUERE</item>
+        <item>DEPARTEMENT LOUGA</item>
+    </string-array>
+
+    <string-array name="senegal_department_matam_list">
+        <item>DEPARTEMENT MATAM</item>
+        <item>DEPARTEMENT RANEROU-FERLO</item>
+        <item>DEPARTEMENT KANEL</item>
+    </string-array>
+
+    <string-array name="senegal_department_saint_louis_list">
+        <item>DEPARTEMENT DAGANA</item>
+        <item>DEPARTEMENT PODOR</item>
+        <item>DEPARTEMENT SAINT LOUIS</item>
+    </string-array>
+
+    <string-array name="senegal_department_sedhiou_list">
+        <item>DEPARTEMENT DE BOUNKILING</item>
+        <item>DEPARTEMENT GOUDOMP</item>
+        <item>DEPARTEMENT SEDHIOU</item>
+    </string-array>
+
+    <string-array name="senegal_department_tambacounda_list">
+        <item>DEPARTEMENT BAKEL</item>
+        <item>DEPARTEMENT GOUDIRY</item>
+        <item>DEPARTEMENT KOUMPENTOUM</item>
+        <item>DEPARTEMENT TAMBACOUNDA</item>
+    </string-array>
+
+    <string-array name="senegal_department_ziguinchor_list">
+        <item>DEPARTEMENT BIGNONA</item>
+        <item>DEPARTEMENT OUSSOUYE</item>
+        <item>DEPARTEMENT ZIGUINCHOR</item>
+    </string-array>
+
+    <string-array name="senegal_department_kaffrine_list">
+        <item>DEPARTEMENT BIRKELANE</item>
+        <item>DEPARTEMENT KAFFRINE</item>
+        <item>DEPARTEMENT KOUNGHEUL</item>
+        <item>DEPARTEMENT MALEM HODDAR</item>
+    </string-array>
+
+    <!-- Senegal districts -->
+    <string-array name="senegal_district_dakar_list">
+        <item>ARRONDISSEMENT ALMADIES</item>
+        <item>ARRONDISSEMENT DAKAR-PLATEAU</item>
+        <item>ARRONDISSEMENT GRAND DAKAR</item>
+        <item>ARRONDISSEMENT PARCELLES ASSAINIES</item>
+    </string-array>
+
+    <string-array name="senegal_district_guediawaye_list">
+        <item>ARRONDISSEMENT GUEDIAWAYE</item>
+    </string-array>
+
+    <string-array name="senegal_district_pikine_list">
+        <item>ARRONDISSEMENT NIAYES</item>
+        <item>ARRONDISSEMENT PIKINE DAGOUDANE</item>
+        <item>ARRONDISSEMENT THIAROYE</item>
+    </string-array>
+
+    <string-array name="senegal_district_rufisque_list">
+        <item>ARRONDISSEMENT RUFISQUE</item>
+        <item>ARRONDISSEMENT SANGALCAM</item>
+        <item>Commune de BARGNY</item>
+        <item>Commune de DIAMNIADIO</item>
+        <item>Commune de SEBIKOTANE</item>
+    </string-array>
+
+    <string-array name="senegal_district_tivaoune_list">
+        <item>ARRONDISSEMENT MEOUANE</item>
+        <item>ARRONDISSEMENT MERINA DAKHAR</item>
+        <item>ARRONDISSEMENT NIAKHENE</item>
+        <item>ARRONDISSEMENT PAMBAL</item>
+        <item>COMMUNE MBORO</item>
+        <item>COMMUNE MEKHE</item>
+        <item>COMMUNE TIVAOUANE</item>
+    </string-array>
+
+    <string-array name="senegal_district_mbour_list">
+        <item>ARRONDISSEMENT FISSEL</item>
+        <item>ARRONDISSEMENT SESSENE</item>
+        <item>ARRONDISSEMENT SINDIA</item>
+        <item>COMMUNE JOAL-FADIOUTH</item>
+        <item>COMMUNE MBOUR</item>
+        <item>COMMUNE NGAPARU</item>
+        <item>COMMUNE POPENGUINE</item>
+        <item>COMMUNE SALY PORTUDAL</item>
+        <item>COMMUNE SOMONE</item>
+        <item>COMMUNE THIADIAYE</item>
+        <item>COMMUNE NGUEKOKH</item>
+    </string-array>
+
+    <string-array name="senegal_district_thies_list">
+        <item>ARRONDISSEMENT KEUR MOUSSA</item>
+        <item>ARRONDISSEMENT NOTTO</item>
+        <item>ARRONDISSEMENT THIENABA</item>
+        <item>COMMUNE KAYAR</item>
+        <item>COMMUNE KHOMBOLE</item>
+        <item>COMMUNE POUT</item>
+        <item>COMMUNES</item>
+        <item>VILLE DE THIES</item>
+    </string-array>
+
+    <string-array name="senegal_district_bambey_list">
+        <item>ARRONDISSEMENT BABA GARAGE</item>
+        <item>ARRONDISSEMENT LAMBAYE</item>
+        <item>ARRONDISSEMENT NGOYE</item>
+        <item>Commune de BAMBEY</item>
+    </string-array>
+
+    <string-array name="senegal_district_diourbel_list">
+        <item>ARRONDISSEMENT NDINDY</item>
+        <item>ARRONDISSEMENT NDOULO</item>
+        <item>Commune de DIOURBEL</item>
+    </string-array>
+
+    <string-array name="senegal_district_mbacke_list">
+        <item>ARRONDISSEMENT KAEL</item>
+        <item>ARRONDISSEMENT NDAME</item>
+        <item>ARRONDISSEMENT TAIF</item>
+        <item>Commune de MBACKE</item>
+    </string-array>
+
+    <string-array name="senegal_district_fatick_list">
+        <item>Arrond DIAKHAO</item>
+        <item>Arrond FIMELA</item>
+        <item>Arrond NIAKHAR</item>
+        <item>Arrond TATTAGUINE</item>
+        <item>Commune de DIOFFIOR</item>
+        <item>Commune de FATICK</item>
+    </string-array>
+
+    <string-array name="senegal_district_foundioune_list">
+        <item>Arrond DJILOR</item>
+        <item>Arrond NIODIOR</item>
+        <item>Arrond TOUBACOUTA</item>
+        <item>Commune FOUNDIOUNGNE</item>
+        <item>Commune Karang Poste</item>
+        <item>Commune PASSY</item>
+        <item>Commune SOKONE</item>
+        <item>Commune Soum</item>
+    </string-array>
+
+    <string-array name="senegal_district_gossas_list">
+        <item>Arrond COLOBANE</item>
+        <item>Arrond OUADIOUR</item>
+        <item>Commune GOSSAS</item>
+    </string-array>
+
+    <string-array name="senegal_district_guinguineo_list">
+        <item>ARD MBADAKHOUNE</item>
+        <item>ARD NGUELOU</item>
+        <item>Commune de GUINGUINEO</item>
+    </string-array>
+
+    <string-array name="senegal_district_kaolack_list">
+        <item>Arrondissement de Koumbal</item>
+        <item>Arrondissement de Ndiédieng</item>
+        <item>Arrondissement de Sibassor</item>
+        <item>Commune Gandiaye</item>
+        <item>Commune Kahone</item>
+        <item>Commune Kaolack</item>
+        <item>Commune Ndoffane</item>
+    </string-array>
+
+    <string-array name="senegal_district_nioro_list">
+        <item>ARD. MEDINA SABAKH</item>
+        <item>ARD. PAOS KOTO</item>
+        <item>ARD. WACK NGOUNA</item>
+        <item>Commune de KEUR MADIABEL</item>
+        <item>Commune NIORO</item>
+    </string-array>
+
+    <string-array name="senegal_district_kedougou_list">
+        <item>ARRONDISSEMENT BANDAFASSI</item>
+        <item>ARRONDISSEMENT FONGOLIMBI</item>
+        <item>Commune de KEDOUGOU</item>
+    </string-array>
+
+    <string-array name="senegal_district_salemata_list">
+        <item>ARRONDISSEMENT DAKATELI</item>
+        <item>ARRONDISSEMENT DAR SALAM</item>
+        <item>Commune de SALEMATA</item>
+    </string-array>
+
+    <string-array name="senegal_district_saraya_list">
+        <item>ARRONDISSEMENT BEMBOU</item>
+        <item>ARRONDISSEMENT SABODALA</item>
+        <item>Commune de SARAYA</item>
+    </string-array>
+
+    <string-array name="senegal_district_kolda_list">
+        <item>ARRONDISSEMENT DIOULACOLON</item>
+        <item>ARRONDISSEMENT MAMPATIM</item>
+        <item>ARRONDISSEMENT SARE BIDJI</item>
+        <item>COMMUNE Dabo</item>
+        <item>COMMUNE Kolda</item>
+        <item>COMMUNE Salikégné </item>
+        <item>COMMUNE Saré Yoba Diéga</item>
+    </string-array>
+
+    <string-array name="senegal_district_medina_yoro_foulah_list">
+        <item>ARRONDISSEMENT FAFACOUROU</item>
+        <item>ARRONDISSEMENT NDORNA</item>
+        <item>ARRONDISSEMENT NIAMING</item>
+        <item>COMMUNE Médina Yoro Foulah</item>
+        <item>COMMUNE Pata </item>
+    </string-array>
+
+    <string-array name="senegal_district_velingara_list">
+        <item>ARRONDISSEMENT BONCONTO</item>
+        <item>ARRONDISSEMENT PAKOUR</item>
+        <item>ARRONDISSEMENT SARE COLY SALLE</item>
+        <item>COMMUNE Diaobé-Kabendou</item>
+        <item>COMMUNE Kounkané </item>
+        <item>COMMUNE Vélingara</item>
+    </string-array>
+
+    <string-array name="senegal_district_kebemer_list">
+        <item>ARRONDISSEMENT . DAROU MOUSTY</item>
+        <item>ARRONDISSEMENT . NDANDE</item>
+        <item>ARRONDISSEMENT . SAGATTA</item>
+        <item>COMMUNE GUEOUL</item>
+        <item>COMMUNE KEBEMER</item>
+    </string-array>
+
+    <string-array name="senegal_district_linguere_list">
+        <item>ARRONDISSEMENT . BARKEDJI</item>
+        <item>ARRONDISSEMENT . DODJI</item>
+        <item>ARRONDISSEMENT . SAGATTA DJOLOF</item>
+        <item>COMMUNE LINGUERE</item>
+        <item>COMMUNE de DAHRA</item>
+    </string-array>
+
+    <string-array name="senegal_district_louga_list">
+        <item>ARRONDISSEMENT MBEDIENE</item>
+        <item>ARRONDISSEMENT SAKAL</item>
+        <item>ARRONDISSEMENT . COKI</item>
+        <item>ARRONDISSEMENT . KEUR MOMAR SARR</item>
+        <item>ARRONDISSEMENT . YANG YANG</item>
+        <item>COMMUNE LOUGA</item>
+    </string-array>
+
+    <string-array name="senegal_district_matam_list">
+        <item>ARRONDISSEMENT OGO</item>
+        <item>ARRONDISSEMENT AGNAM-CIVOL</item>
+        <item>Commune MATAM</item>
+        <item>Commune OUROSSOGUI</item>
+        <item>Commune THILOGNE</item>
+    </string-array>
+
+    <string-array name="senegal_district_ranelou_ferlo_list">
+        <item>ARRONDISSEMENT VELINGARA</item>
+        <item>Commune RANEROU-FERLO</item>
+    </string-array>
+
+    <string-array name="senegal_district_kanel_list">
+        <item>ARRONDISSEMENT ORKADIERE</item>
+        <item>ARRONDISSEMENT WOURO SIDY</item>
+        <item>Commune DEMBANCANE</item>
+        <item>Commune HAMADY HOUNARE</item>
+        <item>Commune KANEL</item>
+        <item>Commune SEMME</item>
+        <item>Commune SINTHIOU BAMAMBE</item>
+        <item>Commune WAOUNDE</item>
+    </string-array>
+
+    <string-array name="senegal_district_dagana_list">
+        <item>ARDT MBANE</item>
+        <item>ARDT NDIAYE</item>
+        <item>COMMUNE DAGANA</item>
+        <item>COMMUNE GAE</item>
+        <item>COMMUNE RICHARD TOLL</item>
+        <item>COMMUNE ROSS-BETHIO</item>
+        <item>COMMUNE ROSSO </item>
+    </string-array>
+
+    <string-array name="senegal_district_podor_list">
+        <item>ARDT CAS - CAS</item>
+        <item>ARDT GAMADJI SARE</item>
+        <item>ARDT SALDE</item>
+        <item>ARDT THILE BOUBACAR</item>
+        <item>COMMUNE PETE</item>
+        <item>COMMUNE AERE LAO</item>
+        <item>COMMUNE BODE LAO</item>
+        <item>COMMUNE DEMETTE</item>
+        <item>COMMUNE GALOYA TOUCOULEUR</item>
+        <item>COMMUNE GOLLERE</item>
+        <item>COMMUNE GUEDE CHANTIER</item>
+        <item>COMMUNE MBOUMBA</item>
+        <item>COMMUNE NDIOUM</item>
+        <item>COMMUNE NIANDANE</item>
+        <item>COMMUNE PODOR</item>
+        <item>COMMUNE WALALDE</item>
+    </string-array>
+
+    <string-array name="senegal_district_saint_louis_list">
+        <item>ARDT RAO</item>
+        <item>COMMUNE MPAL</item>
+        <item>COMMUNE SAINT LOUIS</item>
+    </string-array>
+
+    <string-array name="senegal_district_bounkiling_list">
+        <item>ARRONDISSEMENT BOGHAL</item>
+        <item>ARRONDISSEMENT DIAROUME</item>
+        <item>ARRONDISSEMENT BONA</item>
+        <item>COMMUNE BOUNKILING</item>
+        <item>Commune MADINA WANDIFA</item>
+    </string-array>
+
+    <string-array name="senegal_district_goudomp_list">
+        <item>ARRONDISSEMENT DJIBANAR</item>
+        <item>ARRONDISSEMENT KARANTABA</item>
+        <item>ARRONDISSEMENT SIMBANDI BRASSOU</item>
+        <item>COMMUNE DIATTACOUNDA</item>
+        <item>COMMUNE GOUDOMP</item>
+        <item>COMMUNE SAMINE</item>
+        <item>COMMUNE TANAFF</item>
+    </string-array>
+
+    <string-array name="senegal_district_sedhiou_list">
+        <item>ARRONDISSEMENT DIENDE</item>
+        <item>ARRONDISSEMENT DJIBABOUYA</item>
+        <item>ARRONDISSEMENT DJIREDJI</item>
+        <item>Commune Diannah Malary </item>
+        <item>Commune Marsassoum </item>
+        <item>Commune Sédhiou</item>
+    </string-array>
+
+    <string-array name="senegal_district_bakel_list">
+        <item>ARRONDISSEMENT BELE ex KIDIRA</item>
+        <item>ARRONDISSEMENT KENIABA</item>
+        <item>ARRONDISSEMENT MOUDERY</item>
+        <item>Commune de BAKEL</item>
+        <item>Commune de DIAWARA</item>
+        <item>Commune de Kidira</item>
+    </string-array>
+
+    <string-array name="senegal_district_goudiry_list">
+        <item>ARRONDISSEMENT BALA</item>
+        <item>ARRONDISSEMENT BOYNGUEL BAMBA</item>
+        <item>ARRONDISSEMENT DIANKE MAKHA</item>
+        <item>ARRONDISSEMENT KOULOR</item>
+        <item>Commune de Goudiry</item>
+        <item>Commune de Kothiary</item>
+    </string-array>
+
+    <string-array name="senegal_district_koumpentoum_list">
+        <item>ARRONDISSEMENT Bamba THIALENE</item>
+        <item>ARRONDISSEMENT KOUTHIABA WOLOF</item>
+        <item>Commune de Koumpentoum</item>
+        <item>Commune de Malem Niani</item>
+    </string-array>
+
+    <string-array name="senegal_district_tambacounda_list">
+        <item>ARRONDISSEMENT KOUSSANAR</item>
+        <item>ARRONDISSEMENT MAKAKOULIBANTAN</item>
+        <item>ARRONDISSEMENT MISSIRAH</item>
+        <item>Commune deTAMBACOUNDA</item>
+    </string-array>
+
+    <string-array name="senegal_district_bignona_list">
+        <item>ARRONDISSEMENT KATABA 1</item>
+        <item>ARRONDISSEMENT KATABA 2</item>
+        <item>ARRONDISSEMENT KATABA 3</item>
+        <item>ARRONDISSEMENT KATABA 4</item>
+        <item>ARRONDISSEMENT SINDIAN</item>
+        <item>ARRONDISSEMENT TENDOUCK</item>
+        <item>ARRONDISSEMENT TENGHORY</item>
+        <item>Commune BIGNONA</item>
+        <item>Commune DIOULOULOU</item>
+        <item>Commune THIONK-ESSYL</item>
+    </string-array>
+
+    <string-array name="senegal_district_oussouye_list">
+        <item>ARRONDISSEMENT LOUDIA OUOLOF</item>
+        <item>ARRONDISSEMENT CABROUSSE</item>
+        <item>Commune OUSSOUYE</item>
+    </string-array>
+
+    <string-array name="senegal_district_ziguinchor_list">
+        <item>ARRONDISSEMENT  NIASSIA</item>
+        <item>ARRONDISSEMENT NIAGUIS</item>
+        <item>Commune ZIGUINCHOR</item>
+    </string-array>
+
+    <string-array name="senegal_district_birkelane_list">
+        <item>ARRONDISSEMENT KEUR MBOUCKI EX BIRKELANE</item>
+        <item>ARRONDISSEMENT MABO</item>
+        <item>Commune Mbirkilane </item>
+    </string-array>
+
+    <string-array name="senegal_district_kaffrine_list">
+        <item>ARRONDISSEMENT GNIBY EX MALEM HODDAR</item>
+        <item>ARRONDISSEMENT KATAKEL EX NGANDA</item>
+        <item>Commune de KAFFRINE</item>
+        <item>Commune de NGANDA</item>
+    </string-array>
+
+    <string-array name="senegal_district_koungheul_list">
+        <item>ARRONDISSEMENT IDA MOURIDE</item>
+        <item>ARRONDISSEMENT LOUR ESCALE</item>
+        <item>ARRONDISSEMENT MISSIRA WADDENE EX MAKA YOPP</item>
+        <item>Commune de KOUNGHEUL</item>
+    </string-array>
+
+    <string-array name="senegal_district_malem_hoddar_list">
+        <item>ARRONDISSEMENT DE SAGNA</item>
+        <item>ARRONDISSEMENT DAROU MINAM II</item>
+        <item>COMMUNE MALEM HODDAR</item>
+    </string-array>
+
+    <!-- Senegal towns -->
+    <string-array name="senegal_town_almadies_list">
+        <item>CA MERMOZ SACRE CŒUR</item>
+        <item>CA NGOR</item>
+        <item>CA OUAKAM</item>
+        <item>CA YOFF</item>
+    </string-array>
+
+    <string-array name="senegal_town_dakar_plateau_list">
+        <item>CA FASS / COLOBANE / GUEULE TAPEE</item>
+        <item>CA FANN / POINT E / AMITIE</item>
+        <item>CA ILE DE GOREE</item>
+        <item>CA MEDINA</item>
+        <item>CA PLATEAU</item>
+    </string-array>
+
+    <string-array name="senegal_town_grand_dakar_list">
+        <item>CA BISCUITERIE</item>
+        <item>CA DIEUPPEUL / DERKLE</item>
+        <item>CA GRAND DAKAR</item>
+        <item>CA H.L.M</item>
+        <item>CA HANN / BEL AIR</item>
+        <item>CA SICAP LIBERTE</item>
+    </string-array>
+
+    <string-array name="senegal_town_parcelles_assainies_list">
+        <item>CA CAMBERENE</item>
+        <item>CA GRAND YOFF</item>
+        <item>CA PARCELLES ASSAINIES</item>
+        <item>CA PATTE D\'OIE</item>
+    </string-array>
+
+    <string-array name="senegal_town_guediawaye_list">
+        <item>CA GOLF SUD</item>
+        <item>CA MEDINA GOUNASS</item>
+        <item>CA NDIAREME LIMAMOU LAYE</item>
+        <item>CA SAM NOTAIRE</item>
+        <item>CA WAKHINANE</item>
+    </string-array>
+
+    <string-array name="senegal_town_niayes_list">
+        <item>CA KEUR MASSAR</item>
+        <item>CA MALIKA</item>
+        <item>CA YEUMBEUL NORD</item>
+        <item>CA YEUMBEUL SUD</item>
+    </string-array>
+
+    <string-array name="senegal_town_pikine_dagoudane_list">
+        <item>CA DALIFORD</item>
+        <item>CA DJIDA THIAROYE KAO</item>
+        <item>CA GUINAW RAIL NORD</item>
+        <item>CA GUINAW RAIL SUD</item>
+        <item>CA PIKINE EST</item>
+        <item>CA PIKINE NORD</item>
+        <item>CA PIKINE OUEST</item>
+    </string-array>
+
+    <string-array name="senegal_town_thiaroye_list">
+        <item>CA DIACK SAO</item>
+        <item>CA DIAMAGUENE SICAP MBAO</item>
+        <item>CA MBAO</item>
+        <item>CA THIAROYE / MER</item>
+        <item>CA THIAROYE-GARE</item>
+    </string-array>
+
+    <string-array name="senegal_town_rufisque_list">
+        <item>CA RUFISQUE CENTRE (NORD)</item>
+        <item>CA RUFISQUE EST</item>
+        <item>CA RUFISQUE OUEST</item>
+    </string-array>
+
+    <string-array name="senegal_town_sangalcam_list">
+        <item>CR SANGALKAM</item>
+        <item>CR YENE</item>
+    </string-array>
+
+    <string-array name="senegal_town_meouane_list">
+        <item>CR DAROU KHOUDOSS</item>
+        <item>CR de MEOUANE</item>
+        <item>CR TAIBA NDIAYE</item>
+    </string-array>
+
+    <string-array name="senegal_town_merina_dakhar_list">
+        <item>CR de KOUL</item>
+        <item>CR de PEKESSE</item>
+        <item>CR MERINA-DAKHAR</item>
+    </string-array>
+
+    <string-array name="senegal_town_niakhene_list">
+        <item>CR de MBAYENE</item>
+        <item>CR de NGANDIOUF</item>
+        <item>CR de NIAKHENE</item>
+        <item>CR de THILMAKHA</item>
+    </string-array>
+
+    <string-array name="senegal_town_pambal_list">
+        <item>CR de CHERIF LO</item>
+        <item>CR de MONT ROLLAND</item>
+        <item>CR NOTTO GOUYE DIAMA</item>
+        <item>CR PIRE GOUREYE</item>
+    </string-array>
+
+    <string-array name="senegal_town_fissel_list">
+        <item>CR de FISSEL</item>
+        <item>CR de NDIAGANIAO</item>
+    </string-array>
+
+    <string-array name="senegal_town_sessene_list">
+        <item>CR de NGUENIENE</item>
+        <item>CR de SANDIARA</item>
+        <item>CR de SESSENE</item>
+    </string-array>
+
+    <string-array name="senegal_town_sindia_list">
+        <item>CR de DIASS</item>
+        <item>CR de MALICOUNDA</item>
+        <item>CR de SINDIA</item>
+    </string-array>
+
+    <string-array name="senegal_town_keur_moussa_list">
+        <item>CR de DIENDER GUEDJI</item>
+        <item>CR de FANDENE</item>
+        <item>CR de KEUR MOUSSA</item>
+    </string-array>
+
+    <string-array name="senegal_town_notto_list">
+        <item>CR de NOTTO</item>
+        <item>CR de TASSETTE</item>
+    </string-array>
+
+    <string-array name="senegal_town_thienaba_list">
+        <item>CR de NDIAYENE-SIRAKH</item>
+        <item>CR de NGOUNDIANE</item>
+        <item>CR de THIENABA</item>
+        <item>CR de TOUBA-TOUL</item>
+    </string-array>
+
+    <string-array name="senegal_town_de_thies_list">
+        <item>CA THIES EST</item>
+        <item>CA THIES NORD</item>
+        <item>CA THIES OUEST</item>
+    </string-array>
+
+    <string-array name="senegal_town_baba_garage_list">
+        <item>CR de BABA GARAGE</item>
+        <item>CR de DINGUIRAYE</item>
+        <item>CR de KEUR SAMBA KANE</item>
+    </string-array>
+
+    <string-array name="senegal_town_lambaye_list">
+        <item>CR de GAWANE</item>
+        <item>CR de LAMBAYE</item>
+        <item>CR de NGOGOM</item>
+        <item>CR de REFANE</item>
+    </string-array>
+
+    <string-array name="senegal_town_ngoye_list">
+        <item>CR de DANGALMA</item>
+        <item>CR de NDONDOL</item>
+        <item>CR de NGOYE</item>
+        <item>CR de THIAKHAR</item>
+    </string-array>
+
+    <string-array name="senegal_town_ndindy_list">
+        <item>CR de GADE ESCALE</item>
+        <item>CR de KEUR NGALGOU</item>
+        <item>CR de NDANKH SENE</item>
+        <item>CR de NDINDY</item>
+        <item>CR de TAIBA MOUTOUPHA</item>
+    </string-array>
+
+    <string-array name="senegal_town_ndoulo_list">
+        <item>CR de NDOULO</item>
+        <item>CR de NGOHE</item>
+        <item>CR de PATAR</item>
+        <item>CR de TOCKY-GARE</item>
+        <item>CR de TOURE-MBONDE</item>
+    </string-array>
+
+    <string-array name="senegal_town_kael_list">
+        <item>CR DAROU NAHIM</item>
+        <item>CR de DAROU SALAM TYP.</item>
+        <item>CR de DENDEYE GOUYEGUI</item>
+        <item>CR de KAEL</item>
+        <item>CR de MADINA</item>
+        <item>CR de NDIOUMANE T. T</item>
+        <item>CR de TOUBA MBOUL</item>
+        <item>CR TAIBA THIEKENE</item>
+    </string-array>
+
+    <string-array name="senegal_town_ndame_list">
+        <item>CR de DALLA NGABOU</item>
+        <item>CR de MISSIRAH</item>
+        <item>CR de NGHAYE</item>
+        <item>CR de TOUBA FALL</item>
+        <item>CR de TOUBA MOSQUEE</item>
+    </string-array>
+
+    <string-array name="senegal_town_taif_list">
+        <item>CR de SADIO</item>
+        <item>CR de TAIF</item>
+    </string-array>
+
+    <string-array name="senegal_town_diakhao_list">
+        <item>CR DIAKHAO</item>
+        <item>CR DIAOULE</item>
+        <item>CR MBELACADIAO</item>
+        <item>CR NDIOB</item>
+    </string-array>
+
+    <string-array name="senegal_town_fimela_list">
+        <item>CR DJILASSE</item>
+        <item>CR FIMELA</item>
+        <item>CR LOUL-SESSENE</item>
+        <item>CR PALMARIN FACAO</item>
+    </string-array>
+
+    <string-array name="senegal_town_niakhar_list">
+        <item>CR NGAYOKHEME</item>
+        <item>CR NIAKHAR</item>
+        <item>CR PATAR</item>
+    </string-array>
+
+    <string-array name="senegal_town_tattaguine_list">
+        <item>CR DIARRERE</item>
+        <item>CR DIOUROUP</item>
+        <item>CR TATTAGUINE</item>
+    </string-array>
+
+    <string-array name="senegal_town_djilor_list">
+        <item>CR DIOSSONG</item>
+        <item>CR DJILOR</item>
+    </string-array>
+
+    <string-array name="senegal_town_niodior_list">
+        <item>CR BASSOUL</item>
+        <item>CR DIONEWAR</item>
+        <item>CR DJIRNDA</item>
+    </string-array>
+
+    <string-array name="senegal_town_toubacouta_list">
+        <item>CR KEUR Saloum DIANE</item>
+        <item>CR KEUR Samba GUEYE</item>
+        <item>CR NIORO ALassane TALL</item>
+        <item>CR TOUBACOUTA</item>
+    </string-array>
+
+    <string-array name="senegal_town_colobane_list">
+        <item>CR COLOBANE</item>
+        <item>CR MBAR</item>
+    </string-array>
+
+    <string-array name="senegal_town_ouadiour_list">
+        <item>CR NDIENE-LAGANE</item>
+        <item>CR OUADIOUR</item>
+        <item>CR PATAR-LIA</item>
+    </string-array>
+
+    <string-array name="senegal_town_mbadakhoune_list">
+        <item>CR KHELCOM BIRAME</item>
+        <item>CR MBADAKHOUNE</item>
+        <item>CR NDIAGO</item>
+        <item>CR NGATHIE NAOUDE</item>
+    </string-array>
+
+    <string-array name="senegal_town_nguelou_list">
+        <item>CR GAGNIK</item>
+        <item>CR MBOSS</item>
+        <item>CR NGUELOU</item>
+        <item>CR OUROUR</item>
+    </string-array>
+
+    <string-array name="senegal_town_koumbal_list">
+        <item>Communaute Rural Keur Baka</item>
+        <item>Communaute Rural Latmingue</item>
+        <item>Communaute Rural thiare</item>
+    </string-array>
+
+    <string-array name="senegal_town_ndiédieng_list">
+        <item>Communaute Rural Keur Soce</item>
+        <item>Communaute Rural Ndiaffate</item>
+        <item>Communaute Rural Ndiedieng</item>
+    </string-array>
+
+    <string-array name="senegal_town_sibassor_list">
+        <item>Communaute Rural Dya</item>
+        <item>Communaute Rural Ndiebel</item>
+        <item>Communaute Rural Thiomby</item>
+    </string-array>
+
+    <string-array name="senegal_town_medina_sabakh_list">
+        <item>CR KAYEMOR</item>
+        <item>CR MEDINA SABAKH</item>
+        <item>CR NGAYENE</item>
+    </string-array>
+
+    <string-array name="senegal_town_paos_koto_list">
+        <item>CR GAINTHE KAYE</item>
+        <item>CR PAOS KOTO</item>
+        <item>CR PROKHANE</item>
+        <item>CR TAIBA NIASSENE</item>
+    </string-array>
+
+    <string-array name="senegal_town_wack_ngouna_list">
+        <item>CR KEUR MABA DIAKHOU</item>
+        <item>CR KEUR MADONGO ( EX K, MADIABEL)</item>
+        <item>CR NDRAME ESCALE</item>
+        <item>CR WACK NGOUNA</item>
+    </string-array>
+
+    <string-array name="senegal_town_bandafassi_list">
+        <item>CR NINEFECHA</item>
+        <item>CR BANDAFASSI</item>
+        <item>CR DINDEFELO</item>
+        <item>CR TOMBORONCOTO</item>
+    </string-array>
+
+    <string-array name="senegal_town_fongolimbi_list">
+        <item>CR DIMBOLI</item>
+        <item>CR FONGOLIMBI</item>
+    </string-array>
+
+    <string-array name="senegal_town_dakateli_list">
+        <item>CR KEVOYE (EX THIANKOYE)</item>
+        <item>CR DAKATELI</item>
+    </string-array>
+
+    <string-array name="senegal_town_dar_salam_list">
+        <item>CR DARSALAM</item>
+        <item>CR ETHIOLO</item>
+        <item>CR OUBADJI</item>
+    </string-array>
+
+    <string-array name="senegal_town_bembou_list">
+        <item>CR BEMBOU</item>
+        <item>CR MEDINA BAFFE</item>
+    </string-array>
+
+    <string-array name="senegal_town_sabodala_list">
+        <item>CR SABODALA</item>
+        <item>CR KHOSSANTO</item>
+        <item>CR MISSIRAH SIRIMANA</item>
+    </string-array>
+
+    <string-array name="senegal_town_dioulacolon_list">
+        <item>CR Dioulacolon</item>
+        <item>CR Guiro Yéro Bocar</item>
+        <item>CR Médina El hadj</item>
+        <item>CR Tankanto Escale</item>
+    </string-array>
+
+    <string-array name="senegal_town_mampatim_list">
+        <item>CR Bagadadji</item>
+        <item>CR Coumbacara</item>
+        <item>CR Dialambéré</item>
+        <item>CR Mampatim</item>
+        <item>CR Médina Chérif</item>
+    </string-array>
+
+    <string-array name="senegal_town_sare_bidji_list">
+        <item>CR Saré Bidji</item>
+        <item>CR Thiétty</item>
+    </string-array>
+
+    <string-array name="senegal_town_fafacourou_list">
+        <item>CR Badion</item>
+        <item>CR Fafacourou</item>
+    </string-array>
+
+    <string-array name="senegal_town_ndorna_list">
+        <item>CR Bignarabé</item>
+        <item>CR Bourouco</item>
+        <item>CR Koulinto</item>
+        <item>CR Ndorna</item>
+    </string-array>
+
+    <string-array name="senegal_town_niaming_list">
+        <item>CR Dinguiraye</item>
+        <item>CR Kéréwane</item>
+        <item>CR Niaming</item>
+    </string-array>
+
+    <string-array name="senegal_town_bonconto_list">
+        <item>CR Bonconto</item>
+        <item>CR Linkering</item>
+        <item>CR Médina Gounass</item>
+        <item>CR Sinthiang Koundara</item>
+    </string-array>
+
+    <string-array name="senegal_town_pakour_list">
+        <item>CR Ouassadou</item>
+        <item>CR Pakour</item>
+        <item>CR Paroumba</item>
+    </string-array>
+
+    <string-array name="senegal_town_sare_coly_salle_list">
+        <item>CR Kandia</item>
+        <item>CR Kandiaye</item>
+        <item>CR Némataba</item>
+        <item>CR Saré Coly Sallé</item>
+    </string-array>
+
+    <string-array name="senegal_town_darou_mousty_list">
+        <item>CR DAROU MARMANE</item>
+        <item>CR DAROU MOUSTY</item>
+        <item>CR MBACKE KADIOR</item>
+        <item>CR MBADIANE</item>
+        <item>CR NDOYENE</item>
+        <item>CR SAM YABAL</item>
+        <item>CR TOUBA MERINA</item>
+    </string-array>
+
+    <string-array name="senegal_town_ndande_list">
+        <item>CR BANDEGNE OUOLOF</item>
+        <item>CR DIOKOUL NDIAWRIGNE</item>
+        <item>CR KAB GAYE</item>
+        <item>CR NDANDE</item>
+        <item>CR THIEPPE</item>
+    </string-array>
+
+    <string-array name="senegal_town_sagatta_list">
+        <item>CR KANENE NDIOB</item>
+        <item>CR LORO</item>
+        <item>CR NGOURANE WOLOF</item>
+        <item>CR SAGATTA GUETH</item>
+        <item>CR THIOLOM FALL</item>
+    </string-array>
+
+    <string-array name="senegal_town_barkedji_list">
+        <item>CR BARKEDJI</item>
+        <item>CR GASSANE</item>
+        <item>CR THIARGNY</item>
+        <item>CR THIEL</item>
+    </string-array>
+
+    <string-array name="senegal_town_dodji_list">
+        <item>CR DODJI</item>
+        <item>CR LABGAR</item>
+        <item>CR OUARKHOKH</item>
+    </string-array>
+
+    <string-array name="senegal_town_sagatta_djolof_list">
+        <item>CR BOULAL</item>
+        <item>CR DEALI</item>
+        <item>CR SAGATTA DJOLOF</item>
+        <item>CR THIAMENE DJOLOF</item>
+    </string-array>
+
+    <string-array name="senegal_town_mbediene_list">
+        <item>CR KELLE GUEYE</item>
+        <item>CR MBEDIENE</item>
+        <item>CR NGUIDILE</item>
+        <item>CR NIOMRE</item>
+    </string-array>
+
+    <string-array name="senegal_town_sakal_list">
+        <item>CR LEONA</item>
+        <item>CR NGUENE SARR</item>
+        <item>CR SAKAL</item>
+    </string-array>
+
+    <string-array name="senegal_town_coki_list">
+        <item>CR COKI</item>
+        <item>CR NDIAGNE</item>
+        <item>CR PETE OUARACK</item>
+        <item>CR THIAMENE CAYOR</item>
+    </string-array>
+
+    <string-array name="senegal_town_keur_momar_sarr_list">
+        <item>CR GANDE</item>
+        <item>CR KEUR MOMAR SARR</item>
+        <item>CR NGUER MALAL</item>
+        <item>CR SYER</item>
+    </string-array>
+
+    <string-array name="senegal_town_yang_yang_list">
+        <item>CR KAMB</item>
+        <item>CR MBEULEUKHE</item>
+        <item>CR MBOULA</item>
+        <item>CR TESSEKRE FORAGE</item>
+    </string-array>
+
+    <string-array name="senegal_town_ogo_list">
+        <item>CR BOKIDIAWE</item>
+        <item>CR NABADJI-CIVOL</item>
+        <item>CR OGO</item>
+    </string-array>
+
+    <string-array name="senegal_town_agnam_civol_list">
+        <item>CR AGNAM-CIVOL</item>
+        <item>CR DABIA</item>
+        <item>CR de OREFONDE</item>
+    </string-array>
+
+    <string-array name="senegal_town_velingara_list">
+        <item>CR LOUGRE-THIOLLY</item>
+        <item>CR OUDALAYE</item>
+        <item>CR VELINGARA</item>
+    </string-array>
+
+    <string-array name="senegal_town_orkadiere_list">
+        <item>CR AOURE</item>
+        <item>CR BOKILADJI</item>
+        <item>CR ORKADIERE</item>
+    </string-array>
+
+    <string-array name="senegal_town_wouro_sidy_list">
+        <item>CR Ndendory</item>
+        <item>CR OURO SIDY</item>
+    </string-array>
+
+    <string-array name="senegal_town_mbane_list">
+        <item>CR BOKHOL</item>
+        <item>CR MBANE</item>
+    </string-array>
+
+    <string-array name="senegal_town_ndiaye_list">
+        <item>CR NGNITH</item>
+        <item>CR DIAMA</item>
+        <item>CR RONKH</item>
+    </string-array>
+
+    <string-array name="senegal_town_cas_cas_list">
+        <item>CR DOUMGA LAO</item>
+        <item>CR MADINA DIATHBE</item>
+        <item>CR MERY</item>
+    </string-array>
+
+    <string-array name="senegal_town_gamadji_sare_list">
+        <item>CR DODEL</item>
+        <item>CR GAMADJI SARE</item>
+        <item>CR GUEDE VILLAGE</item>
+    </string-array>
+
+    <string-array name="senegal_town_salde_list">
+        <item>CR MOLO BIRANE</item>
+        <item>CR THIKITE</item>
+    </string-array>
+
+    <string-array name="senegal_town_thile_boubacar_list">
+        <item>CR FANAYE</item>
+        <item>CR NDIAYENE PEINDAO</item>
+    </string-array>
+
+    <string-array name="senegal_town_rao_list">
+        <item>CR FASS NGOM</item>
+        <item>CR GANDON</item>
+        <item>CR NDIBENE GANDIOLE</item>
+    </string-array>
+
+    <string-array name="senegal_town_boghal_list">
+        <item>CR BOGHAL</item>
+        <item>CR NDIAMACOUTA</item>
+        <item>CR TANKO</item>
+    </string-array>
+
+    <string-array name="senegal_town_diaroume_list">
+        <item>CR DIAMBATI</item>
+        <item>CR DIAROUME</item>
+        <item>CR FAOUNE</item>
+    </string-array>
+
+    <string-array name="senegal_town_bona_list">
+        <item>CR BONA</item>
+        <item>CR DIACOUNDA</item>
+        <item>CR INOR</item>
+        <item>CR KANDION MANGANA</item>
+    </string-array>
+
+    <string-array name="senegal_town_djibanar_list">
+        <item>CR DJIBANAR</item>
+        <item>CR KAOUR</item>
+        <item>CR MANGAROUNGOU SANTO</item>
+        <item>CR SIMBANDI BALANTE</item>
+        <item>CR YARANG BALANTE</item>
+    </string-array>
+
+    <string-array name="senegal_town_karantaba_list">
+        <item>CR KARANTABA</item>
+        <item>CR KOLIBATANG</item>
+    </string-array>
+
+    <string-array name="senegal_town_simbandi_brassou_list">
+        <item>CR BAGHERE</item>
+        <item>CR DIOUBOUDOU</item>
+        <item>CR NIAGHA</item>
+        <item>CR SIMBANDI BRASSOU</item>
+    </string-array>
+
+    <string-array name="senegal_town_diende_list">
+        <item>CR DIANNAH BA</item>
+        <item>CR DIENDE</item>
+        <item>CR KOUSSY</item>
+        <item>CR OUDOUCAR</item>
+        <item>CR SAKAR</item>
+        <item>CR SAMA KANTA PEULH</item>
+    </string-array>
+
+    <string-array name="senegal_town_djibabouya_list">
+        <item>CR BEMET</item>
+        <item>CR DJIBABOUYA</item>
+        <item>CR SAN SAMBA</item>
+    </string-array>
+
+    <string-array name="senegal_town_djiredji_list">
+        <item>CR Bambaly</item>
+        <item>CR Djiredji</item>
+    </string-array>
+
+    <string-array name="senegal_town_bele_list">
+        <item>CR BELE</item>
+        <item>CR SINTHIOU FISSA</item>
+    </string-array>
+
+    <string-array name="senegal_town_keniaba_list">
+        <item>CR GATHIARY</item>
+        <item>CR MEDINA FOULBE</item>
+        <item>CR SADATOU</item>
+        <item>CR Tomboura</item>
+    </string-array>
+
+    <string-array name="senegal_town_moudery_list">
+        <item>CR BALLOU</item>
+        <item>CR GABOU</item>
+        <item>CR MOUDERI</item>
+    </string-array>
+
+    <string-array name="senegal_town_bala_list">
+        <item>CR BALA</item>
+        <item>CR GOUMBAYEL</item>
+        <item>CR KOAR</item>
+    </string-array>
+
+    <string-array name="senegal_town_boynguel_bamba_list">
+        <item>CR BOYNGUEL BAMBA</item>
+        <item>CR DOUGUE</item>
+        <item>CR KOUSSAN</item>
+        <item>CR SINTHIOU MAMADOU BOUBOU</item>
+    </string-array>
+
+    <string-array name="senegal_town_dianke_makha_list">
+        <item>CR BANI ISRAEL</item>
+        <item>CR BOUTOUCOUFARA</item>
+        <item>CR DIANKE MAKHA</item>
+        <item>CR KOMOTI</item>
+    </string-array>
+
+    <string-array name="senegal_town_koulor_list">
+        <item>CR KOULOR</item>
+        <item>CR SINTHIOU BOCAR LY</item>
+    </string-array>
+
+    <string-array name="senegal_town_bamba_thialene_list">
+        <item>CR BAMBA THIALENE</item>
+        <item>CR KAHENE</item>
+        <item>CR MERETO</item>
+        <item>CR NDAME</item>
+    </string-array>
+
+    <string-array name="senegal_town_kouthiaba_wolof_list">
+        <item>CR KOUTHIA GUAYDI</item>
+        <item>CR KOUTHIABA OUOLOF</item>
+        <item>CR PASS KOTO</item>
+        <item>CR PAYAR</item>
+    </string-array>
+
+    <string-array name="senegal_town_koussanar_list">
+        <item>CR KOUSSANAR</item>
+        <item>CR SINTHIOU MALEME</item>
+    </string-array>
+
+    <string-array name="senegal_town_makakoulibantan_list">
+        <item>CR MAKAKOULIBATAN</item>
+        <item>CR NDOGA BABACAR</item>
+        <item>CR Niani Toucouleur</item>
+    </string-array>
+
+    <string-array name="senegal_town_missirah_list">
+        <item>CR DIALAKOTO</item>
+        <item>CR MISSIRAH</item>
+        <item>CR NETTEBOULOU</item>
+    </string-array>
+
+    <string-array name="senegal_town_kataba2_list">
+        <item>CR KATABA 1</item>
+    </string-array>
+
+    <string-array name="senegal_town_kataba3_list">
+        <item>CR DJINAKY</item>
+    </string-array>
+
+    <string-array name="senegal_town_kataba4_list">
+        <item>CR KAFOUNTINE</item>
+    </string-array>
+
+    <string-array name="senegal_town_sindian_list">
+        <item>CR DJIBIDIONE</item>
+        <item>CR OULAMPANE</item>
+        <item>CR SINDIAN</item>
+        <item>CR SUELLE</item>
+    </string-array>
+
+    <string-array name="senegal_town_tendouck_list">
+        <item>CR BALINGHORE</item>
+        <item>CR DIEGOUNE</item>
+        <item>CR KARTIACK</item>
+        <item>CR MANGAGOULACK</item>
+        <item>CR MLOMP</item>
+    </string-array>
+
+    <string-array name="senegal_town_tenghory_list">
+        <item>CR COUBALAN</item>
+        <item>CR NIAMONE</item>
+        <item>CR OUONCK</item>
+        <item>CR TENGHORI</item>
+    </string-array>
+
+    <string-array name="senegal_town_loudia_ouolof_list">
+        <item>CR OUKOUT</item>
+    </string-array>
+
+    <string-array name="senegal_town_cabrousse_list">
+        <item>CR DJIEBERING</item>
+        <item>CR SANTHIABA MANJACK</item>
+    </string-array>
+
+    <string-array name="senegal_town_niassia_list">
+        <item>CR ENAMPORE</item>
+        <item>CR NIASSIA</item>
+    </string-array>
+
+    <string-array name="senegal_town_niaguis_list">
+        <item>CR ADEANE</item>
+        <item>CR BOUTOUPA CAMARACOUNDA</item>
+        <item>CR NIAGUIS</item>
+    </string-array>
+
+    <string-array name="senegal_town_keur_mboucki_list">
+        <item>CR KEUR MBOUKI EX BIRKELANE</item>
+        <item>CR TOUBA BELLA</item>
+    </string-array>
+
+    <string-array name="senegal_town_mabo_list">
+        <item>CR MABO</item>
+        <item>CR NDIOGNICK</item>
+    </string-array>
+
+    <string-array name="senegal_town_gniby_list">
+        <item>CR BOULEL</item>
+        <item>CR GNIBY</item>
+        <item>CR KAHI</item>
+    </string-array>
+
+    <string-array name="senegal_town_katakel_list">
+        <item>CR DIAMAGADIO</item>
+        <item>CR DIOKOUL MBELLBOUCK</item>
+        <item>CR KATHIOTE</item>
+        <item>CR MEDINATOUL SALAM 2</item>
+    </string-array>
+
+    <string-array name="senegal_town_ida_mouride_list">
+        <item>CR FASS THIEKENE</item>
+        <item>CR IDA MOURIDE</item>
+        <item>CR SALY ESCALE</item>
+    </string-array>
+
+    <string-array name="senegal_town_lour_escale_list">
+        <item>CR LOUR ESCALE</item>
+        <item>CR RIBOT ESCALE</item>
+    </string-array>
+
+    <string-array name="senegal_town_missira_waddene_list">
+        <item>CR GAINTHE PATHE</item>
+        <item>CR MAKA YOPP</item>
+        <item>CR MISSIRA WADDENE</item>
+    </string-array>
+
+    <string-array name="senegal_town_sagna_list">
+        <item>CR DIANKE SOUF</item>
+        <item>CR SAGNA</item>
+    </string-array>
+
+    <string-array name="senegal_town_darou_minamii_list">
+        <item>CR DAROU MINAM II</item>
+        <item>CR KHELCOM</item>
+        <item>CR NDIOUM NGAINTHE</item>
+    </string-array>
+
+    <!-- Cameroon region list -->
+    <string-array name="cameroon_region_list">
+        <item>Adamawa Region</item>
+        <item>Central Region</item>
+        <item>East Region</item>
+        <item>Far North Region</item>
+        <item>Littoral Region</item>
+        <item>North Region</item>
+        <item>Northwest Region</item>
+        <item>South Region</item>
+        <item>Southwest Region</item>
+        <item>West Region</item>
+    </string-array>
+
+    <!-- Cameroon department list -->
+    <string-array name="cameroon_adamawa_region_list">
+        <item>Djérem</item>
+        <item>Faro-et-Déo</item>
+        <item>Mayo-Banyo</item>
+        <item>Mbéré</item>
+        <item>Vina</item>
+    </string-array>
+
+    <string-array name="cameroon_centre_region_list">
+        <item>Haute-Sanaga</item>
+        <item>Lekié</item>
+        <item>Mbam-et-Inoubou</item>
+        <item>Mbam-et-Kim</item>
+        <item>Méfou-et-Afamba</item>
+        <item>Méfou-et-Akono</item>
+        <item>Mfoundi</item>
+        <item>Nyong-et-Kéllé</item>
+        <item>Nyong-et-Mfoumou</item>
+        <item>Nyong-et-So\'o</item>
+    </string-array>
+
+    <string-array name="cameroon_east_region_list">
+        <item>Boumba-et-Ngoko</item>
+        <item>Haut-Nyong</item>
+        <item>Kadey</item>
+        <item>Lom-et-Djerem</item>
+    </string-array>
+
+    <string-array name="cameroon_far_north_region_list">
+        <item>Diamaré</item>
+        <item>Logone-et-Chari</item>
+        <item>Mayo-Danay</item>
+        <item>Mayo-Kani</item>
+        <item>Mayo-Sava</item>
+        <item>Mayo-Tsanaga</item>
+    </string-array>
+
+    <string-array name="cameroon_littoral_region_list">
+        <item>Moungo</item>
+        <item>Nkam</item>
+        <item>Sanaga-Maritime</item>
+        <item>Wouri</item>
+    </string-array>
+
+    <string-array name="cameroon_north_region_list">
+        <item>Bénoué</item>
+        <item>Faro</item>
+        <item>Mayo-Louti</item>
+        <item>Mayo-Rey</item>
+    </string-array>
+
+    <string-array name="cameroon_northwest_region_list">
+        <item>Boyo</item>
+        <item>Bui</item>
+        <item>Donga-Mantung</item>
+        <item>Menchum</item>
+        <item>Mezam</item>
+        <item>Momo</item>
+        <item>Ngo-ketunjia</item>
+    </string-array>
+
+    <string-array name="cameroon_south_region_list">
+        <item>Dja-et-Lobo</item>
+        <item>Mvila</item>
+        <item>Océan</item>
+        <item>Vallée-du-Ntem</item>
+    </string-array>
+
+    <string-array name="cameroon_southwest_region_list">
+        <item>Fako</item>
+        <item>Koupé-Manengouba</item>
+        <item>Lebialem</item>
+        <item>Manyu</item>
+        <item>Meme</item>
+        <item>Ndian</item>
+    </string-array>
+
+    <string-array name="cameroon_west_region_list">
+        <item>Bamboutos</item>
+        <item>Haut-Nkam</item>
+        <item>Hauts-Plateaux</item>
+        <item>Koung-Khi</item>
+        <item>Menoua</item>
+        <item>Mifi</item>
+        <item>Ndé</item>
+        <item>Noun</item>
+    </string-array>
+
+    <string-array name="cameroon_cpp_order_list">
+        <item>Dealers</item>
+        <item>Market</item>
+        <item>Cooperative</item>
+    </string-array>
+
+    <string-array name="cameroon_cpp_order_buyer_list">
+        <item>Me</item>
+        <item>Cooperative</item>
+        <item>Officer</item>
+        <item>Dealer</item>
+    </string-array>
+
+    <string-array name="cameroon_cpp_order_technique_provider_list">
+        <item>Officer</item>
+        <item>Cooperative</item>
+        <item>Dealers</item>
+    </string-array>
+
+    <string-array name="cameroon_cpp_order_usage_list">
+        <item>No, not really</item>
+        <item>Yes, full body</item>
+        <item>Yes, gloves</item>
+        <item>Yes, masks</item>
+        <item>Yes, in combination</item>
+    </string-array>
+
+    <string-array name="cameroon_cocoa_main_reason_list">
+        <item>Not aware</item>
+        <item>Not available</item>
+        <item>Not comfortable</item>
+        <item>Too expensive</item>
+        <item>Other</item>
+    </string-array>
+    <!-- -->
+
 </resources>

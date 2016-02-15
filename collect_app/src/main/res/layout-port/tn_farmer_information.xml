@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/educationLevel"
+            android:text="@string/farmer_education_levels"/>
+
+        <RadioGroup
+            style="@style/RadioGroupTheme"
+            android:id="@+id/educationGroup"
+            android:orientation="vertical"/>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/informationTitle"
+            android:text="@string/farmer_source_information"/>
+
+        <LinearLayout
+            android:id="@+id/informationGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"/>
+
+    </LinearLayout>
+</ScrollView>

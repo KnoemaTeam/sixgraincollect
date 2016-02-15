@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/firstNameTitle"
+            android:text="@string/farmer_first_name"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/firstNameText"
+            android:inputType="text" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/lastNameTitle"
+            android:text="@string/farmer_last_name"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/lastNameText"
+            android:inputType="text" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/birthDateTitle"
+            android:text="@string/farmer_date_of_birth"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/birthDateText"
+            android:hint="@string/hint_date"
+            android:inputType="date" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/extensionOfficerTitle"
+            android:text="@string/farmer_extension_officer"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/extensionOfficerText"
+            android:inputType="text" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/cooperativeTitle"
+            android:text="@string/farmer_cooperative"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/cooperativeText"
+            android:inputType="text" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/mobilePhoneTitle"
+            android:text="@string/farmer_mobile_phone"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/mobilePhoneText"
+            android:hint="@string/hint_phone_number"
+            android:inputType="phone" />
+
+    </LinearLayout>
+</ScrollView>

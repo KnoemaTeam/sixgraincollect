@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
+        android:layout_gravity="top|center_horizontal"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/statusBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:minHeight="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:theme="@style/Toolbar"
+            app:popupTheme="@style/ToolbarPopupMenu"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/equipmentTypeTitle"
+                    android:text="@string/farmer_operating_equipment_name"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioGroup
+                        style="@style/RadioGroupTheme"
+                        android:id="@+id/equipmentTypeGroup1"
+                        android:orientation="vertical"/>
+
+                    <RadioGroup
+                        style="@style/RadioGroupTheme"
+                        android:id="@+id/equipmentTypeGroup2"
+                        android:orientation="vertical"/>
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/equipmentCountTitle"
+                    android:text="@string/farmer_operating_equipment_count"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@android:color/transparent"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"/>
+
+                <EditText
+                    style="@style/EditTextTheme"
+                    android:id="@+id/equipmentCountText"
+                    android:inputType="number" />
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/equipmentCostTitle"
+                    android:text="@string/farmer_operating_equipment_cost"/>
+
+                <EditText
+                    style="@style/EditTextTheme"
+                    android:id="@+id/equipmentCostText"
+                    android:inputType="numberDecimal" />
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/yearAcquisitionTitle"
+                    android:text="@string/farmer_operating_equipment_year_acquisition"/>
+
+                <EditText
+                    style="@style/EditTextTheme"
+                    android:id="@+id/yearAcquisitionText"
+                    android:hint="@string/hint_date"
+                    android:inputType="date" />
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/modeAcquisitionTitle"
+                    android:text="@string/farmer_operating_equipment_mode_acquisition"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioGroup
+                        style="@style/RadioGroupTheme"
+                        android:id="@+id/modeAcquisitionGroup1"
+                        android:orientation="vertical"/>
+
+                    <RadioGroup
+                        style="@style/RadioGroupTheme"
+                        android:id="@+id/modeAcquisitionGroup2"
+                        android:orientation="vertical"/>
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/hasSubsidizedTitle"
+                    android:text="@string/farmer_operating_equipment_has_subsitized"/>
+
+                <RadioGroup
+                    style="@style/RadioGroupTheme"
+                    android:id="@+id/hasSubsidizedGroup"
+                    android:orientation="horizontal"/>
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/statePurchaseTitle"
+                    android:text="@string/farmer_operating_equipment_state_purchase"/>
+
+                <RadioGroup
+                    style="@style/RadioGroupTheme"
+                    android:id="@+id/statePurchaseGroup"
+                    android:orientation="horizontal"/>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <Button
+        style="?android:attr/borderlessButtonStyle"
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:text="@string/action_done"
+        android:textColor="@android:color/white"
+        android:background="@color/color_image_button"
+        android:gravity="center" />
+
+</FrameLayout>

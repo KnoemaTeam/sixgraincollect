@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/centerGPSInfo"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        style="@style/TitleTheme"
+        android:id="@+id/centerGPSTitle"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"
+        android:layout_gravity="center"
+        android:text="@string/field_center_gps_location"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/centerGPSText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"
+        android:textColor="@color/color_edit_text"
+        android:textSize="20sp"
+        android:gravity="center_vertical"/>
+
+    <Button
+        android:id="@+id/takeLocationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:clickable="true"
+        android:text="@string/field_retake_gps_values"
+        android:background="@drawable/view_image_button_navigation"
+        android:contentDescription="@null"/>
+
+</LinearLayout>

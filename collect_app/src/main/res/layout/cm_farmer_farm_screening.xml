@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/cocoaTitle"
+            android:text="@string/farmer_cocoa"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/cocoaText"
+            android:inputType="number" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/yieldTitle"
+            android:text="@string/farmer_yield"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/yieldText"
+            android:inputType="number" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/otherCropsTitle"
+            android:text="@string/farmer_other_crops"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/otherCropsText"
+            android:inputType="text" />
+
+    </LinearLayout>
+</ScrollView>

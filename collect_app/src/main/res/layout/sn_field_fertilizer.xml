@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/isFertilizerUsedTitle"
+            android:text="@string/field_fertilizer_used"/>
+
+        <RadioGroup
+            style="@style/RadioGroupTheme"
+            android:id="@+id/isFertilizerUsedGroup"
+            android:orientation="horizontal"/>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/fertilizerTypeTitle"
+            android:text="@string/field_fertilizer_type"/>
+
+        <LinearLayout
+            android:id="@+id/fertilizerTypeGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"/>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/fertilizerAmountTitle"
+            android:text="@string/field_fertilizer_amount"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/fertilizerAmountText"
+            android:inputType="number"/>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/fertilizerAcquisitionModeTitle"
+            android:text="@string/field_fertilizer_acquisition_mode"/>
+
+        <RadioGroup
+            style="@style/RadioGroupTheme"
+            android:id="@+id/fertilizerAcquisitionModeGroup"
+            android:orientation="horizontal"/>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/fertilizerCostTitle"
+            android:text="@string/field_fertilizer_cost"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/fertilizerCostText"
+            android:inputType="numberDecimal"/>
+
+    </LinearLayout>
+</ScrollView>

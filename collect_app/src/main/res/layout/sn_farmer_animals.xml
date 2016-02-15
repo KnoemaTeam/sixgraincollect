@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
+        android:layout_gravity="top|center_horizontal"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/statusBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:minHeight="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:theme="@style/Toolbar"
+            app:popupTheme="@style/ToolbarPopupMenu"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/raceTitle"
+                    android:text="@string/farmer_animal_race"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioGroup
+                        style="@style/RadioGroupTheme"
+                        android:id="@+id/raceGroup1"
+                        android:orientation="vertical"/>
+
+                    <RadioGroup
+                        style="@style/RadioGroupTheme"
+                        android:id="@+id/raceGroup2"
+                        android:orientation="vertical"/>
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/trainedProductionTitle"
+                    android:text="@string/farmer_animal_trained_production"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/trainedProductionGroup1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:orientation="vertical"/>
+
+                    <LinearLayout
+                        android:id="@+id/trainedProductionGroup2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:orientation="vertical"/>
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/raceHeldTitle"
+                    android:text="@string/farmer_animal_race_held"/>
+
+                <LinearLayout
+                    android:id="@+id/raceHeldGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:orientation="horizontal"/>
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/powerModeTitle"
+                    android:text="@string/farmer_animal_power_mode"/>
+
+                <LinearLayout
+                    android:id="@+id/powerModeGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:orientation="horizontal"/>
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/complementationTypeTitle"
+                    android:text="@string/farmer_animal_complementation_type"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/complementationTypeGroup1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:orientation="vertical"/>
+
+                    <LinearLayout
+                        android:id="@+id/complementationTypeGroup2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:orientation="vertical"/>
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/vaccinationTitle"
+                    android:text="@string/farmer_animal_vaccination_practice"/>
+
+                <LinearLayout
+                    android:id="@+id/vaccinationGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:orientation="vertical"/>
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/dewormingTitle"
+                    android:text="@string/farmer_animal_deworming_practice"/>
+
+                <LinearLayout
+                    android:id="@+id/dewormingGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:orientation="vertical"/>
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/geneticImprovementTitle"
+                    android:text="@string/farmer_animal_genetic_improvement_practice"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/geneticImprovementGroup1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:orientation="vertical"/>
+
+                    <LinearLayout
+                        android:id="@+id/geneticImprovementGroup2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:orientation="vertical"/>
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/sanitaryСontrolTitle"
+                    android:text="@string/farmer_animal_sanitary_control"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/sanitaryСontrolGroup1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:orientation="vertical"/>
+
+                    <LinearLayout
+                        android:id="@+id/sanitaryСontrolGroup2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:orientation="vertical"/>
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/mainProductionTitle"
+                    android:text="@string/farmer_animal_main_production"/>
+
+                <LinearLayout
+                    android:id="@+id/mainProductionGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:orientation="horizontal"/>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <Button
+        style="?android:attr/borderlessButtonStyle"
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:text="@string/action_done"
+        android:textColor="@android:color/white"
+        android:background="@color/color_image_button"
+        android:gravity="center" />
+
+</FrameLayout>

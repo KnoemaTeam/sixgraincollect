@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+            <item>
+                <shape android:shape="rectangle">
+                    <padding android:right="1.5dp" android:bottom="1.5dp" android:left="1.5dp" />
+                    <solid android:color="#00bdbdbd" />
+                    <corners android:radius="6dp"/>
+                </shape>
+            </item>
+            <item>
+                <shape>
+                    <padding android:right="1.5dp" android:bottom="1.5dp" android:left="1.5dp" />
+                    <solid android:color="#10bdbdbd" />
+                    <corners android:radius="6dp"/>
+                </shape>
+            </item>
+            <item>
+                <shape>
+                    <padding android:right="1.5dp" android:bottom="1.5dp" android:left="1.5dp" />
+                    <solid android:color="#20bdbdbd" />
+                    <corners android:radius="6dp"/>
+                </shape>
+            </item>
+            <item>
+                <shape>
+                    <padding android:right="1.5dp" android:bottom="1.5dp" android:left="1.5dp" />
+                    <solid android:color="#40bdbdbd" />
+                    <corners android:radius="6dp"/>
+                </shape>
+            </item>
+            <item>
+                <shape>
+                    <padding android:right="1.5dp" android:bottom="1.5dp" android:left="1.5dp" />
+                    <solid android:color="#80bdbdbd" />
+                    <corners android:radius="6dp"/>
+                </shape>
+            </item>
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/color_image_button" />
+                    <corners android:radius="4dp" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+</selector>

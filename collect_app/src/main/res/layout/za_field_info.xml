@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/isFieldTitle"
+            android:text="@string/field_info"/>
+
+        <RadioGroup
+            style="@style/RadioGroupTheme"
+            android:id="@+id/isFieldGroup"
+            android:orientation="horizontal" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/fieldTypeTitle"
+            android:visibility="gone"
+            android:text="@string/field_type"/>
+
+        <RadioGroup
+            style="@style/RadioGroupTheme"
+            android:id="@+id/fieldTypeGroup"
+            android:visibility="gone"
+            android:orientation="vertical"/>
+
+    </LinearLayout>
+</ScrollView>

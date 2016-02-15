@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/fieldCropInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/cropNameTitle"
+            android:text="@string/zambia_crop_name"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioGroup
+                style="@style/RadioGroupTheme"
+                android:id="@+id/cropNameGroup1"/>
+
+            <RadioGroup
+                style="@style/RadioGroupTheme"
+                android:id="@+id/cropNameGroup2"/>
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/cropQuantityTitle"
+            android:textColor="@color/color_title_text"
+            android:text="@string/zambia_crop_quantity"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/cropQuantityText"
+            android:inputType="numberDecimal" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/cropUnitTitle"
+            android:text="@string/zambia_crop_unit"/>
+
+        <RadioGroup
+            style="@style/RadioGroupTheme"
+            android:id="@+id/cropUnitGroup"
+            android:orientation="vertical"/>
+    </LinearLayout>
+</ScrollView>

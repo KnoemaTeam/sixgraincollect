@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/createdDateTitle"
+            android:text="@string/farmer_company_created_date"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/createdDateText"
+            android:hint="@string/hint_date"
+            android:inputType="date" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/facilitiesTypeTitle"
+            android:text="@string/farmer_farm_facilities_type"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioGroup
+                style="@style/RadioGroupTheme"
+                android:id="@+id/facilitiesTypeGroup1"
+                android:orientation="vertical"/>
+
+            <RadioGroup
+                style="@style/RadioGroupTheme"
+                android:id="@+id/facilitiesTypeGroup2"
+                android:orientation="vertical"/>
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/otherFacilitiesTitle"
+            android:text="@string/farmer_farm_facilities_other_type"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/otherFacilitiesText"
+            android:inputType="text" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/waterSourceTitle"
+            android:text="@string/farmer_exploitation_water_source"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/waterSourceGroup1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"/>
+
+            <LinearLayout
+                android:id="@+id/waterSourceGroup2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"/>
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/otherWaterSourceTitle"
+            android:text="@string/farmer_exploitation_water_other_source"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/otherWaterSourceText"
+            android:inputType="text" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/powerSourceTitle"
+            android:text="@string/farmer_operating_power_source"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/powerSourceGroup1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"/>
+
+            <LinearLayout
+                android:id="@+id/powerSourceGroup2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"/>
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/otherPowerSourceTitle"
+            android:text="@string/farmer_operating_power_other_source"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/otherPowerSourceText"
+            android:inputType="text" />
+
+    </LinearLayout>
+</ScrollView>

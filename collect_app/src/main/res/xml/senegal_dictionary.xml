@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dictionary>
+    <item id="region_dakar" name="DAKAR" group="region"/>
+    <item id="region_diourbel" name="DIOURBEL" group="region"/>
+    <item id="region_fatick" name="FATICK" group="region"/>
+    <item id="region_kaffrine" name="KAFFRINE" group="region"/>
+    <item id="region_kaolack" name="KAOLACK" group="region"/>
+    <item id="region_kedougou" name="KEDOUGOU" group="region"/>
+    <item id="region_kolda" name="KOLDA" group="region"/>
+    <item id="region_louga" name="LOUGA" group="region"/>
+    <item id="region_matam" name="MATAM" group="region"/>
+    <item id="region_saint_louis" name="SAINT LOUIS" group="region"/>
+    <item id="region_sedhiou" name="SEDHIOU" group="region"/>
+    <item id="region_tambacounda" name="TAMBACOUNDA" group="region"/>
+    <item id="region_thies" name="THIES" group="region"/>
+    <item id="region_ziguinchor" name="ZIGUINCHOR" group="region"/>
+    <item id="departement_dakar" name="DEPARTEMENT DE DAKAR" group="department"/>
+    <item id="departement_guediawaye" name="DEPARTEMENT DE GUEDIAWAYE" group="department"/>
+    <item id="departement_pikine" name="DEPARTEMENT DE PIKINE" group="department"/>
+    <item id="departement_rufisque" name="DEPARTEMENT DE RUFISQUE" group="department"/>
+    <item id="departement_tivaoune" name="DEPARTEMENT TIVAOUANE" group="department"/>
+    <item id="departement_mbour" name="DEPARTEMENT MBOUR" group="department"/>
+    <item id="departement_thies" name="DEPARTEMENT THIES" group="department"/>
+    <item id="departement_bambey" name="DEPARTEMENT BAMBEY" group="department"/>
+    <item id="departement_diourbel" name="DEPARTEMENT DIOURBEL" group="department"/>
+    <item id="departement_mbacke" name="DEPARTEMENT MBACKE" group="department"/>
+    <item id="departement_fatick" name="DEPARTEMENT FATICK" group="department"/>
+    <item id="departement_foundioune" name="DEPARTEMENT FOUNDIOUNGNE" group="department"/>
+    <item id="departement_gossas" name="DEPARTEMENT GOSSAS" group="department"/>
+    <item id="departement_guinguineo" name="DEPARTEMENT GUINGUINEO" group="department"/>
+    <item id="departement_kaolack" name="DEPARTEMENT KAOLACK" group="department"/>
+    <item id="departement_nioro" name="DEPARTEMENT NIORO" group="department"/>
+    <item id="departement_kedougou" name="DEPARTEMENT KEDOUGOU" group="department"/>
+    <item id="departement_salemata" name="DEPARTEMENT SALEMATA" group="department"/>
+    <item id="departement_saraya" name="DEPARTEMENT SARAYA" group="department"/>
+    <item id="department_kolda" name="DEPARTEMENT KOLDA" group="department"/>
+    <item id="department_medina_yoro_foulah" name="DEPARTEMENT MEDINA YORO FOULAH" group="department"/>
+    <item id="department_velingara" name="DEPARTEMENT VELINGARA" group="department"/>
+    <item id="departement_kebemer" name="DEPARTEMENT KEBEMER" group="department"/>
+    <item id="departement_linguere" name="DEPARTEMENT LINGUERE" group="department"/>
+    <item id="departement_louga" name="DEPARTEMENT LOUGA" group="department"/>
+    <item id="departement_matam" name="DEPARTEMENT MATAM" group="department"/>
+    <item id="departement_ranelou_ferlo" name="DEPARTEMENT RANEROU-FERLO" group="department"/>
+    <item id="departement_kanel" name="DEPARTEMENT KANEL" group="department"/>
+    <item id="department_dagana" name="DEPARTEMENT DAGANA" group="department"/>
+    <item id="department_podor" name="DEPARTEMENT PODOR" group="department"/>
+    <item id="department_saint_louis" name="DEPARTEMENT SAINT LOUIS" group="department"/>
+    <item id="department_bounkiling" name="DEPARTEMENT DE BOUNKILING" group="department"/>
+    <item id="department_goudomp" name="DEPARTEMENT GOUDOMP" group="department"/>
+    <item id="department_sedhiou" name="DEPARTEMENT SEDHIOU" group="department"/>
+    <item id="departement_bakel" name="DEPARTEMENT  BAKEL" group="department"/>
+    <item id="departement_goudiry" name="DEPARTEMENT  GOUDIRY" group="department"/>
+    <item id="departement_koumpentoum" name="DEPARTEMENT  KOUMPENTOUM" group="department"/>
+    <item id="departement_tambacounda" name="DEPARTEMENT  TAMBACOUNDA" group="department"/>
+    <item id="departement_bignona" name="DEPARTEMENT BIGNONA" group="department"/>
+    <item id="departement_oussouye" name="DEPARTEMENT OUSSOUYE" group="department"/>
+    <item id="departement_ziguinchor" name="DEPARTEMENT ZIGUINCHOR" group="department"/>
+    <item id="departement_birkelane" name="DEPARTEMENT BIRKELANE" group="department"/>
+    <item id="departement_kaffrine" name="DEPARTEMENT KAFFRINE" group="department"/>
+    <item id="departement_koungheul" name="DEPARTEMENT KOUNGHEUL" group="department"/>
+    <item id="departement_malem_hoddar" name="DEPARTEMENT MALEM HODDAR" group="department"/>
+    <item id="arrondissement_almadies" name="ARRONDISSEMENT ALMADIES" group="arrondissement_communes"/>
+    <item id="arrondissement_dakar_plateau" name="ARRONDISSEMENT DAKAR-PLATEAU" group="arrondissement_communes"/>
+    <item id="arrondissement_grand_dakar" name="ARRONDISSEMENT GRAND DAKAR" group="arrondissement_communes"/>
+    <item id="arrondissement_parcelles_assainies" name="ARRONDISSEMENT PARCELLES ASSAINIES" group="arrondissement_communes"/>
+    <item id="ca_mermoz_sacre_cœur" name="CA MERMOZ SACRE CŒUR" group="rural_commune_arrondissement"/>
+    <item id="ca_ngor" name="CA NGOR" group="rural_commune_arrondissement"/>
+    <item id="ca_ouakam" name="CA OUAKAM" group="rural_commune_arrondissement"/>
+    <item id="ca_yoff" name="CA YOFF" group="rural_commune_arrondissement"/>
+    <item id="ca_fass_colobane_gueule_tapee" name="CA FASS / COLOBANE / GUEULE TAPEE" group="rural_commune_arrondissement"/>
+    <item id="ca_fann_point_e_amitie" name="CA FANN / POINT E / AMITIE" group="rural_commune_arrondissement"/>
+    <item id="ca_ile_de_goree" name="CA ILE DE GOREE" group="rural_commune_arrondissement"/>
+    <item id="ca_medina" name="CA MEDINA" group="rural_commune_arrondissement"/>
+    <item id="ca_plateau" name="CA PLATEAU" group="rural_commune_arrondissement"/>
+    <item id="ca_biscuiterie" name="CA BISCUITERIE" group="rural_commune_arrondissement"/>
+    <item id="ca_dieuppeul_derkle" name="CA DIEUPPEUL / DERKLE" group="rural_commune_arrondissement"/>
+    <item id="ca_grand_dakar" name="CA GRAND DAKAR" group="rural_commune_arrondissement"/>
+    <item id="ca_hlm" name="CA H.L.M" group="rural_commune_arrondissement"/>
+    <item id="ca_hann_bel_air" name="CA HANN / BEL AIR" group="rural_commune_arrondissement"/>
+    <item id="ca_sicap_liberte" name="CA SICAP LIBERTE" group="rural_commune_arrondissement"/>
+    <item id="ca_camberene" name="CA CAMBERENE" group="rural_commune_arrondissement"/>
+    <item id="ca_grand_yoff" name="CA GRAND YOFF" group="rural_commune_arrondissement"/>
+    <item id="ca_parcelles_assainies" name="CA PARCELLES ASSAINIES" group="rural_commune_arrondissement"/>
+    <item id="ca_patte_oie" name="CA PATTE D'OIE" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_guediawaye" name="ARRONDISSEMENT GUEDIAWAYE" group="arrondissement_communes"/>
+    <item id="ca_golf_sud" name="CA GOLF SUD" group="rural_commune_arrondissement"/>
+    <item id="ca_medina_gounass" name="CA MEDINA GOUNASS" group="rural_commune_arrondissement"/>
+    <item id="ca_ndiareme_limamou_laye" name="CA NDIAREME LIMAMOU LAYE" group="rural_commune_arrondissement"/>
+    <item id="ca_sam_notaire" name="CA SAM NOTAIRE" group="rural_commune_arrondissement"/>
+    <item id="ca_wakhinane" name="CA WAKHINANE" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_niayes" name="ARRONDISSEMENT NIAYES" group="arrondissement_communes"/>
+    <item id="arrondissement_pikine_dagoudane" name="ARRONDISSEMENT PIKINE DAGOUDANE" group="arrondissement_communes"/>
+    <item id="arrondissement_thiaroye" name="ARRONDISSEMENT THIAROYE" group="arrondissement_communes"/>
+    <item id="ca_keur_massar" name="CA KEUR MASSAR" group="rural_commune_arrondissement"/>
+    <item id="ca_malika" name="CA MALIKA" group="rural_commune_arrondissement"/>
+    <item id="ca_yeumbeul_nord" name="CA YEUMBEUL NORD" group="rural_commune_arrondissement"/>
+    <item id="ca_yeumbeul_sud" name="CA YEUMBEUL SUD" group="rural_commune_arrondissement"/>
+    <item id="ca_daliford" name="CA DALIFORD" group="rural_commune_arrondissement"/>
+    <item id="ca_djida_thiaroye_kao" name="CA DJIDA THIAROYE KAO" group="rural_commune_arrondissement"/>
+    <item id="ca_guinaw_rail_nord" name="CA GUINAW RAIL NORD" group="rural_commune_arrondissement"/>
+    <item id="ca_guinaw_rail_sud" name="CA GUINAW RAIL SUD" group="rural_commune_arrondissement"/>
+    <item id="ca_pikine_est" name="CA PIKINE EST" group="rural_commune_arrondissement"/>
+    <item id="ca_pikine_nord" name="CA PIKINE NORD" group="rural_commune_arrondissement"/>
+    <item id="ca_pikine_ouest" name="CA PIKINE OUEST" group="rural_commune_arrondissement"/>
+    <item id="ca_diack_sao" name="CA DIACK SAO" group="rural_commune_arrondissement"/>
+    <item id="ca_diamaguene_sicap_mbao" name="CA DIAMAGUENE SICAP MBAO" group="rural_commune_arrondissement"/>
+    <item id="ca_mbao" name="CA MBAO" group="rural_commune_arrondissement"/>
+    <item id="ca_thiaroye_sur_mer" name="CA THIAROYE / MER" group="rural_commune_arrondissement"/>
+    <item id="ca_thiaroye_gare" name="CA THIAROYE-GARE" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_rufisque" name="ARRONDISSEMENT RUFISQUE" group="arrondissement_communes"/>
+    <item id="arrondissement_sangalcam" name="ARRONDISSEMENT SANGALCAM" group="arrondissement_communes"/>
+    <item id="commune_de_bargny" name="Commune de BARGNY" group="arrondissement_communes"/>
+    <item id="commune_de_diamniadio" name="Commune de DIAMNIADIO" group="arrondissement_communes"/>
+    <item id="commune_de_sebikotane" name="Commune de SEBIKOTANE" group="arrondissement_communes"/>
+    <item id="ca_rufisque_centre_nord" name="CA RUFISQUE CENTRE (NORD)" group="rural_commune_arrondissement"/>
+    <item id="ca_rufisque_est" name="CA RUFISQUE EST" group="rural_commune_arrondissement"/>
+    <item id="ca_rufisque_ouest" name="CA RUFISQUE OUEST" group="rural_commune_arrondissement"/>
+    <item id="cr_sangalkam" name="CR SANGALKAM" group="rural_commune_arrondissement"/>
+    <item id="cr_yene" name="CR YENE" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_meouane" name="ARRONDISSEMENT MEOUANE" group="arrondissement_communes"/>
+    <item id="arrondissement_merina_dakhar" name="ARRONDISSEMENT MERINA DAKHAR" group="arrondissement_communes"/>
+    <item id="arrondissement_niakhene" name="ARRONDISSEMENT NIAKHENE" group="arrondissement_communes"/>
+    <item id="arrondissement_pambal" name="ARRONDISSEMENT PAMBAL" group="arrondissement_communes"/>
+    <item id="commune_mboro" name="COMMUNE MBORO" group="arrondissement_communes"/>
+    <item id="commune_mekhe" name="COMMUNE MEKHE" group="arrondissement_communes"/>
+    <item id="commune_tivaouane" name="COMMUNE TIVAOUANE" group="arrondissement_communes"/>
+    <item id="cr_darou_khoudoss" name="CR DAROU KHOUDOSS" group="rural_commune_arrondissement"/>
+    <item id="cr_de_meouane" name="CR de MEOUANE" group="rural_commune_arrondissement"/>
+    <item id="cr_taiba_ndiaye" name="CR TAIBA NDIAYE" group="rural_commune_arrondissement"/>
+    <item id="cr_de_koul" name="CR de KOUL" group="rural_commune_arrondissement"/>
+    <item id="cr_de_pekesse" name="CR de PEKESSE" group="rural_commune_arrondissement"/>
+    <item id="cr_merina-dakhar" name="CR MERINA-DAKHAR" group="rural_commune_arrondissement"/>
+    <item id="cr_de_mbayene" name="CR de MBAYENE" group="rural_commune_arrondissement"/>
+    <item id="cr_de_ngandiouf" name="CR de NGANDIOUF" group="rural_commune_arrondissement"/>
+    <item id="cr_de_niakhene" name="CR de NIAKHENE" group="rural_commune_arrondissement"/>
+    <item id="cr_de_thilmakha" name="CR de THILMAKHA" group="rural_commune_arrondissement"/>
+    <item id="cr_de_cherif_lo" name="CR de CHERIF LO" group="rural_commune_arrondissement"/>
+    <item id="cr_de_mont_rolland" name="CR de MONT ROLLAND" group="rural_commune_arrondissement"/>
+    <item id="cr_notto_gouye_diama" name="CR NOTTO GOUYE DIAMA" group="rural_commune_arrondissement"/>
+    <item id="cr_pire_goureye" name="CR PIRE GOUREYE" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_fissel" name="ARRONDISSEMENT FISSEL" group="arrondissement_communes"/>
+    <item id="arrondissement_sessene" name="ARRONDISSEMENT SESSENE" group="arrondissement_communes"/>
+    <item id="arrondissement_sindia" name="ARRONDISSEMENT SINDIA" group="arrondissement_communes"/>
+    <item id="commune_joal_fadiouth" name="COMMUNE JOAL-FADIOUTH" group="arrondissement_communes"/>
+    <item id="commune_mbour" name="COMMUNE MBOUR" group="arrondissement_communes"/>
+    <item id="commune_ngaparu" name="COMMUNE NGAPARU" group="arrondissement_communes"/>
+    <item id="commune_popenguine" name="COMMUNE POPENGUINE" group="arrondissement_communes"/>
+    <item id="commune_saly_portudal" name="COMMUNE SALY PORTUDAL" group="arrondissement_communes"/>
+    <item id="commune_somone" name="COMMUNE SOMONE" group="arrondissement_communes"/>
+    <item id="commune_thiadiaye" name="COMMUNE THIADIAYE" group="arrondissement_communes"/>
+    <item id="commune_nguekokh" name="COMMUNE NGUEKOKH" group="arrondissement_communes"/>
+    <item id="cr_de_fissel" name="CR de FISSEL" group="rural_commune_arrondissement"/>
+    <item id="cr_de_ndiaganiao" name="CR de NDIAGANIAO" group="rural_commune_arrondissement"/>
+    <item id="cr_de_ngueniene" name="CR de NGUENIENE" group="rural_commune_arrondissement"/>
+    <item id="cr_de_sandiara" name="CR de SANDIARA" group="rural_commune_arrondissement"/>
+    <item id="cr_de_sessene" name="CR de SESSENE" group="rural_commune_arrondissement"/>
+    <item id="cr_de_diass" name="CR de DIASS" group="rural_commune_arrondissement"/>
+    <item id="cr_de_malicounda" name="CR de MALICOUNDA" group="rural_commune_arrondissement"/>
+    <item id="cr_de_sindia" name="CR de SINDIA" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_keur_moussa" name="ARRONDISSEMENT KEUR MOUSSA" group="arrondissement_communes"/>
+    <item id="arrondissement_notto" name="ARRONDISSEMENT NOTTO" group="arrondissement_communes"/>
+    <item id="arrondissement_thienaba" name="ARRONDISSEMENT THIENABA" group="arrondissement_communes"/>
+    <item id="commune_kayar" name="COMMUNE KAYAR" group="arrondissement_communes"/>
+    <item id="commune_khombole" name="COMMUNE KHOMBOLE" group="arrondissement_communes"/>
+    <item id="commune_pout" name="COMMUNE POUT" group="arrondissement_communes"/>
+    <item id="communes" name="COMMUNES" group="arrondissement_communes"/>
+    <item id="ville_de_thies" name="VILLE DE THIES" group="arrondissement_communes"/>
+    <item id="cr_de_diender_guedji" name="CR de DIENDER GUEDJI" group="rural_commune_arrondissement"/>
+    <item id="cr_de_fandene" name="CR de FANDENE" group="rural_commune_arrondissement"/>
+    <item id="cr_keur_moussa" name="CR de KEUR MOUSSA" group="rural_commune_arrondissement"/>
+    <item id="cr_notto" name="CR de NOTTO" group="rural_commune_arrondissement"/>
+    <item id="cr_tassette" name="CR de TASSETTE" group="rural_commune_arrondissement"/>
+    <item id="cr_ndiayene_sirakh" name="CR de NDIAYENE-SIRAKH" group="rural_commune_arrondissement"/>
+    <item id="cr_ngoundiane" name="CR de NGOUNDIANE" group="rural_commune_arrondissement"/>
+    <item id="cr_thienaba" name="CR de THIENABA" group="rural_commune_arrondissement"/>
+    <item id="cr_touba_toul" name="CR de TOUBA-TOUL" group="rural_commune_arrondissement"/>
+    <item id="ca_thies_est" name="CA THIES EST" group="rural_commune_arrondissement"/>
+    <item id="ca_thies_nord" name="CA THIES NORD" group="rural_commune_arrondissement"/>
+    <item id="ca_thies_ouest" name="CA THIES OUEST" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_baba_garage" name="ARRONDISSEMENT BABA GARAGE" group="arrondissement_communes"/>
+    <item id="arrondissement_lambaye" name="ARRONDISSEMENT LAMBAYE" group="arrondissement_communes"/>
+    <item id="arrondissement_ngoye" name="ARRONDISSEMENT NGOYE" group="arrondissement_communes"/>
+    <item id="commune_bambey" name="Commune de BAMBEY" group="arrondissement_communes"/>
+    <item id="cr_baba_garage" name="CR de BABA GARAGE" group="rural_commune_arrondissement"/>
+    <item id="cr_dinguiraye" name="CR de DINGUIRAYE" group="rural_commune_arrondissement"/>
+    <item id="cr_keur_samba_kane" name="CR de KEUR SAMBA KANE" group="rural_commune_arrondissement"/>
+    <item id="cr_gawane" name="CR de GAWANE" group="rural_commune_arrondissement"/>
+    <item id="cr_lambaye" name="CR de LAMBAYE" group="rural_commune_arrondissement"/>
+    <item id="cr_ngogom" name="CR de NGOGOM" group="rural_commune_arrondissement"/>
+    <item id="cr_refane" name="CR de REFANE" group="rural_commune_arrondissement"/>
+    <item id="cr_dangalma" name="CR de DANGALMA" group="rural_commune_arrondissement"/>
+    <item id="cr_ndondol" name="CR de NDONDOL" group="rural_commune_arrondissement"/>
+    <item id="cr_ngoye" name="CR de NGOYE" group="rural_commune_arrondissement"/>
+    <item id="cr_thiakhar" name="CR de THIAKHAR" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_ndindy" name="ARRONDISSEMENT NDINDY" group="arrondissement_communes"/>
+    <item id="arrondissement_ndoulo" name="ARRONDISSEMENT NDOULO" group="arrondissement_communes"/>
+    <item id="commune_diourbel" name="Commune de DIOURBEL" group="arrondissement_communes"/>
+    <item id="cr_gade_escale" name="CR de GADE ESCALE" group="rural_commune_arrondissement"/>
+    <item id="cr_keur_ngalgou" name="CR de KEUR NGALGOU" group="rural_commune_arrondissement"/>
+    <item id="cr_ndankh_sene" name="CR de NDANKH SENE" group="rural_commune_arrondissement"/>
+    <item id="cr_ndindy" name="CR de NDINDY" group="rural_commune_arrondissement"/>
+    <item id="cr_taiba_moutoupha" name="CR de TAIBA MOUTOUPHA" group="rural_commune_arrondissement"/>
+    <item id="cr_ndoulo" name="CR de NDOULO" group="rural_commune_arrondissement"/>
+    <item id="cr_ngohe" name="CR de NGOHE" group="rural_commune_arrondissement"/>
+    <item id="cr_patar" name="CR de PATAR" group="rural_commune_arrondissement"/>
+    <item id="cr_tocky_gare" name="CR de TOCKY-GARE" group="rural_commune_arrondissement"/>
+    <item id="cr_toure_mbonde" name="CR de TOURE-MBONDE" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_kael" name="ARRONDISSEMENT KAEL" group="arrondissement_communes"/>
+    <item id="arrondissement_ndame" name="ARRONDISSEMENT NDAME" group="arrondissement_communes"/>
+    <item id="arrondissement_taif" name="ARRONDISSEMENT TAIF" group="arrondissement_communes"/>
+    <item id="commune_mbacke" name="Commune de MBACKE" group="arrondissement_communes"/>
+    <item id="cr_darou_nahim" name="CR DAROU NAHIM" group="rural_commune_arrondissement"/>
+    <item id="cr_darou_salam_typ" name="CR de DAROU SALAM TYP." group="rural_commune_arrondissement"/>
+    <item id="cr_dendeye_gouyegui" name="CR de DENDEYE GOUYEGUI" group="rural_commune_arrondissement"/>
+    <item id="cr_kael" name="CR de KAEL" group="rural_commune_arrondissement"/>
+    <item id="cr_madina" name="CR de MADINA" group="rural_commune_arrondissement"/>
+    <item id="cr_ndioumane" name="CR de NDIOUMANE T. T" group="rural_commune_arrondissement"/>
+    <item id="cr_touba_mboul" name="CR de TOUBA MBOUL" group="rural_commune_arrondissement"/>
+    <item id="cr_taiba_thiekene" name="CR TAIBA THIEKENE" group="rural_commune_arrondissement"/>
+    <item id="cr_dalla_ngabou" name="CR de DALLA NGABOU" group="rural_commune_arrondissement"/>
+    <item id="cr_missirah" name="CR de MISSIRAH" group="rural_commune_arrondissement"/>
+    <item id="cr_nghaye" name="CR de NGHAYE" group="rural_commune_arrondissement"/>
+    <item id="cr_touba_fall" name="CR de TOUBA FALL" group="rural_commune_arrondissement"/>
+    <item id="cr_touba_mosquee" name="CR de TOUBA MOSQUEE" group="rural_commune_arrondissement"/>
+    <item id="cr_sadio" name="CR de SADIO" group="rural_commune_arrondissement"/>
+    <item id="cr_taif" name="CR de TAIF" group="rural_commune_arrondissement"/>
+    <item id="arrond_diakhao" name="Arrond DIAKHAO" group="arrondissement_communes"/>
+    <item id="arrond_fimela" name="Arrond FIMELA" group="arrondissement_communes"/>
+    <item id="arrond_niakhar" name="Arrond NIAKHAR" group="arrondissement_communes"/>
+    <item id="arrond_tattaguine" name="Arrond TATTAGUINE" group="arrondissement_communes"/>
+    <item id="commune_dioffior" name="Commune de DIOFFIOR" group="arrondissement_communes"/>
+    <item id="commune_fatick" name="Commune de FATICK" group="arrondissement_communes"/>
+    <item id="cr_diakhao" name="CR DIAKHAO" group="rural_commune_arrondissement"/>
+    <item id="cr_diaoule" name="CR DIAOULE" group="rural_commune_arrondissement"/>
+    <item id="cr_mbelacadiao" name="CR MBELACADIAO" group="rural_commune_arrondissement"/>
+    <item id="cr_ndiob" name="CR NDIOB" group="rural_commune_arrondissement"/>
+    <item id="cr_djilasse" name="CR DJILASSE" group="rural_commune_arrondissement"/>
+    <item id="cr_fimela" name="CR FIMELA" group="rural_commune_arrondissement"/>
+    <item id="cr_loul_sessene" name="CR LOUL-SESSENE" group="rural_commune_arrondissement"/>
+    <item id="cr_palmarin_facao" name="CR PALMARIN FACAO" group="rural_commune_arrondissement"/>
+    <item id="cr_ngayokheme" name="CR NGAYOKHEME" group="rural_commune_arrondissement"/>
+    <item id="cr_niakhar" name="CR NIAKHAR" group="rural_commune_arrondissement"/>
+    <item id="cr_patar" name="CR PATAR" group="rural_commune_arrondissement"/>
+    <item id="cr_diarrere" name="CR DIARRERE" group="rural_commune_arrondissement"/>
+    <item id="cr_diouroup" name="CR DIOUROUP" group="rural_commune_arrondissement"/>
+    <item id="cr_tattaguine" name="CR TATTAGUINE" group="rural_commune_arrondissement"/>
+    <item id="arrond_djilor" name="Arrond DJILOR" group="arrondissement_communes"/>
+    <item id="arrond_niodior" name="Arrond NIODIOR" group="arrondissement_communes"/>
+    <item id="arrond_toubacouta" name="Arrond TOUBACOUTA" group="arrondissement_communes"/>
+    <item id="commune_foundioungne" name="Commune FOUNDIOUNGNE" group="arrondissement_communes"/>
+    <item id="commune_karang_poste" name="Commune Karang Poste" group="arrondissement_communes"/>
+    <item id="commune_passy" name="Commune PASSY" group="arrondissement_communes"/>
+    <item id="commune_sokone" name="Commune SOKONE" group="arrondissement_communes"/>
+    <item id="commune_soum" name="Commune Soum" group="arrondissement_communes"/>
+    <item id="cr_diossong" name="CR DIOSSONG" group="rural_commune_arrondissement"/>
+    <item id="cr_djilor" name="CR DJILOR" group="rural_commune_arrondissement"/>
+    <item id="cr_bassoul" name="CR BASSOUL" group="rural_commune_arrondissement"/>
+    <item id="cr_dionewar" name="CR DIONEWAR" group="rural_commune_arrondissement"/>
+    <item id="cr_djirnda" name="CR DJIRNDA" group="rural_commune_arrondissement"/>
+    <item id="cr_keur_saloum_diane" name="CR KEUR Saloum DIANE" group="rural_commune_arrondissement"/>
+    <item id="cr_keur_samba_gueye" name="CR KEUR Samba GUEYE" group="rural_commune_arrondissement"/>
+    <item id="cr_nioro_alassane_tall" name="CR NIORO ALassane TALL" group="rural_commune_arrondissement"/>
+    <item id="cr_toubacouta" name="CR TOUBACOUTA" group="rural_commune_arrondissement"/>
+    <item id="arrond_colobane" name="Arrond COLOBANE" group="arrondissement_communes"/>
+    <item id="arrond_ouadiour" name="Arrond OUADIOUR" group="arrondissement_communes"/>
+    <item id="commune_gossas" name="Commune GOSSAS" group="arrondissement_communes"/>
+    <item id="cr_colobane" name="CR COLOBANE" group="rural_commune_arrondissement"/>
+    <item id="cr_mbar" name="CR MBAR" group="rural_commune_arrondissement"/>
+    <item id="cr_ndiene_lagane" name="CR NDIENE-LAGANE" group="rural_commune_arrondissement"/>
+    <item id="cr_ouadiour" name="CR OUADIOUR" group="rural_commune_arrondissement"/>
+    <item id="cr_patar_lia" name="CR PATAR-LIA" group="rural_commune_arrondissement"/>
+    <item id="ard_mbadakhoune" name="ARD MBADAKHOUNE" group="arrondissement_communes"/>
+    <item id="ard_nguelou" name="ARD NGUELOU" group="arrondissement_communes"/>
+    <item id="commune_guinguineo" name="Commune de GUINGUINEO" group="arrondissement_communes"/>
+    <item id="cr_khelcom_birame" name="CR KHELCOM BIRAME" group="rural_commune_arrondissement"/>
+    <item id="cr_mbadakhoune" name="CR MBADAKHOUNE" group="rural_commune_arrondissement"/>
+    <item id="cr_ndiago" name="CR NDIAGO" group="rural_commune_arrondissement"/>
+    <item id="cr_ngathie_naoude" name="CR NGATHIE NAOUDE" group="rural_commune_arrondissement"/>
+    <item id="cr_gagnik" name="CR GAGNIK" group="rural_commune_arrondissement"/>
+    <item id="cr_mboss" name="CR MBOSS" group="rural_commune_arrondissement"/>
+    <item id="cr_nguelou" name="CR NGUELOU" group="rural_commune_arrondissement"/>
+    <item id="cr_ourour" name="CR OUROUR" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_koumbal" name="Arrondissement de Koumbal" group="arrondissement_communes"/>
+    <item id="arrondissement_ndiédieng" name="Arrondissement de Ndiédieng" group="arrondissement_communes"/>
+    <item id="arrondissement_sibassor" name="Arrondissement de Sibassor" group="arrondissement_communes"/>
+    <item id="commune_gandiaye" name="Commune Gandiaye" group="arrondissement_communes"/>
+    <item id="commune_kahone" name="Commune Kahone" group="arrondissement_communes"/>
+    <item id="commune_kaolack" name="Commune Kaolack" group="arrondissement_communes"/>
+    <item id="commune_ndoffane" name="Commune Ndoffane" group="arrondissement_communes"/>
+    <item id="cr_keur_baka" name="Communaute Rural Keur Baka" group="rural_commune_arrondissement"/>
+    <item id="cr_latmingue" name="Communaute Rural Latmingue" group="rural_commune_arrondissement"/>
+    <item id="cr_thiare" name="Communaute Rural thiare" group="rural_commune_arrondissement"/>
+    <item id="cr_keur_soce" name="Communaute Rural Keur Soce" group="rural_commune_arrondissement"/>
+    <item id="cr_ndiaffate" name="Communaute Rural Ndiaffate" group="rural_commune_arrondissement"/>
+    <item id="cr_ndiedieng" name="Communaute Rural Ndiedieng" group="rural_commune_arrondissement"/>
+    <item id="cr_dya" name="Communaute Rural Dya" group="rural_commune_arrondissement"/>
+    <item id="cr_ndiebel" name="Communaute Rural Ndiebel" group="rural_commune_arrondissement"/>
+    <item id="cr_thiomby" name="Communaute Rural Thiomby" group="rural_commune_arrondissement"/>
+    <item id="ard_medina_sabakh" name="ARD. MEDINA SABAKH" group="arrondissement_communes"/>
+    <item id="ard_paos_koto" name="ARD. PAOS KOTO" group="arrondissement_communes"/>
+    <item id="ard_wack_ngouna" name="ARD. WACK NGOUNA" group="arrondissement_communes"/>
+    <item id="commune_keur_madiabel" name="Commune de KEUR MADIABEL" group="arrondissement_communes"/>
+    <item id="commune_nioro" name="Commune NIORO" group="arrondissement_communes"/>
+    <item id="cr_kayemor" name="CR KAYEMOR" group="rural_commune_arrondissement"/>
+    <item id="cr_medina_sabakh" name="CR MEDINA SABAKH" group="rural_commune_arrondissement"/>
+    <item id="cr_ngayene" name="CR NGAYENE" group="rural_commune_arrondissement"/>
+    <item id="cr_gainthe_kaye" name="CR GAINTHE KAYE" group="rural_commune_arrondissement"/>
+    <item id="cr_paos_koto" name="CR PAOS KOTO" group="rural_commune_arrondissement"/>
+    <item id="cr_prokhane" name="CR PROKHANE" group="rural_commune_arrondissement"/>
+    <item id="cr_taiba_niassene" name="CR TAIBA NIASSENE" group="rural_commune_arrondissement"/>
+    <item id="cr_keur_maba_diakhou" name="CR KEUR MABA DIAKHOU" group="rural_commune_arrondissement"/>
+    <item id="cr_keur_madongo" name="CR KEUR MADONGO ( EX K, MADIABEL)" group="rural_commune_arrondissement"/>
+    <item id="cr_ndrame_escale" name="CR NDRAME ESCALE" group="rural_commune_arrondissement"/>
+    <item id="cr_wack_ngouna" name="CR WACK NGOUNA" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_bandafassi" name="ARRONDISSEMENT BANDAFASSI" group="arrondissement_communes"/>
+    <item id="arrondissement_fongolimbi" name="ARRONDISSEMENT FONGOLIMBI" group="arrondissement_communes"/>
+    <item id="commune_kedougou" name="Commune de KEDOUGOU" group="arrondissement_communes"/>
+    <item id="cr_ninefecha" name="CR NINEFECHA" group="rural_commune_arrondissement"/>
+    <item id="cr_bandafassi" name="CR BANDAFASSI" group="rural_commune_arrondissement"/>
+    <item id="cr_dindefelo" name="CR DINDEFELO" group="rural_commune_arrondissement"/>
+    <item id="cr_tomboroncoto" name="CR TOMBORONCOTO" group="rural_commune_arrondissement"/>
+    <item id="cr_dimboli" name="CR DIMBOLI" group="rural_commune_arrondissement"/>
+    <item id="cr_fongolimbi" name="CR FONGOLIMBI" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_dakateli" name="ARRONDISSEMENT DAKATELI" group="arrondissement_communes"/>
+    <item id="arrondissement_dar_salam" name="ARRONDISSEMENT DAR SALAM" group="arrondissement_communes"/>
+    <item id="commune_salemata" name="Commune de SALEMATA" group="arrondissement_communes"/>
+    <item id="cr_kevoye" name="CR KEVOYE (EX THIANKOYE)" group="rural_commune_arrondissement"/>
+    <item id="cr_dakateli" name="CR DAKATELI" group="rural_commune_arrondissement"/>
+    <item id="cr_darsalam" name="CR DARSALAM" group="rural_commune_arrondissement"/>
+    <item id="cr_ethiolo" name="CR ETHIOLO" group="rural_commune_arrondissement"/>
+    <item id="cr_oubadji" name="CR OUBADJI" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_bembou" name="ARRONDISSEMENT BEMBOU" group="arrondissement_communes"/>
+    <item id="arrondissement_sabodala" name="ARRONDISSEMENT SABODALA" group="arrondissement_communes"/>
+    <item id="commune_saraya" name="Commune de SARAYA" group="arrondissement_communes"/>
+    <item id="cr_bembou" name="CR BEMBOU" group="rural_commune_arrondissement"/>
+    <item id="cr_medina_baffe" name="CR MEDINA BAFFE" group="rural_commune_arrondissement"/>
+    <item id="cr_sabodala" name="CR SABODALA" group="rural_commune_arrondissement"/>
+    <item id="cr_khossanto" name="CR KHOSSANTO" group="rural_commune_arrondissement"/>
+    <item id="cr_missirah_sirimana" name="CR MISSIRAH SIRIMANA" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_dioulacolon" name="ARRONDISSEMENT DIOULACOLON" group="arrondissement_communes"/>
+    <item id="arrondissement_mampatim" name="ARRONDISSEMENT MAMPATIM" group="arrondissement_communes"/>
+    <item id="arrondissement_sare_bidji" name="ARRONDISSEMENT SARE BIDJI" group="arrondissement_communes"/>
+    <item id="commune_dabo" name="COMMUNE Dabo" group="arrondissement_communes"/>
+    <item id="commune_kolda" name="COMMUNE Kolda" group="arrondissement_communes"/>
+    <item id="commune_salikégné_" name="COMMUNE Salikégné " group="arrondissement_communes"/>
+    <item id="commune_saré_yoba_diéga" name="COMMUNE Saré Yoba Diéga" group="arrondissement_communes"/>
+    <item id="cr_dioulacolon" name="CR Dioulacolon" group="rural_commune_arrondissement"/>
+    <item id="cr_guiro_yéro_bocar" name="CR Guiro Yéro Bocar" group="rural_commune_arrondissement"/>
+    <item id="cr_médina_hadj" name="CR Médina El hadj" group="rural_commune_arrondissement"/>
+    <item id="cr_tankanto_escale" name="CR Tankanto Escale" group="rural_commune_arrondissement"/>
+    <item id="cr_bagadadji" name="CR Bagadadji" group="rural_commune_arrondissement"/>
+    <item id="cr_coumbacara" name="CR Coumbacara" group="rural_commune_arrondissement"/>
+    <item id="cr_dialambéré" name="CR Dialambéré" group="rural_commune_arrondissement"/>
+    <item id="cr_mampatim" name="CR Mampatim" group="rural_commune_arrondissement"/>
+    <item id="cr_médina_chérif" name="CR Médina Chérif" group="rural_commune_arrondissement"/>
+    <item id="cr_saré_bidji" name="CR Saré Bidji" group="rural_commune_arrondissement"/>
+    <item id="cr_thiétty" name="CR Thiétty" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_fafacourou" name="ARRONDISSEMENT FAFACOUROU" group="arrondissement_communes"/>
+    <item id="arrondissement_ndorna" name="ARRONDISSEMENT NDORNA" group="arrondissement_communes"/>
+    <item id="arrondissement_niaming" name="ARRONDISSEMENT NIAMING" group="arrondissement_communes"/>
+    <item id="commune_médina_yoro_foulah" name="COMMUNE Médina Yoro Foulah" group="arrondissement_communes"/>
+    <item id="commune_pata_" name="COMMUNE Pata " group="arrondissement_communes"/>
+    <item id="cr_badion" name="CR Badion" group="rural_commune_arrondissement"/>
+    <item id="cr_fafacourou" name="CR Fafacourou" group="rural_commune_arrondissement"/>
+    <item id="cr_bignarabé" name="CR Bignarabé" group="rural_commune_arrondissement"/>
+    <item id="cr_bourouco" name="CR Bourouco" group="rural_commune_arrondissement"/>
+    <item id="cr_koulinto" name="CR Koulinto" group="rural_commune_arrondissement"/>
+    <item id="cr_ndorna" name="CR Ndorna" group="rural_commune_arrondissement"/>
+    <item id="cr_dinguiraye" name="CR Dinguiraye" group="rural_commune_arrondissement"/>
+    <item id="cr_kéréwane" name="CR Kéréwane" group="rural_commune_arrondissement"/>
+    <item id="cr_niaming" name="CR Niaming" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_bonconto" name="ARRONDISSEMENT BONCONTO" group="arrondissement_communes"/>
+    <item id="arrondissement_pakour" name="ARRONDISSEMENT PAKOUR" group="arrondissement_communes"/>
+    <item id="arrondissement_sare_coly_salle" name="ARRONDISSEMENT SARE COLY SALLE" group="arrondissement_communes"/>
+    <item id="commune_diaobé_kabendou" name="COMMUNE Diaobé-Kabendou" group="arrondissement_communes"/>
+    <item id="commune_kounkané_" name="COMMUNE Kounkané " group="arrondissement_communes"/>
+    <item id="commune_vélingara" name="COMMUNE Vélingara" group="arrondissement_communes"/>
+    <item id="cr_bonconto" name="CR Bonconto" group="rural_commune_arrondissement"/>
+    <item id="cr_linkering" name="CR Linkering" group="rural_commune_arrondissement"/>
+    <item id="cr_médina_gounass" name="CR Médina Gounass" group="rural_commune_arrondissement"/>
+    <item id="cr_sinthiang_koundara" name="CR Sinthiang Koundara" group="rural_commune_arrondissement"/>
+    <item id="cr_ouassadou" name="CR Ouassadou" group="rural_commune_arrondissement"/>
+    <item id="cr_pakour" name="CR Pakour" group="rural_commune_arrondissement"/>
+    <item id="cr_paroumba" name="CR Paroumba" group="rural_commune_arrondissement"/>
+    <item id="cr_kandia" name="CR Kandia" group="rural_commune_arrondissement"/>
+    <item id="cr_kandiaye" name="CR Kandiaye" group="rural_commune_arrondissement"/>
+    <item id="cr_némataba" name="CR Némataba" group="rural_commune_arrondissement"/>
+    <item id="cr_saré_coly_sallé" name="CR Saré Coly Sallé" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_darou_mousty" name="ARRONDISSEMENT . DAROU MOUSTY" group="arrondissement_communes"/>
+    <item id="arrondissement_ndande" name="ARRONDISSEMENT . NDANDE" group="arrondissement_communes"/>
+    <item id="arrondissement_sagatta" name="ARRONDISSEMENT . SAGATTA" group="arrondissement_communes"/>
+    <item id="commune_gueoul" name="COMMUNE GUEOUL" group="arrondissement_communes"/>
+    <item id="commune_kebemer" name="COMMUNE KEBEMER" group="arrondissement_communes"/>
+    <item id="cr_darou_marmane" name="CR DAROU MARMANE" group="rural_commune_arrondissement"/>
+    <item id="cr_darou_mousty" name="CR DAROU MOUSTY" group="rural_commune_arrondissement"/>
+    <item id="cr_mbacke_kadior" name="CR MBACKE KADIOR" group="rural_commune_arrondissement"/>
+    <item id="cr_mbadiane" name="CR MBADIANE" group="rural_commune_arrondissement"/>
+    <item id="cr_ndoyene" name="CR NDOYENE" group="rural_commune_arrondissement"/>
+    <item id="cr_sam_yabal" name="CR SAM YABAL" group="rural_commune_arrondissement"/>
+    <item id="cr_touba_merina" name="CR TOUBA MERINA" group="rural_commune_arrondissement"/>
+    <item id="cr_bandegne_ouolof" name="CR BANDEGNE OUOLOF" group="rural_commune_arrondissement"/>
+    <item id="cr_diokoul_ndiawrigne" name="CR DIOKOUL NDIAWRIGNE" group="rural_commune_arrondissement"/>
+    <item id="cr_kab_gaye" name="CR KAB GAYE" group="rural_commune_arrondissement"/>
+    <item id="cr_ndande" name="CR NDANDE" group="rural_commune_arrondissement"/>
+    <item id="cr_thieppe" name="CR THIEPPE" group="rural_commune_arrondissement"/>
+    <item id="cr_kanene_ndiob" name="CR KANENE NDIOB" group="rural_commune_arrondissement"/>
+    <item id="cr_loro" name="CR LORO" group="rural_commune_arrondissement"/>
+    <item id="cr_ngourane_wolof" name="CR NGOURANE WOLOF" group="rural_commune_arrondissement"/>
+    <item id="cr_sagatta_gueth" name="CR SAGATTA GUETH" group="rural_commune_arrondissement"/>
+    <item id="cr_thiolom_fall" name="CR THIOLOM FALL" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_barkedji" name="ARRONDISSEMENT . BARKEDJI" group="arrondissement_communes"/>
+    <item id="arrondissement_dodji" name="ARRONDISSEMENT . DODJI" group="arrondissement_communes"/>
+    <item id="arrondissement_sagatta_djolof" name="ARRONDISSEMENT . SAGATTA DJOLOF" group="arrondissement_communes"/>
+    <item id="commune_linguere" name="COMMUNE LINGUERE" group="arrondissement_communes"/>
+    <item id="commune_de_dahra" name="COMMUNE de DAHRA" group="arrondissement_communes"/>
+    <item id="cr_barkedji" name="CR BARKEDJI" group="rural_commune_arrondissement"/>
+    <item id="cr_gassane" name="CR GASSANE" group="rural_commune_arrondissement"/>
+    <item id="cr_thiargny" name="CR THIARGNY" group="rural_commune_arrondissement"/>
+    <item id="cr_thiel" name="CR THIEL" group="rural_commune_arrondissement"/>
+    <item id="cr_dodji" name="CR DODJI" group="rural_commune_arrondissement"/>
+    <item id="cr_labgar" name="CR LABGAR" group="rural_commune_arrondissement"/>
+    <item id="cr_ouarkhokh" name="CR OUARKHOKH" group="rural_commune_arrondissement"/>
+    <item id="cr_boulal" name="CR BOULAL" group="rural_commune_arrondissement"/>
+    <item id="cr_deali" name="CR DEALI" group="rural_commune_arrondissement"/>
+    <item id="cr_sagatta_djolof" name="CR SAGATTA DJOLOF" group="rural_commune_arrondissement"/>
+    <item id="cr_thiamene_djolof" name="CR THIAMENE DJOLOF" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_mbediene" name="ARRONDISSEMENT MBEDIENE" group="arrondissement_communes"/>
+    <item id="arrondissement_sakal" name="ARRONDISSEMENT SAKAL" group="arrondissement_communes"/>
+    <item id="arrondissement_coki" name="ARRONDISSEMENT . COKI" group="arrondissement_communes"/>
+    <item id="arrondissement_keur_momar_sarr" name="ARRONDISSEMENT . KEUR MOMAR SARR" group="arrondissement_communes"/>
+    <item id="arrondissement_yang_yang" name="ARRONDISSEMENT . YANG YANG" group="arrondissement_communes"/>
+    <item id="commune_louga" name="COMMUNE LOUGA" group="arrondissement_communes"/>
+    <item id="cr_kelle_gueye" name="CR KELLE GUEYE" group="rural_commune_arrondissement"/>
+    <item id="cr_mbediene" name="CR MBEDIENE" group="rural_commune_arrondissement"/>
+    <item id="cr_nguidile" name="CR NGUIDILE" group="rural_commune_arrondissement"/>
+    <item id="cr_niomre" name="CR NIOMRE" group="rural_commune_arrondissement"/>
+    <item id="cr_leona" name="CR LEONA" group="rural_commune_arrondissement"/>
+    <item id="cr_nguene_sarr" name="CR NGUENE SARR" group="rural_commune_arrondissement"/>
+    <item id="cr_sakal" name="CR SAKAL" group="rural_commune_arrondissement"/>
+    <item id="cr_coki" name="CR COKI" group="rural_commune_arrondissement"/>
+    <item id="cr_ndiagne" name="CR NDIAGNE" group="rural_commune_arrondissement"/>
+    <item id="cr_pete_ouarack" name="CR PETE OUARACK" group="rural_commune_arrondissement"/>
+    <item id="cr_thiamene_cayor" name="CR THIAMENE CAYOR" group="rural_commune_arrondissement"/>
+    <item id="cr_gande" name="CR GANDE" group="rural_commune_arrondissement"/>
+    <item id="cr_keur_momar_sarr" name="CR KEUR MOMAR SARR" group="rural_commune_arrondissement"/>
+    <item id="cr_nguer_malal" name="CR NGUER MALAL" group="rural_commune_arrondissement"/>
+    <item id="cr_syer" name="CR SYER" group="rural_commune_arrondissement"/>
+    <item id="cr_kamb" name="CR KAMB" group="rural_commune_arrondissement"/>
+    <item id="cr_mbeuleukhe" name="CR MBEULEUKHE" group="rural_commune_arrondissement"/>
+    <item id="cr_mboula" name="CR MBOULA" group="rural_commune_arrondissement"/>
+    <item id="cr_tessekre_forage" name="CR TESSEKRE FORAGE" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_ogo" name="ARRONDISSEMENT OGO" group="arrondissement_communes"/>
+    <item id="arrondissement_agnam_civol" name="ARRONDISSEMENT AGNAM-CIVOL" group="arrondissement_communes"/>
+    <item id="commune_matam" name="Commune MATAM" group="arrondissement_communes"/>
+    <item id="commune_ourossogui" name="Commune OUROSSOGUI" group="arrondissement_communes"/>
+    <item id="commune_thilogne" name="Commune THILOGNE" group="arrondissement_communes"/>
+    <item id="cr_bokidiawe" name="CR BOKIDIAWE" group="rural_commune_arrondissement"/>
+    <item id="cr_nabadji_civol" name="CR NABADJI-CIVOL" group="rural_commune_arrondissement"/>
+    <item id="cr_ogo" name="CR OGO" group="rural_commune_arrondissement"/>
+    <item id="cr_agnam_civol" name="CR AGNAM-CIVOL" group="rural_commune_arrondissement"/>
+    <item id="cr_dabia" name="CR DABIA" group="rural_commune_arrondissement"/>
+    <item id="cr_de_orefonde" name="CR de OREFONDE" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_velingara" name="ARRONDISSEMENT VELINGARA" group="arrondissement_communes"/>
+    <item id="commune_ranerou_ferlo" name="Commune RANEROU-FERLO" group="arrondissement_communes"/>
+    <item id="cr_lougre_thiolly" name="CR LOUGRE-THIOLLY" group="rural_commune_arrondissement"/>
+    <item id="cr_oudalaye" name="CR OUDALAYE" group="rural_commune_arrondissement"/>
+    <item id="cr_velingara" name="CR VELINGARA" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_orkadiere" name="ARRONDISSEMENT ORKADIERE" group="arrondissement_communes"/>
+    <item id="arrondissement_wouro_sidy" name="ARRONDISSEMENT WOURO SIDY" group="arrondissement_communes"/>
+    <item id="commune_dembancane" name="Commune DEMBANCANE" group="arrondissement_communes"/>
+    <item id="commune_hamady_hounare" name="Commune HAMADY HOUNARE" group="arrondissement_communes"/>
+    <item id="commune_kanel" name="Commune KANEL" group="arrondissement_communes"/>
+    <item id="commune_semme" name="Commune SEMME" group="arrondissement_communes"/>
+    <item id="commune_sinthiou_bamambe" name="Commune SINTHIOU BAMAMBE" group="arrondissement_communes"/>
+    <item id="commune_waounde" name="Commune WAOUNDE" group="arrondissement_communes"/>
+    <item id="cr_aoure" name="CR AOURE" group="rural_commune_arrondissement"/>
+    <item id="cr_bokiladji" name="CR BOKILADJI" group="rural_commune_arrondissement"/>
+    <item id="cr_orkadiere" name="CR ORKADIERE" group="rural_commune_arrondissement"/>
+    <item id="cr_ndendory" name="CR Ndendory" group="rural_commune_arrondissement"/>
+    <item id="cr_ouro_sidy" name="CR OURO SIDY" group="rural_commune_arrondissement"/>
+    <item id="ardt_mbane" name="ARDT MBANE" group="arrondissement_communes"/>
+    <item id="ardt_ndiaye" name="ARDT NDIAYE" group="arrondissement_communes"/>
+    <item id="commune_dagana" name="COMMUNE DAGANA" group="arrondissement_communes"/>
+    <item id="commune_gae" name="COMMUNE GAE" group="arrondissement_communes"/>
+    <item id="commune_richard_toll" name="COMMUNE RICHARD TOLL" group="arrondissement_communes"/>
+    <item id="commune_ross_bethio" name="COMMUNE ROSS-BETHIO" group="arrondissement_communes"/>
+    <item id="commune_rosso_" name="COMMUNE ROSSO " group="arrondissement_communes"/>
+    <item id="cr_bokhol" name="CR BOKHOL" group="rural_commune_arrondissement"/>
+    <item id="cr_mbane" name="CR MBANE" group="rural_commune_arrondissement"/>
+    <item id="cr_ngnith" name="CR NGNITH" group="rural_commune_arrondissement"/>
+    <item id="cr_diama" name="CR DIAMA" group="rural_commune_arrondissement"/>
+    <item id="cr_ronkh" name="CR RONKH" group="rural_commune_arrondissement"/>
+    <item id="ardt_cas_cas" name="ARDT CAS - CAS" group="arrondissement_communes"/>
+    <item id="ardt_gamadji_sare" name="ARDT GAMADJI SARE" group="arrondissement_communes"/>
+    <item id="ardt_salde" name="ARDT SALDE" group="arrondissement_communes"/>
+    <item id="ardt_thile_boubacar" name="ARDT THILE BOUBACAR" group="arrondissement_communes"/>
+    <item id="commune_pete" name="COMMUNE PETE" group="arrondissement_communes"/>
+    <item id="commune_aere_lao" name="COMMUNE AERE LAO" group="arrondissement_communes"/>
+    <item id="commune_bode_lao" name="COMMUNE BODE LAO" group="arrondissement_communes"/>
+    <item id="commune_demette" name="COMMUNE DEMETTE" group="arrondissement_communes"/>
+    <item id="commune_galoya_toucouleur" name="COMMUNE GALOYA TOUCOULEUR" group="arrondissement_communes"/>
+    <item id="commune_gollere" name="COMMUNE GOLLERE" group="arrondissement_communes"/>
+    <item id="commune_guede_chantier" name="COMMUNE GUEDE CHANTIER" group="arrondissement_communes"/>
+    <item id="commune_mboumba" name="COMMUNE MBOUMBA" group="arrondissement_communes"/>
+    <item id="commune_ndioum" name="COMMUNE NDIOUM" group="arrondissement_communes"/>
+    <item id="commune_niandane" name="COMMUNE NIANDANE" group="arrondissement_communes"/>
+    <item id="commune_podor" name="COMMUNE PODOR" group="arrondissement_communes"/>
+    <item id="commune_walalde" name="COMMUNE WALALDE" group="arrondissement_communes"/>
+    <item id="cr_doumga_lao" name="CR DOUMGA LAO" group="rural_commune_arrondissement"/>
+    <item id="cr_madina_diathbe" name="CR MADINA DIATHBE" group="rural_commune_arrondissement"/>
+    <item id="cr_mery" name="CR MERY" group="rural_commune_arrondissement"/>
+    <item id="cr_dodel" name="CR DODEL" group="rural_commune_arrondissement"/>
+    <item id="cr_gamadji_sare" name="CR GAMADJI SARE" group="rural_commune_arrondissement"/>
+    <item id="cr_guede_village" name="CR GUEDE VILLAGE" group="rural_commune_arrondissement"/>
+    <item id="cr_molo_birane" name="CR MOLO BIRANE" group="rural_commune_arrondissement"/>
+    <item id="cr_thikite" name="CR THIKITE" group="rural_commune_arrondissement"/>
+    <item id="cr_fanaye" name="CR FANAYE" group="rural_commune_arrondissement"/>
+    <item id="cr_ndiayene_peindao" name="CR NDIAYENE PEINDAO" group="rural_commune_arrondissement"/>
+    <item id="ardt_rao" name="ARDT RAO" group="arrondissement_communes"/>
+    <item id="commune_mpal" name="COMMUNE MPAL" group="arrondissement_communes"/>
+    <item id="commune_saint_louis" name="COMMUNE SAINT LOUIS" group="arrondissement_communes"/>
+    <item id="cr_fass_ngom" name="CR FASS NGOM" group="rural_commune_arrondissement"/>
+    <item id="cr_gandon" name="CR GANDON" group="rural_commune_arrondissement"/>
+    <item id="cr_ndibene_gandiole" name="CR NDIBENE GANDIOLE" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_boghal" name="ARRONDISSEMENT BOGHAL" group="arrondissement_communes"/>
+    <item id="arrondissement_diaroume" name="ARRONDISSEMENT DIAROUME" group="arrondissement_communes"/>
+    <item id="arrondissement_bona" name="ARRONDISSEMENT BONA" group="arrondissement_communes"/>
+    <item id="commune_bounkiling" name="COMMUNE BOUNKILING" group="arrondissement_communes"/>
+    <item id="commune_madina_wandifa" name="Commune MADINA WANDIFA" group="arrondissement_communes"/>
+    <item id="cr_boghal" name="CR BOGHAL" group="rural_commune_arrondissement"/>
+    <item id="cr_ndiamacouta" name="CR NDIAMACOUTA" group="rural_commune_arrondissement"/>
+    <item id="cr_tanko" name="CR TANKO" group="rural_commune_arrondissement"/>
+    <item id="cr_diambati" name="CR DIAMBATI" group="rural_commune_arrondissement"/>
+    <item id="cr_diaroume" name="CR DIAROUME" group="rural_commune_arrondissement"/>
+    <item id="cr_faoune" name="CR FAOUNE" group="rural_commune_arrondissement"/>
+    <item id="cr_bona" name="CR BONA" group="rural_commune_arrondissement"/>
+    <item id="cr_diacounda" name="CR DIACOUNDA" group="rural_commune_arrondissement"/>
+    <item id="cr_inor" name="CR INOR" group="rural_commune_arrondissement"/>
+    <item id="cr_kandion_mangana" name="CR KANDION MANGANA" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_djibanar" name="ARRONDISSEMENT DJIBANAR" group="arrondissement_communes"/>
+    <item id="arrondissement_karantaba" name="ARRONDISSEMENT KARANTABA" group="arrondissement_communes"/>
+    <item id="arrondissement_simbandi_brassou" name="ARRONDISSEMENT SIMBANDI BRASSOU" group="arrondissement_communes"/>
+    <item id="commune_diattacounda" name="COMMUNE DIATTACOUNDA" group="arrondissement_communes"/>
+    <item id="commune_goudomp" name="COMMUNE GOUDOMP" group="arrondissement_communes"/>
+    <item id="commune_samine" name="COMMUNE SAMINE" group="arrondissement_communes"/>
+    <item id="commune_tanaff" name="COMMUNE TANAFF" group="arrondissement_communes"/>
+    <item id="cr_djibanar" name="CR DJIBANAR" group="rural_commune_arrondissement"/>
+    <item id="cr_kaour" name="CR KAOUR" group="rural_commune_arrondissement"/>
+    <item id="cr_mangaroungou_santo" name="CR MANGAROUNGOU SANTO" group="rural_commune_arrondissement"/>
+    <item id="cr_simbandi_balante" name="CR SIMBANDI BALANTE" group="rural_commune_arrondissement"/>
+    <item id="cr_yarang_balante" name="CR YARANG BALANTE" group="rural_commune_arrondissement"/>
+    <item id="cr_karantaba" name="CR KARANTABA" group="rural_commune_arrondissement"/>
+    <item id="cr_kolibatang" name="CR KOLIBATANG" group="rural_commune_arrondissement"/>
+    <item id="cr_baghere" name="CR BAGHERE" group="rural_commune_arrondissement"/>
+    <item id="cr_diouboudou" name="CR DIOUBOUDOU" group="rural_commune_arrondissement"/>
+    <item id="cr_niagha" name="CR NIAGHA" group="rural_commune_arrondissement"/>
+    <item id="cr_simbandi_brassou" name="CR SIMBANDI BRASSOU" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_diende" name="ARRONDISSEMENT  DIENDE" group="arrondissement_communes"/>
+    <item id="arrondissement_djibabouya" name="ARRONDISSEMENT  DJIBABOUYA" group="arrondissement_communes"/>
+    <item id="arrondissement_djiredji" name="ARRONDISSEMENT  DJIREDJI" group="arrondissement_communes"/>
+    <item id="commune_diannah_malary_" name="Commune Diannah Malary " group="arrondissement_communes"/>
+    <item id="commune_marsassoum_" name="Commune Marsassoum " group="arrondissement_communes"/>
+    <item id="commune_sédhiou" name="Commune Sédhiou" group="arrondissement_communes"/>
+    <item id="cr_diannah_ba" name="CR DIANNAH BA" group="rural_commune_arrondissement"/>
+    <item id="cr_diende" name="CR DIENDE" group="rural_commune_arrondissement"/>
+    <item id="cr_koussy" name="CR KOUSSY" group="rural_commune_arrondissement"/>
+    <item id="cr_oudoucar" name="CR OUDOUCAR" group="rural_commune_arrondissement"/>
+    <item id="cr_sakar" name="CR SAKAR" group="rural_commune_arrondissement"/>
+    <item id="cr_sama_kanta_peulh" name="CR SAMA KANTA PEULH" group="rural_commune_arrondissement"/>
+    <item id="cr_bemet" name="CR BEMET" group="rural_commune_arrondissement"/>
+    <item id="cr_djibabouya" name="CR DJIBABOUYA" group="rural_commune_arrondissement"/>
+    <item id="cr_san_samba" name="CR SAN SAMBA" group="rural_commune_arrondissement"/>
+    <item id="cr_bambaly" name="CR Bambaly" group="rural_commune_arrondissement"/>
+    <item id="cr_djiredji" name="CR Djiredji" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_bele" name="ARRONDISSEMENT BELE ex KIDIRA" group="arrondissement_communes"/>
+    <item id="arrondissement_keniaba" name="ARRONDISSEMENT KENIABA" group="arrondissement_communes"/>
+    <item id="arrondissement_moudery" name="ARRONDISSEMENT MOUDERY" group="arrondissement_communes"/>
+    <item id="commune_bakel" name="Commune de BAKEL" group="arrondissement_communes"/>
+    <item id="commune_diawara" name="Commune de DIAWARA" group="arrondissement_communes"/>
+    <item id="commune_kidira" name="Commune de Kidira" group="arrondissement_communes"/>
+    <item id="cr_bele" name="CR BELE" group="rural_commune_arrondissement"/>
+    <item id="cr_sinthiou_fissa" name="CR SINTHIOU FISSA" group="rural_commune_arrondissement"/>
+    <item id="cr_gathiary" name="CR GATHIARY" group="rural_commune_arrondissement"/>
+    <item id="cr_medina_foulbe" name="CR MEDINA FOULBE" group="rural_commune_arrondissement"/>
+    <item id="cr_sadatou" name="CR SADATOU" group="rural_commune_arrondissement"/>
+    <item id="cr_tomboura" name="CR Tomboura" group="rural_commune_arrondissement"/>
+    <item id="cr_ballou" name="CR BALLOU" group="rural_commune_arrondissement"/>
+    <item id="cr_gabou" name="CR GABOU" group="rural_commune_arrondissement"/>
+    <item id="cr_mouderi" name="CR MOUDERI" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_bala" name="ARRONDISSEMENT BALA" group="arrondissement_communes"/>
+    <item id="arrondissement_boynguel_bamba" name="ARRONDISSEMENT BOYNGUEL BAMBA" group="arrondissement_communes"/>
+    <item id="arrondissement_dianke_makha" name="ARRONDISSEMENT DIANKE MAKHA" group="arrondissement_communes"/>
+    <item id="arrondissement_koulor" name="ARRONDISSEMENT KOULOR" group="arrondissement_communes"/>
+    <item id="commune_goudiry" name="Commune de Goudiry" group="arrondissement_communes"/>
+    <item id="commune_kothiary" name="Commune de Kothiary" group="arrondissement_communes"/>
+    <item id="cr_bala" name="CR BALA" group="rural_commune_arrondissement"/>
+    <item id="cr_goumbayel" name="CR GOUMBAYEL" group="rural_commune_arrondissement"/>
+    <item id="cr_koar" name="CR KOAR" group="rural_commune_arrondissement"/>
+    <item id="cr_boynguel_bamba" name="CR BOYNGUEL BAMBA" group="rural_commune_arrondissement"/>
+    <item id="cr_dougue" name="CR DOUGUE" group="rural_commune_arrondissement"/>
+    <item id="cr_koussan" name="CR KOUSSAN" group="rural_commune_arrondissement"/>
+    <item id="cr_sinthiou_mamadou_boubou" name="CR SINTHIOU MAMADOU BOUBOU" group="rural_commune_arrondissement"/>
+    <item id="cr_bani_israel" name="CR BANI ISRAEL" group="rural_commune_arrondissement"/>
+    <item id="cr_boutoucoufara" name="CR BOUTOUCOUFARA" group="rural_commune_arrondissement"/>
+    <item id="cr_dianke_makha" name="CR DIANKE MAKHA" group="rural_commune_arrondissement"/>
+    <item id="cr_komoti" name="CR KOMOTI" group="rural_commune_arrondissement"/>
+    <item id="cr_koulor" name="CR KOULOR" group="rural_commune_arrondissement"/>
+    <item id="cr_sinthiou_bocar_ly" name="CR SINTHIOU BOCAR LY" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_bamba_thialene" name="ARRONDISSEMENT Bamba THIALENE" group="arrondissement_communes"/>
+    <item id="arrondissement_kouthiaba_wolof" name="ARRONDISSEMENT KOUTHIABA WOLOF" group="arrondissement_communes"/>
+    <item id="commune_koumpentoum" name="Commune de Koumpentoum" group="arrondissement_communes"/>
+    <item id="commune_malem_niani" name="Commune de Malem Niani" group="arrondissement_communes"/>
+    <item id="cr_bamba_thialene" name="CR BAMBA THIALENE" group="rural_commune_arrondissement"/>
+    <item id="cr_kahene" name="CR KAHENE" group="rural_commune_arrondissement"/>
+    <item id="cr_mereto" name="CR MERETO" group="rural_commune_arrondissement"/>
+    <item id="cr_ndame" name="CR NDAME" group="rural_commune_arrondissement"/>
+    <item id="cr_kouthia_guaydi" name="CR KOUTHIA GUAYDI" group="rural_commune_arrondissement"/>
+    <item id="cr_kouthiaba_ouolof" name="CR KOUTHIABA OUOLOF" group="rural_commune_arrondissement"/>
+    <item id="cr_pass_koto" name="CR PASS KOTO" group="rural_commune_arrondissement"/>
+    <item id="cr_payar" name="CR PAYAR" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_koussanar" name="ARRONDISSEMENT KOUSSANAR" group="arrondissement_communes"/>
+    <item id="arrondissement_makakoulibantan" name="ARRONDISSEMENT MAKAKOULIBANTAN" group="arrondissement_communes"/>
+    <item id="arrondissement_missirah" name="ARRONDISSEMENT MISSIRAH" group="arrondissement_communes"/>
+    <item id="commune_de_tambacounda" name="Commune deTAMBACOUNDA" group="arrondissement_communes"/>
+    <item id="cr_koussanar" name="CR KOUSSANAR" group="rural_commune_arrondissement"/>
+    <item id="cr_sinthiou_maleme" name="CR SINTHIOU MALEME" group="rural_commune_arrondissement"/>
+    <item id="cr_makakoulibatan" name="CR MAKAKOULIBATAN" group="rural_commune_arrondissement"/>
+    <item id="cr_ndoga_babacar" name="CR NDOGA BABACAR" group="rural_commune_arrondissement"/>
+    <item id="cr_niani_toucouleur" name="CR Niani Toucouleur" group="rural_commune_arrondissement"/>
+    <item id="cr_dialakoto" name="CR DIALAKOTO" group="rural_commune_arrondissement"/>
+    <item id="cr_missirah" name="CR MISSIRAH" group="rural_commune_arrondissement"/>
+    <item id="cr_netteboulou" name="CR NETTEBOULOU" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_kataba1" name="ARRONDISSEMENT  KATABA 1" group="arrondissement_communes"/>
+    <item id="arrondissement_kataba2" name="ARRONDISSEMENT  KATABA 2" group="arrondissement_communes"/>
+    <item id="arrondissement_kataba3" name="ARRONDISSEMENT  KATABA 3" group="arrondissement_communes"/>
+    <item id="arrondissement_kataba4" name="ARRONDISSEMENT  KATABA 4" group="arrondissement_communes"/>
+    <item id="arrondissement_sindian" name="ARRONDISSEMENT  SINDIAN" group="arrondissement_communes"/>
+    <item id="arrondissement_tendouck" name="ARRONDISSEMENT  TENDOUCK" group="arrondissement_communes"/>
+    <item id="arrondissement_tenghory" name="ARRONDISSEMENT  TENGHORY" group="arrondissement_communes"/>
+    <item id="commune_bignona" name="Commune BIGNONA" group="arrondissement_communes"/>
+    <item id="commune_diouloulou" name="Commune DIOULOULOU" group="arrondissement_communes"/>
+    <item id="commune_thionk_essyl" name="Commune THIONK-ESSYL" group="arrondissement_communes"/>
+    <item id="cr_kataba1" name="CR KATABA 1" group="rural_commune_arrondissement"/>
+    <item id="cr_djinaky" name="CR DJINAKY" group="rural_commune_arrondissement"/>
+    <item id="cr_kafountine" name="CR KAFOUNTINE" group="rural_commune_arrondissement"/>
+    <item id="cr_djibidione" name="CR DJIBIDIONE" group="rural_commune_arrondissement"/>
+    <item id="cr_oulampane" name="CR OULAMPANE" group="rural_commune_arrondissement"/>
+    <item id="cr_sindian" name="CR SINDIAN" group="rural_commune_arrondissement"/>
+    <item id="cr_suelle" name="CR SUELLE" group="rural_commune_arrondissement"/>
+    <item id="cr_balinghore" name="CR BALINGHORE" group="rural_commune_arrondissement"/>
+    <item id="cr_diegoune" name="CR DIEGOUNE" group="rural_commune_arrondissement"/>
+    <item id="cr_kartiack" name="CR KARTIACK" group="rural_commune_arrondissement"/>
+    <item id="cr_mangagoulack" name="CR MANGAGOULACK" group="rural_commune_arrondissement"/>
+    <item id="cr_mlomp" name="CR MLOMP" group="rural_commune_arrondissement"/>
+    <item id="cr_coubalan" name="CR COUBALAN" group="rural_commune_arrondissement"/>
+    <item id="cr_niamone" name="CR NIAMONE" group="rural_commune_arrondissement"/>
+    <item id="cr_ouonck" name="CR OUONCK" group="rural_commune_arrondissement"/>
+    <item id="cr_tenghori" name="CR TENGHORI" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_loudia_ouolof" name="ARRONDISSEMENT  LOUDIA OUOLOF" group="arrondissement_communes"/>
+    <item id="arrondissement_cabrousse" name="ARRONDISSEMENT CABROUSSE" group="arrondissement_communes"/>
+    <item id="commune_oussouye" name="Commune OUSSOUYE" group="arrondissement_communes"/>
+    <item id="cr_oukout" name="CR OUKOUT" group="rural_commune_arrondissement"/>
+    <item id="cr_djiebering" name="CR DJIEBERING" group="rural_commune_arrondissement"/>
+    <item id="cr_santhiaba_manjack" name="CR SANTHIABA MANJACK" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_niassia" name="ARRONDISSEMENT  NIASSIA" group="arrondissement_communes"/>
+    <item id="arrondissement_niaguis" name="ARRONDISSEMENT NIAGUIS" group="arrondissement_communes"/>
+    <item id="commune_ziguinchor" name="Commune ZIGUINCHOR" group="arrondissement_communes"/>
+    <item id="cr_enampore" name="CR ENAMPORE" group="rural_commune_arrondissement"/>
+    <item id="cr_niassia" name="CR NIASSIA" group="rural_commune_arrondissement"/>
+    <item id="cr_adeane" name="CR ADEANE" group="rural_commune_arrondissement"/>
+    <item id="cr_boutoupa_camaracounda" name="CR BOUTOUPA CAMARACOUNDA" group="rural_commune_arrondissement"/>
+    <item id="cr_niaguis" name="CR NIAGUIS" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_keur_mboucki" name="ARRONDISSEMENT KEUR MBOUCKI EX BIRKELANE" group="arrondissement_communes"/>
+    <item id="arrondissement_mabo" name="ARRONDISSEMENT MABO" group="arrondissement_communes"/>
+    <item id="commune_mbirkilane_" name="Commune Mbirkilane " group="arrondissement_communes"/>
+    <item id="cr_keur_mbouki" name="CR KEUR MBOUKI EX BIRKELANE" group="rural_commune_arrondissement"/>
+    <item id="cr_touba_bella" name="CR TOUBA BELLA" group="rural_commune_arrondissement"/>
+    <item id="cr_mabo" name="CR MABO" group="rural_commune_arrondissement"/>
+    <item id="cr_ndiognick" name="CR NDIOGNICK" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_gniby" name="ARRONDISSEMENT GNIBY EX MALEM HODDAR" group="arrondissement_communes"/>
+    <item id="arrondissement_katakel" name="ARRONDISSEMENT KATAKEL EX NGANDA" group="arrondissement_communes"/>
+    <item id="commune_kaffrine" name="Commune de KAFFRINE" group="arrondissement_communes"/>
+    <item id="commune_nganda" name="Commune de NGANDA" group="arrondissement_communes"/>
+    <item id="cr_boulel" name="CR BOULEL" group="rural_commune_arrondissement"/>
+    <item id="cr_gniby" name="CR GNIBY" group="rural_commune_arrondissement"/>
+    <item id="cr_kahi" name="CR KAHI" group="rural_commune_arrondissement"/>
+    <item id="cr_diamagadio" name="CR DIAMAGADIO" group="rural_commune_arrondissement"/>
+    <item id="cr_diokoul_mbellbouck" name="CR DIOKOUL MBELLBOUCK" group="rural_commune_arrondissement"/>
+    <item id="cr_kathiote" name="CR KATHIOTE" group="rural_commune_arrondissement"/>
+    <item id="cr_medinatoul_salam_2" name="CR MEDINATOUL SALAM 2" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_ida_mouride" name="ARRONDISSEMENT IDA MOURIDE" group="arrondissement_communes"/>
+    <item id="arrondissement_lour_escale" name="ARRONDISSEMENT LOUR ESCALE" group="arrondissement_communes"/>
+    <item id="arrondissement_missira_waddene" name="ARRONDISSEMENT MISSIRA WADDENE EX MAKA YOPP" group="arrondissement_communes"/>
+    <item id="commune_koungheul" name="Commune de KOUNGHEUL" group="arrondissement_communes"/>
+    <item id="cr_fass_thiekene" name="CR FASS THIEKENE" group="rural_commune_arrondissement"/>
+    <item id="cr_ida_mouride" name="CR IDA MOURIDE" group="rural_commune_arrondissement"/>
+    <item id="cr_saly_escale" name="CR SALY ESCALE" group="rural_commune_arrondissement"/>
+    <item id="cr_lour_escale" name="CR LOUR ESCALE" group="rural_commune_arrondissement"/>
+    <item id="cr_ribot_escale" name="CR RIBOT ESCALE" group="rural_commune_arrondissement"/>
+    <item id="cr_gainthe_pathe" name="CR GAINTHE PATHE" group="rural_commune_arrondissement"/>
+    <item id="cr_maka_yopp" name="CR MAKA YOPP" group="rural_commune_arrondissement"/>
+    <item id="cr_missira_waddene" name="CR MISSIRA WADDENE" group="rural_commune_arrondissement"/>
+    <item id="arrondissement_sagna" name="ARRONDISSEMENT DE SAGNA" group="arrondissement_communes"/>
+    <item id="arrondissement_darou_minamii" name="ARRONDISSEMENT DAROU MINAM II" group="arrondissement_communes"/>
+    <item id="commune_malem_hoddar" name="COMMUNE MALEM HODDAR" group="arrondissement_communes"/>
+    <item id="cr_dianke_souf" name="CR DIANKE SOUF" group="rural_commune_arrondissement"/>
+    <item id="cr_sagna" name="CR SAGNA" group="rural_commune_arrondissement"/>
+    <item id="cr_darou_minam_ii" name="CR DAROU MINAM II" group="rural_commune_arrondissement"/>
+    <item id="cr_khelcom" name="CR KHELCOM" group="rural_commune_arrondissement"/>
+    <item id="cr_ndioum_ngainthe" name="CR NDIOUM NGAINTHE" group="rural_commune_arrondissement"/>
+</dictionary>

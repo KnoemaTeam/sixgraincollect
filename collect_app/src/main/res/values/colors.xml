@@ -37,4 +37,57 @@
     <drawable name="white">#ffffffff</drawable>
     <drawable name="black">#ff000000</drawable>
 
+    <color name="color_bar_text">#fafafa</color>
+    <color name="color_background">#fafafa</color>
+    <color name="color_spinner_background">#20000000</color>
+
+    <color name="color_progress_bar_background">#808080</color>
+    <color name="color_progress_bar_start">#00B200</color>
+    <color name="color_progress_bar_end">#3caa3c</color>
+    <color name="color_progress_value">#00B200</color>
+    <color name="color_animation_view">#00B200</color>
+
+    <color name="color_tab_bar_background">#00B200</color>
+    <color name="color_tab_bar_text">#fafafa</color>
+
+    <color name="color_list_divider">#f3f3f3</color>
+    <color name="color_dialog_divider">#f3f3f3</color>
+    <color name="color_dialog_message">#424242</color>
+
+    <color name="color_indicator_title">#212121</color>
+    <color name="color_indicator_message">#9b9b9b</color>
+
+    <color name="color_survey_state_new">#9b9b9b</color>
+    <color name="color_survey_state_submitted">#3caa3c</color>
+    <color name="color_survey_state_sync_error">#ff3030</color>
+
+    <color name="color_image_photo">#d4d4d4</color>
+    <color name="color_image_photo_border">#00B200</color>
+
+    <color name="color_welcome_start">#212121</color>
+    <color name="color_welcome_message">#212121</color>
+
+    <color name="color_image_button">#00B200</color>
+    <color name="color_image_button_navigation">#0079a4</color>
+    <color name="color_image_button_separator">#f7f7f7</color>
+    <color name="color_items_separator">#424242</color>
+
+    <color name="color_title_text">#424242</color>
+    <color name="color_subtitle_text">#808080</color>
+    <color name="color_label_text">#2093ee</color>
+
+    <color name="color_edit_text">#2093ee</color>
+    <color name="color_edit_tint">#1798c8</color>
+    <color name="color_edit_error_hint">@android:color/holo_red_dark</color>
+    <color name="color_edit_text_enabled">#0079a4</color>
+    <color name="color_edit_text_disabled">#808080</color>
+    <color name="color_edit_text_background">#cdcdcd</color>
+
+    <color name="color_radio_button_text">#424242</color>
+
+    <color name="color_indicator_start">#005fb9</color>
+    <color name="color_indicator_end">#90C9F6</color>
+
+    <color name="color_tab_indicator">#fafafa</color>
+
 </resources>

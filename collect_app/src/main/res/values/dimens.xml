@@ -1,0 +1,17 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="farmer_photo_size">205dp</dimen>
+    <dimen name="field_photo_size">205dp</dimen>
+    <dimen name="crop_photo_size">205dp</dimen>
+
+    <dimen name="add_button_diameter">85dp</dimen>
+    <dimen name="add_button_elevation_low">1dp</dimen>
+    <dimen name="add_button_elevation_high">4dp</dimen>
+    <dimen name="add_button_margin">15dp</dimen>
+
+    <dimen name="welcome_title">42sp</dimen>
+    <dimen name="welcome_message">26sp</dimen>
+</resources>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/TitleTheme"
+            android:text="@string/farmer_livestock_operation_title"/>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/hasLivestockOperationTitle"
+            android:text="@string/farmer_has_livestock_operation"/>
+
+        <RadioGroup
+            style="@style/RadioGroupTheme"
+            android:id="@+id/hasLivestockOperationGroup"
+            android:orientation="horizontal"/>
+
+        <TextView
+            style="@style/TitleTheme"
+            android:id="@+id/practiceForageCropsTitle"
+            android:text="@string/farmer_practice_forage_crops_title"/>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/foragePracticeTitle"
+            android:text="@string/farmer_has_practice_forage_crops"/>
+
+        <RadioGroup
+            style="@style/RadioGroupTheme"
+            android:id="@+id/foragePracticeGroup"
+            android:orientation="horizontal"/>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/hasProfessionalOrganizationTitle"
+            android:text="@string/farmer_has_professional_organization_breeders"/>
+
+        <RadioGroup
+            style="@style/RadioGroupTheme"
+            android:id="@+id/hasProfessionalOrganizationGroup"
+            android:orientation="horizontal"/>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/professionalOrganizationNameTitle"
+            android:text="@string/farmer_professional_organization_breeders_name"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/professionalOrganizationNameText"
+            android:inputType="text" />
+
+        <TextView
+            style="@style/TitleTheme"
+            android:id="@+id/securingLivestockTitle"
+            android:text="@string/farmer_securing_livestock"/>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/hasInsurancePolicyTitle"
+            android:text="@string/farmer_has_insurance_policy"/>
+
+        <RadioGroup
+            style="@style/RadioGroupTheme"
+            android:id="@+id/hasInsurancePolicyGroup"
+            android:orientation="horizontal"/>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/insuranceCompanyNameTitle"
+            android:text="@string/farmer_insurance_company_name"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/insuranceCompanyNameText"
+            android:inputType="text" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/hasPracticeMicrochipsTitle"
+            android:text="@string/farmer_has_practice_microchips"/>
+
+        <RadioGroup
+            style="@style/RadioGroupTheme"
+            android:id="@+id/hasPracticeMicrochipsGroup"
+            android:orientation="horizontal"/>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/identificationMethodsTitle"
+            android:text="@string/farmer_identification_methods"/>
+
+        <LinearLayout
+            android:id="@+id/identificationMethodsGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"/>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/otherIdentificationMethodTitle"
+            android:text="@string/farmer_other_identification_method"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/otherIdentificationMethodText"
+            android:inputType="text" />
+
+    </LinearLayout>
+</ScrollView>

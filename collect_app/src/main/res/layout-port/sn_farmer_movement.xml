@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
+        android:layout_gravity="top|center_horizontal"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/statusBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:minHeight="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:theme="@style/Toolbar"
+            app:popupTheme="@style/ToolbarPopupMenu"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/TitleTheme"
+                    android:text="@string/farmer_movements_title"/>
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/speciesNameTitle"
+                    android:text="@string/farmer_movements_species"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RadioGroup
+                        style="@style/RadioGroupTheme"
+                        android:id="@+id/speciesGroup1"
+                        android:orientation="vertical"/>
+
+                    <RadioGroup
+                        style="@style/RadioGroupTheme"
+                        android:id="@+id/speciesGroup2"
+                        android:orientation="vertical"/>
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/birthNumberTitle"
+                    android:text="@string/farmer_movements_birth_number"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@android:color/transparent"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"/>
+
+                <EditText
+                    style="@style/EditTextTheme"
+                    android:id="@+id/birthNumberText"
+                    android:inputType="number" />
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/heritageTitle"
+                    android:text="@string/farmer_movements_heritage"/>
+
+                <EditText
+                    style="@style/EditTextTheme"
+                    android:id="@+id/heritageText"
+                    android:inputType="number" />
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/shoppingTitle"
+                    android:text="@string/farmer_movements_shopping"/>
+
+                <EditText
+                    style="@style/EditTextTheme"
+                    android:id="@+id/shoppingText"
+                    android:inputType="number" />
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/donationsTitle"
+                    android:text="@string/farmer_movements_donations"/>
+
+                <EditText
+                    style="@style/EditTextTheme"
+                    android:id="@+id/donationsText"
+                    android:inputType="number" />
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/confiageTitle"
+                    android:text="@string/farmer_movements_cofiage"/>
+
+                <EditText
+                    style="@style/EditTextTheme"
+                    android:id="@+id/confiageText"
+                    android:inputType="number" />
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/otherEntriesTitle"
+                    android:text="@string/farmer_movements_other_entries"/>
+
+                <EditText
+                    style="@style/EditTextTheme"
+                    android:id="@+id/otherEntriesText"
+                    android:inputType="number" />
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <Button
+        style="?android:attr/borderlessButtonStyle"
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:text="@string/action_done"
+        android:textColor="@android:color/white"
+        android:background="@color/color_image_button"
+        android:gravity="center" />
+
+</FrameLayout>

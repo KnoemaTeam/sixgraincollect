@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/soilTypeTitle"
+            android:text="@string/farmer_soil_type"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioGroup
+                style="@style/RadioGroupTheme"
+                android:id="@+id/soilTypeGroup1"
+                android:orientation="vertical"/>
+
+            <RadioGroup
+                style="@style/RadioGroupTheme"
+                android:id="@+id/soilTypeGroup2"
+                android:orientation="vertical"/>
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/otherSoilTypeTitle"
+            android:text="@string/farmer_other_soil_type"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/otherSoilTypeText"
+            android:inputType="text" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/reliefTypeTitle"
+            android:text="@string/farmer_relief_type"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioGroup
+                style="@style/RadioGroupTheme"
+                android:id="@+id/reliefTypeGroup1"
+                android:orientation="vertical"/>
+
+            <RadioGroup
+                style="@style/RadioGroupTheme"
+                android:id="@+id/reliefTypeGroup2"
+                android:orientation="vertical"/>
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/otherReliefTypeTitle"
+            android:text="@string/farmer_other_relief_type"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/otherReliefTypeText"
+            android:inputType="text" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/landTenureTitle"
+            android:text="@string/farmer_land_tenure"/>
+
+        <RadioGroup
+            style="@style/RadioGroupTheme"
+            android:id="@+id/landTenureGroup"
+            android:orientation="vertical"/>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/seedDateTitle"
+            android:text="@string/zambia_seed_date" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/seedDateText"
+            android:hint="@string/hint_date"
+            android:inputType="date" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/isSeedUsedTitle"
+            android:text="@string/zambia_seed_used"/>
+
+        <RadioGroup
+            style="@style/RadioGroupTheme"
+            android:id="@+id/isSeedUsedGroup"
+            android:orientation="horizontal" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/seedNameTitle"
+            android:text="@string/zambia_seed_name"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/seedNameText"
+            android:inputType="text" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/seedCostTitle"
+            android:text="@string/zambia_seed_cost"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/seedCostText"
+            android:inputType="numberDecimal" />
+
+    </LinearLayout>
+</ScrollView>

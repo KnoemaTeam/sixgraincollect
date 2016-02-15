@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/TitleTheme"
+            android:text="@string/farmer_destination_production_title"/>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/meatProductionTitle"
+            android:text="@string/farmer_destination_meat_production"/>
+
+        <LinearLayout
+            android:id="@+id/meatProductionGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"/>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/milkProductionTitle"
+            android:text="@string/farmer_destination_milk_production" />
+
+        <LinearLayout
+            android:id="@+id/milkProductionGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/eggsProductionTitle"
+            android:text="@string/farmer_destination_eggs_production" />
+
+        <LinearLayout
+            android:id="@+id/eggsProductionGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/honeyProductionTitle"
+            android:text="@string/farmer_destination_honey_production" />
+
+        <LinearLayout
+            android:id="@+id/honeyProductionGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical" />
+
+    </LinearLayout>
+</ScrollView>

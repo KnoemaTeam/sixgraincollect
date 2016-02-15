@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/farmerIdentityList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/regCardTitle"
+            android:text="@string/farmer_reg_card_number"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/regCardText"
+            android:inputType="text"/>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/governorateTitle"
+            android:text="@string/tunisia_farmer_governorate"/>
+
+        <Spinner
+            style="@style/SpinnerTheme"
+            android:id="@+id/governorateSpinner"/>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/delegationTitle"
+            android:text="@string/tunisia_farmer_delegation" />
+
+        <Spinner
+            style="@style/SpinnerTheme"
+            android:id="@+id/delegationSpinner" />
+
+    </LinearLayout>
+</ScrollView>

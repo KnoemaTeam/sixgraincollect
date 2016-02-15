@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
+        android:layout_gravity="top|center_horizontal"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/statusBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:minHeight="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:theme="@style/Toolbar"
+            app:popupTheme="@style/ToolbarPopupMenu"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/specialityTitle"
+                    android:text="@string/farmer_employee_livestock_speciality"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RadioGroup
+                        style="@style/RadioGroupTheme"
+                        android:id="@+id/specialityGroup1"
+                        android:orientation="vertical"/>
+
+                    <RadioGroup
+                        style="@style/RadioGroupTheme"
+                        android:id="@+id/specialityGroup2"
+                        android:orientation="vertical"/>
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/totalCountTitle"
+                    android:text="@string/farmer_employee_livestock_total_workforce"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@android:color/transparent"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"/>
+
+                <EditText
+                    style="@style/EditTextTheme"
+                    android:id="@+id/totalCountText"
+                    android:inputType="number" />
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/maleCountTitle"
+                    android:text="@string/farmer_employee_livestock_male_workforce"/>
+
+                <EditText
+                    style="@style/EditTextTheme"
+                    android:id="@+id/maleCountText"
+                    android:inputType="number" />
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/femaleCountTitle"
+                    android:text="@string/farmer_employee_livestock_female_workforce"/>
+
+                <EditText
+                    style="@style/EditTextTheme"
+                    android:id="@+id/femaleCountText"
+                    android:inputType="number" />
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/permanentCountTitle"
+                    android:text="@string/farmer_employee_livestock_permanent_workforce"/>
+
+                <EditText
+                    style="@style/EditTextTheme"
+                    android:id="@+id/permanentCountText"
+                    android:inputType="number" />
+
+                <TextView
+                    style="@style/SubtitleTheme"
+                    android:id="@+id/seasonalCountTitle"
+                    android:text="@string/farmer_employee_livestock_seasonal_workforce"/>
+
+                <EditText
+                    style="@style/EditTextTheme"
+                    android:id="@+id/seasonalCountText"
+                    android:inputType="number" />
+
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <Button
+        style="?android:attr/borderlessButtonStyle"
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:text="@string/action_done"
+        android:textColor="@android:color/white"
+        android:background="@color/color_image_button"
+        android:gravity="center" />
+
+</FrameLayout>

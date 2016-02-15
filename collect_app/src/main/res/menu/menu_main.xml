@@ -1,0 +1,73 @@
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="org.graindataterminal.controllers.BaseActivity">
+
+    <item android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        android:icon="@drawable/ic_settings_white_24dp"
+        android:orderInCategory="100"
+        app:showAsAction="always" >
+
+        <menu>
+            <item
+                android:id="@+id/action_interviewer"
+                android:title="@string/action_interviewer_info"
+                android:icon="@drawable/ic_perm_identity_white_24dp"
+                android:orderInCategory="200"
+                app:showAsAction="ifRoom|withText"/>
+
+            <item
+                android:id="@+id/action_device"
+                android:title="@string/action_device_info"
+                android:icon="@drawable/ic_perm_device_info_white_24dp"
+                android:orderInCategory="200"
+                app:showAsAction="ifRoom|withText"/>
+
+            <item android:id="@+id/action_synchronize"
+                android:title="@string/action_synchronization"
+                android:icon="@drawable/ic_sync_white_24dp"
+                android:orderInCategory="200"
+                app:showAsAction="ifRoom|withText" />
+
+            <item android:id="@+id/action_update"
+                android:title="@string/action_update"
+                android:icon="@drawable/ic_system_update_white_24dp"
+                android:orderInCategory="200"
+                android:visible="false"
+                app:showAsAction="ifRoom|withText" />
+
+            <item android:id="@+id/action_send_mail"
+                android:title="@string/action_send_mail"
+                android:icon="@drawable/ic_mail_white_24dp"
+                android:orderInCategory="200"
+                android:visible="false"
+                app:showAsAction="ifRoom|withText" />
+        </menu>
+    </item>
+
+    <item android:id="@+id/action_mode"
+        android:title="@string/action_settings"
+        android:icon="@drawable/ic_more_vert_white_24dp"
+        android:orderInCategory="100"
+        android:visible="false"
+        app:showAsAction="always" >
+
+        <menu>
+            <item
+                android:id="@+id/action_edit_item"
+                android:title="@string/action_edit"
+                android:icon="@drawable/ic_edit_white_24dp"
+                android:orderInCategory="300"
+                app:showAsAction="ifRoom|withText"/>
+
+            <item
+                android:id="@+id/action_delete_item"
+                android:title="@string/action_delete"
+                android:icon="@drawable/ic_clear_white_24dp"
+                android:orderInCategory="300"
+                app:showAsAction="ifRoom|withText"/>
+        </menu>
+    </item>
+</menu>

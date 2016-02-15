@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dictionary>
+    <item id="male" name="Male" group="male_female"/>
+    <item id="female" name="Female" group="male_female"/>
+    <item id="yes" name="Yes" group="yes_no"/>
+    <item id="no" name="No" group="yes_no"/>
+    <item id="on_farm" name="on-farm" group="on_farm_off_farm"/>
+    <item id="off_farm" name="off-farm" group="on_farm_off_farm"/>
+    <item id="family" name="Family" group="farm_labour"/>
+    <item id="seasonally_hired" name="Seasonally hired" group="farm_labour"/>
+    <item id="permanently_hired" name="Permanently hired" group="farm_labour"/>
+    <item id="unskilled" name="Self taught with no formal education" group="level_skill"/>
+    <item id="college_certificate" name="College certificate" group="level_skill"/>
+    <item id="college_diploma" name="College diploma" group="level_skill"/>
+    <item id="university_degree" name="University Degree" group="level_skill"/>
+    <item id="public_gathering" name="Public gathering" group="information"/>
+    <item id="radio" name="Radio" group="information"/>
+    <item id="newspaper_publication" name="Newspaper/publication" group="information"/>
+    <item id="internet" name="Internet" group="information"/>
+    <item id="friends" name="Friends and relatives" group="information"/>
+    <item id="head" name="Head" group="relationship"/>
+    <item id="spouse" name="Spouse" group="relationship"/>
+    <item id="child_ownstep" name="Child (own/step)" group="relationship"/>
+    <item id="parent_parent_in_law" name="Parent/Parent in-law" group="relationship"/>
+    <item id="brother_sister" name="Brother/Sister" group="relationship"/>
+    <item id="other_relatives" name="Other Relatives" group="relationship"/>
+    <item id="unrelated" name="Unrelated" group="relationship"/>
+    <item id="maize" name="Maize" group="crop"/>
+    <item id="sorghum" name="Sorghum" group="crop"/>
+    <item id="rice" name="Rice" group="crop"/>
+    <item id="millet" name="Millet" group="crop"/>
+    <item id="sunflower" name="Sunflower" group="crop"/>
+    <item id="groundnuts" name="Groundnuts" group="crop"/>
+    <item id="soybeans" name="Soybeans" group="crop"/>
+    <item id="seed_cotton" name="Seed Cotton" group="crop"/>
+    <item id="irish_potatoes" name="Irish potatoes" group="crop"/>
+    <item id="v_tobacco" name="V. Tobacco" group="crop"/>
+    <item id="b_tobacco" name="B. Tobacco" group="crop"/>
+    <item id="mixed_beans" name="Mixed beans" group="crop"/>
+    <item id="sweet_potatoes" name="Sweet Potatoes" group="crop"/>
+    <item id="cassava" name="Cassava" group="crop"/>
+    <item id="cabbage" name="Cabbage" group="crop"/>
+    <item id="rape" name="Rape" group="crop"/>
+    <item id="spinach" name="Spinach" group="crop"/>
+    <item id="tomato" name="Tomato" group="crop"/>
+    <item id="onion" name="Onion" group="crop"/>
+    <item id="okra" name="Okra" group="crop"/>
+    <item id="eggplant" name="Eggplant" group="crop"/>
+    <item id="pumpkin" name="Pumpkin" group="crop"/>
+    <item id="chilies" name="Chilies" group="crop"/>
+    <item id="cauliflower" name="Cauliflower" group="crop"/>
+    <item id="carrots" name="Carrots" group="crop"/>
+    <item id="impwa" name="Impwa" group="crop"/>
+    <item id="chinese_cabbage" name="Chinese cabbage" group="crop"/>
+    <item id="sugar_cane" name="Sugar Cane" group="crop"/>
+    <item id="lima" name="Lima" group="unit"/>
+    <item id="acre" name="Acre" group="unit"/>
+    <item id="hectare" name="Hectare" group="unit"/>
+    <item id="sq_metres" name="Sq Metres" group="unit"/>
+    <item id="rainfed" name="Rainfed" group="rainfed_irrigation"/>
+    <item id="irrigation" name="Irrigation" group="rainfed_irrigation"/>
+    <item id="domestic_consumption" name="Domestic consumption" group="domestic_income"/>
+    <item id="income_generation" name="Income generation" group="domestic_income"/>
+    <item id="cattle_donkey" name="Cattle/Donkey" group="agricultural_machinery"/>
+    <item id="tractor_2wd_4wd" name="Tractor (2wd/4wd)" group="agricultural_machinery"/>
+    <item id="planter" name="Planter" group="agricultural_machinery"/>
+    <item id="disc_ridger_plough" name="Disc/ridger plough" group="agricultural_machinery"/>
+    <item id="disc_harrow" name="Disc harrow" group="agricultural_machinery"/>
+    <item id="hand_hoe" name="Hand Hoe" group="agricultural_machinery"/>
+    <item id="axe" name="Axe" group="agricultural_machinery"/>
+    <item id="combine_harvester" name="Combine Harvester" group="agricultural_machinery"/>
+    <item id="cultivator" name="Cultivator" group="agricultural_machinery"/>
+    <item id="ripper" name="Ripper" group="agricultural_machinery"/>
+    <item id="sprayer" name="Sprayer" group="agricultural_machinery"/>
+    <item id="tractor_trailer" name="Tractor trailer" group="agricultural_machinery"/>
+    <item id="spray_race" name="Spray Race" group="agricultural_machinery"/>
+    <item id="dip_tank" name="Dip tank" group="agricultural_machinery"/>
+    <item id="lusaka_province" name="Lusaka Province" group="province"/>
+    <item id="copperbelt_province" name="Copperbelt Province" group="province"/>
+    <item id="southern_province" name="Southern Province" group="province"/>
+    <item id="north_western_province" name="North-Western Province" group="province"/>
+    <item id="northern_province" name="Northern Province" group="province"/>
+    <item id="luapula_province" name="Luapula Province" group="province"/>
+    <item id="eastern_province" name="Eastern Province" group="province"/>
+    <item id="central_province" name="Central Province" group="province"/>
+    <item id="western_province" name="Western Province" group="province"/>
+    <item id="muchinga_province" name="Muchinga Province" group="province"/>
+    <item id="lusaka" name="Lusaka" group="district"/>
+    <item id="luangwa" name="Luangwa" group="district"/>
+    <item id="kafue" name="Kafue" group="district"/>
+    <item id="chongwe" name="Chongwe" group="district"/>
+    <item id="ndola" name="Ndola" group="district"/>
+    <item id="mufulira" name="Mufulira" group="district"/>
+    <item id="mpongwe" name="Mpongwe" group="district"/>
+    <item id="masaiti" name="Masaiti" group="district"/>
+    <item id="lufwanyama" name="Lufwanyama" group="district"/>
+    <item id="luanshya" name="Luanshya" group="district"/>
+    <item id="kitwe" name="Kitwe" group="district"/>
+    <item id="kalulushi" name="Kalulushi" group="district"/>
+    <item id="chingola" name="Chingola" group="district"/>
+    <item id="chililabombwe" name="Chililabombwe" group="district"/>
+    <item id="sinazongwe" name="Sinazongwe" group="district"/>
+    <item id="siavonga" name="Siavonga" group="district"/>
+    <item id="namwala" name="Namwala" group="district"/>
+    <item id="monze" name="Monze" group="district"/>
+    <item id="mazabuka" name="Mazabuka" group="district"/>
+    <item id="livingstone" name="Livingstone" group="district"/>
+    <item id="choma" name="Choma" group="district"/>
+    <item id="kazungula" name="Kazungula" group="district"/>
+    <item id="gwembe" name="Gwembe" group="district"/>
+    <item id="itezhi_tezhi" name="Itezhi-Tezhi" group="district"/>
+    <item id="kalomo" name="Kalomo" group="district"/>
+    <item id="kasempa" name="Kasempa" group="district"/>
+    <item id="zambezi" name="Zambezi" group="district"/>
+    <item id="solwezi" name="Solwezi" group="district"/>
+    <item id="mwinilunga" name="Mwinilunga" group="district"/>
+    <item id="kabompo" name="Kabompo" group="district"/>
+    <item id="mufumbwe" name="Mufumbwe" group="district"/>
+    <item id="chavuma" name="Chavuma" group="district"/>
+    <item id="kasama" name="Kasama" group="district"/>
+    <item id="mungwi" name="Mungwi" group="district"/>
+    <item id="mpulungu" name="Mpulungu" group="district"/>
+    <item id="kaputa" name="Kaputa" group="district"/>
+    <item id="mporokoso" name="Mporokoso" group="district"/>
+    <item id="mbala" name="Mbala" group="district"/>
+    <item id="luwingu" name="Luwingu" group="district"/>
+    <item id="chilubi" name="Chilubi" group="district"/>
+    <item id="samfya" name="Samfya" group="district"/>
+    <item id="nchelenge" name="Nchelenge" group="district"/>
+    <item id="mwense" name="Mwense" group="district"/>
+    <item id="milenge" name="Milenge" group="district"/>
+    <item id="mansa" name="Mansa" group="district"/>
+    <item id="kawambwa" name="Kawambwa" group="district"/>
+    <item id="chiengi" name="Chiengi" group="district"/>
+    <item id="petauke" name="Petauke" group="district"/>
+    <item id="nyimba" name="Nyimba" group="district"/>
+    <item id="mambwe" name="Mambwe" group="district"/>
+    <item id="lundazi" name="Lundazi" group="district"/>
+    <item id="katete" name="Katete" group="district"/>
+    <item id="chipata" name="Chipata" group="district"/>
+    <item id="chadiza" name="Chadiza" group="district"/>
+    <item id="serenje" name="Serenje" group="district"/>
+    <item id="mumbwa" name="Mumbwa" group="district"/>
+    <item id="mkushi" name="Mkushi" group="district"/>
+    <item id="kapiri_mposhi" name="Kapiri Mposhi" group="district"/>
+    <item id="kabwe" name="Kabwe" group="district"/>
+    <item id="chibombo" name="Chibombo" group="district"/>
+    <item id="senanga" name="Senanga" group="district"/>
+    <item id="shangombo" name="Shangombo" group="district"/>
+    <item id="sesheke" name="Sesheke" group="district"/>
+    <item id="mongu" name="Mongu" group="district"/>
+    <item id="lukulu" name="Lukulu" group="district"/>
+    <item id="kaoma" name="Kaoma" group="district"/>
+    <item id="kalabo" name="Kalabo" group="district"/>
+    <item id="nakonde" name="Nakonde" group="district"/>
+    <item id="chama" name="Chama" group="district"/>
+    <item id="mpika" name="Mpika" group="district"/>
+    <item id="isoka" name="Isoka" group="district"/>
+    <item id="chinsali" name="Chinsali" group="district"/>
+    <item id="cattle_beef" name="Cattle (Beef)" group="livestock"/>
+    <item id="cattle_dairy" name="Cattle (Dairy)" group="livestock"/>
+    <item id="chicken_broiler" name="Chicken (Broiler)" group="livestock"/>
+    <item id="chicken_village" name="Chicken (Village)" group="livestock"/>
+    <item id="chicken_layers" name="Chicken (Layers)" group="livestock"/>
+    <item id="ducks" name="Ducks" group="livestock"/>
+    <item id="guinea_fowl" name="Guinea Fowl" group="livestock"/>
+    <item id="other_poultry" name="Other Poultry" group="livestock"/>
+    <item id="game" name="Game" group="livestock"/>
+    <item id="pigs" name="Pigs" group="livestock"/>
+    <item id="sheep" name="Sheep" group="livestock"/>
+    <item id="goats" name="Goats" group="livestock"/>
+    <item id="donkeys" name="Donkeys" group="livestock"/>
+    <item id="bees" name="Bees" group="livestock"/>
+    <item id="dogs" name="Dogs" group="livestock"/>
+    <item id="horses" name="Horses" group="livestock"/>
+    <item id="rabbits" name="Rabbits" group="livestock"/>
+    <item id="spotted_bream" name="Spotted bream" group="fish"/>
+    <item id="red_breasted_bream" name="Red breasted bream" group="fish"/>
+    <item id="green_headed_bream" name="Green headed bream" group="fish"/>
+    <item id="nile_bream" name="Nile bream" group="fish"/>
+    <item id="mixed" name="Mixed" group="fish"/>
+    <item id="cat_fish" name="Cat Fish" group="fish"/>
+    <item id="carp_fish" name="Carp Fish" group="fish"/>
+    <item id="cray_fish" name="Cray Fish" group="fish"/>
+    <item id="croplands" name="Croplands (fallow and active fields with natural vegetation in between fields)" group="non_field_type"/>
+    <item id="grasslands" name="Grasslands (not cultivated)" group="non_field_type"/>
+    <item id="shrubland_open" name="Shrubland/Savannas (few shrubs less than 5 feet high, grass)" group="non_field_type"/>
+    <item id="shrubland_dense" name="Shrublands, Closed (continuous shrub canopy, little grass)" group="non_field_type"/>
+    <item id="forest_open" name="Forest, open/woody savanna (natural mosaic of shrubs, trees and grass)" group="non_field_type"/>
+    <item id="forest_moderate" name="Forest, moderate (mixed canopy of trees and shrubs, little grass)" group="non_field_type"/>
+    <item id="forest_dense" name="Forest, dense (closed canopy of trees, few shrubs and grass)" group="non_field_type"/>
+    <item id="permanent_wetland" name="Permanent wetland (water-logged soils and vegetation)" group="non_field_type"/>
+    <item id="urban_continuous" name="Urban, Continuous (houses, streets, few trees or grass patches)" group="non_field_type"/>
+    <item id="urban_discontinuous" name="Urban, Discontinuous (mostly grass or trees with few houses)" group="non_field_type"/>
+    <item id="barren" name="Barren or sparsely vegetated" group="non_field_type"/>
+    <item id="water" name="Water body" group="non_field_type"/>
+    <item id="other_nonfield" name="Other" group="non_field_type"/>
+    <item id="fertilizer_light" name="1-10 kg" group="fertilizer_amount"/>
+    <item id="fertilizer_heavy" name="11-20kg" group="fertilizer_amount"/>
+</dictionary>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/TitleTheme"
+            android:text="@string/farmer_livestock_credit_title"/>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/hasLivestockCredit"
+            android:text="@string/farmer_has_livestock_credit"/>
+
+        <RadioGroup
+            style="@style/RadioGroupTheme"
+            android:id="@+id/hasLivestockCreditGroup"
+            android:orientation="horizontal"/>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/livestockCreditAmountTitle"
+            android:text="@string/farmer_livestock_credit_amount"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/livestockCreditAmountText"
+            android:inputType="numberDecimal" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/livestockCreditSourceTitle"
+            android:text="@string/farmer_livestock_credit_source"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/livestockCreditSourceGroup1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"/>
+
+            <LinearLayout
+                android:id="@+id/livestockCreditSourceGroup2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"/>
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/livestockCreditDateCompletionTitle"
+            android:text="@string/farmer_livestock_credit_completion_date"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/livestockCreditDateCompletionText"
+            android:hint="@string/hint_date"
+            android:inputType="date" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/livestockCreditFirstDateTitle"
+            android:text="@string/farmer_livestock_credit_repayment_first_date"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/livestockCreditFirstDateText"
+            android:hint="@string/hint_date"
+            android:inputType="date" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/livestockCreditLastDateTitle"
+            android:text="@string/farmer_livestock_credit_repayment_last_date"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/livestockCreditLastDateText"
+            android:hint="@string/hint_date"
+            android:inputType="date" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/livestockCreditUsageTitle"
+            android:text="@string/farmer_livestock_credit_usage"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/livestockCreditUsageGroup1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"/>
+
+            <LinearLayout
+                android:id="@+id/livestockCreditUsageGroup2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"/>
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/livestockCreditInfoTitle"
+            android:text="@string/farmer_livestock_credit_info"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/livestockCreditInfoGroup1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"/>
+
+            <LinearLayout
+                android:id="@+id/livestockCreditInfoGroup2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/zoneCensusTitle"
+            android:text="@string/farmer_zone_census"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/zoneCensusText"
+            android:inputType="text" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/zoneTitle"
+            android:text="@string/farmer_zone"/>
+
+        <RadioGroup
+            style="@style/RadioGroupTheme"
+            android:id="@+id/zoneGroup"
+            android:orientation="horizontal"/>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/postBoxTitle"
+            android:text="@string/farmer_post_box"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/postBoxText"
+            android:hint="@string/hint_post_box"
+            android:inputType="textPostalAddress" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/faxTitle"
+            android:text="@string/farmer_fax"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/faxText"
+            android:hint="@string/hint_fax_number"
+            android:inputType="text" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/phoneTitle"
+            android:text="@string/farmer_phone"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/phoneText"
+            android:hint="@string/hint_phone_number"
+            android:inputType="phone" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/cellPhoneTitle"
+            android:text="@string/farmer_cell_phone"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/cellPhoneText"
+            android:hint="@string/hint_phone_number"
+            android:inputType="phone" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/emailTitle"
+            android:text="@string/farmer_mail"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/emailText"
+            android:hint="@string/hint_email"
+            android:inputType="textEmailAddress" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/webSiteTitle"
+            android:text="@string/farmer_web_site"/>
+
+        <EditText
+            style="@style/EditTextTheme"
+            android:id="@+id/webSiteText"
+            android:hint="@string/hint_web_site"
+            android:inputType="textUri" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/regimeTitle"
+            android:text="@string/farmer_regime_of_exploitation"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioGroup
+                style="@style/RadioGroupTheme"
+                android:id="@+id/regimeGroup1"/>
+
+            <RadioGroup
+                style="@style/RadioGroupTheme"
+                android:id="@+id/regimeGroup2"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

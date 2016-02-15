@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/farmerActivitiesInfo"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/livelihoodSourceTitle"
+            android:text="@string/farmer_livelihood_source"/>
+
+        <RadioGroup
+            style="@style/RadioGroupTheme"
+            android:id="@+id/livelihoodSourceGroup"
+            android:orientation="vertical" />
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/labourSourceTitle"
+            android:text="@string/farmer_labour_source"/>
+
+        <RadioGroup
+            style="@style/RadioGroupTheme"
+            android:id="@+id/labourSourceGroup"
+            android:orientation="vertical" />
+
+    </LinearLayout>
+</ScrollView>

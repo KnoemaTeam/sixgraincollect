@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/farmerIdentityList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/regionTitle"
+            android:text="@string/farmer_region"/>
+
+        <Spinner
+            style="@style/SpinnerTheme"
+            android:id="@+id/regionSpinner"/>
+
+        <TextView
+            style="@style/SubtitleTheme"
+            android:id="@+id/departmentTitle"
+            android:text="@string/farmer_department" />
+
+        <Spinner
+            style="@style/SpinnerTheme"
+            android:id="@+id/departmentSpinner" />
+
+    </LinearLayout>
+</ScrollView>
