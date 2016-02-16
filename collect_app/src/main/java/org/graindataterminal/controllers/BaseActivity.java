@@ -48,8 +48,6 @@ import java.util.List;
 import java.util.Map;
 
 public abstract class BaseActivity extends AppCompatActivity implements NoticeDialogListener {
-    protected View statusBar = null;
-    protected Toolbar toolbar = null;
     protected LoadingIndicator indicator = null;
     protected SpinnerIndicator spinner = null;
     protected String updateURL = Connection.UPDATE_URL;

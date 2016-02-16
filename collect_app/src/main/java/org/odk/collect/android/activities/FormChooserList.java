@@ -1,6 +1,7 @@
 package org.odk.collect.android.activities;
 
 import org.graindataterminal.controllers.BaseActivity;
+import org.graindataterminal.controllers.InterviewerActivity;
 import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
 import org.odk.collect.android.listeners.DeleteInstancesListener;
@@ -61,13 +62,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * Responsible for displaying all the valid forms in the forms directory. Stores the path to
- * selected form for use by {@link MainMenuActivity}.
- *
- * @author Yaw Anokwa (yanokwa@gmail.com)
- * @author Carl Hartung (carlhartung@gmail.com)
- */
 public class FormChooserList extends BaseActivity implements DiskSyncListener, DeleteInstancesListener, LoaderManager.LoaderCallbacks<Cursor>, DialogConstructor.NotificationListener, InstanceUploaderListener, FormListDownloaderListener, FormDownloaderListener {
     public static final int FORM_LIST_VIEW_ID = 111110;
     public static final int DATA_LIST_VIEW_ID = 111111;
@@ -206,9 +200,16 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
         switch (item.getItemId()) {
             case R.id.action_interviewer_profile:
                 Collect.getInstance().getActivityLogger().logAction(this, "onOptionsItemSelected", "MENU_PREFERENCES");
+                //startActivity(new Intent(this, SettingsActivity.class));
+                startActivity(new Intent(this, InterviewerActivity.class));
+                break;
 
-                Intent preferences = new Intent(this, SettingsActivity.class);
-                startActivity(preferences);
+            case R.id.action_update:
+                checkApplicationUpdates(true);
+                break;
+
+            case R.id.action_send_mail:
+                sendMail();
                 break;
 
             case R.id.action_device:
