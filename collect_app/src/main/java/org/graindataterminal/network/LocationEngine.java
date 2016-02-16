@@ -1,13 +1,9 @@
 package org.graindataterminal.network;
 
 import android.Manifest;
-import android.app.Activity;
-import android.content.Context;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
-import android.location.GpsStatus;
 import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
@@ -18,7 +14,7 @@ import com.google.android.gms.location.LocationAvailability;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
-import org.graindataterminal.controllers.MyApp;
+
 import org.odk.collect.android.application.Collect;
 
 public class LocationEngine implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
@@ -54,7 +50,7 @@ public class LocationEngine implements GoogleApiClient.ConnectionCallbacks, Goog
 
     protected LocationEngine() {
         if (apiClient == null) {
-            apiClient = new GoogleApiClient.Builder(Collect.getContext())
+            apiClient = new GoogleApiClient.Builder(Collect.getInstance().getContext())
                     .addConnectionCallbacks(this)
                     .addOnConnectionFailedListener(this)
                     .addApi(LocationServices.API)
@@ -118,8 +114,8 @@ public class LocationEngine implements GoogleApiClient.ConnectionCallbacks, Goog
     }
 
     protected boolean isLocationServicesGranted() {
-        return ActivityCompat.checkSelfPermission(Collect.getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(Collect.getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+        return ActivityCompat.checkSelfPermission(Collect.getInstance().getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(Collect.getInstance().getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED;
     }
 
     protected void createLocationRequest() {

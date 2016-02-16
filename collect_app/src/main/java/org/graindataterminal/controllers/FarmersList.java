@@ -1,19 +1,15 @@
 package org.graindataterminal.controllers;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import org.graindataterminal.adapters.LinearListAdapter;
@@ -23,6 +19,7 @@ import org.graindataterminal.models.base.DataHolder;
 import org.odk.collect.android.R;
 import org.graindataterminal.network.SurveySyncTask;
 import org.graindataterminal.views.system.MessageBox;
+import org.odk.collect.android.utilities.DataUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -31,8 +28,6 @@ public class FarmersList extends BaseActivity {
     protected ImageButton addImageButton = null;
     protected ListView dataListView = null;
     protected LinearListAdapter dataAdapter = null;
-
-    protected LinearLayout welcomeScreen = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +43,6 @@ public class FarmersList extends BaseActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        setWelcomeScreen();
 
         if (dataAdapter != null)
             dataAdapter.setData(DataHolder.getInstance().getSurveys());
@@ -57,10 +51,6 @@ public class FarmersList extends BaseActivity {
     @Override
     protected void onStop() {
         super.onStop();
-
-        if (welcomeScreen != null) {
-            welcomeScreen.setVisibility(View.GONE);
-        }
     }
 
     @Override
@@ -107,7 +97,7 @@ public class FarmersList extends BaseActivity {
                 survey.setUpdateTime(Helper.getDate());
 
                 surveys.add(survey);
-                MyApp.setSurveyList(surveys);
+                DataUtils.setSurveyList(surveys);
 
                 DataHolder.getInstance().setCurrentSurveyIndex(surveys.size() - 1);
                 DataHolder.getInstance().setCurrentSurvey(survey);
@@ -127,9 +117,6 @@ public class FarmersList extends BaseActivity {
 
         if (dataAdapter != null)
             dataAdapter.setData(surveys);
-
-        if (!DataHolder.getInstance().existsSurveys())
-            welcomeScreen.setVisibility(View.VISIBLE);
     }
 
     protected void setToolbar() {
@@ -151,26 +138,9 @@ public class FarmersList extends BaseActivity {
         addImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addNewFarmer(FarmersList.this);
+                createSurvey(FarmersList.this);
             }
         });
-    }
-
-    protected void setWelcomeScreen() {
-        List<BaseSurvey> surveys = DataHolder.getInstance().getSurveys();
-
-        if (surveys.size() == 0) {
-            if (welcomeScreen != null) {
-                welcomeScreen.setVisibility(View.VISIBLE);
-            }
-            else {
-                LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                CoordinatorLayout frameLayout = (CoordinatorLayout) findViewById(R.id.contentFrame);
-
-                welcomeScreen = (LinearLayout) inflater.inflate(R.layout.app_welcome_view, frameLayout, false);
-                frameLayout.addView(welcomeScreen);
-            }
-        }
     }
 
     protected void setContentList() {
@@ -187,7 +157,7 @@ public class FarmersList extends BaseActivity {
 
                 String surveyVersion = DataHolder.getInstance().getCurrentSurvey().getSurveyVersion();
                 if (Arrays.asList(BaseSurvey.SURVEY_VERSION_CAMEROON).contains(surveyVersion)) {
-                    editCurrentFarmer(FarmersList.this);
+                    editSurvey(FarmersList.this);
                 }
                 else {
                     Intent intent = new Intent(FarmersList.this, ContentPager.class);
@@ -215,7 +185,7 @@ public class FarmersList extends BaseActivity {
                     @Override
                     protected void onSuccess(Boolean result) {
                         dataAdapter.setData(DataHolder.getInstance().getSurveys());
-                        MyApp.setSurveyList(DataHolder.getInstance().getSurveys());
+                        DataUtils.setSurveyList(DataHolder.getInstance().getSurveys());
                     }
                 }.executeOnExecutor(AsyncTask.SERIAL_EXECUTOR);
         }

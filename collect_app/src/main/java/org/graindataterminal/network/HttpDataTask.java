@@ -2,10 +2,8 @@ package org.graindataterminal.network;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import android.util.Log;
 
 import org.odk.collect.android.R;
-import org.graindataterminal.controllers.MyApp;
 import org.graindataterminal.helpers.Helper;
 import org.graindataterminal.views.system.UpdateDialog;
 

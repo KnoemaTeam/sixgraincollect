@@ -36,6 +36,7 @@ import org.graindataterminal.views.tabs.FarmerLivestockProductionList;
 import org.graindataterminal.views.tabs.FarmerMovementList;
 import org.graindataterminal.views.tabs.FarmerOwnerList;
 import org.graindataterminal.views.tabs.FieldsList;
+import org.odk.collect.android.utilities.DataUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -84,7 +85,7 @@ public class ContentPager extends BaseActivity {
             survey.setEndTime(now);
             survey.setUpdateTime(now);
 
-            MyApp.setSurveyList(surveys);
+            DataUtils.setSurveyList(surveys);
         }
     }
 
@@ -125,7 +126,7 @@ public class ContentPager extends BaseActivity {
         photoView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editCurrentFarmer(ContentPager.this);
+                editSurvey(ContentPager.this);
             }
         });
 

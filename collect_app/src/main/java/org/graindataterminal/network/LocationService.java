@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
-import org.graindataterminal.controllers.MyApp;
 import org.odk.collect.android.application.Collect;
 
 import java.util.ArrayList;
@@ -158,7 +157,7 @@ public class LocationService {
 
     private LocationManager getManager() {
         if (manager == null) {
-            manager = (LocationManager) Collect.getContext().getSystemService(Context.LOCATION_SERVICE);
+            manager = (LocationManager) Collect.getInstance().getContext().getSystemService(Context.LOCATION_SERVICE);
         }
 
         return manager;

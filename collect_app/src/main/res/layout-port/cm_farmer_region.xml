@@ -17,7 +17,7 @@
             android:text="@string/farmer_region"/>
 
         <Spinner
-            style="@style/SpinnerTheme"
+            style="@style/AppTheme.SpinnerTheme"
             android:id="@+id/regionSpinner"/>
 
         <TextView
@@ -26,7 +26,7 @@
             android:text="@string/farmer_department" />
 
         <Spinner
-            style="@style/SpinnerTheme"
+            style="@style/AppTheme.SpinnerTheme"
             android:id="@+id/departmentSpinner" />
 
     </LinearLayout>

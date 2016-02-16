@@ -17,6 +17,7 @@ package org.odk.collect.android.application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Environment;
 import android.preference.PreferenceManager;
@@ -77,7 +78,7 @@ public class Collect extends MultiDexApplication {
         Collect.mContext = base;
     }
 
-    public static Context getContext () {
+    public Context getContext () {
         return mContext;
     }
 
@@ -108,12 +109,10 @@ public class Collect extends MultiDexApplication {
     }
 
     public static int getQuestionFontsize() {
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(Collect
-                .getInstance());
-        String question_font = settings.getString(PreferencesActivity.KEY_FONT_SIZE,
-                Collect.DEFAULT_FONTSIZE);
-        int questionFontsize = Integer.valueOf(question_font);
-        return questionFontsize;
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(Collect.getInstance());
+        String question_font = settings.getString(PreferencesActivity.KEY_FONT_SIZE, Collect.DEFAULT_FONTSIZE);
+
+        return Integer.valueOf(question_font);
     }
 
     public String getVersionedAppName() {
@@ -132,15 +131,18 @@ public class Collect extends MultiDexApplication {
     }
 
     public String getAppVersionName() {
-        String versionName = "";
+        String versionName = null;
+
         try {
-            PackageInfo pinfo;
-            pinfo = getPackageManager().getPackageInfo(getPackageName(), 0);
-            versionName = pinfo.versionName;
-        } catch (NameNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            PackageManager packageManager = Collect.getInstance().getContext().getPackageManager();
+            PackageInfo packageInfo = packageManager.getPackageInfo(Collect.getInstance().getContext().getPackageName(), 0);
+
+            versionName = packageInfo.versionName;
         }
+        catch (Exception exception) {
+            exception.printStackTrace();
+        }
+
         return versionName;
     }
 
@@ -245,10 +247,9 @@ public class Collect extends MultiDexApplication {
         // log.enableWarn(false);
         // log.enableInfo(false);
         // log.enableDebug(false);
-
-        PreferenceManager.setDefaultValues(this, R.xml.settings, false);
         super.onCreate();
 
+        PreferenceManager.setDefaultValues(this, R.xml.settings, false);
         PropertyManager mgr = new PropertyManager(this);
         try {
             FormController.initializeJavaRosa(mgr);

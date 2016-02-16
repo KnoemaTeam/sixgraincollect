@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentActivity;
 import org.odk.collect.android.BuildConfig;
 import org.odk.collect.android.R;
 import org.graindataterminal.adapters.NoticeDialogListener;
-import org.graindataterminal.controllers.MyApp;
 import org.odk.collect.android.application.Collect;
 
 import java.io.PrintWriter;
@@ -30,7 +29,7 @@ public class ExceptionHandler implements Thread.UncaughtExceptionHandler, Notice
     }
 
     private static String getDetails(Throwable throwable, Integer errorCode) {
-        Context context = Collect.getContext();
+        Context context = Collect.getInstance().getContext();
         String errorMessage = "APP_ID=" + BuildConfig.APPLICATION_ID + "\n";
         errorMessage += "APP_NAME=" + context.getString(context.getApplicationInfo().labelRes) + "\n";
         errorMessage += "APP_VERSION_CODE=" + BuildConfig.VERSION_CODE + "\n";
@@ -55,8 +54,8 @@ public class ExceptionHandler implements Thread.UncaughtExceptionHandler, Notice
     @Override
     public void onDialogPositiveClick(String tag) {
         Helper.sendEmail(context,
-                Collect.getContext().getString(R.string.action_send_mail_title_error),
-                Collect.getContext().getString(R.string.action_send_mail_message),
+                Collect.getInstance().getContext().getString(R.string.action_send_mail_title_error),
+                Collect.getInstance().getContext().getString(R.string.action_send_mail_message),
                 getDetails(exception, null),
                 Helper.MAIL_TYPE_ERROR_INFO);
     }

@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import org.odk.collect.android.R;
-import org.graindataterminal.controllers.MyApp;
 import org.graindataterminal.helpers.EditTextInputFilter;
 import org.graindataterminal.helpers.Helper;
 import org.graindataterminal.models.base.BaseSurvey;
@@ -277,7 +276,7 @@ public class FarmerDetailInfo extends BaseFragment {
                 if (TextUtils.isEmpty(s)) {
                     farmerGeneralInfo.setPhoneNumber(null);
                 } else {
-                    if (PhoneNumberUtils.compare(Collect.getContext(), s.toString(), mobilePhoneText))
+                    if (PhoneNumberUtils.compare(Collect.getInstance().getContext(), s.toString(), mobilePhoneText))
                         return;
 
                     mobilePhoneText = PhoneNumberUtils.formatNumber(s.toString());

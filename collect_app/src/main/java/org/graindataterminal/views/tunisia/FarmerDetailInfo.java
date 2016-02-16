@@ -20,7 +20,6 @@ import android.widget.ScrollView;
 
 import org.graindataterminal.controllers.BaseActivity;
 import org.graindataterminal.controllers.FarmersPager;
-import org.graindataterminal.controllers.MyApp;
 import org.graindataterminal.helpers.EditTextInputFilter;
 import org.graindataterminal.helpers.Helper;
 import org.graindataterminal.models.base.BaseSurvey;
@@ -313,7 +312,7 @@ public class FarmerDetailInfo extends BaseFragment {
                     ((TunisiaSurvey) survey).setContactPhone(null);
                     notificationListener.onRequiredFieldChanged(screenIndex, FARMER_PHONE_KEY, true);
                 } else {
-                    if (PhoneNumberUtils.compare(Collect.getContext(), s.toString(), phoneText))
+                    if (PhoneNumberUtils.compare(Collect.getInstance().getContext(), s.toString(), phoneText))
                         return;
 
                     phoneText = PhoneNumberUtils.formatNumber(s.toString());

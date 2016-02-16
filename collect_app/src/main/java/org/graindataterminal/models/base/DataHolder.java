@@ -1,6 +1,5 @@
 package org.graindataterminal.models.base;
 
-import org.graindataterminal.controllers.MyApp;
 import org.graindataterminal.models.senegal.Animal;
 import org.graindataterminal.models.senegal.Employee;
 import org.graindataterminal.models.senegal.EmployeeLivestock;
@@ -13,6 +12,7 @@ import org.graindataterminal.models.senegal.LivestockProduction;
 import org.graindataterminal.models.senegal.Movement;
 import org.graindataterminal.models.senegal.OperatingEquipment;
 import org.graindataterminal.models.senegal.ProductionEquipment;
+import org.odk.collect.android.utilities.DataUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -90,12 +90,12 @@ public class DataHolder {
 
     public void setUpdateType(int updateType) {
         this.updateType = updateType;
-        MyApp.setUpdateType(updateType);
+        DataUtils.setUpdateType(updateType);
     }
 
     public int getUpdateType() {
         if (updateType == UPDATE_TYPE_NONE) {
-            updateType = MyApp.getUpdateType();
+            updateType = DataUtils.getUpdateType();
 
             if (updateType == UPDATE_TYPE_NONE)
                 updateType = UPDATE_TYPE_DEFAULT;
@@ -106,53 +106,53 @@ public class DataHolder {
 
     public void setInterviewerName(String interviewerName) {
         this.interviewerName = interviewerName;
-        MyApp.setInterviewerName(interviewerName);
+        DataUtils.setInterviewerName(interviewerName);
     }
 
     public String getInterviewerName() {
         if (interviewerName == null)
-            interviewerName = MyApp.getInterviewerName();
+            interviewerName = DataUtils.getInterviewerName();
 
         return interviewerName;
     }
 
     public void setControllerName(String controllerName) {
         this.controllerName = controllerName;
-        MyApp.setControllerName(controllerName);
+        DataUtils.setControllerName(controllerName);
     }
 
     public String getControllerName() {
         if (controllerName == null)
-            controllerName = MyApp.getControllerName();
+            controllerName = DataUtils.getControllerName();
 
         return controllerName;
     }
 
     public void setSupervisorName(String supervisorName) {
         this.supervisorName = supervisorName;
-        MyApp.setSupervisorName(supervisorName);
+        DataUtils.setSupervisorName(supervisorName);
     }
 
     public String getSupervisorName() {
         if (supervisorName == null)
-            supervisorName = MyApp.getSupervisorName();
+            supervisorName = DataUtils.getSupervisorName();
 
         return supervisorName;
     }
 
     public void setSurveysType(int surveysType) {
         this.surveysType = surveysType;
-        MyApp.setSurveysType(surveysType);
+        DataUtils.setSurveysType(surveysType);
     }
 
     public int getSurveysType() {
         if (surveysType == BaseSurvey.SURVEY_TYPE_NONE) {
-            surveysType = MyApp.getSurveysType();
+            surveysType = DataUtils.getSurveysType();
 
             if (surveysType == BaseSurvey.SURVEY_TYPE_NONE) {
                 surveysType = BaseSurvey.SURVEY_TYPE_ZAMBIA;
 
-                MyApp.setSurveysType(surveysType);
+                DataUtils.setSurveysType(surveysType);
             }
         }
 
@@ -165,7 +165,7 @@ public class DataHolder {
 
     public List<BaseSurvey> getSurveys() {
         if (surveys.size() == 0) {
-            List savedSurveys = MyApp.getSurveyList();
+            List savedSurveys = DataUtils.getSurveyList();
 
             if (savedSurveys != null) {
                 for (Object survey: savedSurveys)

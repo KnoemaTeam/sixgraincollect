@@ -113,7 +113,7 @@
             android:text="@string/farmer_nationality"/>
 
         <Spinner
-            style="@style/SpinnerTheme"
+            style="@style/AppTheme.SpinnerTheme"
             android:id="@+id/nationalitySpinner" />
 
     </LinearLayout>

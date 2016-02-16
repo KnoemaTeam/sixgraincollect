@@ -1,7 +1,6 @@
 package org.graindataterminal.views.tabs;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,11 +13,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import org.graindataterminal.adapters.ListDataAdapter;
 import org.graindataterminal.adapters.ListDataDelegate;
-import org.graindataterminal.controllers.MyApp;
 import org.graindataterminal.helpers.Helper;
 import org.graindataterminal.models.base.BaseSurvey;
 import org.graindataterminal.models.base.DataHolder;
@@ -27,6 +24,7 @@ import org.graindataterminal.models.senegal.SenegalSurvey;
 import org.odk.collect.android.R;
 import org.graindataterminal.views.base.BaseFragment;
 import org.graindataterminal.views.senegal.FarmerProductionEquipment;
+import org.odk.collect.android.utilities.DataUtils;
 
 import java.util.List;
 
@@ -87,7 +85,7 @@ public class FarmerEquipmentProductionList extends BaseFragment implements ListD
             ((SenegalSurvey) survey).setUpdateTime(now);
             ((SenegalSurvey) survey).setProductionEquipments(dataList);
 
-            MyApp.setSurveyList(DataHolder.getInstance().getSurveys());
+            DataUtils.setSurveyList(DataHolder.getInstance().getSurveys());
         }
 
         if (dataAdapter != null)

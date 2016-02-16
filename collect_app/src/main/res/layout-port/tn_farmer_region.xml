@@ -34,7 +34,7 @@
             android:text="@string/tunisia_farmer_governorate"/>
 
         <Spinner
-            style="@style/SpinnerTheme"
+            style="@style/AppTheme.SpinnerTheme"
             android:id="@+id/governorateSpinner"/>
 
         <TextView
@@ -43,7 +43,7 @@
             android:text="@string/tunisia_farmer_delegation" />
 
         <Spinner
-            style="@style/SpinnerTheme"
+            style="@style/AppTheme.SpinnerTheme"
             android:id="@+id/delegationSpinner" />
 
     </LinearLayout>

@@ -19,7 +19,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import org.graindataterminal.controllers.BaseActivity;
-import org.graindataterminal.controllers.MyApp;
 import org.graindataterminal.helpers.Helper;
 import org.graindataterminal.models.base.BaseSurvey;
 import org.graindataterminal.models.base.DataHolder;
@@ -27,6 +26,7 @@ import org.graindataterminal.models.senegal.ProductionEquipment;
 import org.graindataterminal.models.senegal.SenegalSurvey;
 import org.odk.collect.android.R;
 import org.graindataterminal.views.system.MessageBox;
+import org.odk.collect.android.utilities.DataUtils;
 
 import java.util.List;
 
@@ -123,7 +123,7 @@ public class FarmerProductionEquipment extends BaseActivity {
 
             equipmentList.remove(index);
             ((SenegalSurvey) survey).setProductionEquipments(equipmentList);
-            MyApp.setSurveyList(surveyList);
+            DataUtils.setSurveyList(surveyList);
         }
         catch (Exception exception) {
             exception.printStackTrace();

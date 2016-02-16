@@ -1,18 +1,14 @@
 package org.graindataterminal.models.base;
 
 import android.content.Context;
-import android.location.Location;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 
 import com.google.gson.annotations.SerializedName;
-import org.graindataterminal.controllers.MyApp;
-import org.graindataterminal.helpers.Helper;
-import org.graindataterminal.models.senegal.ProductionEquipment;
+
 import org.graindataterminal.models.senegal.SenegalSurvey;
 import org.graindataterminal.models.tunisia.TunisiaField;
 import org.graindataterminal.models.zambia.ZambiaField;
-import org.graindataterminal.network.LocationService;
 import org.odk.collect.android.application.Collect;
 
 import java.util.ArrayList;
@@ -35,7 +31,9 @@ public abstract class BaseSurvey implements Cloneable {
     public final static int SURVEY_TYPE_TUNISIA = 2;
     public final static int SURVEY_TYPE_SENEGAL = 3;
     public final static int SURVEY_TYPE_CAMEROON = 4;
+    public final static int SURVEY_TYPE_GAMBIA = 5;
 
+    public final static String[] SURVEY_VERSION_NONE = {"none"};
     public final static String[] SURVEY_VERSION_ZAMBIA = {"za20150821", "za20151210"};
     public final static String[] SURVEY_VERSION_TUNISIA = {"tn20150916"};
     public final static String[] SURVEY_VERSION_SENEGAL = {"sn20150916", "sn20151111", "sn20151130"};
@@ -432,7 +430,7 @@ public abstract class BaseSurvey implements Cloneable {
     public abstract List getFields();
 
     protected void setDeviceInfo () {
-        Context context = Collect.getContext();
+        Context context = Collect.getInstance().getContext();
         TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 
         setId(UUID.randomUUID().toString());

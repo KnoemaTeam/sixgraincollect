@@ -3,11 +3,9 @@ package org.graindataterminal.controllers;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.SparseArray;
@@ -40,6 +38,8 @@ import org.graindataterminal.views.system.MessageBox;
 import org.graindataterminal.views.system.SpinnerIndicator;
 import org.odk.collect.android.activities.*;
 import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.constants.Constants;
+import org.odk.collect.android.utilities.DataUtils;
 
 import java.io.File;
 import java.lang.reflect.Type;
@@ -187,7 +187,7 @@ public abstract class BaseActivity extends AppCompatActivity implements NoticeDi
 
     protected void openDeviceInfo () {
         try {
-            Intent intent = new Intent(this, org.odk.collect.android.activities.DeviceActivity.class);
+            Intent intent = new Intent(this, DeviceActivity.class);
             startActivity(intent);
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -202,7 +202,7 @@ public abstract class BaseActivity extends AppCompatActivity implements NoticeDi
         }
     }
 
-    public void addNewFarmer (Context context) {
+    public void createSurvey(Context context) {
         try {
             int type = DataHolder.getInstance().getSurveysType();
             if (type == BaseSurvey.SURVEY_TYPE_ZAMBIA) {
@@ -233,7 +233,7 @@ public abstract class BaseActivity extends AppCompatActivity implements NoticeDi
             List<BaseSurvey> surveys = DataHolder.getInstance().getSurveys();
 
             DataHolder.getInstance().setCurrentSurveyIndex(surveys.size());
-            DataHolder.getInstance().getCurrentSurvey().setAppVersion(MyApp.getAppVersionName());
+            DataHolder.getInstance().getCurrentSurvey().setAppVersion(Collect.getInstance().getAppVersionName());
             DataHolder.getInstance().getCurrentSurvey().setState(BaseSurvey.SURVEY_STATE_NEW);
             DataHolder.getInstance().getCurrentSurvey().setMode(BaseSurvey.SURVEY_EDIT_MODE);
             DataHolder.getInstance().getCurrentSurvey().setStartTime(Helper.getDate());
@@ -246,7 +246,7 @@ public abstract class BaseActivity extends AppCompatActivity implements NoticeDi
         }
     }
 
-    public void editCurrentFarmer (Context context) {
+    public void editSurvey(Context context) {
         try {
             BaseSurvey survey = DataHolder.getInstance().getCurrentSurvey();
             survey.setMode(BaseSurvey.SURVEY_READ_MODE);
@@ -304,10 +304,10 @@ public abstract class BaseActivity extends AppCompatActivity implements NoticeDi
 
             if (index != -1) {
                 surveyList.remove(index);
-                MyApp.setSurveyList(surveyList);
+                DataUtils.setSurveyList(surveyList);
             }
 
-            Intent intent = new Intent(this, FarmersList.class);
+            Intent intent = new Intent(this, FormChooserList.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
@@ -351,7 +351,7 @@ public abstract class BaseActivity extends AppCompatActivity implements NoticeDi
 
             if (surveyIndex != -1 && fieldIndex <= fields.size() - 1) {
                 fields.remove(fieldIndex);
-                MyApp.setSurveyList(surveyList);
+                DataUtils.setSurveyList(surveyList);
             }
         }
         catch (Exception exception) {
@@ -490,7 +490,7 @@ public abstract class BaseActivity extends AppCompatActivity implements NoticeDi
     }
 
     protected boolean isNeedUpdate(String result) {
-        String currentVersionName = MyApp.getAppVersionName();
+        String currentVersionName = Collect.getInstance().getAppVersionName();
         String[] currentVersions = currentVersionName.split("\\.");
         String[] serverVersions = result.split("\\.");
 
@@ -520,7 +520,7 @@ public abstract class BaseActivity extends AppCompatActivity implements NoticeDi
                         updateIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         updateIntent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
 
-                        Collect.getContext().startActivity(updateIntent);
+                        Collect.getInstance().getContext().startActivity(updateIntent);
                     }
                     catch (Exception exception) {
                         exception.printStackTrace();
@@ -532,7 +532,7 @@ public abstract class BaseActivity extends AppCompatActivity implements NoticeDi
             protected void onError(int responseCode, Exception exception) {
 
             }
-        }.execute(updateURL, MyApp.UPDATE_FILE_INSTALLER);
+        }.execute(updateURL, Constants.UPDATE_FILE_INSTALLER);
     }
 
     protected void sendMail() {

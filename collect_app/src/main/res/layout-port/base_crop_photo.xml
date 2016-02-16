@@ -23,6 +23,7 @@
             android:contentDescription="@null"/>
 
         <Button
+            style="@style/NavigationButtonTheme"
             android:id="@+id/photoButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,7 +32,6 @@
             android:layout_marginBottom="5dp"
             android:paddingLeft="25dp"
             android:paddingRight="25dp"
-            android:background="@drawable/view_image_button_navigation"
             android:text="@string/action_capture_photo" />
 
     </LinearLayout>

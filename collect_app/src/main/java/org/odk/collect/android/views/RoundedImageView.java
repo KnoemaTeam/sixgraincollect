@@ -77,7 +77,7 @@ public class RoundedImageView extends ImageView {
         final Paint paint = new Paint();
         final Rect rect = new Rect(0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight());
 
-        Context context = Collect.getContext();
+        Context context = Collect.getInstance().getContext();
 
         paint.setAntiAlias(true);
         paint.setFilterBitmap(true);

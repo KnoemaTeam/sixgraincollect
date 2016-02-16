@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import org.graindataterminal.controllers.MyApp;
 import org.graindataterminal.helpers.Helper;
 import org.graindataterminal.models.base.BaseSurvey;
 import org.graindataterminal.models.base.DataHolder;
@@ -84,7 +83,7 @@ public class FieldPhoto extends BaseFragment {
 
     protected void takeNewPhoto () {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        Context context = Collect.getContext();
+        Context context = Collect.getInstance().getContext();
 
         if (intent.resolveActivity(context.getPackageManager()) != null) {
             File photoFile = null;

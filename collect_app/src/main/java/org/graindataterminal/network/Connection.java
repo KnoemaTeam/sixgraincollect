@@ -4,7 +4,6 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 
 import org.odk.collect.android.R;
-import org.graindataterminal.controllers.MyApp;
 import org.odk.collect.android.application.Collect;
 
 public class Connection {
@@ -18,7 +17,7 @@ public class Connection {
     private ConnectivityManager cm = null;
 
     public Connection() {
-        cm = (ConnectivityManager) Collect.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        cm = (ConnectivityManager) Collect.getInstance().getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
     }
 
     public static Connection getInstance() {
@@ -33,7 +32,7 @@ public class Connection {
     }
 
     public String getNetworkType() {
-        Context context = Collect.getContext();
+        Context context = Collect.getInstance().getContext();
         int type = cm.getActiveNetworkInfo().getType();
 
         if (type == ConnectivityManager.TYPE_MOBILE) {

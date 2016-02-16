@@ -1,16 +1,21 @@
 package org.odk.collect.android.activities;
 
+import org.graindataterminal.adapters.LinearListAdapter;
 import org.graindataterminal.controllers.BaseActivity;
-import org.graindataterminal.controllers.InterviewerActivity;
+import org.graindataterminal.controllers.ContentPager;
+import org.graindataterminal.helpers.Helper;
+import org.graindataterminal.models.base.BaseSurvey;
+import org.graindataterminal.models.base.DataHolder;
+import org.javarosa.core.util.DataUtil;
 import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.constants.Constants;
 import org.odk.collect.android.listeners.DeleteInstancesListener;
 import org.odk.collect.android.listeners.DiskSyncListener;
 import org.odk.collect.android.listeners.FormDownloaderListener;
 import org.odk.collect.android.listeners.FormListDownloaderListener;
 import org.odk.collect.android.listeners.InstanceUploaderListener;
 import org.odk.collect.android.logic.FormDetails;
-import org.odk.collect.android.preferences.SettingsActivity;
 import org.odk.collect.android.preferences.SettingsFragment;
 import org.odk.collect.android.provider.FormsProviderAPI.FormsColumns;
 import org.odk.collect.android.provider.InstanceProviderAPI;
@@ -19,6 +24,7 @@ import org.odk.collect.android.tasks.DiskSyncTask;
 import org.odk.collect.android.tasks.DownloadFormListTask;
 import org.odk.collect.android.tasks.DownloadFormsTask;
 import org.odk.collect.android.tasks.InstanceUploaderTask;
+import org.odk.collect.android.utilities.DataUtils;
 import org.odk.collect.android.views.DialogConstructor;
 
 import android.content.ContentUris;
@@ -33,16 +39,17 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.ActionMode;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -50,12 +57,18 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.Adapter;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -80,6 +93,7 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
     private static final String FORM_VERSION_KEY = "formversion";
 
     private SharedPreferences mSettings = null;
+    protected LinearLayout mSplashView = null;
 
     private DiskSyncTask mDiskSyncTask = null;
     private InstanceUploaderTask mInstanceUploaderTask = null;
@@ -88,11 +102,13 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
     private DownloadFormsTask mDownloadFormsTask = null;
 
     private ListView mDataListView = null;
+    private List<BaseSurvey> mDataList = new ArrayList<>();
     private SparseArray<String> mFormList = new SparseArray<>();
     private Map<String, FormDetails> mFormData = new HashMap<>();
     private List<Map<String, String>> mFormDataList = new ArrayList<>();
     private List<Long> mSelectedDataList = new ArrayList<>();
 
+    private LinearListAdapter mDataAdapter = null;
     private SimpleCursorAdapter mInstanceDataAdapter = null;
     private DialogConstructor mConstructor = null;
 
@@ -119,6 +135,10 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
         }
 
         mSettings = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = mSettings.edit();
+        editor.putString(SettingsFragment.SURVEY_SOURCE_URL_KEY, Constants.SURVEY_SOURCE_URL);
+        editor.apply();
+
         // Temporary commented
         if (mSettings.getBoolean(SettingsFragment.SURVEY_FORM_DOWNLOADED_KEY, false)) {
             downloadSurveyFormList();
@@ -179,6 +199,10 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
     protected void onStop() {
         Collect.getInstance().getActivityLogger().logOnStop(this);
         getSupportLoaderManager().destroyLoader(DATA_LIST_VIEW_ID);
+
+        if (mSplashView != null)
+            mSplashView.setVisibility(View.GONE);
+
         super.onStop();
     }
 
@@ -201,7 +225,7 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
             case R.id.action_interviewer_profile:
                 Collect.getInstance().getActivityLogger().logAction(this, "onOptionsItemSelected", "MENU_PREFERENCES");
                 //startActivity(new Intent(this, SettingsActivity.class));
-                startActivity(new Intent(this, InterviewerActivity.class));
+                startActivity(new Intent(FormChooserList.this, org.odk.collect.android.activities.InterviewerActivity.class));
                 break;
 
             case R.id.action_update:
@@ -224,6 +248,44 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        List<BaseSurvey> surveys = DataHolder.getInstance().getSurveys();
+        BaseSurvey survey = DataHolder.getInstance().getCurrentSurvey();
+
+        if (survey.getMode() == BaseSurvey.SURVEY_READ_MODE)
+            return;
+
+        if (resultCode == RESULT_OK) {
+            if (requestCode == Helper.ADD_FARMER_REQUEST_CODE) {
+                survey.setEndTime(Helper.getDate());
+                survey.setUpdateTime(Helper.getDate());
+
+                surveys.add(survey);
+                DataUtils.setSurveyList(surveys);
+
+                DataHolder.getInstance().setCurrentSurveyIndex(surveys.size() - 1);
+                DataHolder.getInstance().setCurrentSurvey(survey);
+
+                if (!Arrays.asList(BaseSurvey.SURVEY_VERSION_CAMEROON).contains(survey.getSurveyVersion())) {
+                    Intent intent = new Intent(this, ContentPager.class);
+                    startActivity(intent);
+                }
+            }
+        }
+        else {
+            if (requestCode == Helper.ADD_FARMER_REQUEST_CODE) {
+                DataHolder.getInstance().setCurrentSurvey(null);
+                DataHolder.getInstance().setCurrentSurveyIndex(0);
+            }
+        }
+
+        if (mDataAdapter != null)
+            mDataAdapter.setData(surveys);
+    }
+
     protected void runDiskSynchronizationTask () {
         // DiskSyncTask checks the disk for any forms not already in the content provider
         // that is, put here by dragging and dropping onto the SDCard
@@ -236,18 +298,20 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
         }
     }
 
-    protected void onListItemClick(int position) {
-        Cursor c = (Cursor) mInstanceDataAdapter.getItem(position);
-        Uri instanceUri = ContentUris.withAppendedId(InstanceProviderAPI.InstanceColumns.CONTENT_URI, c.getLong(c.getColumnIndex(InstanceProviderAPI.InstanceColumns._ID)));
-
+    protected void onListItemClick(BaseSurvey baseSurvey) {
+        //Cursor c = (Cursor) mInstanceDataAdapter.getItem(position);
+        //Uri instanceUri = ContentUris.withAppendedId(InstanceProviderAPI.InstanceColumns.CONTENT_URI, c.getLong(c.getColumnIndex(InstanceProviderAPI.InstanceColumns._ID)));
+        Uri instanceUri = ContentUris.withAppendedId(InstanceProviderAPI.InstanceColumns.CONTENT_URI, Long.valueOf(baseSurvey.getId()));
         Collect.getInstance().getActivityLogger().logAction(this, "onListItemClick", instanceUri.toString());
+
         // the form can be edited if it is incomplete or if, when it was
         // marked as complete, it was determined that it could be edited
         // later.
-        String status = c.getString(c.getColumnIndex(InstanceProviderAPI.InstanceColumns.STATUS));
-        String strCanEditWhenComplete = c.getString(c.getColumnIndex(InstanceProviderAPI.InstanceColumns.CAN_EDIT_WHEN_COMPLETE));
+        //String status = c.getString(c.getColumnIndex(InstanceProviderAPI.InstanceColumns.STATUS));
+        //String strCanEditWhenComplete = c.getString(c.getColumnIndex(InstanceProviderAPI.InstanceColumns.CAN_EDIT_WHEN_COMPLETE));
 
-        boolean canEdit = status.equals(InstanceProviderAPI.STATUS_INCOMPLETE) || Boolean.parseBoolean(strCanEditWhenComplete);
+        //boolean canEdit = status.equals(InstanceProviderAPI.STATUS_INCOMPLETE) || Boolean.parseBoolean(strCanEditWhenComplete);
+        boolean canEdit = baseSurvey.getState() != BaseSurvey.SURVEY_STATE_SUBMITTED;
         if (!canEdit) {
             createErrorDialog(getString(R.string.cannot_edit_completed_form), DO_NOT_EXIT);
         }
@@ -275,32 +339,48 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String type = PreferenceManager.getDefaultSharedPreferences(FormChooserList.this).getString(SettingsFragment.SURVEY_CHOSEN_TYPE_KEY, null);
-                if (TextUtils.isEmpty(type))
-                    return;
-
-                for (int i = 0; i < mFormList.size(); i++) {
-                    int key = mFormList.keyAt(i);
-                    String storedType = mFormList.get(key);
-
-                    if (!TextUtils.isEmpty(storedType) && storedType.contains(type)) {
-                        Uri formUri = ContentUris.withAppendedId(FormsColumns.CONTENT_URI, key);
-                        Collect.getInstance().getActivityLogger().logAction(this, "onListItemClick", formUri.toString());
-
-                        String action = getIntent().getAction();
-                        if (Intent.ACTION_PICK.equals(action)) {
-                            // caller is waiting on a picked form
-                            setResult(RESULT_OK, new Intent().setData(formUri));
-                        } else {
-                            // caller wants to view/edit a form, so launch formentryactivity
-                            startActivity(new Intent(Intent.ACTION_EDIT, formUri));
-                        }
-
+                int type = DataHolder.getInstance().getSurveysType();
+                switch (type) {
+                    case BaseSurvey.SURVEY_TYPE_ZAMBIA:
+                    case BaseSurvey.SURVEY_TYPE_TUNISIA:
+                    case BaseSurvey.SURVEY_TYPE_SENEGAL:
+                    case BaseSurvey.SURVEY_TYPE_CAMEROON:
+                        createSurvey(FormChooserList.this);
                         break;
-                    }
+
+                    default:
+                        createNewSurvey(type);
+                        break;
                 }
             }
         });
+    }
+
+    protected void createNewSurvey(int type) {
+        for (int i = 0; i < mFormList.size(); i++) {
+            int key = mFormList.keyAt(i);
+            String storedType = mFormList.get(key);
+            String prefix = "";
+
+            if (type == BaseSurvey.SURVEY_TYPE_GAMBIA)
+                prefix = "gm";
+
+            if (!TextUtils.isEmpty(storedType) && storedType.contains(prefix)) {
+                Uri formUri = ContentUris.withAppendedId(FormsColumns.CONTENT_URI, key);
+                Collect.getInstance().getActivityLogger().logAction(this, "onListItemClick", formUri.toString());
+
+                String action = getIntent().getAction();
+                if (Intent.ACTION_PICK.equals(action)) {
+                    // caller is waiting on a picked form
+                    setResult(RESULT_OK, new Intent().setData(formUri));
+                } else {
+                    // caller wants to view/edit a form, so launch formentryactivity
+                    startActivity(new Intent(Intent.ACTION_EDIT, formUri));
+                }
+
+                break;
+            }
+        }
     }
 
     protected void setFormListView() {
@@ -313,9 +393,11 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
         String[] data = new String[] {InstanceProviderAPI.InstanceColumns.DISPLAY_NAME, InstanceProviderAPI.InstanceColumns.DISPLAY_SUBTEXT};
         int[] view = new int[] {R.id.text1, R.id.text2};
 
+        mDataAdapter = new LinearListAdapter(LinearListAdapter.LIST_VIEW_TYPE_FARMERS, mDataList);
         mInstanceDataAdapter = new SimpleCursorAdapter(this, R.layout.two_item, null, data, view, Adapter.NO_SELECTION);
+
         mDataListView = (ListView) findViewById(R.id.dataListView);
-        mDataListView.setAdapter(mInstanceDataAdapter);
+        mDataListView.setAdapter(mDataAdapter);
         mDataListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE_MODAL);
         mDataListView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
             @Override
@@ -368,14 +450,42 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
         mDataListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                onListItemClick(position);
+                BaseSurvey baseSurvey = mDataList.get(position);
+                if (Arrays.asList(BaseSurvey.SURVEY_VERSION_NONE).contains(baseSurvey.getSurveyVersion())) {
+                    onListItemClick(baseSurvey);
+                } else {
+                    DataHolder.getInstance().setCurrentSurvey(baseSurvey);
+                    DataHolder.getInstance().setCurrentSurveyIndex(position);
+
+                    String surveyVersion = DataHolder.getInstance().getCurrentSurvey().getSurveyVersion();
+                    if (Arrays.asList(BaseSurvey.SURVEY_VERSION_CAMEROON).contains(surveyVersion))
+                        editSurvey(FormChooserList.this);
+                    else
+                        startActivity(new Intent(FormChooserList.this, ContentPager.class));
+                }
             }
         });
+    }
+
+    protected void setSplashView() {
+        if (mDataList.isEmpty()) {
+            if (mSplashView != null) {
+                mSplashView.setVisibility(View.VISIBLE);
+            }
+            else {
+                LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                CoordinatorLayout frameLayout = (CoordinatorLayout) findViewById(R.id.contentFrame);
+
+                mSplashView = (LinearLayout) inflater.inflate(R.layout.app_welcome_view, frameLayout, false);
+                frameLayout.addView(mSplashView);
+            }
+        }
     }
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         if (id == DATA_LIST_VIEW_ID) {
+            mDataList.clear();
             String sortOrder = InstanceProviderAPI.InstanceColumns.STATUS + " DESC, " + InstanceProviderAPI.InstanceColumns.DISPLAY_NAME + " ASC";
             return new CursorLoader(this, InstanceProviderAPI.InstanceColumns.CONTENT_URI, null, null, null, sortOrder);
         }
@@ -394,10 +504,65 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        if (loader.getId() == DATA_LIST_VIEW_ID)
-            mInstanceDataAdapter.swapCursor(data);
+        if (loader.getId() == DATA_LIST_VIEW_ID) {
+            if (data.getCount() > 0) {
+                while (data.moveToNext()) {
+                    int idIndex = data.getColumnIndex(InstanceProviderAPI.InstanceColumns._ID);
+                    int nameIndex = data.getColumnIndex(InstanceProviderAPI.InstanceColumns.DISPLAY_NAME);
+                    int dateIndex = data.getColumnIndex(InstanceProviderAPI.InstanceColumns.LAST_STATUS_CHANGE_DATE);
+                    int statusIndex = data.getColumnIndex(InstanceProviderAPI.InstanceColumns.STATUS);
+
+                    BaseSurvey baseSurvey = new BaseSurvey() {
+                        @Override
+                        public List getFields() {
+                            return null;
+                        }
+                    };
+
+                    long id = data.getLong(idIndex);
+                    String name = data.getString(nameIndex);
+                    String date = Helper.getDate(data.getLong(dateIndex));
+                    String status = data.getString(statusIndex);
+
+                    switch (status) {
+                        case InstanceProviderAPI.STATUS_SUBMITTED:
+                            baseSurvey.setState(BaseSurvey.SURVEY_STATE_SUBMITTED);
+                            break;
+                        case InstanceProviderAPI.STATUS_SUBMISSION_FAILED:
+                            baseSurvey.setState(BaseSurvey.SURVEY_STATE_SYNC_ERROR);
+                            break;
+                        case InstanceProviderAPI.STATUS_INCOMPLETE:
+                        case InstanceProviderAPI.STATUS_COMPLETE:
+                        default:
+                            baseSurvey.setState(BaseSurvey.SURVEY_STATE_NEW);
+                            break;
+                    }
+
+                    baseSurvey.setId(String.valueOf(id));
+                    baseSurvey.setFarmerName(name);
+                    baseSurvey.setUpdateTime(date);
+                    baseSurvey.setSurveyVersion(BaseSurvey.SURVEY_VERSION_NONE[0]);
+
+                    mDataList.add(baseSurvey);
+                }
+
+                mDataList.addAll(DataHolder.getInstance().getSurveys());
+                Collections.sort(mDataList, new Comparator<BaseSurvey>() {
+                    @Override
+                    public int compare(BaseSurvey lhs, BaseSurvey rhs) {
+                        return rhs.getUpdateTime().compareTo(lhs.getUpdateTime());
+                    }
+                });
+
+                if (mDataAdapter != null)
+                    mDataAdapter.setData(mDataList);
+            }
+            else {
+                setSplashView();
+            }
+        }
         else if (loader.getId() == FORM_LIST_VIEW_ID) {
-            if (data != null) {
+            if (data.getCount() > 0) {
                 while (data.moveToNext()) {
                     int formIdIndex = data.getColumnIndex("_id");
                     int formNameIndex = data.getColumnIndex("jrFormId");
@@ -593,7 +758,8 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
         for (Map<String, String> entry: mFormDataList) {
             if (entry.get(FORM_ID_KEY).contains("za20160210") ||
                     entry.get(FORM_ID_KEY).contains("sn20160210") ||
-                    entry.get(FORM_ID_KEY).contains("cm20160208")) {
+                    entry.get(FORM_ID_KEY).contains("cm20160208") ||
+                    entry.get(FORM_ID_KEY).contains("gm20160210")) {
                 filesToDownload.add(mFormData.get(entry.get(FORM_DETAIL_KEY)));
             }
         }
@@ -607,6 +773,7 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
             mDownloadFormsTask.execute(filesToDownload);
         }
         else {
+            mConstructor.stopAnimation();
             Toast.makeText(getApplicationContext(), R.string.noselect_error, Toast.LENGTH_SHORT).show();
         }
     }

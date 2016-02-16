@@ -9,23 +9,17 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import org.graindataterminal.adapters.LinearListAdapter;
 import org.graindataterminal.adapters.ListDataAdapter;
 import org.graindataterminal.adapters.ListDataDelegate;
 import org.graindataterminal.controllers.FieldsPager;
-import org.graindataterminal.controllers.MyApp;
 import org.graindataterminal.helpers.Helper;
 import org.graindataterminal.models.base.BaseSurvey;
 import org.graindataterminal.models.base.DataHolder;
 import org.graindataterminal.models.base.BaseField;
-import org.graindataterminal.models.senegal.FarmOwner;
 import org.graindataterminal.models.senegal.SenegalCrop;
 import org.graindataterminal.models.senegal.SenegalField;
 import org.graindataterminal.models.senegal.SenegalSurvey;
@@ -33,6 +27,7 @@ import org.graindataterminal.models.tunisia.TunisiaField;
 import org.graindataterminal.models.zambia.ZambiaField;
 import org.odk.collect.android.R;
 import org.graindataterminal.views.base.BaseFragment;
+import org.odk.collect.android.utilities.DataUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -91,7 +86,7 @@ public class FieldsList extends BaseFragment implements ListDataDelegate {
             survey.setEndTime(now);
             survey.setUpdateTime(now);
 
-            MyApp.setSurveyList(DataHolder.getInstance().getSurveys());
+            DataUtils.setSurveyList(DataHolder.getInstance().getSurveys());
         }
 
         if (dataAdapter != null)

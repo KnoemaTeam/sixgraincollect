@@ -5,12 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.odk.collect.android.R;
-import org.graindataterminal.controllers.MyApp;
 
 import org.graindataterminal.adapters.ListDataDelegate.ViewHolder;
 import org.graindataterminal.views.system.RoundedImageView;
@@ -62,7 +60,7 @@ public class ListDataAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            Context context = Collect.getContext();
+            Context context = Collect.getInstance().getContext();
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             ViewHolder viewHolder = new ViewHolder();
 

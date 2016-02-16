@@ -56,7 +56,7 @@ public class FarmerRegion extends BaseFragment {
         String regionText = farmerGeneralInfo.getRegion();
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.cameroon_region_list, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
 
         Spinner regionSpinner = (Spinner) parentView.findViewById(R.id.regionSpinner);
         regionSpinner.setEnabled(!isModeLocked);
@@ -141,7 +141,7 @@ public class FarmerRegion extends BaseFragment {
         String departmentText = farmerGeneralInfo.getDepartement();
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), department, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
 
         Spinner departmentSpinner = (Spinner) parentView.findViewById(R.id.departmentSpinner);
         departmentSpinner.setEnabled(!isModeLocked);

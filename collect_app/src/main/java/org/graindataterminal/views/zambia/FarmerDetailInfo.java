@@ -20,12 +20,10 @@ import android.widget.ScrollView;
 
 import org.graindataterminal.controllers.BaseActivity;
 import org.graindataterminal.controllers.FarmersPager;
-import org.graindataterminal.controllers.MyApp;
 import org.graindataterminal.helpers.EditTextInputFilter;
 import org.graindataterminal.helpers.Helper;
 import org.graindataterminal.models.base.BaseSurvey;
 import org.graindataterminal.models.base.DataHolder;
-import org.graindataterminal.models.senegal.SenegalSurvey;
 import org.graindataterminal.models.zambia.ZambiaSurvey;
 import org.odk.collect.android.R;
 import org.graindataterminal.views.base.BaseFragment;
@@ -313,7 +311,7 @@ public class FarmerDetailInfo extends BaseFragment {
                     ((ZambiaSurvey) survey).setContactPhone(null);
                     notificationListener.onRequiredFieldChanged(screenIndex, FARMER_PHONE_KEY, true);
                 } else {
-                    if (PhoneNumberUtils.compare(Collect.getContext(), s.toString(), phoneText))
+                    if (PhoneNumberUtils.compare(Collect.getInstance().getContext(), s.toString(), phoneText))
                         return;
 
                     phoneText = PhoneNumberUtils.formatNumber(s.toString());

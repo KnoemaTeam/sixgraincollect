@@ -9,23 +9,19 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Environment;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import org.graindataterminal.controllers.MyApp;
 import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
@@ -74,7 +70,7 @@ public class Helper {
             mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), dirName);
         }
         else {
-            ContextWrapper cw = new ContextWrapper(Collect.getContext());
+            ContextWrapper cw = new ContextWrapper(Collect.getInstance().getContext());
             mediaStorageDir = cw.getDir(dirName ,Context.MODE_PRIVATE);
         }
 
@@ -102,7 +98,7 @@ public class Helper {
             mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), dirName);
         }
         else {
-            ContextWrapper cw = new ContextWrapper(Collect.getContext());
+            ContextWrapper cw = new ContextWrapper(Collect.getInstance().getContext());
             mediaStorageDir =  new File(cw.getFilesDir(), dirName);
         }
 
@@ -181,6 +177,13 @@ public class Helper {
         return timeWithFormat.format(time);
     }
 
+    public static String getDate (long date) {
+        SimpleDateFormat timeWithFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZZ", Locale.getDefault());
+        timeWithFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+
+        return timeWithFormat.format(date);
+    }
+
     public static String getDate (String dateFormat, String dateString) {
         try {
             SimpleDateFormat timeSourceFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZZ", Locale.getDefault());
@@ -254,7 +257,7 @@ public class Helper {
 
         view.setVisibility(View.VISIBLE);
 
-        Animation animation = AnimationUtils.loadAnimation(Collect.getContext(), R.anim.show_animation);
+        Animation animation = AnimationUtils.loadAnimation(Collect.getInstance().getContext(), R.anim.show_animation);
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
@@ -278,7 +281,7 @@ public class Helper {
         if (view.getVisibility() == View.GONE)
             return;
 
-        Animation animation = AnimationUtils.loadAnimation(Collect.getContext(), R.anim.fade_animation);
+        Animation animation = AnimationUtils.loadAnimation(Collect.getInstance().getContext(), R.anim.fade_animation);
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {

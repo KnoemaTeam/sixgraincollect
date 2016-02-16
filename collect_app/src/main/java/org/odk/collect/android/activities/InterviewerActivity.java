@@ -1,12 +1,12 @@
-package org.graindataterminal.controllers;
+package org.odk.collect.android.activities;
 
 import android.location.Location;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,32 +19,18 @@ import org.graindataterminal.models.base.DataHolder;
 import org.odk.collect.android.R;
 import org.graindataterminal.network.LocationService;
 
-public class InterviewerActivity extends BaseActivity {
+public class InterviewerActivity extends AppCompatActivity {
     protected TextView interviewerLocation = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_interviewer);
 
         setToolbar();
         setContentList();
 
         //LocationEngine.getInstance().connectLocationEngine(this, false);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-
-        menu.findItem(R.id.action_settings).setVisible(false);
-        menu.findItem(R.id.action_synchronize).setVisible(false);
-
-        return true;
-    }
-
-    @Override
-    protected int getLayoutResourceId() {
-        return R.layout.activity_interviewer;
     }
 
     protected void setToolbar() {
@@ -163,7 +149,7 @@ public class InterviewerActivity extends BaseActivity {
 
     protected void updateSurveysType() {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.survey_name_list, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
 
         Spinner spinner = (Spinner) findViewById(R.id.surveysType);
         spinner.setAdapter(adapter);
@@ -182,6 +168,9 @@ public class InterviewerActivity extends BaseActivity {
                         break;
                     case 3:
                         DataHolder.getInstance().setSurveysType(BaseSurvey.SURVEY_TYPE_CAMEROON);
+                        break;
+                    case 4:
+                        DataHolder.getInstance().setSurveysType(BaseSurvey.SURVEY_TYPE_GAMBIA);
                         break;
                 }
 
@@ -208,7 +197,7 @@ public class InterviewerActivity extends BaseActivity {
 
     protected void updateChannelType() {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.update_channel_list, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
 
         Spinner spinner = (Spinner) findViewById(R.id.updateTypeSpinner);
         spinner.setAdapter(adapter);

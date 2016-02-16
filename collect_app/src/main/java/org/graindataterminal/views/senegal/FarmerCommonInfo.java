@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.telephony.PhoneNumberUtils;
 import android.text.Editable;
-import android.text.InputFilter;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -16,16 +15,12 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import org.graindataterminal.controllers.MyApp;
-import org.graindataterminal.helpers.EditTextInputFilter;
 import org.graindataterminal.models.base.BaseSurvey;
 import org.graindataterminal.models.base.DataHolder;
 import org.graindataterminal.models.senegal.SenegalSurvey;
 import org.odk.collect.android.R;
 import org.graindataterminal.views.base.BaseFragment;
 import org.odk.collect.android.application.Collect;
-
-import java.util.Locale;
 
 public class FarmerCommonInfo extends BaseFragment {
     private final static String[] zoneIdList = {"urbain", "rural"};
@@ -201,7 +196,7 @@ public class FarmerCommonInfo extends BaseFragment {
                 if (TextUtils.isEmpty(s))
                     ((SenegalSurvey) survey).setFax(null);
                 else {
-                    if (PhoneNumberUtils.compare(Collect.getContext(), s.toString(), faxText))
+                    if (PhoneNumberUtils.compare(Collect.getInstance().getContext(), s.toString(), faxText))
                         return;
 
                     faxText = PhoneNumberUtils.formatNumber(s.toString());
@@ -241,7 +236,7 @@ public class FarmerCommonInfo extends BaseFragment {
                 if (TextUtils.isEmpty(s))
                     ((SenegalSurvey) survey).setPhone(null);
                 else {
-                    if (PhoneNumberUtils.compare(Collect.getContext(), s.toString(), phoneText))
+                    if (PhoneNumberUtils.compare(Collect.getInstance().getContext(), s.toString(), phoneText))
                         return;
 
                     phoneText = PhoneNumberUtils.formatNumber(s.toString());
@@ -281,7 +276,7 @@ public class FarmerCommonInfo extends BaseFragment {
                 if (TextUtils.isEmpty(s))
                     ((SenegalSurvey) survey).setCellPhone(null);
                 else {
-                    if (PhoneNumberUtils.compare(Collect.getContext(), s.toString(), cellPhoneText))
+                    if (PhoneNumberUtils.compare(Collect.getInstance().getContext(), s.toString(), cellPhoneText))
                         return;
 
                     cellPhoneText = PhoneNumberUtils.formatNumber(s.toString());

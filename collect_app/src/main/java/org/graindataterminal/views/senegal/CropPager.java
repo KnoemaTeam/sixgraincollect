@@ -14,7 +14,6 @@ import org.odk.collect.android.R;
 import org.graindataterminal.adapters.BaseDelegate;
 import org.graindataterminal.adapters.CropAdapter;
 import org.graindataterminal.controllers.BaseActivity;
-import org.graindataterminal.controllers.MyApp;
 import org.graindataterminal.helpers.Helper;
 import org.graindataterminal.models.base.BaseSurvey;
 import org.graindataterminal.models.base.DataHolder;
@@ -23,6 +22,7 @@ import org.graindataterminal.models.senegal.SenegalField;
 import org.graindataterminal.views.base.BaseFragment;
 import org.graindataterminal.views.base.CustomViewPager;
 import org.graindataterminal.views.system.MessageBox;
+import org.odk.collect.android.utilities.DataUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -115,7 +115,7 @@ public class CropPager extends BaseActivity implements BaseDelegate,  BaseFragme
             cropList.remove(index);
             field.setCropList(cropList);
 
-            MyApp.setSurveyList(surveyList);
+            DataUtils.setSurveyList(surveyList);
         }
         catch (Exception exception) {
             exception.printStackTrace();

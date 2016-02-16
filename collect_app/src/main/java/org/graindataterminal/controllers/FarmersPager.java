@@ -136,7 +136,7 @@ public class FarmersPager extends BaseActivity implements BaseFragment.FragmentN
                     else
                         forward.setText(getString(R.string.action_done));
 
-                    forward.setBackgroundResource(R.color.color_image_button);
+                    forward.setBackgroundResource(R.drawable.done_navigation_button);
                     forward.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -181,7 +181,7 @@ public class FarmersPager extends BaseActivity implements BaseFragment.FragmentN
     protected void updateForwardButtonView () {
         forward.setVisibility(View.VISIBLE);
         forward.setText(getString(R.string.action_next_step));
-        forward.setBackgroundResource(R.color.color_image_button_navigation);
+        forward.setBackgroundResource(R.drawable.navigation_button);
         forward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -263,7 +263,7 @@ public class FarmersPager extends BaseActivity implements BaseFragment.FragmentN
                 else
                     forward.setText(getString(R.string.action_done));
 
-                forward.setBackgroundResource(R.color.color_image_button);
+                forward.setBackgroundResource(R.drawable.done_navigation_button);
                 forward.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

@@ -12,7 +12,6 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-import org.graindataterminal.controllers.MyApp;
 import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
 
@@ -78,7 +77,7 @@ public class RoundedImageView extends ImageView {
         final Paint paint = new Paint();
         final Rect rect = new Rect(0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight());
 
-        Context context = Collect.getContext();
+        Context context = Collect.getInstance().getContext();
 
         paint.setAntiAlias(true);
         paint.setFilterBitmap(true);

@@ -396,10 +396,8 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
                     int subIdx = c.getColumnIndex(InstanceColumns.SUBMISSION_URI);
                     String urlString = c.isNull(subIdx) ? null : c.getString(subIdx);
                     if (urlString == null) {
-                        SharedPreferences settings =
-                                PreferenceManager.getDefaultSharedPreferences(Collect.getInstance());
-
-                        urlString = PreferenceManager.getDefaultSharedPreferences(Collect.getContext()).getString(SettingsFragment.SURVEY_UPLOAD_URL_KEY, Collect.getInstance().getString(R.string.default_server_url_for_survey));
+                        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(Collect.getInstance());
+                        urlString = PreferenceManager.getDefaultSharedPreferences(Collect.getInstance().getContext()).getString(SettingsFragment.SURVEY_UPLOAD_URL_KEY, Collect.getInstance().getString(R.string.default_server_url_for_survey));
                     }
 
                     if ( !uploadOneSubmission(urlString, id, formId, instance, toUpdate, localContext, uriRemap, outcome) ) {

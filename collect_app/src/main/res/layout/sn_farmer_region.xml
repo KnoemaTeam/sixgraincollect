@@ -22,7 +22,7 @@
             android:text="@string/farmer_region"/>
 
         <Spinner
-            style="@style/SpinnerTheme"
+            style="@style/AppTheme.SpinnerTheme"
             android:id="@+id/regionSpinner" />
 
         <View
@@ -36,7 +36,7 @@
             android:text="@string/farmer_department" />
 
         <Spinner
-            style="@style/SpinnerTheme"
+            style="@style/AppTheme.SpinnerTheme"
             android:id="@+id/departmentSpinner" />
 
         <View
@@ -50,7 +50,7 @@
             android:text="@string/farmer_district" />
 
         <Spinner
-            style="@style/SpinnerTheme"
+            style="@style/AppTheme.SpinnerTheme"
             android:id="@+id/districtSpinner" />
 
         <View
@@ -64,7 +64,7 @@
             android:text="@string/farmer_town" />
 
         <Spinner
-            style="@style/SpinnerTheme"
+            style="@style/AppTheme.SpinnerTheme"
             android:id="@+id/townSpinner" />
 
     </LinearLayout>

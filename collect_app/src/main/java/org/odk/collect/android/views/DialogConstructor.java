@@ -48,7 +48,7 @@ public class DialogConstructor {
 
         mDialog = new Dialog(activity);
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        mDialog.setCancelable(true);
+        mDialog.setCancelable(false);
         mDialog.setContentView(contentView);
     }
 

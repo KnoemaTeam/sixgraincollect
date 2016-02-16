@@ -9,10 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.graindataterminal.controllers.MyApp;
 import org.graindataterminal.helpers.Helper;
 import org.graindataterminal.models.base.BaseSurvey;
-import org.graindataterminal.models.base.DataHolder;
 import org.graindataterminal.models.base.BaseField;
 import org.graindataterminal.models.cameroon.CameroonSurvey;
 import org.graindataterminal.models.tunisia.TunisiaSurvey;
@@ -72,7 +70,7 @@ public class LinearListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Context context = Collect.getContext();
+        Context context = Collect.getInstance().getContext();
         View rowView = convertView;
 
         try {
@@ -108,15 +106,11 @@ public class LinearListAdapter extends BaseAdapter {
                 BaseSurvey survey = (BaseSurvey) data.get(position);
                 int surveyState = survey.getState();
 
-                String farmerName = null;
+                String farmerName = survey.getFarmerName();
                 String farmerPhoto = survey.getFarmerPhoto();
                 String updateTime = survey.getUpdateTime();
 
-                if (survey instanceof ZambiaSurvey
-                        || survey instanceof TunisiaSurvey) {
-                    farmerName = survey.getFarmerName();
-                }
-                else if (survey instanceof SenegalSurvey) {
+                if (survey instanceof SenegalSurvey) {
                     farmerName = survey.getHeadName();
                 }
                 else if (survey instanceof CameroonSurvey) {
@@ -132,7 +126,6 @@ public class LinearListAdapter extends BaseAdapter {
 
                 if (viewHolder.rowImageView != null) {
                     viewHolder.rowImageView.setImageResource(R.drawable.ic_perm_identity_white_48dp);
-                    viewHolder.rowImageView.setScaleType(ImageView.ScaleType.CENTER);
 
                     if (!TextUtils.isEmpty(farmerPhoto)) {
                         Helper.setImage(viewHolder.rowImageView, farmerPhoto);
@@ -210,7 +203,6 @@ public class LinearListAdapter extends BaseAdapter {
                 if (viewHolder.rowImageView != null) {
                     viewHolder.rowImageView.setVisibility(View.VISIBLE);
                     viewHolder.rowImageView.setImageResource(R.drawable.ic_camera_alt_white_36dp);
-                    viewHolder.rowImageView.setScaleType(ImageView.ScaleType.CENTER);
 
                     if (!TextUtils.isEmpty(fieldImage)) {
                         Helper.setImage(viewHolder.rowImageView, fieldImage);

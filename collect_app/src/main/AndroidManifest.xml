@@ -27,8 +27,8 @@
     -->
 
     <permission
-          android:name="org.odk.collect.android.permission.MAPS_RECEIVE"
-          android:protectionLevel="signature" />
+        android:name="org.odk.collect.android.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
     <uses-permission android:name="org.odk.collect.android.permission.MAPS_RECEIVE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
@@ -42,7 +42,7 @@
 
     <application
         android:name="org.odk.collect.android.application.Collect"
-		android:supportsRtl="true"
+        android:supportsRtl="true"
         android:allowBackup="true"
         android:installLocation="auto"
         android:icon="@mipmap/ic_launcher"
@@ -53,18 +53,13 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version"/>
 
-        <!--
-         <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="7571000"/>
-        -->
         <provider
-            android:exported="true"
+            android:exported="false"
             android:name="org.odk.collect.android.provider.FormsProvider"
             android:authorities="com.sixgrain.collect.android.provider.odk.forms" />
 
         <provider
-            android:exported="true"
+            android:exported="false"
             android:name="org.odk.collect.android.provider.InstanceProvider"
             android:authorities="com.sixgrain.collect.android.provider.odk.instances" />
 
@@ -90,7 +85,7 @@
             </intent-filter>
         </activity>
 
-        <activity 
+        <activity
             android:name=".activities.NotificationActivity"
             android:label="@string/app_name"
             android:taskAffinity=""
@@ -103,7 +98,7 @@
 
         <activity
             android:name=".activities.GoogleDriveActivity"
-            android:label="@string/app_name" 
+            android:label="@string/app_name"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
@@ -175,12 +170,12 @@
         <activity
             android:name=".activities.InstanceUploaderList"
             android:label="@string/app_name">
-	        <intent-filter>
-	            <action android:name="android.intent.action.VIEW" />
-	            <action android:name="android.intent.action.EDIT" />
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.EDIT" />
 
-	            <category android:name="android.intent.category.DEFAULT" />
-	        </intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activities.InstanceUploaderActivity"
@@ -206,9 +201,9 @@
             android:label="@string/app_name"
             android:parentActivityName=".activities.FormEntryActivity">
 
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".activities.FormEntryActivity" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.FormEntryActivity" />
 
         </activity>
 
@@ -257,215 +252,189 @@
         </receiver>
 
         <meta-data
-                android:name="com.google.android.geo.API_KEY"
-                android:value="AIzaSyBS-JQ-dnaZ_8qsbvSyr_I3rTPFd5fJsYI"/>
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBS-JQ-dnaZ_8qsbvSyr_I3rTPFd5fJsYI"/>
 
         <uses-library
             android:name="com.google.android.maps"
             android:required="false" />
 
-        </application>
-
-    <!-- 6G Data Terminal -->
-    <activity
-        android:name=".controllers.FarmersList"
-        android:configChanges="keyboardHidden|orientation|screenSize"
-        android:launchMode="singleTop"
-        android:label="@string/app_name">
-
-    </activity>
-
-    <activity
-        android:name=".controllers.FarmersPager"
-        android:configChanges="keyboardHidden|orientation|screenSize"
-        android:label="@string/title_activity_farmer"
-        android:parentActivityName=".controllers.FarmersList">
-
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".controllers.FarmersList" />
-    </activity>
-
-    <activity
-        android:name=".controllers.ContentPager"
-        android:configChanges="keyboardHidden|orientation|screenSize"
-        android:launchMode="singleTop"
-        android:label="@string/title_activity_fields_list"
-        android:parentActivityName=".controllers.FarmersList">
-
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".controllers.FarmersList" />
-    </activity>
-
-    <activity
-        android:name=".controllers.FieldsPager"
-        android:configChanges="keyboardHidden|orientation|screenSize"
-        android:label="@string/title_activity_field"
-        android:parentActivityName=".controllers.ContentPager">
-
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".controllers.ContentPager" />
-    </activity>
-
-    <activity
-        android:name=".controllers.InterviewerActivity"
-        android:configChanges="keyboardHidden|orientation|screenSize"
-        android:launchMode="singleTop"
-        android:label="@string/title_activity_interviewer"
-        android:parentActivityName=".controllers.FarmersList">
-
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".controllers.FarmersList" />
-    </activity>
-
-    <activity
-        android:name=".controllers.DeviceActivity"
-        android:configChanges="keyboardHidden|orientation|screenSize"
-        android:launchMode="singleTop"
-        android:label="@string/title_activity_device"
-        android:parentActivityName=".controllers.FarmersList">
-
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".controllers.FarmersList" />
-    </activity>
-
-    <activity
-        android:name=".views.senegal.FarmerOperationEquipment"
-        android:configChanges="keyboardHidden|orientation|screenSize"
-        android:parentActivityName=".controllers.ContentPager">
-
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".controllers.ContentPager" />
-    </activity>
-
-    <activity
-        android:name=".views.senegal.FarmerInfrastructure"
-        android:configChanges="keyboardHidden|orientation|screenSize"
-        android:parentActivityName=".controllers.ContentPager">
-
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
+        <!-- 6G Data Terminal -->
+        <activity
+            android:name=".activities.InterviewerActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:value=".controllers.ContentPager" />
-    </activity>
+            android:parentActivityName=".activities.FormChooserList">
 
-    <activity
-        android:name=".views.senegal.FarmerExpenses"
-        android:configChanges="keyboardHidden|orientation|screenSize"
-        android:parentActivityName=".controllers.ContentPager">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.FormChooserList" />
+        </activity>
 
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".controllers.ContentPager" />
-    </activity>
+        <activity
+            android:name="org.graindataterminal.controllers.FarmersPager"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName=".activities.FormChooserList">
 
-    <activity
-        android:name=".views.senegal.FarmerEmployee"
-        android:configChanges="keyboardHidden|orientation|screenSize"
-        android:parentActivityName=".controllers.ContentPager">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.FormChooserList" />
+        </activity>
 
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".controllers.ContentPager" />
-    </activity>
+        <activity
+            android:name="org.graindataterminal.controllers.ContentPager"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName=".activities.FormChooserList">
 
-    <activity
-        android:name=".views.senegal.FarmerAnimals"
-        android:configChanges="keyboardHidden|orientation|screenSize"
-        android:parentActivityName=".controllers.ContentPager">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.FormChooserList" />
+        </activity>
 
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".controllers.ContentPager" />
-    </activity>
+        <activity
+            android:name="org.graindataterminal.controllers.FieldsPager"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName="org.graindataterminal.controllers.ContentPager">
 
-    <activity
-        android:name=".views.senegal.FarmerEmployeeLivestock"
-        android:configChanges="keyboardHidden|orientation|screenSize"
-        android:parentActivityName=".controllers.ContentPager">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.graindataterminal.controllers.ContentPager" />
+        </activity>
 
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".controllers.ContentPager" />
-    </activity>
+        <!--
 
-    <activity
-        android:name=".views.senegal.FarmerProductionEquipment"
-        android:configChanges="keyboardHidden|orientation|screenSize"
-        android:parentActivityName=".controllers.ContentPager">
+        <activity
+            android:name=".views.senegal.FarmerOperationEquipment"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName=".controllers.ContentPager">
 
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".controllers.ContentPager" />
-    </activity>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controllers.ContentPager" />
+        </activity>
 
-    <activity
-        android:name=".views.senegal.FarmerLivestockEquipment"
-        android:configChanges="keyboardHidden|orientation|screenSize"
-        android:parentActivityName=".controllers.ContentPager">
+        <activity
+            android:name=".views.senegal.FarmerInfrastructure"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName=".controllers.ContentPager">
 
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".controllers.ContentPager" />
-    </activity>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:configChanges="keyboardHidden|orientation|screenSize"
+                android:value=".controllers.ContentPager" />
+        </activity>
 
-    <activity
-        android:name=".views.senegal.FarmerOwner"
-        android:configChanges="keyboardHidden|orientation|screenSize"
-        android:parentActivityName=".controllers.ContentPager">
+        <activity
+            android:name=".views.senegal.FarmerExpenses"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName=".controllers.ContentPager">
 
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".controllers.ContentPager" />
-    </activity>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controllers.ContentPager" />
+        </activity>
 
-    <activity
-        android:name=".views.senegal.FarmerLivestockProduction"
-        android:configChanges="keyboardHidden|orientation|screenSize"
-        android:parentActivityName=".controllers.ContentPager">
+        <activity
+            android:name=".views.senegal.FarmerEmployee"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName=".controllers.ContentPager">
 
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".controllers.ContentPager" />
-    </activity>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controllers.ContentPager" />
+        </activity>
 
-    <activity
-        android:name=".views.senegal.FarmerExpensesNature"
-        android:configChanges="keyboardHidden|orientation|screenSize"
-        android:parentActivityName=".controllers.ContentPager">
+        <activity
+            android:name=".views.senegal.FarmerAnimals"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName=".controllers.ContentPager">
 
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".controllers.ContentPager" />
-    </activity>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controllers.ContentPager" />
+        </activity>
 
-    <activity
-        android:name=".views.senegal.FarmerMovement"
-        android:configChanges="keyboardHidden|orientation|screenSize"
-        android:parentActivityName=".controllers.ContentPager">
+        <activity
+            android:name=".views.senegal.FarmerEmployeeLivestock"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName=".controllers.ContentPager">
 
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".controllers.ContentPager" />
-    </activity>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controllers.ContentPager" />
+        </activity>
 
-    <activity
-        android:name=".views.senegal.CropPager"
-        android:configChanges="keyboardHidden|orientation|screenSize"
-        android:parentActivityName=".controllers.ContentPager">
+        <activity
+            android:name=".views.senegal.FarmerProductionEquipment"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName=".controllers.ContentPager">
 
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".controllers.ContentPager" />
-    </activity>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controllers.ContentPager" />
+        </activity>
 
-    <activity
-        android:name=".views.system.MessageBox"
-        android:theme="@style/AppDialogTheme" />
+        <activity
+            android:name=".views.senegal.FarmerLivestockEquipment"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName=".controllers.ContentPager">
 
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controllers.ContentPager" />
+        </activity>
+
+        <activity
+            android:name=".views.senegal.FarmerOwner"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName=".controllers.ContentPager">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controllers.ContentPager" />
+        </activity>
+
+        <activity
+            android:name=".views.senegal.FarmerLivestockProduction"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName=".controllers.ContentPager">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controllers.ContentPager" />
+        </activity>
+
+        <activity
+            android:name=".views.senegal.FarmerExpensesNature"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName=".controllers.ContentPager">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controllers.ContentPager" />
+        </activity>
+
+        <activity
+            android:name=".views.senegal.FarmerMovement"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName=".controllers.ContentPager">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controllers.ContentPager" />
+        </activity>
+
+        <activity
+            android:name=".views.senegal.CropPager"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName=".controllers.ContentPager">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controllers.ContentPager" />
+        </activity>
+        -->
+
+        <!-- -->
+
+    </application>
 </manifest>

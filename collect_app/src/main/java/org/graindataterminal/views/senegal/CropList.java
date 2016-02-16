@@ -16,12 +16,10 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import org.odk.collect.android.R;
 import org.graindataterminal.adapters.ListDataAdapter;
 import org.graindataterminal.adapters.ListDataDelegate;
-import org.graindataterminal.controllers.MyApp;
 import org.graindataterminal.helpers.Helper;
 import org.graindataterminal.models.base.BaseSurvey;
 import org.graindataterminal.models.base.DataHolder;
@@ -29,6 +27,7 @@ import org.graindataterminal.models.senegal.SenegalCrop;
 import org.graindataterminal.models.senegal.SenegalField;
 import org.graindataterminal.views.base.BaseFragment;
 import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.utilities.DataUtils;
 
 import java.util.List;
 
@@ -106,7 +105,7 @@ public class CropList extends BaseFragment implements ListDataDelegate {
             }
 
             ((SenegalField) field).setCropList(dataList);
-            MyApp.setSurveyList(DataHolder.getInstance().getSurveys());
+            DataUtils.setSurveyList(DataHolder.getInstance().getSurveys());
         }
 
         if (dataAdapter != null)
@@ -157,7 +156,7 @@ public class CropList extends BaseFragment implements ListDataDelegate {
     }
 
     protected void updateDataList(View parentView) {
-        Context context = Collect.getContext();
+        Context context = Collect.getInstance().getContext();
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         CoordinatorLayout frameLayout = (CoordinatorLayout) parentView.findViewById(R.id.contentList);

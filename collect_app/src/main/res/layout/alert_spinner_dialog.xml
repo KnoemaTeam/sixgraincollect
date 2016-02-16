@@ -41,7 +41,7 @@
                 android:layout_margin="25dp"
                 android:layout_gravity="center"
                 android:background="@android:color/transparent"
-                android:indeterminateDrawable="@drawable/spinner">
+                android:indeterminateDrawable="@drawable/spinner_wheel">
 
             </ProgressBar>
 

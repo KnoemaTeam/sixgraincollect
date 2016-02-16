@@ -38,7 +38,7 @@ public class DeviceActivity extends AppCompatActivity {
     }
 
     protected void setContentList () {
-        Context context = Collect.getContext();
+        Context context = Collect.getInstance().getContext();
         TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 
         TextView appVersion = (TextView) findViewById(R.id.appVersion);

@@ -3,7 +3,6 @@ package org.graindataterminal.helpers;
 import android.content.Context;
 import android.content.res.XmlResourceParser;
 
-import org.graindataterminal.controllers.MyApp;
 import org.graindataterminal.models.base.BaseSurvey;
 import org.graindataterminal.models.base.DictionaryItem;
 import org.odk.collect.android.R;
@@ -118,7 +117,7 @@ public class DictionaryManager {
 
     private void readDictionary(int xmlId, Set<DictionaryItem> dictionary) {
         try {
-            Context context = Collect.getContext();
+            Context context = Collect.getInstance().getContext();
             XmlResourceParser parser = context.getResources().getXml(xmlId);
 
             int eventType = -1;
