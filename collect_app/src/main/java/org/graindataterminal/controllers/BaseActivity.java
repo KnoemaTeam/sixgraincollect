@@ -132,16 +132,6 @@ public abstract class BaseActivity extends AppCompatActivity implements NoticeDi
                 onBackPressed();
                 break;
 
-            case R.id.action_settings:
-                break;
-
-            case R.id.action_synchronize:
-                break;
-
-            case R.id.action_update:
-                checkApplicationUpdates(true);
-                break;
-
             case R.id.action_send_mail:
                 sendMail();
                 break;

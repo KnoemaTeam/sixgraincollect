@@ -300,137 +300,135 @@
                 android:value="org.graindataterminal.controllers.ContentPager" />
         </activity>
 
-        <!--
-
         <activity
-            android:name=".views.senegal.FarmerOperationEquipment"
+            android:name="org.graindataterminal.views.senegal.FarmerOperationEquipment"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:parentActivityName=".controllers.ContentPager">
+            android:parentActivityName="org.graindataterminal.controllers.ContentPager">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".controllers.ContentPager" />
+                android:value="org.graindataterminal.controllers.ContentPager" />
         </activity>
 
         <activity
-            android:name=".views.senegal.FarmerInfrastructure"
+            android:name="org.graindataterminal.views.senegal.FarmerInfrastructure"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:parentActivityName=".controllers.ContentPager">
+            android:parentActivityName="org.graindataterminal.controllers.ContentPager">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:configChanges="keyboardHidden|orientation|screenSize"
-                android:value=".controllers.ContentPager" />
+                android:value="org.graindataterminal.controllers.ContentPager" />
         </activity>
 
         <activity
-            android:name=".views.senegal.FarmerExpenses"
+            android:name="org.graindataterminal.views.senegal.FarmerExpenses"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:parentActivityName=".controllers.ContentPager">
+            android:parentActivityName="org.graindataterminal.controllers.ContentPager">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".controllers.ContentPager" />
+                android:value="org.graindataterminal.controllers.ContentPager" />
         </activity>
 
         <activity
-            android:name=".views.senegal.FarmerEmployee"
+            android:name="org.graindataterminal.views.senegal.FarmerEmployee"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:parentActivityName=".controllers.ContentPager">
+            android:parentActivityName="org.graindataterminal.controllers.ContentPager">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".controllers.ContentPager" />
+                android:value="org.graindataterminal.controllers.ContentPager" />
         </activity>
 
         <activity
-            android:name=".views.senegal.FarmerAnimals"
+            android:name="org.graindataterminal.views.senegal.FarmerAnimals"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:parentActivityName=".controllers.ContentPager">
+            android:parentActivityName="org.graindataterminal.controllers.ContentPager">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".controllers.ContentPager" />
+                android:value="org.graindataterminal.controllers.ContentPager" />
         </activity>
 
         <activity
-            android:name=".views.senegal.FarmerEmployeeLivestock"
+            android:name="org.graindataterminal.views.senegal.FarmerEmployeeLivestock"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:parentActivityName=".controllers.ContentPager">
+            android:parentActivityName="org.graindataterminal.controllers.ContentPager">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".controllers.ContentPager" />
+                android:value="org.graindataterminal.controllers.ContentPager" />
         </activity>
 
         <activity
-            android:name=".views.senegal.FarmerProductionEquipment"
+            android:name="org.graindataterminal.views.senegal.FarmerProductionEquipment"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:parentActivityName=".controllers.ContentPager">
+            android:parentActivityName="org.graindataterminal.controllers.ContentPager">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".controllers.ContentPager" />
+                android:value="org.graindataterminal.controllers.ContentPager" />
         </activity>
 
         <activity
-            android:name=".views.senegal.FarmerLivestockEquipment"
+            android:name="org.graindataterminal.views.senegal.FarmerLivestockEquipment"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:parentActivityName=".controllers.ContentPager">
+            android:parentActivityName="org.graindataterminal.controllers.ContentPager">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".controllers.ContentPager" />
+                android:value="org.graindataterminal.controllers.ContentPager" />
         </activity>
 
         <activity
-            android:name=".views.senegal.FarmerOwner"
+            android:name="org.graindataterminal.views.senegal.FarmerOwner"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:parentActivityName=".controllers.ContentPager">
+            android:parentActivityName="org.graindataterminal.controllers.ContentPager">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".controllers.ContentPager" />
+                android:value="org.graindataterminal.controllers.ContentPager" />
         </activity>
 
         <activity
-            android:name=".views.senegal.FarmerLivestockProduction"
+            android:name="org.graindataterminal.views.senegal.FarmerLivestockProduction"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:parentActivityName=".controllers.ContentPager">
+            android:parentActivityName="org.graindataterminal.controllers.ContentPager">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".controllers.ContentPager" />
+                android:value="org.graindataterminal.controllers.ContentPager" />
         </activity>
 
         <activity
-            android:name=".views.senegal.FarmerExpensesNature"
+            android:name="org.graindataterminal.views.senegal.FarmerExpensesNature"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:parentActivityName=".controllers.ContentPager">
+            android:parentActivityName="org.graindataterminal.controllers.ContentPager">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".controllers.ContentPager" />
+                android:value="org.graindataterminal.controllers.ContentPager" />
         </activity>
 
         <activity
-            android:name=".views.senegal.FarmerMovement"
+            android:name="org.graindataterminal.views.senegal.FarmerMovement"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:parentActivityName=".controllers.ContentPager">
+            android:parentActivityName="org.graindataterminal.controllers.ContentPager">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".controllers.ContentPager" />
+                android:value="org.graindataterminal.controllers.ContentPager" />
         </activity>
 
         <activity
-            android:name=".views.senegal.CropPager"
+            android:name="org.graindataterminal.views.senegal.CropPager"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:parentActivityName=".controllers.ContentPager">
+            android:parentActivityName="org.graindataterminal.controllers.ContentPager">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".controllers.ContentPager" />
+                android:value="org.graindataterminal.controllers.ContentPager" />
         </activity>
         -->
 

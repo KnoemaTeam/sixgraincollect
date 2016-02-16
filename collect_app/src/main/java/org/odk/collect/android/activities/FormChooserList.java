@@ -78,7 +78,7 @@ import java.util.Set;
 public class FormChooserList extends BaseActivity implements DiskSyncListener, DeleteInstancesListener, LoaderManager.LoaderCallbacks<Cursor>, DialogConstructor.NotificationListener, InstanceUploaderListener, FormListDownloaderListener, FormDownloaderListener {
     public static final int FORM_LIST_VIEW_ID = 111110;
     public static final int DATA_LIST_VIEW_ID = 111111;
-    public static final int INSTANCE_DATA_LIST_ID = 111112;
+    //public static final int INSTANCE_DATA_LIST_ID = 111112;
 
     private static final boolean EXIT = true;
     private static final boolean DO_NOT_EXIT = false;
@@ -139,14 +139,8 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
         editor.putString(SettingsFragment.SURVEY_SOURCE_URL_KEY, Constants.SURVEY_SOURCE_URL);
         editor.apply();
 
-        // Temporary commented
-        if (mSettings.getBoolean(SettingsFragment.SURVEY_FORM_DOWNLOADED_KEY, false)) {
-            downloadSurveyFormList();
-        }
-        else {
-            mDeleteInstancesTask = (DeleteInstancesTask) getLastNonConfigurationInstance();
-            runDiskSynchronizationTask();
-        }
+        mDeleteInstancesTask = (DeleteInstancesTask) getLastNonConfigurationInstance();
+        runDiskSynchronizationTask();
     }
 
     @Override
@@ -229,7 +223,7 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
                 break;
 
             case R.id.action_update:
-                checkApplicationUpdates(true);
+                downloadSurveyFormList();
                 break;
 
             case R.id.action_send_mail:
@@ -489,10 +483,11 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
             String sortOrder = InstanceProviderAPI.InstanceColumns.STATUS + " DESC, " + InstanceProviderAPI.InstanceColumns.DISPLAY_NAME + " ASC";
             return new CursorLoader(this, InstanceProviderAPI.InstanceColumns.CONTENT_URI, null, null, null, sortOrder);
         }
-        else if (id == FORM_LIST_VIEW_ID) {
+        else {
             String sortOrder = FormsColumns.DISPLAY_NAME + " ASC, " + FormsColumns.JR_VERSION + " DESC";
             return new CursorLoader(this, FormsColumns.CONTENT_URI, null, null, null, sortOrder);
         }
+        /*
         else {
             String selection = InstanceProviderAPI.InstanceColumns.STATUS + "=? or " + InstanceProviderAPI.InstanceColumns.STATUS + "=?";
             String selectionArgs[] = { InstanceProviderAPI.STATUS_COMPLETE, InstanceProviderAPI.STATUS_SUBMISSION_FAILED };
@@ -500,6 +495,7 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
 
             return new CursorLoader(this, InstanceProviderAPI.InstanceColumns.CONTENT_URI, null, selection, selectionArgs, sortOrder);
         }
+        */
     }
 
     @Override
@@ -571,6 +567,7 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
                 }
             }
         }
+        /*
         else {
             if (data != null && data.getCount() > 0) {
                 List<Long> dataIdList = new ArrayList<>(data.getCount());
@@ -586,6 +583,7 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
                 mConstructor.stopAnimation();
             }
         }
+        */
     }
 
     @Override
@@ -696,6 +694,9 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
 
         mConstructor = new DialogConstructor(FormChooserList.this, DialogConstructor.DIALOG_SINGLE_ANSWER);
         mConstructor.updateDialog(getString(R.string.information_message), message);
+
+        mDataList.clear();
+        getSupportLoaderManager().restartLoader(DATA_LIST_VIEW_ID, null, this);
     }
 
     @Override
@@ -708,7 +709,18 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
             mConstructor = new DialogConstructor(this);
 
         mConstructor.updateDialog(getString(R.string.uploading_data), "Uploading data...");
-        getSupportLoaderManager().initLoader(INSTANCE_DATA_LIST_ID, null, this);
+        //getSupportLoaderManager().initLoader(INSTANCE_DATA_LIST_ID, null, this);
+
+        List<Long> dataIdList = new ArrayList<>();
+        for (BaseSurvey baseSurvey: mDataList) {
+            if (Arrays.asList(BaseSurvey.SURVEY_VERSION_NONE).contains(baseSurvey.getSurveyVersion()))
+                dataIdList.add(Long.valueOf((baseSurvey.getId())));
+        }
+
+        if (!dataIdList.isEmpty())
+            runInstanceUploaderTask(dataIdList.toArray(new Long[dataIdList.size()]));
+        else
+            mConstructor.stopAnimation();
     }
 
     protected void runInstanceUploaderTask (Long[] data) {
@@ -718,7 +730,6 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
             mInstanceUploaderTask.execute(data);
         }
     }
-
 
     private void downloadSurveyFormList() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -774,7 +785,7 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
         }
         else {
             mConstructor.stopAnimation();
-            Toast.makeText(getApplicationContext(), R.string.noselect_error, Toast.LENGTH_SHORT).show();
+            checkApplicationUpdates(true);
         }
     }
 
@@ -860,6 +871,7 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
 
         mDeleteInstancesTask = (DeleteInstancesTask) getLastNonConfigurationInstance();
         runDiskSynchronizationTask();
+        checkApplicationUpdates(true);
     }
 
     private void deleteSelectedInstances() {
