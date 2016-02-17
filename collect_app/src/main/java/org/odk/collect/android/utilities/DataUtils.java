@@ -251,7 +251,8 @@ public class DataUtils {
                     }
                 }
             }
-            else {
+
+            if (surveyList.isEmpty()) {
                 SharedPreferences sharedPreferences = Collect.getInstance().getContext().getSharedPreferences(Collect.getInstance().getContext().getString(R.string.app_preferences_name), Context.MODE_PRIVATE);
                 String savedPreferences = sharedPreferences.getString(Constants.PREFERENCES_KEY, null);
 

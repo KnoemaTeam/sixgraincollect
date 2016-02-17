@@ -24,6 +24,7 @@ import android.util.Log;
 
 import com.google.common.io.Files;
 
+import org.graindataterminal.models.base.DataHolder;
 import org.json.JSONObject;
 import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
@@ -535,6 +536,7 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
         JSONObject jsonObject = XMLUtils.toJSONObject(xml, arrayProperties);
         jsonObject = jsonObject.getJSONObject((String)jsonObject.names().get(0));
         jsonObject.put("app_version", Collect.getInstance().getAppVersionName());
+        jsonObject.put("interviewer", DataHolder.getInstance().getInterviewerName());
         String jsonSurvey = jsonObject.toString();
 
         HttpPost httppost = WebUtils.createOpenRosaHttpPost(uri);
