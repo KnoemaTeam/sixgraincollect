@@ -553,6 +553,8 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
         }
         else if (loader.getId() == FORM_LIST_VIEW_ID) {
             if (data.getCount() > 0) {
+                mFormList.clear();
+
                 while (data.moveToNext()) {
                     int formIdIndex = data.getColumnIndex("_id");
                     int formNameIndex = data.getColumnIndex("jrFormId");
@@ -874,15 +876,14 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
 
         if (mDownloadFormsTask != null) {
             mDownloadFormsTask.setDownloaderListener(null);
+            mDownloadFormsTask.cancel(true);
+            mDownloadFormsTask = null;
         }
 
         mLoadingIndicator.stopAnimation();
-
-        SharedPreferences.Editor editor = mSettings.edit();
-        editor.putBoolean(SettingsFragment.SURVEY_FORM_DOWNLOADED_KEY, true);
-        editor.apply();
-
         mDeleteInstancesTask = (DeleteInstancesTask) getLastNonConfigurationInstance();
+
+        getSupportLoaderManager().restartLoader(FORM_LIST_VIEW_ID, null, FormChooserList.this);
         runDiskSynchronizationTask();
         synchronise();
     }
@@ -913,6 +914,6 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
         mDeleteInstancesTask = null;
         mSelectedDataList.clear();
 
-        getSupportLoaderManager().restartLoader(DATA_LIST_VIEW_ID, null, this);
+        getSupportLoaderManager().restartLoader(DATA_LIST_VIEW_ID, null, FormChooserList.this);
     }
 }
