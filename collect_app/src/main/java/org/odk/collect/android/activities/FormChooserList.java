@@ -215,7 +215,7 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
                 break;
 
             case R.id.action_update:
-                downloadSurveyFormList();
+                checkApplicationUpdates(true);
                 break;
 
             case R.id.action_send_mail:
@@ -227,7 +227,7 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
                 break;
 
             case R.id.action_synchronize:
-                synchronize();
+                downloadSurveyFormList();
                 break;
         }
 
@@ -610,7 +610,7 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
 
     @Override
     public void onPositiveClick() {
-        
+
     }
 
     @Override
@@ -635,6 +635,7 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
 
     @Override
     public void uploadingComplete(HashMap<String, String> result) {
+        /*
         String selection = "";
         Set<String> keys = result.keySet();
         Iterator<String> it = keys.iterator();
@@ -672,13 +673,14 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
                 results.close();
             }
         }
+        */
 
         mInstanceUploaderTask.cancel(true);
         mInstanceUploaderTask.setUploaderListener(null);
         mInstanceUploaderTask = null;
 
         mLoadingIndicator.stopAnimation();
-        createErrorDialog(message, false);
+        synchronisePreviousSurveys();
 
         getSupportLoaderManager().restartLoader(DATA_LIST_VIEW_ID, null, this);
     }
@@ -688,7 +690,7 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
 
     }
 
-    protected void synchronize() {
+    protected void synchronise() {
         String interviewer = DataHolder.getInstance().getInterviewerName();
 
         if (TextUtils.isEmpty(interviewer)) {
@@ -700,6 +702,26 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
             return;
         }
 
+        mLoadingIndicator.updateDialog(getString(R.string.uploading_data), "Uploading data...");
+        //getSupportLoaderManager().initLoader(INSTANCE_DATA_LIST_ID, null, this);
+
+        List<Long> dataIdList = new ArrayList<>();
+        for (BaseSurvey baseSurvey: mDataList) {
+            if (Arrays.asList(BaseSurvey.SURVEY_VERSION_NONE).contains(baseSurvey.getSurveyVersion()) &&
+                    baseSurvey.getState() != BaseSurvey.SURVEY_STATE_SUBMITTED)
+                dataIdList.add(Long.valueOf((baseSurvey.getId())));
+        }
+
+        if (!dataIdList.isEmpty()) {
+            runInstanceUploaderTask(dataIdList.toArray(new Long[dataIdList.size()]));
+        }
+        else {
+            mLoadingIndicator.stopAnimation();
+            synchronisePreviousSurveys();
+        }
+    }
+
+    protected void synchronisePreviousSurveys() {
         try {
             for (BaseSurvey survey:  mDataList) {
                 if (Arrays.asList(BaseSurvey.SURVEY_VERSION_NONE).contains(survey.getSurveyVersion()))
@@ -709,7 +731,8 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
                     @Override
                     protected void onSuccess(Boolean result) {
                         DataUtils.setSurveyList(DataHolder.getInstance().getSurveys());
-                        getSupportLoaderManager().restartLoader(DATA_LIST_VIEW_ID, null, FormChooserList.this);
+                        getSupportLoaderManager().destroyLoader(DATA_LIST_VIEW_ID);
+                        getSupportLoaderManager().initLoader(DATA_LIST_VIEW_ID, null, FormChooserList.this);
                     }
                 }.executeOnExecutor(AsyncTask.SERIAL_EXECUTOR);
             }
@@ -717,20 +740,6 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
         catch (Exception exception) {
             exception.printStackTrace();
         }
-
-        mLoadingIndicator.updateDialog(getString(R.string.uploading_data), "Uploading data...");
-        //getSupportLoaderManager().initLoader(INSTANCE_DATA_LIST_ID, null, this);
-
-        List<Long> dataIdList = new ArrayList<>();
-        for (BaseSurvey baseSurvey: mDataList) {
-            if (Arrays.asList(BaseSurvey.SURVEY_VERSION_NONE).contains(baseSurvey.getSurveyVersion()))
-                dataIdList.add(Long.valueOf((baseSurvey.getId())));
-        }
-
-        if (!dataIdList.isEmpty())
-            runInstanceUploaderTask(dataIdList.toArray(new Long[dataIdList.size()]));
-        else
-            mLoadingIndicator.stopAnimation();
     }
 
     protected void runInstanceUploaderTask (Long[] data) {
@@ -793,7 +802,7 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
         }
         else {
             mLoadingIndicator.stopAnimation();
-            checkApplicationUpdates(true);
+            synchronise();
         }
     }
 
@@ -875,7 +884,7 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
 
         mDeleteInstancesTask = (DeleteInstancesTask) getLastNonConfigurationInstance();
         runDiskSynchronizationTask();
-        checkApplicationUpdates(true);
+        synchronise();
     }
 
     private void deleteSelectedInstances() {

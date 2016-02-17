@@ -213,6 +213,9 @@ public class DataUtils {
                         String basePath = instancePath.getAbsolutePath() + File.separator + instancePath.getName() + ".txt";
                         File instance = new File(basePath);
 
+                        if (!instance.exists())
+                            continue;
+
                         FileInputStream inputStream = new FileInputStream(instance);
                         InputStreamReader streamReader = new InputStreamReader(inputStream);
                         BufferedReader bufferedReader = new BufferedReader(streamReader);

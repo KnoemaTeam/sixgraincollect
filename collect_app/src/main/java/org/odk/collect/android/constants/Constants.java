@@ -17,8 +17,8 @@ public final class Constants {
 
     public static final String DEFAULT_FONTSIZE = "21";
 
-    public static final String SURVEY_SOURCE_URL = "http://192.168.1.29/api/farmSurvey";
-    public static final String SURVEY_UPLOAD_URL = "http://192.168.1.29/api/farmSurvey";
+    public static final String SURVEY_SOURCE_URL = "http://6grain.com/api/farmSurvey";
+    public static final String SURVEY_UPLOAD_URL = "http://6grain.com/api/farmSurvey";
     public static final String PREFERENCES_KEY = "SIX_GRAIN_PREFERENCES_KEY";
     public static final String UPDATE_TYPE_KEY = "UPDATE_TYPE";
     public static final String INTERVIEWER_NAME_KEY = "INTERVIEWER_NAME";

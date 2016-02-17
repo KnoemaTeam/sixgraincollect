@@ -9,8 +9,8 @@
             android:key="survey_source_url"
             android:title="@string/pref_source_url"
             android:dialogTitle="@string/server_url"
-            android:defaultValue="http://192.168.1.29/api/farmSurvey"
-            android:summary="http://192.168.1.29/api/farmSurvey"
+            android:defaultValue="http://6grain.com/api/farmSurvey"
+            android:summary="http://6grain.com/api/farmSurvey"
             android:inputType="textUri"/>
 
         <EditTextPreference
@@ -18,8 +18,8 @@
             android:key="survey_upload_url"
             android:title="@string/pref_upload_url"
             android:dialogTitle="@string/server_url"
-            android:defaultValue="http://192.168.1.29/api/farmSurvey"
-            android:summary="http://192.168.1.29/api/farmSurvey"
+            android:defaultValue="http://6grain.com/api/farmSurvey"
+            android:summary="http://6grain.com/api/farmSurvey"
             android:inputType="textUri"/>
 
     </PreferenceCategory>
