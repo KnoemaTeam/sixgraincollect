@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.odk.collect.android.R;
@@ -28,6 +29,9 @@ public class DialogConstructor {
     public DialogConstructor(Activity activity) {
         LayoutInflater inflater = activity.getLayoutInflater();
         View contentView = inflater.inflate(R.layout.alert_spinner_dialog, null, false);
+
+        LinearLayout buttonFrame = (LinearLayout) contentView.findViewById(R.id.buttonFrame);
+        buttonFrame.setVisibility(View.GONE);
 
         mTitleView = (TextView) contentView.findViewById(R.id.title);
         mMessageView = (TextView) contentView.findViewById(R.id.message);

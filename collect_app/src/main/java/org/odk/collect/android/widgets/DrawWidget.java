@@ -25,6 +25,7 @@ import org.odk.collect.android.R;
 import org.odk.collect.android.activities.DrawActivity;
 import org.odk.collect.android.activities.FormEntryActivity;
 import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.constants.Constants;
 import org.odk.collect.android.utilities.FileUtils;
 import org.odk.collect.android.utilities.MediaUtils;
 
@@ -155,7 +156,7 @@ public class DrawWidget extends QuestionWidget implements IBinaryWidget {
 			i.putExtra(DrawActivity.REF_IMAGE, Uri.fromFile(f));
 		}
 		i.putExtra(DrawActivity.EXTRA_OUTPUT,
-				Uri.fromFile(new File(Collect.TMPFILE_PATH)));
+				Uri.fromFile(new File(Constants.TMPFILE_PATH)));
 
 		try {
 			Collect.getInstance().getFormController()

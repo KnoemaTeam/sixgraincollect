@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import org.graindataterminal.helpers.Helper;
 import org.graindataterminal.models.base.BaseSurvey;
 import org.graindataterminal.models.base.DataHolder;
 import org.graindataterminal.models.cameroon.CameroonSurvey;
@@ -17,7 +18,16 @@ import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
 import org.odk.collect.android.constants.Constants;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class DataUtils {
@@ -149,27 +159,39 @@ public class DataUtils {
 
     public static void setSurveyList(List surveyList) {
         try {
-            SharedPreferences sharedPreferences = Collect.getInstance().getContext().getSharedPreferences(Collect.getInstance().getContext().getString(R.string.app_preferences_name), Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
+            for(Object baseSurvey: surveyList) {
+                if (Arrays.asList(BaseSurvey.SURVEY_VERSION_NONE).contains(((BaseSurvey) baseSurvey).getSurveyVersion()))
+                    continue;
 
-            GsonBuilder gsonBuilder = new GsonBuilder();
-            Gson gson = gsonBuilder.create();
+                String version = ((BaseSurvey) baseSurvey).getSurveyVersion();
+                File file = Helper.getOutputMediaFile(version.substring(0, 2) + ((BaseSurvey) baseSurvey).getId());
 
-            int type = DataHolder.getInstance().getSurveysType();
-            Type objectType = new TypeToken<List<BaseSurvey>>(){}.getType();
+                if (file != null) {
+                    GsonBuilder gsonBuilder = new GsonBuilder();
+                    Gson gson = gsonBuilder.create();
 
-            if (type == BaseSurvey.SURVEY_TYPE_ZAMBIA)
-                objectType = new TypeToken<List<ZambiaSurvey>>(){}.getType();
-            else if (type == BaseSurvey.SURVEY_TYPE_TUNISIA)
-                objectType = new TypeToken<List<TunisiaSurvey>>(){}.getType();
-            else if (type == BaseSurvey.SURVEY_TYPE_SENEGAL)
-                objectType = new TypeToken<List<SenegalSurvey>>(){}.getType();
-            else if (type == BaseSurvey.SURVEY_TYPE_CAMEROON)
-                objectType = new TypeToken<List<CameroonSurvey>>(){}.getType();
+                    Type objectType = null;
 
-            String jsonString = gson.toJson(surveyList, objectType);
-            editor.putString(Constants.PREFERENCES_KEY, jsonString);
-            editor.apply();
+                    if (Arrays.asList(BaseSurvey.SURVEY_VERSION_ZAMBIA).contains(version))
+                        objectType = new TypeToken<ZambiaSurvey>(){}.getType();
+                    else if (Arrays.asList(BaseSurvey.SURVEY_VERSION_TUNISIA).contains(version))
+                        objectType = new TypeToken<TunisiaSurvey>(){}.getType();
+                    else if (Arrays.asList(BaseSurvey.SURVEY_VERSION_SENEGAL).contains(version))
+                        objectType = new TypeToken<SenegalSurvey>(){}.getType();
+                    else if (Arrays.asList(BaseSurvey.SURVEY_VERSION_CAMEROON).contains(version))
+                        objectType = new TypeToken<CameroonSurvey>(){}.getType();
+
+                    if (objectType != null) {
+                        String jsonObject = gson.toJson(baseSurvey, objectType);
+
+                        FileOutputStream outputStream = new FileOutputStream(file);
+                        OutputStreamWriter streamWriter = new OutputStreamWriter(outputStream);
+                        streamWriter.write(jsonObject);
+                        streamWriter.flush();
+                        streamWriter.close();
+                    }
+                }
+            }
         }
         catch (Exception exception) {
             exception.printStackTrace();
@@ -178,30 +200,86 @@ public class DataUtils {
 
     public static List getSurveyList() {
         try {
-            SharedPreferences sharedPreferences = Collect.getInstance().getContext().getSharedPreferences(Collect.getInstance().getContext().getString(R.string.app_preferences_name), Context.MODE_PRIVATE);
-            String savedPreferences = sharedPreferences.getString(Constants.PREFERENCES_KEY, null);
+            List surveyList = new ArrayList();
+            File instancesPath = new File(Constants.INSTANCES_PATH);
+            if (instancesPath.isDirectory()) {
+                File[] instancesPaths = instancesPath.listFiles();
 
-            if (savedPreferences != null) {
-                int type = DataHolder.getInstance().getSurveysType();
-                Type objectType = new TypeToken<List<BaseSurvey>>() {
-                }.getType();
+                for (File instancePath: instancesPaths) {
+                    if (instancePath.getName().equals("storage"))
+                        continue;
 
-                if (type == BaseSurvey.SURVEY_TYPE_ZAMBIA)
-                    objectType = new TypeToken<List<ZambiaSurvey>>() {
-                    }.getType();
-                else if (type == BaseSurvey.SURVEY_TYPE_TUNISIA)
-                    objectType = new TypeToken<List<TunisiaSurvey>>() {
-                    }.getType();
-                else if (type == BaseSurvey.SURVEY_TYPE_SENEGAL)
-                    objectType = new TypeToken<List<SenegalSurvey>>() {
-                    }.getType();
-                else if (type == BaseSurvey.SURVEY_TYPE_CAMEROON)
-                    objectType = new TypeToken<List<CameroonSurvey>>() {
-                    }.getType();
+                    if (instancePath.isDirectory()) {
+                        String basePath = instancePath.getAbsolutePath() + File.separator + instancePath.getName() + ".txt";
+                        File instance = new File(basePath);
 
-                Gson gson = new GsonBuilder().create();
-                return gson.fromJson(savedPreferences, objectType);
+                        FileInputStream inputStream = new FileInputStream(instance);
+                        InputStreamReader streamReader = new InputStreamReader(inputStream);
+                        BufferedReader bufferedReader = new BufferedReader(streamReader);
+                        StringBuilder stringBuilder = new StringBuilder(inputStream.available());
+                        String string;
+
+                        while ((string = bufferedReader.readLine()) != null)
+                            stringBuilder.append(string);
+
+                        inputStream.close();
+
+                        String version = instancePath.getName().substring(0, 2);
+                        String rawString = stringBuilder.toString();
+
+                        GsonBuilder gsonBuilder = new GsonBuilder();
+                        Gson gson = gsonBuilder.create();
+
+                        Type objectType = null;
+                        switch (version) {
+                            case "za":
+                                objectType = new TypeToken<ZambiaSurvey>(){}.getType();
+                                break;
+                            case "tn":
+                                objectType = new TypeToken<TunisiaSurvey>(){}.getType();
+                                break;
+                            case "sn":
+                                objectType = new TypeToken<SenegalSurvey>(){}.getType();
+                                break;
+                            case "cm":
+                                objectType = new TypeToken<CameroonSurvey>(){}.getType();
+                                break;
+                        }
+
+                        if (objectType != null)
+                            surveyList.add(gson.fromJson(rawString, objectType));
+                    }
+                }
             }
+            else {
+                SharedPreferences sharedPreferences = Collect.getInstance().getContext().getSharedPreferences(Collect.getInstance().getContext().getString(R.string.app_preferences_name), Context.MODE_PRIVATE);
+                String savedPreferences = sharedPreferences.getString(Constants.PREFERENCES_KEY, null);
+
+                if (savedPreferences != null) {
+                    int type = DataHolder.getInstance().getSurveysType();
+                    Type objectType = new TypeToken<List<BaseSurvey>>() {
+                    }.getType();
+
+                    if (type == BaseSurvey.SURVEY_TYPE_ZAMBIA)
+                        objectType = new TypeToken<List<ZambiaSurvey>>() {
+                        }.getType();
+                    else if (type == BaseSurvey.SURVEY_TYPE_TUNISIA)
+                        objectType = new TypeToken<List<TunisiaSurvey>>() {
+                        }.getType();
+                    else if (type == BaseSurvey.SURVEY_TYPE_SENEGAL)
+                        objectType = new TypeToken<List<SenegalSurvey>>() {
+                        }.getType();
+                    else if (type == BaseSurvey.SURVEY_TYPE_CAMEROON)
+                        objectType = new TypeToken<List<CameroonSurvey>>() {
+                        }.getType();
+
+                    Gson gson = new GsonBuilder().create();
+                    surveyList = gson.fromJson(savedPreferences, objectType);
+                }
+            }
+
+            return surveyList;
+
         }
         catch (Exception exception) {
             exception.printStackTrace();

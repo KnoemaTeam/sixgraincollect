@@ -25,6 +25,7 @@ import java.util.Map.Entry;
 
 import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.constants.Constants;
 import org.odk.collect.android.preferences.AdminPreferencesActivity;
 import org.odk.collect.android.preferences.PreferencesActivity;
 import org.odk.collect.android.provider.InstanceProviderAPI;
@@ -125,7 +126,7 @@ public class MainMenuActivity extends Activity {
 		setTitle(getString(R.string.app_name) + " > "
 				+ getString(R.string.main_menu));
 
-		File f = new File(Collect.ODK_ROOT + "/collect.settings");
+		File f = new File(Constants.ODK_ROOT + "/collect.settings");
 		if (f.exists()) {
 			boolean success = loadSharedPreferencesFromFile(f);
 			if (success) {

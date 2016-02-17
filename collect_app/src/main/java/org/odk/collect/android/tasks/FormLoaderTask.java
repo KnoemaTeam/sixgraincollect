@@ -47,6 +47,7 @@ import org.javarosa.xform.util.XFormUtils;
 import org.javarosa.xpath.XPathTypeMismatchException;
 import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.constants.Constants;
 import org.odk.collect.android.database.ItemsetDbAdapter;
 import org.odk.collect.android.external.ExternalAnswerResolver;
 import org.odk.collect.android.external.ExternalDataHandler;
@@ -135,7 +136,7 @@ public class FormLoaderTask extends AsyncTask<String, String, FormLoaderTask.FEC
 
     File formXml = new File(formPath);
     String formHash = FileUtils.getMd5Hash(formXml);
-    File formBin = new File(Collect.CACHE_PATH + File.separator + formHash + ".formdef");
+    File formBin = new File(Constants.CACHE_PATH + File.separator + formHash + ".formdef");
 
     publishProgress(Collect.getInstance().getString(R.string.survey_loading_reading_form_message));
 
@@ -321,7 +322,7 @@ public class FormLoaderTask extends AsyncTask<String, String, FormLoaderTask.FEC
     // This should get moved to the Application Class
     if (ReferenceManager._().getFactories().length == 0) {
       // this is /sdcard/odk
-      ReferenceManager._().addReferenceFactory(new FileReferenceFactory(Collect.ODK_ROOT));
+      ReferenceManager._().addReferenceFactory(new FileReferenceFactory(Constants.ODK_ROOT));
     }
 
     // Set jr://... to point to /sdcard/odk/forms/filename-media/
@@ -510,7 +511,7 @@ public class FormLoaderTask extends AsyncTask<String, String, FormLoaderTask.FEC
   public void serializeFormDef(FormDef fd, String filepath) {
     // calculate unique md5 identifier
     String hash = FileUtils.getMd5Hash(new File(filepath));
-    File formDef = new File(Collect.CACHE_PATH + File.separator + hash + ".formdef");
+    File formDef = new File(Constants.CACHE_PATH + File.separator + hash + ".formdef");
 
     // formdef does not exist, create one.
     if (!formDef.exists()) {

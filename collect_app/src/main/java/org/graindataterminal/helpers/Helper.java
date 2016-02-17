@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.constants.Constants;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -58,6 +59,29 @@ public class Helper {
     public static final int EDIT_ITEM_REQUEST_CODE = 31;
 
     private static File zipFile = null;
+
+    public static File getOutputMediaFile(String fileName) throws IOException {
+        File mediaStorageDir;
+
+        String basePath = Constants.INSTANCES_PATH + File.separator + fileName;
+        String state = Environment.getExternalStorageState();
+
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            mediaStorageDir = new File(basePath);
+        }
+        else {
+            ContextWrapper cw = new ContextWrapper(Collect.getInstance().getContext());
+            mediaStorageDir = cw.getDir(basePath ,Context.MODE_PRIVATE);
+        }
+
+        if (!mediaStorageDir.exists()) {
+            if (!mediaStorageDir.mkdirs()) {
+                return null;
+            }
+        }
+
+        return new File(mediaStorageDir.getPath() + File.separator + fileName + ".txt");
+    }
 
     public static File getOutputMediaFile (String id, String prefix, String extension, String type) throws IOException{
         File mediaStorageDir;

@@ -193,6 +193,8 @@ public class InterviewerActivity extends AppCompatActivity {
             spinner.setSelection(2);
         else if (type == BaseSurvey.SURVEY_TYPE_CAMEROON)
             spinner.setSelection(3);
+        else if (type == BaseSurvey.SURVEY_TYPE_GAMBIA)
+            spinner.setSelection(4);
     }
 
     protected void updateChannelType() {

@@ -22,6 +22,7 @@ import java.util.Locale;
 
 import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.constants.Constants;
 import org.odk.collect.android.database.ItemsetDbAdapter;
 import org.odk.collect.android.database.ODKSQLiteOpenHelper;
 import org.odk.collect.android.provider.FormsProviderAPI.FormsColumns;
@@ -67,7 +68,7 @@ public class FormsProvider extends ContentProvider {
 		private static final String MODEL_VERSION = "modelVersion";
 
 		DatabaseHelper(String databaseName) {
-			super(Collect.METADATA_PATH, databaseName, null, DATABASE_VERSION);
+			super(Constants.METADATA_PATH, databaseName, null, DATABASE_VERSION);
 		}
 
 		@Override
@@ -358,7 +359,7 @@ public class FormsProvider extends ContentProvider {
 		values.put(FormsColumns.MD5_HASH, md5);
 
 		if (values.containsKey(FormsColumns.JRCACHE_FILE_PATH) == false) {
-			String cachePath = Collect.CACHE_PATH + File.separator + md5
+			String cachePath = Constants.CACHE_PATH + File.separator + md5
 					+ ".formdef";
 			values.put(FormsColumns.JRCACHE_FILE_PATH, cachePath);
 		}
@@ -653,7 +654,7 @@ public class FormsProvider extends ContentProvider {
 								.getMd5Hash(new File(formFile));
 						values.put(FormsColumns.MD5_HASH, newMd5);
 						values.put(FormsColumns.JRCACHE_FILE_PATH,
-								Collect.CACHE_PATH + File.separator + newMd5
+								Constants.CACHE_PATH + File.separator + newMd5
 										+ ".formdef");
 					}
 

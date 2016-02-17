@@ -28,6 +28,7 @@ import org.javarosa.xform.parse.XFormParser;
 import org.kxml2.kdom.Element;
 import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.constants.Constants;
 import org.odk.collect.android.exception.TaskCancelledException;
 import org.odk.collect.android.listeners.FormDownloaderListener;
 import org.odk.collect.android.logic.FormDetails;
@@ -104,7 +105,7 @@ public class DownloadFormsTask extends AsyncTask<List<FormDetails>, String, Hash
 
                 if (fd.manifestUrl != null) {
                     // use a temporary media path until everything is ok.
-                    tempMediaPath = new File(Collect.CACHE_PATH, String.valueOf(System.currentTimeMillis())).getAbsolutePath();
+                    tempMediaPath = new File(Constants.CACHE_PATH, String.valueOf(System.currentTimeMillis())).getAbsolutePath();
                     finalMediaPath = FileUtils.constructMediaPath(fileResult.getFile().getAbsolutePath());
                     String error = downloadManifestAndMediaFiles(tempMediaPath, finalMediaPath, fd, count, total);
                     if (error != null) {
@@ -296,11 +297,11 @@ public class DownloadFormsTask extends AsyncTask<List<FormDetails>, String, Hash
         rootName = rootName.trim();
 
         // proposed name of xml file...
-        String path = Collect.FORMS_PATH + File.separator + rootName + ".xml";
+        String path = Constants.FORMS_PATH + File.separator + rootName + ".xml";
         int i = 2;
         File f = new File(path);
         while (f.exists()) {
-            path = Collect.FORMS_PATH + File.separator + rootName + "_" + i + ".xml";
+            path = Constants.FORMS_PATH + File.separator + rootName + "_" + i + ".xml";
             f = new File(path);
             i++;
         }
@@ -360,7 +361,7 @@ public class DownloadFormsTask extends AsyncTask<List<FormDetails>, String, Hash
      * @throws Exception
      */
     private void downloadFile(File file, String downloadUrl) throws Exception {
-        File tempFile = File.createTempFile(file.getName(), TEMP_DOWNLOAD_EXTENSION, new File(Collect.CACHE_PATH));
+        File tempFile = File.createTempFile(file.getName(), TEMP_DOWNLOAD_EXTENSION, new File(Constants.CACHE_PATH));
 
         URI uri;
         try {

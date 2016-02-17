@@ -25,6 +25,7 @@ import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
 import org.odk.collect.android.R;
+import org.odk.collect.android.constants.Constants;
 import org.odk.collect.android.database.ActivityLogger;
 import org.odk.collect.android.external.ExternalDataManager;
 import org.odk.collect.android.logic.FormController;
@@ -46,21 +47,6 @@ import java.io.File;
  * @author carlhartung
  */
 public class Collect extends MultiDexApplication {
-
-    // Storage paths
-    public static final String ODK_ROOT = Environment.getExternalStorageDirectory()
-            + File.separator + "6G Collect";
-    public static final String FORMS_PATH = ODK_ROOT + File.separator + "forms";
-    public static final String INSTANCES_PATH = ODK_ROOT + File.separator + "instances";
-    public static final String CACHE_PATH = ODK_ROOT + File.separator + ".cache";
-    public static final String METADATA_PATH = ODK_ROOT + File.separator + "metadata";
-    public static final String TMPFILE_PATH = CACHE_PATH + File.separator + "tmp.jpg";
-    public static final String TMPDRAWFILE_PATH = CACHE_PATH + File.separator + "tmpDraw.jpg";
-    public static final String TMPXML_PATH = CACHE_PATH + File.separator + "tmp.xml";
-    public static final String LOG_PATH = ODK_ROOT + File.separator + "log";
-
-    public static final String DEFAULT_FONTSIZE = "21";
-
     // share all session cookies across all sessions...
     private CookieStore cookieStore = new BasicCookieStore();
     // retain credentials for 7 minutes...
@@ -110,7 +96,7 @@ public class Collect extends MultiDexApplication {
 
     public static int getQuestionFontsize() {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(Collect.getInstance());
-        String question_font = settings.getString(PreferencesActivity.KEY_FONT_SIZE, Collect.DEFAULT_FONTSIZE);
+        String question_font = settings.getString(PreferencesActivity.KEY_FONT_SIZE, Constants.DEFAULT_FONTSIZE);
 
         return Integer.valueOf(question_font);
     }
@@ -157,24 +143,18 @@ public class Collect extends MultiDexApplication {
             throw new RuntimeException(Collect.getInstance().getString(R.string.sdcard_unmounted, cardstatus));
         }
 
-        String[] dirs = {
-                ODK_ROOT, FORMS_PATH, INSTANCES_PATH, CACHE_PATH, METADATA_PATH
-        };
+        String[] dirs = {Constants.ODK_ROOT, Constants.FORMS_PATH, Constants.INSTANCES_PATH, Constants.CACHE_PATH, Constants.METADATA_PATH};
 
         for (String dirName : dirs) {
             File dir = new File(dirName);
             if (!dir.exists()) {
                 if (!dir.mkdirs()) {
-                    RuntimeException e =
-                            new RuntimeException("6G Collect reports :: Cannot create directory: "
-                                    + dirName);
+                    RuntimeException e = new RuntimeException("6G Data Terminal reports :: Cannot create directory: " + dirName);
                     throw e;
                 }
             } else {
                 if (!dir.isDirectory()) {
-                    RuntimeException e =
-                            new RuntimeException("6G Collect reports :: " + dirName
-                                    + " exists, but is not a directory");
+                    RuntimeException e = new RuntimeException("6G Data Terminal reports :: " + dirName + " exists, but is not a directory");
                     throw e;
                 }
             }
@@ -194,8 +174,8 @@ public class Collect extends MultiDexApplication {
 		 * could be in use by ODK Tables.
 		 */
     	String dirPath = directory.getAbsolutePath();
-    	if ( dirPath.startsWith(Collect.ODK_ROOT) ) {
-    		dirPath = dirPath.substring(Collect.ODK_ROOT.length());
+    	if ( dirPath.startsWith(Constants.ODK_ROOT) ) {
+    		dirPath = dirPath.substring(Constants.ODK_ROOT.length());
     		String[] parts = dirPath.split(File.separator);
     		// [appName, instances, tableId, instanceId ]
     		if ( parts.length == 4 && parts[1].equals("instances") ) {
@@ -258,8 +238,7 @@ public class Collect extends MultiDexApplication {
             exception.printStackTrace();
         }
         
-        mActivityLogger = new ActivityLogger(
-                mgr.getSingularProperty(PropertyManager.DEVICE_ID_PROPERTY));
+        mActivityLogger = new ActivityLogger(mgr.getSingularProperty(PropertyManager.DEVICE_ID_PROPERTY));
     }
 
 }

@@ -36,6 +36,7 @@ import java.util.Stack;
 import org.odk.collect.android.R;
 import org.odk.collect.android.adapters.FileArrayAdapter;
 import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.constants.Constants;
 import org.odk.collect.android.listeners.GoogleDriveFormDownloadListener;
 import org.odk.collect.android.listeners.TaskListener;
 import org.odk.collect.android.logic.DriveListItem;
@@ -792,7 +793,7 @@ public class GoogleDriveActivity extends ListActivity implements OnConnectionFai
 
                     InputStream is = downloadFile(service, df);
                     BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-                    FileWriter fw = new FileWriter(Collect.FORMS_PATH + File.separator
+                    FileWriter fw = new FileWriter(Constants.FORMS_PATH + File.separator
                             + fileItem.getName());
 
                     int c;

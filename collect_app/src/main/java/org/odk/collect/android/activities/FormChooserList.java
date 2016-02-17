@@ -6,6 +6,8 @@ import org.graindataterminal.controllers.ContentPager;
 import org.graindataterminal.helpers.Helper;
 import org.graindataterminal.models.base.BaseSurvey;
 import org.graindataterminal.models.base.DataHolder;
+import org.graindataterminal.network.SurveySyncTask;
+import org.graindataterminal.views.system.MessageBox;
 import org.javarosa.core.util.DataUtil;
 import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
@@ -110,7 +112,7 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
 
     private LinearListAdapter mDataAdapter = null;
     private SimpleCursorAdapter mInstanceDataAdapter = null;
-    private DialogConstructor mConstructor = null;
+    private DialogConstructor mLoadingIndicator = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -129,10 +131,7 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
         setFormListView();
         setInstanceListView();
 
-        if (savedInstanceState != null && savedInstanceState.containsKey(syncMsgKey)) {
-            TextView tv = (TextView) findViewById(R.id.status_text);
-            tv.setText(savedInstanceState.getString(syncMsgKey));
-        }
+        mLoadingIndicator = new DialogConstructor(this);
 
         mSettings = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = mSettings.edit();
@@ -198,13 +197,6 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
             mSplashView.setVisibility(View.GONE);
 
         super.onStop();
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        TextView tv = (TextView) findViewById(R.id.status_text);
-        outState.putString(syncMsgKey, tv.getText().toString());
     }
 
     @Override
@@ -479,7 +471,6 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         if (id == DATA_LIST_VIEW_ID) {
-            mDataList.clear();
             String sortOrder = InstanceProviderAPI.InstanceColumns.STATUS + " DESC, " + InstanceProviderAPI.InstanceColumns.DISPLAY_NAME + " ASC";
             return new CursorLoader(this, InstanceProviderAPI.InstanceColumns.CONTENT_URI, null, null, null, sortOrder);
         }
@@ -501,6 +492,9 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         if (loader.getId() == DATA_LIST_VIEW_ID) {
+            mDataList.clear();
+            mDataList.addAll(DataHolder.getInstance().getSurveys());
+
             if (data.getCount() > 0) {
                 while (data.moveToNext()) {
                     int idIndex = data.getColumnIndex(InstanceProviderAPI.InstanceColumns._ID);
@@ -541,19 +535,19 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
 
                     mDataList.add(baseSurvey);
                 }
-
-                mDataList.addAll(DataHolder.getInstance().getSurveys());
-                Collections.sort(mDataList, new Comparator<BaseSurvey>() {
-                    @Override
-                    public int compare(BaseSurvey lhs, BaseSurvey rhs) {
-                        return rhs.getUpdateTime().compareTo(lhs.getUpdateTime());
-                    }
-                });
-
-                if (mDataAdapter != null)
-                    mDataAdapter.setData(mDataList);
             }
-            else {
+
+            Collections.sort(mDataList, new Comparator<BaseSurvey>() {
+                @Override
+                public int compare(BaseSurvey lhs, BaseSurvey rhs) {
+                    return rhs.getUpdateTime().compareTo(lhs.getUpdateTime());
+                }
+            });
+
+            if (mDataAdapter != null)
+                mDataAdapter.setData(mDataList);
+
+            if (mDataList.isEmpty()) {
                 setSplashView();
             }
         }
@@ -597,16 +591,6 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
     @Override
     public void SyncComplete(String result) {
         Log.i(t, "disk sync task complete");
-        final TextView textView = (TextView) findViewById(R.id.status_text);
-        textView.setVisibility(View.VISIBLE);
-        textView.setText(result);
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                textView.setVisibility(View.GONE);
-            }
-        }, 5 * 1000);
     }
 
     /**
@@ -619,14 +603,14 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
     private void createErrorDialog(String errorMsg, final boolean shouldExit) {
     	Collect.getInstance().getActivityLogger().logAction(this, "createErrorDialog", "show");
 
-        mConstructor = new DialogConstructor(this);
-        mConstructor.setButtonText(getString(R.string.ok));
-        mConstructor.updateDialog("Error", errorMsg);
+        DialogConstructor dialogConstructor = new DialogConstructor(this, DialogConstructor.DIALOG_SINGLE_ANSWER);
+        dialogConstructor.setButtonText(getString(R.string.ok));
+        dialogConstructor.updateDialog(getString(R.string.information_message), errorMsg);
     }
 
     @Override
     public void onPositiveClick() {
-
+        
     }
 
     @Override
@@ -689,13 +673,13 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
             }
         }
 
-        mConstructor.stopAnimation();
-        mConstructor = null;
+        mInstanceUploaderTask.cancel(true);
+        mInstanceUploaderTask.setUploaderListener(null);
+        mInstanceUploaderTask = null;
 
-        mConstructor = new DialogConstructor(FormChooserList.this, DialogConstructor.DIALOG_SINGLE_ANSWER);
-        mConstructor.updateDialog(getString(R.string.information_message), message);
+        mLoadingIndicator.stopAnimation();
+        createErrorDialog(message, false);
 
-        mDataList.clear();
         getSupportLoaderManager().restartLoader(DATA_LIST_VIEW_ID, null, this);
     }
 
@@ -705,10 +689,36 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
     }
 
     protected void synchronize() {
-        if (mConstructor == null)
-            mConstructor = new DialogConstructor(this);
+        String interviewer = DataHolder.getInstance().getInterviewerName();
 
-        mConstructor.updateDialog(getString(R.string.uploading_data), "Uploading data...");
+        if (TextUtils.isEmpty(interviewer)) {
+            createMessage(MessageBox.DIALOG_TYPE_MESSAGE,
+                    getString(R.string.information_message),
+                    getString(R.string.information_message_interviewer),
+                    getString(R.string.information_message));
+
+            return;
+        }
+
+        try {
+            for (BaseSurvey survey:  mDataList) {
+                if (Arrays.asList(BaseSurvey.SURVEY_VERSION_NONE).contains(survey.getSurveyVersion()))
+                    continue;
+
+                new SurveySyncTask(survey, this) {
+                    @Override
+                    protected void onSuccess(Boolean result) {
+                        DataUtils.setSurveyList(DataHolder.getInstance().getSurveys());
+                        getSupportLoaderManager().restartLoader(DATA_LIST_VIEW_ID, null, FormChooserList.this);
+                    }
+                }.executeOnExecutor(AsyncTask.SERIAL_EXECUTOR);
+            }
+        }
+        catch (Exception exception) {
+            exception.printStackTrace();
+        }
+
+        mLoadingIndicator.updateDialog(getString(R.string.uploading_data), "Uploading data...");
         //getSupportLoaderManager().initLoader(INSTANCE_DATA_LIST_ID, null, this);
 
         List<Long> dataIdList = new ArrayList<>();
@@ -720,7 +730,7 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
         if (!dataIdList.isEmpty())
             runInstanceUploaderTask(dataIdList.toArray(new Long[dataIdList.size()]));
         else
-            mConstructor.stopAnimation();
+            mLoadingIndicator.stopAnimation();
     }
 
     protected void runInstanceUploaderTask (Long[] data) {
@@ -750,11 +760,9 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
                 mDownloadFormListTask = null;
             }
 
-            if (mConstructor == null)
-                mConstructor = new DialogConstructor(FormChooserList.this);
 
-            mConstructor.stopAnimation();
-            mConstructor.updateDialog(getString(R.string.downloading_data), "Preparing surveys");
+            mLoadingIndicator.stopAnimation();
+            mLoadingIndicator.updateDialog(getString(R.string.downloading_data), "Preparing surveys");
 
             mDownloadFormListTask = new DownloadFormListTask();
             mDownloadFormListTask.setDownloaderListener(this);
@@ -770,7 +778,7 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
             if (entry.get(FORM_ID_KEY).contains("za20160210") ||
                     entry.get(FORM_ID_KEY).contains("sn20160210") ||
                     entry.get(FORM_ID_KEY).contains("cm20160208") ||
-                    entry.get(FORM_ID_KEY).contains("gm20160210")) {
+                    entry.get(FORM_ID_KEY).contains("gm20160205")) {
                 filesToDownload.add(mFormData.get(entry.get(FORM_DETAIL_KEY)));
             }
         }
@@ -784,17 +792,14 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
             mDownloadFormsTask.execute(filesToDownload);
         }
         else {
-            mConstructor.stopAnimation();
+            mLoadingIndicator.stopAnimation();
             checkApplicationUpdates(true);
         }
     }
 
     @Override
     public void progressUpdate(String currentFile, int progress, int total) {
-        if (mConstructor == null)
-            mConstructor = new DialogConstructor(FormChooserList.this);
-
-        mConstructor.updateDialog(getString(R.string.downloading_data), getString(R.string.fetching_file, currentFile, progress, total));
+        mLoadingIndicator.updateDialog(getString(R.string.downloading_data), getString(R.string.fetching_file, currentFile, progress, total));
     }
 
     @Override
@@ -862,8 +867,7 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
             mDownloadFormsTask.setDownloaderListener(null);
         }
 
-        if (mConstructor != null)
-            mConstructor.stopAnimation();
+        mLoadingIndicator.stopAnimation();
 
         SharedPreferences.Editor editor = mSettings.edit();
         editor.putBoolean(SettingsFragment.SURVEY_FORM_DOWNLOADED_KEY, true);

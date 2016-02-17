@@ -6,6 +6,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.constants.Constants;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -40,7 +41,7 @@ public class ItemsetDbAdapter {
      */
     private static class DatabaseHelper extends ODKSQLiteOpenHelper {
         DatabaseHelper() {
-            super(Collect.METADATA_PATH, DATABASE_NAME, null, DATABASE_VERSION);
+            super(Constants.METADATA_PATH, DATABASE_NAME, null, DATABASE_VERSION);
         }
 
         @Override

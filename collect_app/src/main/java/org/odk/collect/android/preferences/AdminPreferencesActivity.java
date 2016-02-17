@@ -26,6 +26,7 @@ import android.preference.Preference;
 import org.javarosa.core.model.FormDef;
 import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.constants.Constants;
 import org.odk.collect.android.utilities.CompatibilityUtils;
 
 import android.content.Context;
@@ -131,7 +132,7 @@ public class AdminPreferencesActivity extends PreferenceActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case SAVE_PREFS_MENU:
-			File writeDir = new File(Collect.ODK_ROOT + "/settings");
+			File writeDir = new File(Constants.ODK_ROOT + "/settings");
 			if (!writeDir.exists()) {
 				if (!writeDir.mkdirs()) {
 					Toast.makeText(

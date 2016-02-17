@@ -24,6 +24,7 @@ import org.javarosa.core.services.transport.payload.ByteArrayPayload;
 import org.javarosa.form.api.FormEntryController;
 import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.constants.Constants;
 import org.odk.collect.android.exception.EncryptionException;
 import org.odk.collect.android.listeners.FormSavedListener;
 import org.odk.collect.android.logic.FormController;
@@ -234,7 +235,7 @@ public class SaveToDiskTask extends AsyncTask<Void, String, SaveResult> {
      * @return
      */
     public static File savepointFile(File instancePath) {
-        File tempDir = new File(Collect.CACHE_PATH);
+        File tempDir = new File(Constants.CACHE_PATH);
         return new File(tempDir, instancePath.getName() + ".save");
     }
 

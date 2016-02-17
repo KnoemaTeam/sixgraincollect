@@ -126,6 +126,8 @@ public class LinearListAdapter extends BaseAdapter {
 
                 if (viewHolder.rowImageView != null) {
                     viewHolder.rowImageView.setImageResource(R.drawable.ic_perm_identity_white_48dp);
+                    viewHolder.rowImageView.setIsDefaultImage(true);
+                    viewHolder.rowImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
                     if (!TextUtils.isEmpty(farmerPhoto)) {
                         Helper.setImage(viewHolder.rowImageView, farmerPhoto);
@@ -203,6 +205,8 @@ public class LinearListAdapter extends BaseAdapter {
                 if (viewHolder.rowImageView != null) {
                     viewHolder.rowImageView.setVisibility(View.VISIBLE);
                     viewHolder.rowImageView.setImageResource(R.drawable.ic_camera_alt_white_36dp);
+                    viewHolder.rowImageView.setIsDefaultImage(true);
+                    viewHolder.rowImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
                     if (!TextUtils.isEmpty(fieldImage)) {
                         Helper.setImage(viewHolder.rowImageView, fieldImage);

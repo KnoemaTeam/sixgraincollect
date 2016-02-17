@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.constants.Constants;
 
 import android.util.Log;
 
@@ -48,7 +49,7 @@ public class InfoLogger {
 
 	@SuppressWarnings("unused")
 	private static final void geologToFile(String msg) {
-		File dir = new File( Collect.ODK_ROOT + File.separator + LOG_DIRECTORY );
+		File dir = new File( Constants.ODK_ROOT + File.separator + LOG_DIRECTORY );
 		if ( !dir.exists() ) {
 			dir.mkdirs();
 		}

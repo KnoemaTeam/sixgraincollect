@@ -30,6 +30,7 @@ import org.javarosa.form.api.FormEntryController;
 import org.javarosa.form.api.FormEntryPrompt;
 import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.constants.Constants;
 import org.odk.collect.android.exception.JavaRosaException;
 import org.odk.collect.android.listeners.AdvanceToNextListener;
 import org.odk.collect.android.listeners.FormLoaderListener;
@@ -469,7 +470,7 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
                                 mFormPath.lastIndexOf('.'))
                                 + "_";
                         final String fileSuffix = ".xml.save";
-                        File cacheDir = new File(Collect.CACHE_PATH);
+                        File cacheDir = new File(Constants.CACHE_PATH);
                         File[] files = cacheDir.listFiles(new FileFilter() {
                             @Override
                             public boolean accept(File pathname) {
@@ -489,7 +490,7 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
                                             candidate.getName().length()
                                                     - fileSuffix.length());
                             File instanceDir = new File(
-                                    Collect.INSTANCES_PATH + File.separator
+									Constants.INSTANCES_PATH + File.separator
                                             + instanceDirName);
                             File instanceFile = new File(instanceDir,
                                     instanceDirName + ".xml");
@@ -627,7 +628,7 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 			 */
 			// The intent is empty, but we know we saved the image to the temp
 			// file
-			File fi = new File(Collect.TMPFILE_PATH);
+			File fi = new File(Constants.TMPFILE_PATH);
 			String mInstanceFolder = formController.getInstancePath()
 					.getParent();
 			String s = mInstanceFolder + File.separator
@@ -2461,7 +2462,7 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 					Locale.ENGLISH).format(Calendar.getInstance().getTime());
 			String file = mFormPath.substring(mFormPath.lastIndexOf('/') + 1,
 					mFormPath.lastIndexOf('.'));
-			String path = Collect.INSTANCES_PATH + File.separator + file + "_"
+			String path = Constants.INSTANCES_PATH + File.separator + file + "_"
 					+ time;
 			if (FileUtils.createFolder(path)) {
 				formController.setInstancePath(new File(path + File.separator

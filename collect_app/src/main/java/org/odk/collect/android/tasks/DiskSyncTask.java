@@ -23,6 +23,7 @@ import java.util.List;
 
 import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.constants.Constants;
 import org.odk.collect.android.listeners.DiskSyncListener;
 import org.odk.collect.android.provider.FormsProviderAPI.FormsColumns;
 import org.odk.collect.android.utilities.FileUtils;
@@ -71,7 +72,7 @@ public class DiskSyncTask extends AsyncTask<Void, String, String> {
 	    	// Process everything then report what didn't work.
 	    	StringBuffer errors = new StringBuffer();
 	    	
-	        File formDir = new File(Collect.FORMS_PATH);
+	        File formDir = new File(Constants.FORMS_PATH);
 	        if (formDir.exists() && formDir.isDirectory()) {
 	            // Get all the files in the /odk/foms directory
 	            List<File> xFormsToAdd = new LinkedList<File>();

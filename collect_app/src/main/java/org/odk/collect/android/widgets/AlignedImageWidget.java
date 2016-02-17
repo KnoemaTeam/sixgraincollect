@@ -22,6 +22,7 @@ import org.javarosa.form.api.FormEntryPrompt;
 import org.odk.collect.android.R;
 import org.odk.collect.android.activities.FormEntryActivity;
 import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.constants.Constants;
 import org.odk.collect.android.utilities.FileUtils;
 import org.odk.collect.android.utilities.MediaUtils;
 
@@ -128,7 +129,7 @@ public class AlignedImageWidget extends QuestionWidget implements IBinaryWidget 
                 Intent i = new Intent();
                 i.setComponent(new ComponentName(ODK_CAMERA_INTENT_PACKAGE,
                 					ODK_CAMERA_TAKE_PICTURE_INTENT_COMPONENT));
-                i.putExtra(FILE_PATH_EXTRA, Collect.CACHE_PATH);
+                i.putExtra(FILE_PATH_EXTRA, Constants.CACHE_PATH);
                 i.putExtra(DIMENSIONS_EXTRA, iArray);
                 i.putExtra(RETAKE_OPTION_EXTRA, false);
 
