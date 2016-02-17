@@ -28,6 +28,7 @@ import org.graindataterminal.models.base.DataHolder;
 import org.json.JSONObject;
 import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.constants.Constants;
 import org.odk.collect.android.listeners.InstanceUploaderListener;
 import org.odk.collect.android.logic.PropertyManager;
 import org.odk.collect.android.preferences.PreferencesActivity;
@@ -395,13 +396,13 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
                     Uri toUpdate = Uri.withAppendedPath(InstanceColumns.CONTENT_URI, id);
 
                     int subIdx = c.getColumnIndex(InstanceColumns.SUBMISSION_URI);
-                    String urlString = c.isNull(subIdx) ? null : c.getString(subIdx);
-                    if (urlString == null) {
-                        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(Collect.getInstance());
-                        urlString = PreferenceManager.getDefaultSharedPreferences(Collect.getInstance().getContext()).getString(SettingsFragment.SURVEY_UPLOAD_URL_KEY, Collect.getInstance().getString(R.string.default_server_url_for_survey));
-                    }
+                    //String urlString = c.isNull(subIdx) ? null : c.getString(subIdx);
+                    //if (urlString == null) {
+                        //SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(Collect.getInstance());
+                        //urlString = PreferenceManager.getDefaultSharedPreferences(Collect.getInstance().getContext()).getString(SettingsFragment.SURVEY_UPLOAD_URL_KEY, Collect.getInstance().getString(R.string.default_server_url_for_survey));
+                    //}
 
-                    if ( !uploadOneSubmission(urlString, id, formId, instance, toUpdate, localContext, uriRemap, outcome) ) {
+                    if ( !uploadOneSubmission(Constants.SURVEY_UPLOAD_URL, id, formId, instance, toUpdate, localContext, uriRemap, outcome) ) {
                         return outcome; // get credentials...
                     }
                 }

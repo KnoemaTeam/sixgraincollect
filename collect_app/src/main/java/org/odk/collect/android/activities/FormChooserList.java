@@ -705,7 +705,6 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
         }
 
         mLoadingIndicator.updateDialog(getString(R.string.uploading_data), "Uploading data...");
-        //getSupportLoaderManager().initLoader(INSTANCE_DATA_LIST_ID, null, this);
 
         List<Long> dataIdList = new ArrayList<>();
         for (BaseSurvey baseSurvey: mDataList) {
