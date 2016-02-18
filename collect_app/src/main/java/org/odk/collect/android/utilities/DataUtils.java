@@ -2,6 +2,7 @@ package org.odk.collect.android.utilities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.text.*;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -29,6 +30,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class DataUtils {
 
@@ -132,12 +134,12 @@ public class DataUtils {
         return null;
     }
 
-    public static void setSurveysType (int type) {
+    public static void setSurveysType (String type) {
         try {
             SharedPreferences sharedPreferences = Collect.getInstance().getContext().getSharedPreferences(Collect.getInstance().getContext().getString(R.string.app_preferences_name), Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
 
-            editor.putInt(Constants.SURVEYS_TYPE_KEY, type);
+            editor.putString(Constants.SURVEYS_TYPE_KEY, type);
             editor.apply();
         }
         catch (Exception exception) {
@@ -145,16 +147,53 @@ public class DataUtils {
         }
     }
 
-    public static int getSurveysType () {
+    public static String getSurveysType () {
         try {
             SharedPreferences sharedPreferences = Collect.getInstance().getContext().getSharedPreferences(Collect.getInstance().getContext().getString(R.string.app_preferences_name), Context.MODE_PRIVATE);
-            return sharedPreferences.getInt(Constants.SURVEYS_TYPE_KEY, BaseSurvey.SURVEY_TYPE_NONE);
+            return sharedPreferences.getString(Constants.SURVEYS_TYPE_KEY, BaseSurvey.SURVEY_TYPE_NONE);
         }
         catch (Exception exception) {
             exception.printStackTrace();
         }
 
         return BaseSurvey.SURVEY_TYPE_NONE;
+    }
+
+    public static void setSurveyListType(Map<String, String> types) {
+        try {
+            Type objectType = new TypeToken<Map<String, String>>(){}.getType();
+            Gson gson = new GsonBuilder().create();
+            String jsonObject = gson.toJson(types, objectType);
+
+            SharedPreferences sharedPreferences = Collect.getInstance().getContext().getSharedPreferences(Collect.getInstance().getContext().getString(R.string.app_preferences_name), Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+
+            editor.putString(Constants.SURVEYS_LIST_TYPE_KEY, jsonObject);
+            editor.apply();
+        }
+        catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    public static Map<String, String> getSurveyListType() {
+        try {
+            SharedPreferences sharedPreferences = Collect.getInstance().getContext().getSharedPreferences(Collect.getInstance().getContext().getString(R.string.app_preferences_name), Context.MODE_PRIVATE);
+            String jsonObject = sharedPreferences.getString(Constants.SURVEYS_LIST_TYPE_KEY, null);
+
+            if (android.text.TextUtils.isEmpty(jsonObject) || jsonObject.equals("null"))
+                return BaseSurvey.SURVEY_TYPES;
+
+            Gson gson = new GsonBuilder().create();
+            Type objectType = new TypeToken<Map<String, String>>(){}.getType();
+
+            return gson.fromJson(jsonObject,objectType);
+        }
+        catch (Exception exception) {
+            exception.printStackTrace();
+        }
+
+        return BaseSurvey.SURVEY_TYPES;
     }
 
     public static void setSurveyList(List surveyList) {
@@ -260,22 +299,24 @@ public class DataUtils {
                 String savedPreferences = sharedPreferences.getString(Constants.PREFERENCES_KEY, null);
 
                 if (savedPreferences != null) {
-                    int type = DataHolder.getInstance().getSurveysType();
+                    String type = DataHolder.getInstance().getSurveysType();
                     Type objectType = new TypeToken<List<BaseSurvey>>() {
                     }.getType();
 
-                    if (type == BaseSurvey.SURVEY_TYPE_ZAMBIA)
-                        objectType = new TypeToken<List<ZambiaSurvey>>() {
-                        }.getType();
-                    else if (type == BaseSurvey.SURVEY_TYPE_TUNISIA)
-                        objectType = new TypeToken<List<TunisiaSurvey>>() {
-                        }.getType();
-                    else if (type == BaseSurvey.SURVEY_TYPE_SENEGAL)
-                        objectType = new TypeToken<List<SenegalSurvey>>() {
-                        }.getType();
-                    else if (type == BaseSurvey.SURVEY_TYPE_CAMEROON)
-                        objectType = new TypeToken<List<CameroonSurvey>>() {
-                        }.getType();
+                    switch (type) {
+                        case BaseSurvey.SURVEY_TYPE_ZAMBIA:
+                            objectType = new TypeToken<List<ZambiaSurvey>>() {}.getType();
+                            break;
+                        case BaseSurvey.SURVEY_TYPE_TUNISIA:
+                            objectType = new TypeToken<List<TunisiaSurvey>>() {}.getType();
+                            break;
+                        case BaseSurvey.SURVEY_TYPE_SENEGAL:
+                            objectType = new TypeToken<List<SenegalSurvey>>() {}.getType();
+                            break;
+                        case BaseSurvey.SURVEY_TYPE_CAMEROON:
+                            objectType = new TypeToken<List<CameroonSurvey>>() {}.getType();
+                            break;
+                    }
 
                     Gson gson = new GsonBuilder().create();
                     surveyList = gson.fromJson(savedPreferences, objectType);

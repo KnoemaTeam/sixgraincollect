@@ -223,14 +223,19 @@ public class FieldsList extends BaseFragment implements ListDataDelegate {
             List fields = survey.getFields();
 
             DataHolder.getInstance().setCurrentFieldIndex(fields.size());
-            int type = DataHolder.getInstance().getSurveysType();
+            String type = DataHolder.getInstance().getSurveysType();
 
-            if (type == BaseSurvey.SURVEY_TYPE_ZAMBIA)
-                DataHolder.getInstance().setCurrentField(new ZambiaField());
-            else if (type == BaseSurvey.SURVEY_TYPE_TUNISIA)
-                DataHolder.getInstance().setCurrentField(new TunisiaField());
-            else if (type == BaseSurvey.SURVEY_TYPE_SENEGAL)
-                DataHolder.getInstance().setCurrentField(new SenegalField());
+            switch (type) {
+                case BaseSurvey.SURVEY_TYPE_ZAMBIA:
+                    DataHolder.getInstance().setCurrentField(new ZambiaField());
+                    break;
+                case BaseSurvey.SURVEY_TYPE_TUNISIA:
+                    DataHolder.getInstance().setCurrentField(new TunisiaField());
+                    break;
+                case BaseSurvey.SURVEY_TYPE_SENEGAL:
+                    DataHolder.getInstance().setCurrentField(new SenegalField());
+                    break;
+            }
 
             Intent intent = new Intent(getContext(), FieldsPager.class);
             startActivityForResult(intent, Helper.ADD_FIELD_REQUEST_CODE);
@@ -242,20 +247,24 @@ public class FieldsList extends BaseFragment implements ListDataDelegate {
 
     protected void editField (int position) {
         try {
-            int type = DataHolder.getInstance().getSurveysType();
-
             BaseSurvey survey = DataHolder.getInstance().getCurrentSurvey();
             survey.setMode(BaseSurvey.SURVEY_READ_MODE);
 
             List fields = survey.getFields();
             DataHolder.getInstance().setCurrentFieldIndex(position);
 
-            if (type == BaseSurvey.SURVEY_TYPE_ZAMBIA)
-                DataHolder.getInstance().setCurrentField(((ZambiaField)fields.get(position)).clone());
-            else if (type == BaseSurvey.SURVEY_TYPE_TUNISIA)
-                DataHolder.getInstance().setCurrentField(((TunisiaField)fields.get(position)).clone());
-            else if (type == BaseSurvey.SURVEY_TYPE_SENEGAL)
-                DataHolder.getInstance().setCurrentField(((SenegalField)fields.get(position)).clone());
+            String type = DataHolder.getInstance().getSurveysType();
+            switch (type) {
+                case BaseSurvey.SURVEY_TYPE_ZAMBIA:
+                    DataHolder.getInstance().setCurrentField(((ZambiaField) fields.get(position)).clone());
+                    break;
+                case BaseSurvey.SURVEY_TYPE_TUNISIA:
+                    DataHolder.getInstance().setCurrentField(((TunisiaField) fields.get(position)).clone());
+                    break;
+                case BaseSurvey.SURVEY_TYPE_SENEGAL:
+                    DataHolder.getInstance().setCurrentField(((SenegalField) fields.get(position)).clone());
+                    break;
+            }
 
             Intent intent = new Intent(getContext(), FieldsPager.class);
             startActivityForResult(intent, Helper.EDIT_FIELD_REQUEST_CODE);

@@ -28,7 +28,7 @@ public class DataHolder {
     public final static int UPDATE_TYPE_BETA = 1;
 
     private int updateType = UPDATE_TYPE_NONE;
-    private int surveysType = BaseSurvey.SURVEY_TYPE_NONE;
+    private String surveysType = BaseSurvey.SURVEY_TYPE_NONE;
 
     private String interviewerName = null;
     private String controllerName = null;
@@ -140,16 +140,16 @@ public class DataHolder {
         return supervisorName;
     }
 
-    public void setSurveysType(int surveysType) {
+    public void setSurveysType(String surveysType) {
         this.surveysType = surveysType;
         DataUtils.setSurveysType(surveysType);
     }
 
-    public int getSurveysType() {
-        if (surveysType == BaseSurvey.SURVEY_TYPE_NONE) {
+    public String getSurveysType() {
+        if (BaseSurvey.SURVEY_TYPE_NONE.equals(surveysType)) {
             surveysType = DataUtils.getSurveysType();
 
-            if (surveysType == BaseSurvey.SURVEY_TYPE_NONE) {
+            if (BaseSurvey.SURVEY_TYPE_NONE.equals(surveysType)) {
                 surveysType = BaseSurvey.SURVEY_TYPE_ZAMBIA;
 
                 DataUtils.setSurveysType(surveysType);

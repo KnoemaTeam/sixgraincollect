@@ -325,7 +325,7 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int type = DataHolder.getInstance().getSurveysType();
+                String type = DataHolder.getInstance().getSurveysType();
                 switch (type) {
                     case BaseSurvey.SURVEY_TYPE_ZAMBIA:
                     case BaseSurvey.SURVEY_TYPE_TUNISIA:
@@ -342,26 +342,32 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
         });
     }
 
-    protected void createNewSurvey(int type) {
-        for (int i = 0; i < mFormList.size(); i++) {
-            int key = mFormList.keyAt(i);
-            String storedType = mFormList.get(key);
-            String prefix = "";
+    protected void createNewSurvey(String type) {
+        Map<String, String> types = DataUtils.getSurveyListType();
+        for(HashMap.Entry<String, String> entry: types.entrySet()) {
+            if (entry.getKey().length() < 2)
+                continue;
 
-            if (type == BaseSurvey.SURVEY_TYPE_GAMBIA)
-                prefix = "gm";
+            if (entry.getKey().contains(type)) {
+                for (int i = 0; i < mFormList.size(); i++) {
+                    int key = mFormList.keyAt(i);
+                    String value = mFormList.get(key);
 
-            if (!TextUtils.isEmpty(storedType) && storedType.contains(prefix)) {
-                Uri formUri = ContentUris.withAppendedId(FormsColumns.CONTENT_URI, key);
-                Collect.getInstance().getActivityLogger().logAction(this, "onListItemClick", formUri.toString());
+                    if (entry.getKey().compareToIgnoreCase(value) == 0) {
+                        Uri formUri = ContentUris.withAppendedId(FormsColumns.CONTENT_URI, key);
+                        Collect.getInstance().getActivityLogger().logAction(this, "onListItemClick", formUri.toString());
 
-                String action = getIntent().getAction();
-                if (Intent.ACTION_PICK.equals(action)) {
-                    // caller is waiting on a picked form
-                    setResult(RESULT_OK, new Intent().setData(formUri));
-                } else {
-                    // caller wants to view/edit a form, so launch formentryactivity
-                    startActivity(new Intent(Intent.ACTION_EDIT, formUri));
+                        String action = getIntent().getAction();
+                        if (Intent.ACTION_PICK.equals(action)) {
+                            // caller is waiting on a picked form
+                            setResult(RESULT_OK, new Intent().setData(formUri));
+                        } else {
+                            // caller wants to view/edit a form, so launch formentryactivity
+                            startActivity(new Intent(Intent.ACTION_EDIT, formUri));
+                        }
+
+                        break;
+                    }
                 }
 
                 break;
@@ -879,8 +885,20 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
             mDownloadFormsTask = null;
         }
 
+        Map<String, String> types = DataUtils.getSurveyListType();
+        for (HashMap.Entry<FormDetails, String> entry: result.entrySet()) {
+            if (entry.getValue().compareToIgnoreCase("success") != 0)
+                continue;
+
+            FormDetails formDetails = entry.getKey();
+            if (!types.containsKey(formDetails.formID)) {
+                types.put(formDetails.formID, formDetails.formName);
+            }
+        }
+
         mLoadingIndicator.stopAnimation();
         mDeleteInstancesTask = (DeleteInstancesTask) getLastNonConfigurationInstance();
+        DataUtils.setSurveyListType(types);
 
         getSupportLoaderManager().restartLoader(FORM_LIST_VIEW_ID, null, FormChooserList.this);
         runDiskSynchronizationTask();

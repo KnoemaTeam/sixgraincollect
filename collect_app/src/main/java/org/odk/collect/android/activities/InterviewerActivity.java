@@ -18,6 +18,16 @@ import org.graindataterminal.models.base.BaseSurvey;
 import org.graindataterminal.models.base.DataHolder;
 import org.odk.collect.android.R;
 import org.graindataterminal.network.LocationService;
+import org.odk.collect.android.utilities.DataUtils;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class InterviewerActivity extends AppCompatActivity {
     protected TextView interviewerLocation = null;
@@ -56,11 +66,11 @@ public class InterviewerActivity extends AppCompatActivity {
             interviewerLocation.setText(String.format(getString(R.string.field_center_gps_values), location.getLatitude(), location.getLongitude()));
 
         LocationService.getInstance().finishObtaining();
-        int type = DataHolder.getInstance().getSurveysType();
+        String type = DataHolder.getInstance().getSurveysType();
 
         updateInterviewerName();
-        updateControllerName(type == 2);
-        updateSupervisorName(type == 2);
+        updateControllerName(type.equals(BaseSurvey.SURVEY_TYPE_SENEGAL));
+        updateSupervisorName(type.equals(BaseSurvey.SURVEY_TYPE_SENEGAL));
         updateChannelType();
         updateSurveysType();
     }
@@ -148,7 +158,20 @@ public class InterviewerActivity extends AppCompatActivity {
     }
 
     protected void updateSurveysType() {
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.survey_name_list, android.R.layout.simple_spinner_item);
+        final Map<String, String> typeMap = DataUtils.getSurveyListType();
+        final List<String> nameList = new ArrayList<>();
+
+        for (HashMap.Entry<String, String> entry: typeMap.entrySet())
+            nameList.add(entry.getValue());
+
+        Collections.sort(nameList, new Comparator<String>() {
+            @Override
+            public int compare(String lhs, String rhs) {
+                return lhs.compareToIgnoreCase(rhs);
+            }
+        });
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, nameList);
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
 
         Spinner spinner = (Spinner) findViewById(R.id.surveysType);
@@ -156,26 +179,17 @@ public class InterviewerActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (position) {
-                    case 0:
-                        DataHolder.getInstance().setSurveysType(BaseSurvey.SURVEY_TYPE_ZAMBIA);
-                        break;
-                    case 1:
-                        DataHolder.getInstance().setSurveysType(BaseSurvey.SURVEY_TYPE_TUNISIA);
-                        break;
-                    case 2:
-                        DataHolder.getInstance().setSurveysType(BaseSurvey.SURVEY_TYPE_SENEGAL);
-                        break;
-                    case 3:
-                        DataHolder.getInstance().setSurveysType(BaseSurvey.SURVEY_TYPE_CAMEROON);
-                        break;
-                    case 4:
-                        DataHolder.getInstance().setSurveysType(BaseSurvey.SURVEY_TYPE_GAMBIA);
-                        break;
-                }
+                String name = (String) parent.getItemAtPosition(position);
+                for (HashMap.Entry<String, String> entry: typeMap.entrySet())
+                    if (entry.getValue().compareToIgnoreCase(name) == 0) {
+                        String key = entry.getKey();
 
-                updateControllerName(position == 2);
-                updateSupervisorName(position == 2);
+                        DataHolder.getInstance().setSurveysType(key);
+                        updateControllerName(BaseSurvey.SURVEY_TYPE_SENEGAL.equals(key));
+                        updateSupervisorName(BaseSurvey.SURVEY_TYPE_SENEGAL.equals(key));
+
+                        break;
+                    }
             }
 
             @Override
@@ -184,17 +198,11 @@ public class InterviewerActivity extends AppCompatActivity {
             }
         });
 
-        int type = DataHolder.getInstance().getSurveysType();
-        if (type == BaseSurvey.SURVEY_TYPE_ZAMBIA)
-            spinner.setSelection(0);
-        else if (type == BaseSurvey.SURVEY_TYPE_TUNISIA)
-            spinner.setSelection(1);
-        else if (type == BaseSurvey.SURVEY_TYPE_SENEGAL)
-            spinner.setSelection(2);
-        else if (type == BaseSurvey.SURVEY_TYPE_CAMEROON)
-            spinner.setSelection(3);
-        else if (type == BaseSurvey.SURVEY_TYPE_GAMBIA)
-            spinner.setSelection(4);
+        String type = DataHolder.getInstance().getSurveysType();
+        int position = nameList.indexOf(typeMap.get(type));
+
+        if (position != View.NO_ID)
+            spinner.setSelection(position);
     }
 
     protected void updateChannelType() {

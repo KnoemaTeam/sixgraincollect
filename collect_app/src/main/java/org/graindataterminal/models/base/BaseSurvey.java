@@ -26,12 +26,18 @@ public abstract class BaseSurvey implements Cloneable {
     public final static int SURVEY_READ_MODE = 0;
     public final static int SURVEY_EDIT_MODE = 1;
 
-    public final static int SURVEY_TYPE_NONE = 0;
-    public final static int SURVEY_TYPE_ZAMBIA = 1;
-    public final static int SURVEY_TYPE_TUNISIA = 2;
-    public final static int SURVEY_TYPE_SENEGAL = 3;
-    public final static int SURVEY_TYPE_CAMEROON = 4;
-    public final static int SURVEY_TYPE_GAMBIA = 5;
+    public final static String SURVEY_TYPE_NONE = "0";
+    public final static String SURVEY_TYPE_ZAMBIA = "1";
+    public final static String SURVEY_TYPE_TUNISIA = "2";
+    public final static String SURVEY_TYPE_SENEGAL = "3";
+    public final static String SURVEY_TYPE_CAMEROON = "4";
+
+    public static Map<String, String> SURVEY_TYPES = new HashMap<String, String>() {{
+        put(SURVEY_TYPE_ZAMBIA, "Zambia");
+        put(SURVEY_TYPE_TUNISIA, "Tunisia");
+        put(SURVEY_TYPE_SENEGAL, "Senegal");
+        put(SURVEY_TYPE_CAMEROON, "Cameroon");
+    }};
 
     public final static String[] SURVEY_VERSION_NONE = {"none"};
     public final static String[] SURVEY_VERSION_ZAMBIA = {"za20150821", "za20151210"};

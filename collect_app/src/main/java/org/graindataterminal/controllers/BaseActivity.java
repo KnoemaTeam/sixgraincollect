@@ -194,30 +194,28 @@ public abstract class BaseActivity extends AppCompatActivity implements NoticeDi
 
     public void createSurvey(Context context) {
         try {
-            int type = DataHolder.getInstance().getSurveysType();
-            if (type == BaseSurvey.SURVEY_TYPE_ZAMBIA) {
-                ZambiaSurvey zambiaSurvey = new ZambiaSurvey();
-                zambiaSurvey.setSurveyVersion(BaseSurvey.SURVEY_VERSION_ZAMBIA[1]);
-
-                DataHolder.getInstance().setCurrentSurvey(zambiaSurvey);
-            }
-            else if (type == BaseSurvey.SURVEY_TYPE_TUNISIA) {
-                TunisiaSurvey tunisiaSurvey = new TunisiaSurvey();
-                tunisiaSurvey.setSurveyVersion(BaseSurvey.SURVEY_VERSION_TUNISIA[0]);
-
-                DataHolder.getInstance().setCurrentSurvey(tunisiaSurvey);
-            }
-            else if (type == BaseSurvey.SURVEY_TYPE_SENEGAL) {
-                SenegalSurvey senegalSurvey = new SenegalSurvey();
-                senegalSurvey.setSurveyVersion(BaseSurvey.SURVEY_VERSION_SENEGAL[2]);
-
-                DataHolder.getInstance().setCurrentSurvey(senegalSurvey);
-            }
-            else if (type == BaseSurvey.SURVEY_TYPE_CAMEROON) {
-                CameroonSurvey cameroonSurvey = new CameroonSurvey();
-                cameroonSurvey.setSurveyVersion(BaseSurvey.SURVEY_VERSION_CAMEROON[1]);
-
-                DataHolder.getInstance().setCurrentSurvey(cameroonSurvey);
+            String type = DataHolder.getInstance().getSurveysType();
+            switch (type) {
+                case BaseSurvey.SURVEY_TYPE_ZAMBIA:
+                    ZambiaSurvey zambiaSurvey = new ZambiaSurvey();
+                    zambiaSurvey.setSurveyVersion(BaseSurvey.SURVEY_VERSION_ZAMBIA[1]);
+                    DataHolder.getInstance().setCurrentSurvey(zambiaSurvey);
+                    break;
+                case BaseSurvey.SURVEY_TYPE_TUNISIA:
+                    TunisiaSurvey tunisiaSurvey = new TunisiaSurvey();
+                    tunisiaSurvey.setSurveyVersion(BaseSurvey.SURVEY_VERSION_TUNISIA[0]);
+                    DataHolder.getInstance().setCurrentSurvey(tunisiaSurvey);
+                    break;
+                case BaseSurvey.SURVEY_TYPE_SENEGAL:
+                    SenegalSurvey senegalSurvey = new SenegalSurvey();
+                    senegalSurvey.setSurveyVersion(BaseSurvey.SURVEY_VERSION_SENEGAL[2]);
+                    DataHolder.getInstance().setCurrentSurvey(senegalSurvey);
+                    break;
+                case BaseSurvey.SURVEY_TYPE_CAMEROON:
+                    CameroonSurvey cameroonSurvey = new CameroonSurvey();
+                    cameroonSurvey.setSurveyVersion(BaseSurvey.SURVEY_VERSION_CAMEROON[1]);
+                    DataHolder.getInstance().setCurrentSurvey(cameroonSurvey);
+                    break;
             }
 
             List<BaseSurvey> surveys = DataHolder.getInstance().getSurveys();
@@ -527,6 +525,7 @@ public abstract class BaseActivity extends AppCompatActivity implements NoticeDi
 
     protected void sendMail() {
         try {
+            /*
             List<BaseSurvey> surveyList = DataHolder.getInstance().getSurveys();
 
             GsonBuilder gsonBuilder = new GsonBuilder();
@@ -544,6 +543,7 @@ public abstract class BaseActivity extends AppCompatActivity implements NoticeDi
 
             String jsonString = gson.toJson(surveyList, objectType);
             Helper.sendEmail(this, getString(R.string.action_send_mail_title), getString(R.string.action_send_mail_message), jsonString, Helper.MAIL_TYPE_SURVEY_INFO);
+            */
         }
         catch (Exception exception) {
             exception.printStackTrace();
