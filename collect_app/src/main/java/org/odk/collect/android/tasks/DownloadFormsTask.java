@@ -180,7 +180,7 @@ public class DownloadFormsTask extends AsyncTask<List<FormDetails>, String, Hash
 
     private void saveResult(HashMap<FormDetails, String> result, FormDetails fd, String message) {
         if (message.equalsIgnoreCase("")) {
-            message = Collect.getInstance().getString(R.string.success);
+            message = "success";//Collect.getInstance().getString(R.string.success);
         }
         result.put(fd, message);
     }
