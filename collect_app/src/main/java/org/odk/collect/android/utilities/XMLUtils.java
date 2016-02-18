@@ -113,7 +113,7 @@ public class XMLUtils {
                     attributeAdded = false;
 
                     if (parser.isEmptyElementTag()) {
-                        objStack.peek().put(lastName, "");
+                        // Skip element
                     }
                     else if (parser.getAttributeCount() > 0) {
                         JSONObject propertyValue = new JSONObject();
