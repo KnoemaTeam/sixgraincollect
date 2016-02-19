@@ -16,6 +16,8 @@
 
 package org.javarosa.core.model;
 
+import android.util.Log;
+
 import org.javarosa.core.log.WrappedException;
 import org.javarosa.core.model.IDag.EventNotifierAccessor;
 import org.javarosa.core.model.condition.*;
@@ -1377,7 +1379,34 @@ public class FormDef implements IFormElement, Localizable, Persistable, IMetaDat
    }
 
    public void setChildren(List<IFormElement> children) {
-      this.children = (children == null ? new ArrayList<IFormElement>() : children);
+      if (children == null) {
+         this.children = new ArrayList<>();
+         return;
+      }
+
+       try {
+           for (IFormElement element: children) {
+               IDataReference reference = element.getBind();
+               if (reference != null) {
+                   TreeReference treeReference = (TreeReference) reference.getReference();
+                   List<TreeReferenceLevel> data = treeReference.getData();
+
+                   if (data != null && data.size() >= 2) {
+                       TreeReferenceLevel level = data.get(1);
+                       if (level.getName().equals("interviewer")) {
+                           children.remove(element);
+                           break;
+                       }
+                   }
+               }
+           }
+       }
+       catch (Exception exception) {
+           exception.printStackTrace();
+       }
+       finally {
+           this.children = children;
+       }
    }
 
    public String getTitle() {

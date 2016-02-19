@@ -117,6 +117,10 @@ public class TreeReference implements Externalizable {
 		add(new TreeReferenceLevel(name, mult).intern());
 	}
 
+	public List<TreeReferenceLevel> getData() {
+		return data;
+	}
+
 	public void addPredicate(int key, List<XPathExpression> xpe)
 	{
 		data.set(key, data.get(key).setPredicates(xpe));
