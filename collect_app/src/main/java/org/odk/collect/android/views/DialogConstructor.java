@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import org.odk.collect.android.R;
@@ -14,11 +15,15 @@ import org.odk.collect.android.R;
 public class DialogConstructor {
     public static final int DIALOG_SINGLE_ANSWER = 1;
     public static final int DIALOG_MULTI_ANSWER = 2;
+    public static final int DIALOG_SPINNER_MULTI_ANSWER = 3;
 
     private Dialog mDialog = null;
     private TextView mTitleView = null;
     private TextView mMessageView = null;
     private Button mEventButton = null;
+    private Button mOkButton = null;
+    private Button mCancelButton = null;
+    private ProgressBar mSpinner = null;
     private NotificationListener mListener = null;
 
     public interface NotificationListener {
@@ -62,10 +67,11 @@ public class DialogConstructor {
 
         mTitleView = (TextView) contentView.findViewById(R.id.title);
         mMessageView = (TextView) contentView.findViewById(R.id.message);
+        mSpinner = (ProgressBar) contentView.findViewById(R.id.spinner);
         mListener = (NotificationListener) activity;
 
-        Button ok = (Button) contentView.findViewById(R.id.ok);
-        ok.setOnClickListener(new View.OnClickListener() {
+        mOkButton = (Button) contentView.findViewById(R.id.ok);
+        mOkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mListener != null)
@@ -75,8 +81,8 @@ public class DialogConstructor {
             }
         });
 
-        Button no = (Button) contentView.findViewById(R.id.no);
-        no.setOnClickListener(new View.OnClickListener() {
+        mCancelButton = (Button) contentView.findViewById(R.id.no);
+        mCancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mListener != null)
@@ -87,9 +93,12 @@ public class DialogConstructor {
         });
 
         if (type == DIALOG_SINGLE_ANSWER) {
-            ok.setText("OK");
-            no.setVisibility(View.GONE);
+            mOkButton.setText("OK");
+            mCancelButton.setVisibility(View.GONE);
         }
+
+        if (type == DIALOG_SPINNER_MULTI_ANSWER)
+            mSpinner.setVisibility(View.VISIBLE);
 
         mDialog = new Dialog(activity);
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -100,6 +109,16 @@ public class DialogConstructor {
     public void setButtonText(String text) {
         if (mEventButton != null)
             mEventButton.setText(text);
+    }
+
+    public void setDoneButtonText(String text) {
+        if (mOkButton != null)
+            mOkButton.setText(text);
+    }
+
+    public void setCancelButtonText(String text) {
+        if (mCancelButton != null)
+            mCancelButton.setText(text);
     }
 
     public void startAnimation() {

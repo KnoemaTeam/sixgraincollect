@@ -92,9 +92,9 @@ public class SelectOneAutoAdvanceWidget extends QuestionWidget implements OnChec
                     (RelativeLayout) inflater.inflate(R.layout.quick_select_layout, null);
 
                 LinearLayout questionLayout = (LinearLayout) thisParentLayout.getChildAt(0);
-                ImageView rightArrow = (ImageView) thisParentLayout.getChildAt(1);
+                //ImageView rightArrow = (ImageView) thisParentLayout.getChildAt(1);
 
-                RadioButton r = new RadioButton(getContext());
+                RadioButton r = (RadioButton) LayoutInflater.from(context).inflate(R.layout.radio_button, null, false); //RadioButton r = new RadioButton(getContext());
                 r.setTextSize(TypedValue.COMPLEX_UNIT_DIP, mAnswerFontsize);
                 r.setText(prompt.getSelectChoiceText(mItems.get(i)));
                 r.setTag(Integer.valueOf(i));
@@ -102,7 +102,7 @@ public class SelectOneAutoAdvanceWidget extends QuestionWidget implements OnChec
                 r.setEnabled(!prompt.isReadOnly());
                 r.setFocusable(!prompt.isReadOnly());
 
-                rightArrow.setImageBitmap(b);
+                //rightArrow.setImageBitmap(b);
 
                 buttons.add(r);
 

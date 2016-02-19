@@ -20,25 +20,30 @@ import java.util.List;
 import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
 import org.odk.collect.android.utilities.InfoLogger;
+import org.odk.collect.android.views.DialogConstructor;
 import org.odk.collect.android.widgets.GeoPointWidget;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.widget.Toast;
 
-public class GeoPointActivity extends Activity implements LocationListener {
+public class GeoPointActivity extends Activity implements LocationListener, DialogConstructor.NotificationListener {
 
-	private static final String LOCATION_COUNT = "locationCount";
+    private static final String LOCATION_COUNT = "locationCount";
 
-    private ProgressDialog mLocationDialog;
+    private DialogConstructor mLocationIndicator = null;
+    //private ProgressDialog mLocationDialog;
     private LocationManager mLocationManager;
     private Location mLocation;
     private boolean mGPSOn = false;
@@ -51,17 +56,17 @@ public class GeoPointActivity extends Activity implements LocationListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if ( savedInstanceState != null ) {
-        	mLocationCount = savedInstanceState.getInt(LOCATION_COUNT);
+        if (savedInstanceState != null) {
+            mLocationCount = savedInstanceState.getInt(LOCATION_COUNT);
         }
 
         Intent intent = getIntent();
 
         mLocationAccuracy = GeoPointWidget.DEFAULT_LOCATION_ACCURACY;
         if (intent != null && intent.getExtras() != null) {
-        	if ( intent.hasExtra(GeoPointWidget.ACCURACY_THRESHOLD) ) {
-        		mLocationAccuracy = intent.getDoubleExtra(GeoPointWidget.ACCURACY_THRESHOLD, GeoPointWidget.DEFAULT_LOCATION_ACCURACY);
-        	}
+            if (intent.hasExtra(GeoPointWidget.ACCURACY_THRESHOLD)) {
+                mLocationAccuracy = intent.getDoubleExtra(GeoPointWidget.ACCURACY_THRESHOLD, GeoPointWidget.DEFAULT_LOCATION_ACCURACY);
+            }
         }
 
         setTitle(getString(R.string.app_name) + " > " + getString(R.string.get_location));
@@ -80,72 +85,95 @@ public class GeoPointActivity extends Activity implements LocationListener {
         }
         if (!mGPSOn && !mNetworkOn) {
             Toast.makeText(getBaseContext(), getString(R.string.provider_disabled_error),
-                Toast.LENGTH_SHORT).show();
+                    Toast.LENGTH_SHORT).show();
             finish();
         }
 
-        if ( mGPSOn ) {
-        	Location loc = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        	if ( loc != null ) {
-            	InfoLogger.geolog("GeoPointActivity: " + System.currentTimeMillis() +
-          			   " lastKnownLocation(GPS) lat: " +
-          			loc.getLatitude() + " long: " +
-          			loc.getLongitude() + " acc: " +
-          			loc.getAccuracy() );
-        	} else {
-            	InfoLogger.geolog("GeoPointActivity: " + System.currentTimeMillis() +
-           			   " lastKnownLocation(GPS) null location");
-        	}
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
         }
 
-        if ( mNetworkOn ) {
-        	Location loc = mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-        	if ( loc != null ) {
-            	InfoLogger.geolog("GeoPointActivity: " + System.currentTimeMillis() +
-          			   " lastKnownLocation(Network) lat: " +
-          			loc.getLatitude() + " long: " +
-          			loc.getLongitude() + " acc: " +
-          			loc.getAccuracy() );
-        	} else {
-            	InfoLogger.geolog("GeoPointActivity: " + System.currentTimeMillis() +
-           			   " lastKnownLocation(Network) null location");
-        	}
+        if (mGPSOn) {
+            Location loc = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            if (loc != null) {
+                InfoLogger.geolog("GeoPointActivity: " + System.currentTimeMillis() +
+                        " lastKnownLocation(GPS) lat: " +
+                        loc.getLatitude() + " long: " +
+                        loc.getLongitude() + " acc: " +
+                        loc.getAccuracy());
+            } else {
+                InfoLogger.geolog("GeoPointActivity: " + System.currentTimeMillis() +
+                        " lastKnownLocation(GPS) null location");
+            }
+        }
+
+        if (mNetworkOn) {
+            Location loc = mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            if (loc != null) {
+                InfoLogger.geolog("GeoPointActivity: " + System.currentTimeMillis() +
+                        " lastKnownLocation(Network) lat: " +
+                        loc.getLatitude() + " long: " +
+                        loc.getLongitude() + " acc: " +
+                        loc.getAccuracy());
+            } else {
+                InfoLogger.geolog("GeoPointActivity: " + System.currentTimeMillis() +
+                        " lastKnownLocation(Network) null location");
+            }
         }
 
         setupLocationDialog();
 
     }
 
-	@Override
-	protected void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
-		outState.putInt(LOCATION_COUNT, mLocationCount);
-	}
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(LOCATION_COUNT, mLocationCount);
+    }
 
     @Override
     protected void onPause() {
         super.onPause();
 
         // stops the GPS. Note that this will turn off the GPS if the screen goes to sleep.
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+
         mLocationManager.removeUpdates(this);
 
         // We're not using managed dialogs, so we have to dismiss the dialog to prevent it from
         // leaking memory.
-        if (mLocationDialog != null && mLocationDialog.isShowing())
-            mLocationDialog.dismiss();
+        //if (mLocationDialog != null && mLocationDialog.isShowing())
+        //    mLocationDialog.dismiss();
+
+        if (mLocationIndicator != null)
+            mLocationIndicator.stopAnimation();
     }
 
 
     @Override
     protected void onResume() {
         super.onResume();
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+
         if (mGPSOn) {
             mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
         }
         if (mNetworkOn) {
             mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
         }
-        mLocationDialog.show();
+
+        //mLocationDialog.show();
+
+        if (mLocationIndicator != null)
+            mLocationIndicator.startAnimation();
     }
 
     @Override
@@ -166,6 +194,12 @@ public class GeoPointActivity extends Activity implements LocationListener {
     private void setupLocationDialog() {
     	Collect.getInstance().getActivityLogger().logInstanceAction(this, "setupLocationDialog", "show");
         // dialog displayed while fetching gps location
+
+        mLocationIndicator = new DialogConstructor(this, DialogConstructor.DIALOG_SPINNER_MULTI_ANSWER);
+        mLocationIndicator.setDoneButtonText(getString(R.string.accept_location));
+        mLocationIndicator.setCancelButtonText(getString(R.string.cancel_location));
+        mLocationIndicator.updateDialog(getString(R.string.getting_location), getString(R.string.please_wait_long));
+        /*
         mLocationDialog = new ProgressDialog(this);
         DialogInterface.OnClickListener geopointButtonListener =
             new DialogInterface.OnClickListener() {
@@ -195,8 +229,21 @@ public class GeoPointActivity extends Activity implements LocationListener {
             geopointButtonListener);
         mLocationDialog.setButton(DialogInterface. BUTTON_NEGATIVE, getString(R.string.cancel_location),
             geopointButtonListener);
+            */
     }
 
+    @Override
+    public void onPositiveClick() {
+        Collect.getInstance().getActivityLogger().logInstanceAction(this, "acceptLocation", "OK");
+        returnLocation();
+    }
+
+    @Override
+    public void onNegativeClick() {
+        Collect.getInstance().getActivityLogger().logInstanceAction(this, "cancelLocation", "cancel");
+        mLocation = null;
+        finish();
+    }
 
     private void returnLocation() {
         if (mLocation != null) {
@@ -225,8 +272,10 @@ public class GeoPointActivity extends Activity implements LocationListener {
          			mLocation.getAccuracy() );
 
         	if (mLocationCount > 1) {
-	            mLocationDialog.setMessage(getString(R.string.location_provider_accuracy,
-	                mLocation.getProvider(), truncateDouble(mLocation.getAccuracy())));
+	            //mLocationDialog.setMessage(getString(R.string.location_provider_accuracy,
+	            //    mLocation.getProvider(), truncateDouble(mLocation.getAccuracy())));
+                mLocationIndicator.updateDialog(getString(R.string.getting_location),
+                        getString(R.string.location_provider_accuracy, mLocation.getProvider(), truncateDouble(mLocation.getAccuracy())));
 
 	            if (mLocation.getAccuracy() <= mLocationAccuracy) {
 	                returnLocation();
@@ -262,8 +311,10 @@ public class GeoPointActivity extends Activity implements LocationListener {
         switch (status) {
             case LocationProvider.AVAILABLE:
                 if (mLocation != null) {
-                    mLocationDialog.setMessage(getString(R.string.location_accuracy,
-                        mLocation.getAccuracy()));
+                    mLocationIndicator.updateDialog(getString(R.string.getting_location),
+                            getString(R.string.location_accuracy, mLocation.getAccuracy()));
+                    //mLocationDialog.setMessage(getString(R.string.location_accuracy,
+                    //    mLocation.getAccuracy()));
                 }
                 break;
             case LocationProvider.OUT_OF_SERVICE:
