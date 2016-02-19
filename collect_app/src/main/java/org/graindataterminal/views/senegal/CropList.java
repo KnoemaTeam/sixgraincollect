@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -13,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -159,7 +159,7 @@ public class CropList extends BaseFragment implements ListDataDelegate {
         Context context = Collect.getInstance().getContext();
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        CoordinatorLayout frameLayout = (CoordinatorLayout) parentView.findViewById(R.id.contentList);
+        FrameLayout frameLayout = (FrameLayout) parentView.findViewById(R.id.contentList);
 
         cropListView = (LinearLayout) inflater.inflate(R.layout.app_crop_view, frameLayout, false);
         cropListView.setVisibility(View.GONE);

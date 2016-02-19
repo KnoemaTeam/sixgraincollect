@@ -9,7 +9,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <android.support.design.widget.CoordinatorLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="top|center_horizontal"
@@ -32,9 +32,9 @@
             </android.support.v7.widget.Toolbar>
 
         </android.support.design.widget.AppBarLayout>
-    </android.support.design.widget.CoordinatorLayout>
+    </FrameLayout>
 
-    <android.support.design.widget.CoordinatorLayout
+    <FrameLayout
         android:id="@+id/contentFrame"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -58,5 +58,5 @@
             app:backgroundTint="@color/color_image_button"
             app:fabSize="normal"/>
 
-    </android.support.design.widget.CoordinatorLayout>
+    </FrameLayout>
 </LinearLayout>

@@ -41,7 +41,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -59,6 +58,7 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.Adapter;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -466,7 +466,7 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
             }
             else {
                 LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                CoordinatorLayout frameLayout = (CoordinatorLayout) findViewById(R.id.contentFrame);
+                FrameLayout frameLayout = (FrameLayout) findViewById(R.id.contentFrame);
 
                 mSplashView = (LinearLayout) inflater.inflate(R.layout.app_welcome_view, frameLayout, false);
                 frameLayout.addView(mSplashView);
@@ -612,7 +612,7 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
     	Collect.getInstance().getActivityLogger().logAction(this, "createErrorDialog", "show");
 
         DialogConstructor dialogConstructor = new DialogConstructor(this, DialogConstructor.DIALOG_SINGLE_ANSWER);
-        dialogConstructor.setButtonText(getString(R.string.ok));
+        dialogConstructor.setDoneButtonText(getString(R.string.ok));
         dialogConstructor.updateDialog(getString(R.string.information_message), errorMsg);
     }
 

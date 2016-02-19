@@ -20,7 +20,6 @@ public class DialogConstructor {
     private Dialog mDialog = null;
     private TextView mTitleView = null;
     private TextView mMessageView = null;
-    private Button mEventButton = null;
     private Button mOkButton = null;
     private Button mCancelButton = null;
     private ProgressBar mSpinner = null;
@@ -35,25 +34,9 @@ public class DialogConstructor {
         LayoutInflater inflater = activity.getLayoutInflater();
         View contentView = inflater.inflate(R.layout.alert_spinner_dialog, null, false);
 
-        LinearLayout buttonFrame = (LinearLayout) contentView.findViewById(R.id.buttonFrame);
-        buttonFrame.setVisibility(View.GONE);
-
         mTitleView = (TextView) contentView.findViewById(R.id.title);
         mMessageView = (TextView) contentView.findViewById(R.id.message);
         mListener = (NotificationListener) activity;
-
-        mEventButton = (Button) contentView.findViewById(R.id.cancel);
-        mEventButton.setText(activity.getString(R.string.cancel));
-        mEventButton.setVisibility(View.GONE);
-        mEventButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mListener != null)
-                    mListener.onNegativeClick();
-
-                stopAnimation();
-            }
-        });
 
         mDialog = new Dialog(activity);
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -93,7 +76,6 @@ public class DialogConstructor {
         });
 
         if (type == DIALOG_SINGLE_ANSWER) {
-            mOkButton.setText("OK");
             mCancelButton.setVisibility(View.GONE);
         }
 
@@ -104,11 +86,6 @@ public class DialogConstructor {
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         mDialog.setCancelable(true);
         mDialog.setContentView(contentView);
-    }
-
-    public void setButtonText(String text) {
-        if (mEventButton != null)
-            mEventButton.setText(text);
     }
 
     public void setDoneButtonText(String text) {
