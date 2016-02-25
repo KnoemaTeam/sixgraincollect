@@ -23,12 +23,14 @@ import org.javarosa.core.model.data.DateData;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.form.api.FormEntryPrompt;
 import org.joda.time.DateTime;
+import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CalendarView;
@@ -56,7 +58,8 @@ public class DateWidget extends QuestionWidget {
     public DateWidget(Context context, FormEntryPrompt prompt) {
         super(context, prompt);
 
-        mDatePicker = new DatePicker(getContext());
+        //mDatePicker = new DatePicker(getContext());
+        mDatePicker = (DatePicker) LayoutInflater.from(getContext()).inflate(R.layout.date_picker_layout, null, false);
         mDatePicker.setId(QuestionWidget.newUniqueId());
         mDatePicker.setFocusable(!prompt.isReadOnly());
         mDatePicker.setEnabled(!prompt.isReadOnly());
@@ -125,10 +128,12 @@ public class DateWidget extends QuestionWidget {
         	if ( Build.VERSION.SDK_INT >= 11 ) {
         		showCalendar = true;
 	        	this.mDatePicker.setCalendarViewShown(true);
+                /*
 	        	if ( Build.VERSION.SDK_INT >= 12 ) {
 	        		CalendarView cv = this.mDatePicker.getCalendarView();
 		        	cv.setShowWeekNumber(false);
 	        	}
+	        	*/
 	        	this.mDatePicker.setSpinnersShown(true);
 	        	hideDay = true;
 	        	hideMonth = false;
@@ -157,8 +162,8 @@ public class DateWidget extends QuestionWidget {
         		showCalendar = true;
 	        	this.mDatePicker.setCalendarViewShown(true);
 	        	if ( Build.VERSION.SDK_INT >= 12 ) {
-	        		CalendarView cv = this.mDatePicker.getCalendarView();
-	        		cv.setShowWeekNumber(false);
+	        		//CalendarView cv = this.mDatePicker.getCalendarView();
+	        		//cv.setShowWeekNumber(false);
 	        	}
 	        	this.mDatePicker.setSpinnersShown(true);
 	        	hideDay = true;
@@ -167,14 +172,13 @@ public class DateWidget extends QuestionWidget {
         }
 
         if ( hideMonth || hideDay ) {
-           if ( Build.VERSION.SDK_INT > 10 ) {
-              mDatePicker.findViewById(Resources.getSystem().getIdentifier("day", "id", "android"))
-                  .setVisibility(View.GONE);
+           if (Build.VERSION.SDK_INT > 10 ) {
+           /*
+              mDatePicker.findViewById(Resources.getSystem().getIdentifier("day", "id", "android")).setVisibility(View.GONE);
               if (hideMonth) {
-                 mDatePicker
-                     .findViewById(Resources.getSystem().getIdentifier("month", "id", "android"))
-                     .setVisibility(View.GONE);
+                 mDatePicker.findViewById(Resources.getSystem().getIdentifier("month", "id", "android")).setVisibility(View.GONE);
               }
+           */
            } else {
               /**
                * Retain this for legacy builds (2.3.3 and earlier).

@@ -8,6 +8,7 @@
     <color name="colorAppBarPopupText">#FFFFFF</color>
     <color name="colorAppBarPopupBackground">@color/colorPrimary</color>
     <color name="colorAppQuestionText">@android:color/black</color>
+    <color name="colorAppSubQuestionText">#424242</color>
     <color name="colorSplashBackground">#2087BB</color>
     <color name="colorListViewDivider">#F3F3F3</color>
     <color name="colorFabButton">#00B200</color>

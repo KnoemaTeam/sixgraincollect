@@ -23,7 +23,7 @@ public class DialogConstructor {
     private Button mOkButton = null;
     private Button mCancelButton = null;
     private ProgressBar mSpinner = null;
-    private NotificationListener mListener = null;
+    //private NotificationListener mListener = null;
 
     public interface NotificationListener {
         void onPositiveClick();
@@ -36,7 +36,7 @@ public class DialogConstructor {
 
         mTitleView = (TextView) contentView.findViewById(R.id.title);
         mMessageView = (TextView) contentView.findViewById(R.id.message);
-        mListener = (NotificationListener) activity;
+        //mListener = (NotificationListener) activity;
 
         mDialog = new Dialog(activity);
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -51,29 +51,29 @@ public class DialogConstructor {
         mTitleView = (TextView) contentView.findViewById(R.id.title);
         mMessageView = (TextView) contentView.findViewById(R.id.message);
         mSpinner = (ProgressBar) contentView.findViewById(R.id.spinner);
-        mListener = (NotificationListener) activity;
+        //mListener = (NotificationListener) activity;
 
         mOkButton = (Button) contentView.findViewById(R.id.ok);
-        mOkButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mListener != null)
-                    mListener.onPositiveClick();
-
-                stopAnimation();
-            }
-        });
+//        mOkButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (mListener != null)
+//                    mListener.onPositiveClick();
+//
+//                stopAnimation();
+//            }
+//        });
 
         mCancelButton = (Button) contentView.findViewById(R.id.no);
-        mCancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mListener != null)
-                    mListener.onNegativeClick();
-
-                stopAnimation();
-            }
-        });
+//        mCancelButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (mListener != null)
+//                    mListener.onNegativeClick();
+//
+//                stopAnimation();
+//            }
+//        });
 
         if (type == DIALOG_SINGLE_ANSWER) {
             mCancelButton.setVisibility(View.GONE);
@@ -88,14 +88,34 @@ public class DialogConstructor {
         mDialog.setContentView(contentView);
     }
 
-    public void setDoneButtonText(String text) {
+    public void setDoneButtonText(String text, final NotificationListener notificationListener) {
         if (mOkButton != null)
             mOkButton.setText(text);
+
+        mOkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopAnimation();
+
+                if (notificationListener != null)
+                    notificationListener.onPositiveClick();
+            }
+        });
     }
 
-    public void setCancelButtonText(String text) {
+    public void setCancelButtonText(String text, final NotificationListener notificationListener) {
         if (mCancelButton != null)
             mCancelButton.setText(text);
+
+        mCancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopAnimation();
+
+                if (notificationListener != null)
+                    notificationListener.onNegativeClick();
+            }
+        });
     }
 
     public void startAnimation() {

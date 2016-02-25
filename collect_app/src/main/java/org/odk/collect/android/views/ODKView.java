@@ -21,6 +21,7 @@ import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.widget.*;
 import org.javarosa.core.model.Constants;
 import org.javarosa.core.model.FormIndex;
@@ -78,11 +79,9 @@ public class ODKView extends ScrollView implements OnLongClickListener {
         mView = new LinearLayout(getContext());
         mView.setOrientation(LinearLayout.VERTICAL);
         mView.setGravity(Gravity.TOP);
-        mView.setPadding(0, 7, 0, 0);
+        mView.setPadding(0, 5, 0, 5);
 
-        mLayout =
-            new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT);
+        mLayout = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         mLayout.setMargins(10, 0, 10, 0);
 
         // display which group you are in as well as the question
@@ -172,21 +171,21 @@ public class ODKView extends ScrollView implements OnLongClickListener {
             }
         }
 
-        boolean first = true;
+        //boolean first = true;
         int id = 0;
         for (FormEntryPrompt p : questionPrompts) {
-            if (!first) {
+            //if (!first) {
                 //View divider = new View(getContext());
                 //divider.setBackgroundResource(android.R.drawable.divider_horizontal_bright);
                 //divider.setMinimumHeight(3);
                 //mView.addView(divider);
-            } else {
-                first = false;
-            }
+            //} else {
+            //    first = false;
+            //}
 
             // if question or answer type is not supported, use text widget
-            QuestionWidget qw =
-                WidgetFactory.createWidgetFromPrompt(p, getContext(), readOnlyOverride);
+
+            QuestionWidget qw = WidgetFactory.createWidgetFromPrompt(p, getContext(), readOnlyOverride);
             qw.setLongClickable(true);
             qw.setOnLongClickListener(this);
             qw.setId(VIEW_ID + id++);
@@ -276,9 +275,10 @@ public class ODKView extends ScrollView implements OnLongClickListener {
         if (s.length() > 0) {
             TextView tv = new TextView(getContext());
             tv.setText(s.substring(0, s.length() - 3));
+            tv.setTextColor(ContextCompat.getColor(Collect.getInstance().getContext(), R.color.colorAppSubQuestionText));
             int questionFontsize = Collect.getQuestionFontsize();
             tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, questionFontsize - 4);
-            tv.setPadding(0, 0, 0, 5);
+            tv.setPadding(5, 5, 5, 0);
             mView.addView(tv, mLayout);
         }
     }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -18,7 +18,7 @@
         <item name="android:background">@drawable/splash_screen_background</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" >
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:colorBackground">@color/colorAppBarPopupBackground</item>
         <item name="android:textColor">@color/colorAppBarPopupText</item>
         <item name="actionModeCloseDrawable">@drawable/ic_done_white_24dp</item>
@@ -26,7 +26,9 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
         <item name="android:colorBackground">@color/colorAppBarPopupBackground</item>
+        <item name="android:colorControlNormal">@color/colorAppBarPopupText</item>
         <item name="android:textColor">@color/colorAppBarPopupText</item>
+        <item name="android:textColorSecondary">@color/colorAppBarPopupText</item>
     </style>
 
     <style name="AppTheme.Dialog" parent="Theme.AppCompat.Light.Dialog">
@@ -197,7 +199,9 @@
         <item name="android:spinnerMode">dropdown</item>
         <item name="android:dropDownSelector">@color/colorPrimary</item>
         <item name="android:spinnerItemStyle">@style/AppTheme.SpinnerTheme.ItemTheme</item>
-        <item name="android:spinnerDropDownItemStyle">@style/AppTheme.SpinnerTheme.DropDownItemTheme</item>
+        <item name="android:spinnerDropDownItemStyle">
+            @style/AppTheme.SpinnerTheme.DropDownItemTheme
+        </item>
     </style>
 
     <style name="AppTheme.SpinnerTheme.ItemTheme" parent="Widget.AppCompat.TextView.SpinnerItem">
@@ -208,6 +212,14 @@
     <style name="AppTheme.SpinnerTheme.DropDownItemTheme" parent="Widget.AppCompat.DropDownItem.Spinner">
         <item name="android:background">@android:color/white</item>
         <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.DatePickerTheme" parent="Theme.AppCompat.Light">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
 </resources>

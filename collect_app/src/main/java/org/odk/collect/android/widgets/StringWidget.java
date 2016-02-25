@@ -22,6 +22,7 @@ import org.odk.collect.android.application.Collect;
 
 import android.content.Context;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.TextKeyListener;
 import android.text.method.TextKeyListener.Capitalize;
@@ -30,9 +31,11 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 
 /**
@@ -45,6 +48,7 @@ public class StringWidget extends QuestionWidget {
 	private static final String ROWS = "rows";
 
     boolean mReadOnly = false;
+    boolean mIsEnabled = true;
     protected EditText mAnswer;
 
     public StringWidget(Context context, FormEntryPrompt prompt, boolean readOnlyOverride) {
@@ -58,10 +62,11 @@ public class StringWidget extends QuestionWidget {
         mAnswer = (EditText) LayoutInflater.from(context).inflate(R.layout.edit_text_layout, null, false); //new CheckBox(getContext());
         mAnswer.setId(QuestionWidget.newUniqueId());
         mReadOnly = prompt.isReadOnly() || readOnlyOverride;
+        mIsEnabled = !prompt.isReadOnly();
 
         mAnswer.setTextSize(TypedValue.COMPLEX_UNIT_DIP, mAnswerFontsize);
 
-        TableLayout.LayoutParams params = new TableLayout.LayoutParams();
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         /**
          * If a 'rows' attribute is on the input tag, set the minimum number of lines
@@ -75,7 +80,7 @@ public class StringWidget extends QuestionWidget {
          * will set the height of the EditText box to 5 rows high.
          */
         String height = prompt.getQuestion().getAdditionalAttribute(null, ROWS);
-        if ( height != null && height.length() != 0 ) {
+        if (height != null && height.length() != 0) {
         	try {
 	        	int rows = Integer.valueOf(height);
 	        	mAnswer.setMinLines(rows);
@@ -85,7 +90,7 @@ public class StringWidget extends QuestionWidget {
         	}
         }
 
-        params.setMargins(10, 5, 10, 5);
+        params.setMargins(15, 5, 15, 5);
         mAnswer.setLayoutParams(params);
 
         // capitalize the first letter of the sentence
@@ -96,7 +101,7 @@ public class StringWidget extends QuestionWidget {
         mAnswer.setSingleLine(false);
 
         String s = prompt.getAnswerText();
-        if (s != null) {
+        if (!TextUtils.isEmpty(s)) {
             mAnswer.setText(s);
         }
 
@@ -105,6 +110,9 @@ public class StringWidget extends QuestionWidget {
             mAnswer.setFocusable(false);
             mAnswer.setClickable(false);
         }
+
+        if (!mIsEnabled)
+            mAnswer.setVisibility(GONE);
 
         addAnswerView(mAnswer);
     }

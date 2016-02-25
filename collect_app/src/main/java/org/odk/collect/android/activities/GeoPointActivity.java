@@ -38,7 +38,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.widget.Toast;
 
-public class GeoPointActivity extends Activity implements LocationListener, DialogConstructor.NotificationListener {
+public class GeoPointActivity extends Activity implements LocationListener {
 
     private static final String LOCATION_COUNT = "locationCount";
 
@@ -195,9 +195,24 @@ public class GeoPointActivity extends Activity implements LocationListener, Dial
     	Collect.getInstance().getActivityLogger().logInstanceAction(this, "setupLocationDialog", "show");
         // dialog displayed while fetching gps location
 
+        DialogConstructor.NotificationListener notificationListener = new DialogConstructor.NotificationListener() {
+            @Override
+            public void onPositiveClick() {
+                Collect.getInstance().getActivityLogger().logInstanceAction(this, "acceptLocation", "OK");
+                returnLocation();
+            }
+
+            @Override
+            public void onNegativeClick() {
+                Collect.getInstance().getActivityLogger().logInstanceAction(this, "cancelLocation", "cancel");
+                mLocation = null;
+                finish();
+            }
+        };
+
         mLocationIndicator = new DialogConstructor(this, DialogConstructor.DIALOG_SPINNER_MULTI_ANSWER);
-        mLocationIndicator.setDoneButtonText(getString(R.string.accept_location));
-        mLocationIndicator.setCancelButtonText(getString(R.string.cancel_location));
+        mLocationIndicator.setDoneButtonText(getString(R.string.accept_location), notificationListener);
+        mLocationIndicator.setCancelButtonText(getString(R.string.cancel_location), notificationListener);
         mLocationIndicator.updateDialog(getString(R.string.getting_location), getString(R.string.please_wait_long));
         /*
         mLocationDialog = new ProgressDialog(this);
@@ -230,19 +245,6 @@ public class GeoPointActivity extends Activity implements LocationListener, Dial
         mLocationDialog.setButton(DialogInterface. BUTTON_NEGATIVE, getString(R.string.cancel_location),
             geopointButtonListener);
             */
-    }
-
-    @Override
-    public void onPositiveClick() {
-        Collect.getInstance().getActivityLogger().logInstanceAction(this, "acceptLocation", "OK");
-        returnLocation();
-    }
-
-    @Override
-    public void onNegativeClick() {
-        Collect.getInstance().getActivityLogger().logInstanceAction(this, "cancelLocation", "cancel");
-        mLocation = null;
-        finish();
     }
 
     private void returnLocation() {

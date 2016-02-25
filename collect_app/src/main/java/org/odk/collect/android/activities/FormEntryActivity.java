@@ -69,6 +69,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore.Images;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.InputFilter;
@@ -111,7 +112,7 @@ import android.widget.Toast;
  */
 public class FormEntryActivity extends AppCompatActivity implements AnimationListener,
 		FormLoaderListener, FormSavedListener, AdvanceToNextListener,
-		OnGestureListener, SavePointListener, DialogConstructor.NotificationListener {
+		OnGestureListener, SavePointListener {
 	private static final String t = "FormEntryActivity";
 
 	// save with every swipe forward or back. Timings indicate this takes .25
@@ -195,7 +196,7 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	private LinearLayout mQuestionHolder;
 	private View mCurrentView;
 
-	private AlertDialog mAlertDialog;
+	//private AlertDialog mAlertDialog;
 	//private ProgressDialog mProgressDialog;
     private DialogConstructor mConstructor = null;
 	private String mErrorMessage;
@@ -241,7 +242,7 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
         mErrorMessage = null;
 
         mBeenSwiped = false;
-		mAlertDialog = null;
+		//mAlertDialog = null;
 		mCurrentView = null;
 		mInAnimation = null;
 		mOutAnimation = null;
@@ -1023,6 +1024,10 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 			TextView tb = ((TextView) startView.findViewById(R.id.text_backup));
 			TextView d = ((TextView) startView.findViewById(R.id.description));
 
+            d.setTextColor(ContextCompat.getColor(Collect.getInstance().getContext(), R.color.colorAppQuestionText));
+            ta.setTextColor(ContextCompat.getColor(Collect.getInstance().getContext(), R.color.colorAppQuestionText));
+            tb.setTextColor(ContextCompat.getColor(Collect.getInstance().getContext(), R.color.colorAppQuestionText));
+
 			if (navigationChoice != null) {
 				if (navigationChoice
 						.contains(PreferencesActivity.NAVIGATION_SWIPE)) {
@@ -1252,9 +1257,7 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	 */
 	private void showNextView() {
 		try {
-            FormController formController = Collect.getInstance()
-                    .getFormController();
-
+            FormController formController = Collect.getInstance().getFormController();
             // get constraint behavior preference value with appropriate default
             String constraint_behavior = PreferenceManager.getDefaultSharedPreferences(this)
                     .getString(PreferencesActivity.KEY_CONSTRAINT_BEHAVIOR,
@@ -1400,8 +1403,7 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 					0);
 		}
 
-		RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
-				LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
+		RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 
 		// adjust which view is in the layout container...
 		mStaleView = mCurrentView;
@@ -1468,44 +1470,41 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	 * Creates and displays a dialog displaying the violated constraint.
 	 */
 	private void createConstraintToast(FormIndex index, int saveStatus) {
-		FormController formController = Collect.getInstance()
-				.getFormController();
-		String constraintText;
+		FormController formController = Collect.getInstance().getFormController();
+		String constraintText = null;
+
 		switch (saveStatus) {
-		case FormEntryController.ANSWER_CONSTRAINT_VIOLATED:
-			Collect.getInstance()
-					.getActivityLogger()
-					.logInstanceAction(this,
-							"createConstraintToast.ANSWER_CONSTRAINT_VIOLATED",
-							"show", index);
-			constraintText = formController
-					.getQuestionPromptConstraintText(index);
-			if (constraintText == null) {
-				constraintText = formController.getQuestionPrompt(index)
-						.getSpecialFormQuestionText("constraintMsg");
-				if (constraintText == null) {
-					constraintText = getString(R.string.invalid_answer_error);
-				}
-			}
-			break;
-		case FormEntryController.ANSWER_REQUIRED_BUT_EMPTY:
-			Collect.getInstance()
-					.getActivityLogger()
-					.logInstanceAction(this,
-							"createConstraintToast.ANSWER_REQUIRED_BUT_EMPTY",
-							"show", index);
-			constraintText = formController
-					.getQuestionPromptRequiredText(index);
-			if (constraintText == null) {
-				constraintText = formController.getQuestionPrompt(index)
-						.getSpecialFormQuestionText("requiredMsg");
-				if (constraintText == null) {
-					constraintText = getString(R.string.required_answer_error);
-				}
-			}
-			break;
-		default:
-			return;
+            case FormEntryController.ANSWER_CONSTRAINT_VIOLATED:
+                Collect.getInstance().getActivityLogger().logInstanceAction(this,
+                        "createConstraintToast.ANSWER_CONSTRAINT_VIOLATED",
+                        "show", index);
+                constraintText = formController.getQuestionPromptConstraintText(index);
+
+                if (constraintText == null) {
+                    constraintText = formController.getQuestionPrompt(index).getSpecialFormQuestionText("constraintMsg");
+
+                    if (constraintText == null) {
+                        constraintText = getString(R.string.invalid_answer_error);
+                    }
+                }
+                break;
+            case FormEntryController.ANSWER_REQUIRED_BUT_EMPTY:
+                Collect.getInstance().getActivityLogger().logInstanceAction(this,
+                        "createConstraintToast.ANSWER_REQUIRED_BUT_EMPTY",
+                        "show", index);
+                constraintText = formController.getQuestionPromptRequiredText(index);
+
+                if (constraintText == null) {
+                    FormEntryPrompt entry = formController.getQuestionPrompt(index);
+                    constraintText = entry.getSpecialFormQuestionText("requiredMsg");
+
+                    if (constraintText == null) {
+                        constraintText = String.format(getString(R.string.required_answer_error), entry.getQuestionText());
+                    }
+                }
+                break;
+            default:
+                return;
 		}
 
 		showCustomToast(constraintText, Toast.LENGTH_SHORT);
@@ -1537,89 +1536,153 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	 * repeat of the current group.
 	 */
 	private void createRepeatDialog() {
-		FormController formController = Collect.getInstance()
-				.getFormController();
-		Collect.getInstance().getActivityLogger()
-				.logInstanceAction(this, "createRepeatDialog", "show");
-		mAlertDialog = new AlertDialog.Builder(this).create();
-		mAlertDialog.setIcon(android.R.drawable.ic_dialog_info);
-		DialogInterface.OnClickListener repeatListener = new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int i) {
-				FormController formController = Collect.getInstance()
-						.getFormController();
-				switch (i) {
-				case DialogInterface.BUTTON_POSITIVE: // yes, repeat
-					Collect.getInstance()
-							.getActivityLogger()
-							.logInstanceAction(this, "createRepeatDialog",
-									"addRepeat");
-					try {
-						formController.newRepeat();
-					} catch (Exception e) {
-						FormEntryActivity.this.createErrorDialog(
-								e.getMessage(), DO_NOT_EXIT);
-						return;
-					}
-					if (!formController.indexIsInFieldList()) {
-						// we are at a REPEAT event that does not have a
-						// field-list appearance
-						// step to the next visible field...
-						// which could be the start of a new repeat group...
-						showNextView();
-					} else {
-						// we are at a REPEAT event that has a field-list
-						// appearance
-						// just display this REPEAT event's group.
-						refreshCurrentView();
-					}
-					break;
-				case DialogInterface. BUTTON_NEGATIVE: // no, no repeat
-					Collect.getInstance()
-							.getActivityLogger()
-							.logInstanceAction(this, "createRepeatDialog",
-									"showNext");
+		FormController formController = Collect.getInstance().getFormController();
+		Collect.getInstance().getActivityLogger().logInstanceAction(this, "createRepeatDialog", "show");
+		//mAlertDialog = new AlertDialog.Builder(this).create();
+		//mAlertDialog.setIcon(android.R.drawable.ic_dialog_info);
+//		DialogInterface.OnClickListener repeatListener = new DialogInterface.OnClickListener() {
+//			@Override
+//			public void onClick(DialogInterface dialog, int i) {
+//				FormController formController = Collect.getInstance()
+//						.getFormController();
+//				switch (i) {
+//				case DialogInterface.BUTTON_POSITIVE: // yes, repeat
+//					Collect.getInstance()
+//							.getActivityLogger()
+//							.logInstanceAction(this, "createRepeatDialog",
+//									"addRepeat");
+//					try {
+//						formController.newRepeat();
+//					} catch (Exception e) {
+//						FormEntryActivity.this.createErrorDialog(
+//								e.getMessage(), DO_NOT_EXIT);
+//						return;
+//					}
+//					if (!formController.indexIsInFieldList()) {
+//						// we are at a REPEAT event that does not have a
+//						// field-list appearance
+//						// step to the next visible field...
+//						// which could be the start of a new repeat group...
+//						showNextView();
+//					} else {
+//						// we are at a REPEAT event that has a field-list
+//						// appearance
+//						// just display this REPEAT event's group.
+//						refreshCurrentView();
+//					}
+//					break;
+//				case DialogInterface. BUTTON_NEGATIVE: // no, no repeat
+//					Collect.getInstance()
+//							.getActivityLogger()
+//							.logInstanceAction(this, "createRepeatDialog",
+//									"showNext");
+//
+//                    //
+//                    // Make sure the error dialog will not disappear.
+//                    //
+//                    // When showNextView() popups an error dialog (because of a JavaRosaException)
+//                    // the issue is that the "add new repeat dialog" is referenced by mAlertDialog
+//                    // like the error dialog. When the "no repeat" is clicked, the error dialog
+//                    // is shown. Android by default dismisses the dialogs when a button is clicked,
+//                    // so instead of closing the first dialog, it closes the second.
+//                    new Thread() {
+//
+//                        @Override
+//                        public void run() {
+//                            FormEntryActivity.this.runOnUiThread(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    try {
+//                                        Thread.sleep(500);
+//                                    } catch (InterruptedException e) {
+//                                        e.printStackTrace();
+//                                    }
+//                                    showNextView();
+//                                }
+//                            });
+//                        }
+//                    }.start();
+//
+//					break;
+//				}
+//			}
+//		};
 
-                    //
-                    // Make sure the error dialog will not disappear.
-                    //
-                    // When showNextView() popups an error dialog (because of a JavaRosaException)
-                    // the issue is that the "add new repeat dialog" is referenced by mAlertDialog
-                    // like the error dialog. When the "no repeat" is clicked, the error dialog
-                    // is shown. Android by default dismisses the dialogs when a button is clicked,
-                    // so instead of closing the first dialog, it closes the second.
-                    new Thread() {
+        DialogConstructor.NotificationListener notificationListener = new DialogConstructor.NotificationListener() {
+            @Override
+            public void onPositiveClick() {
+                FormController formController = Collect.getInstance().getFormController();
+                Collect.getInstance().getActivityLogger().logInstanceAction(this, "createRepeatDialog", "addRepeat");
+                try {
+                    formController.newRepeat();
+                } catch (Exception e) {
+                    FormEntryActivity.this.createErrorDialog(e.getMessage(), DO_NOT_EXIT);
+                    return;
+                }
 
-                        @Override
-                        public void run() {
-                            FormEntryActivity.this.runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    try {
-                                        Thread.sleep(500);
-                                    } catch (InterruptedException e) {
-                                        e.printStackTrace();
-                                    }
-                                    showNextView();
+                if (!formController.indexIsInFieldList()) {
+                    // we are at a REPEAT event that does not have a
+                    // field-list appearance
+                    // step to the next visible field...
+                    // which could be the start of a new repeat group...
+                    showNextView();
+                } else {
+                    // we are at a REPEAT event that has a field-list
+                    // appearance
+                    // just display this REPEAT event's group.
+                    refreshCurrentView();
+                }
+            }
+
+            @Override
+            public void onNegativeClick() {
+                Collect.getInstance().getActivityLogger().logInstanceAction(this, "createRepeatDialog", "showNext");
+
+                //
+                // Make sure the error dialog will not disappear.
+                //
+                // When showNextView() popups an error dialog (because of a JavaRosaException)
+                // the issue is that the "add new repeat dialog" is referenced by mAlertDialog
+                // like the error dialog. When the "no repeat" is clicked, the error dialog
+                // is shown. Android by default dismisses the dialogs when a button is clicked,
+                // so instead of closing the first dialog, it closes the second.
+                new Thread() {
+                    @Override
+                    public void run() {
+                        FormEntryActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    Thread.sleep(500);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
                                 }
-                            });
-                        }
-                    }.start();
+                                showNextView();
+                            }
+                        });
+                    }
+                }.start();
+            }
+        };
 
-					break;
-				}
-			}
-		};
 		if (formController.getLastRepeatCount() > 0) {
+            DialogConstructor constructor = new DialogConstructor(this, DialogConstructor.DIALOG_MULTI_ANSWER);
+            constructor.setDoneButtonText(getString(R.string.add_another), notificationListener);
+            constructor.setCancelButtonText(getString(R.string.leave_repeat_yes), notificationListener);
+            constructor.updateDialog(getString(R.string.leaving_repeat_ask), getString(R.string.add_another_repeat, formController.getLastGroupText()));
+            /*
 			mAlertDialog.setTitle(getString(R.string.leaving_repeat_ask));
-			mAlertDialog.setMessage(getString(R.string.add_another_repeat,
-					formController.getLastGroupText()));
-			mAlertDialog.setButton(getString(R.string.add_another),
-					repeatListener);
+			mAlertDialog.setMessage(getString(R.string.add_another_repeat, formController.getLastGroupText()));
+			mAlertDialog.setButton(getString(R.string.add_another), repeatListener);
 			mAlertDialog.setButton2(getString(R.string.leave_repeat_yes),
 					repeatListener);
-
+			*/
 		} else {
+            DialogConstructor constructor = new DialogConstructor(this, DialogConstructor.DIALOG_MULTI_ANSWER);
+            constructor.setDoneButtonText(getString(R.string.add_repeat), notificationListener);
+            constructor.setCancelButtonText(getString(R.string.add_repeat_no), notificationListener);
+            constructor.updateDialog(getString(R.string.entering_repeat_ask), getString(R.string.add_repeat, formController.getLastGroupText()));
+		    /*
 			mAlertDialog.setTitle(getString(R.string.entering_repeat_ask));
 			mAlertDialog.setMessage(getString(R.string.add_repeat,
 					formController.getLastGroupText()));
@@ -1627,32 +1690,31 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 					repeatListener);
 			mAlertDialog.setButton2(getString(R.string.add_repeat_no),
 					repeatListener);
+			*/
 		}
-		mAlertDialog.setCancelable(false);
+		//mAlertDialog.setCancelable(false);
+        //mAlertDialog.show();
+
 		mBeenSwiped = false;
-		mAlertDialog.show();
 	}
 
 	/**
 	 * Creates and displays dialog with the given errorMsg.
 	 */
 	private void createErrorDialog(String errorMsg, final boolean shouldExit) {
-		Collect.getInstance()
-				.getActivityLogger()
-				.logInstanceAction(this, "createErrorDialog",
-						"show." + Boolean.toString(shouldExit));
+		Collect.getInstance().getActivityLogger().logInstanceAction(this, "createErrorDialog", "show." + Boolean.toString(shouldExit));
 
-        if (mAlertDialog != null && mAlertDialog.isShowing()) {
-            errorMsg = mErrorMessage + "\n\n" + errorMsg;
+        //if (mAlertDialog != null && mAlertDialog.isShowing()) {
+        //    errorMsg = mErrorMessage + "\n\n" + errorMsg;
+        //    mErrorMessage = errorMsg;
+        //} else {
+            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
             mErrorMessage = errorMsg;
-        } else {
-            mAlertDialog = new AlertDialog.Builder(this).create();
-            mErrorMessage = errorMsg;
-        }
+        //}
 
-		mAlertDialog.setIcon(android.R.drawable.ic_dialog_info);
-		mAlertDialog.setTitle(getString(R.string.error_occured));
-		mAlertDialog.setMessage(errorMsg);
+		alertDialog.setIcon(android.R.drawable.ic_dialog_info);
+		alertDialog.setTitle(getString(R.string.error_occured));
+		alertDialog.setMessage(errorMsg);
 		DialogInterface.OnClickListener errorListener = new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int i) {
@@ -1668,60 +1730,78 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 				}
 			}
 		};
-		mAlertDialog.setCancelable(false);
-		mAlertDialog.setButton(getString(R.string.ok), errorListener);
+		alertDialog.setCancelable(false);
+		alertDialog.setButton(getString(R.string.ok), errorListener);
 		mBeenSwiped = false;
-		mAlertDialog.show();
+		alertDialog.show();
 	}
 
 	/**
 	 * Creates a confirm/cancel dialog for deleting repeats.
 	 */
 	private void createDeleteRepeatConfirmDialog() {
-		Collect.getInstance()
-				.getActivityLogger()
-				.logInstanceAction(this, "createDeleteRepeatConfirmDialog",
-                        "show");
-		FormController formController = Collect.getInstance()
-				.getFormController();
-		mAlertDialog = new AlertDialog.Builder(this).create();
-		mAlertDialog.setIcon(android.R.drawable.ic_dialog_info);
-		String name = formController.getLastRepeatedGroupName();
-		int repeatcount = formController.getLastRepeatedGroupRepeatCount();
-		if (repeatcount != -1) {
-			name += " (" + (repeatcount + 1) + ")";
-		}
-		mAlertDialog.setTitle(getString(R.string.delete_repeat_ask));
-		mAlertDialog
-				.setMessage(getString(R.string.delete_repeat_confirm, name));
-		DialogInterface.OnClickListener quitListener = new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int i) {
-				FormController formController = Collect.getInstance()
-						.getFormController();
-				switch (i) {
-				case DialogInterface.BUTTON_POSITIVE: // yes
-					Collect.getInstance()
-							.getActivityLogger()
-							.logInstanceAction(this,
-									"createDeleteRepeatConfirmDialog", "OK");
-					formController.deleteRepeat();
-					showPreviousView();
-					break;
-				case DialogInterface. BUTTON_NEGATIVE: // no
-					Collect.getInstance()
-							.getActivityLogger()
-							.logInstanceAction(this,
-									"createDeleteRepeatConfirmDialog", "cancel");
-					break;
-				}
-			}
-		};
-		mAlertDialog.setCancelable(false);
-		mAlertDialog.setButton(getString(R.string.discard_group), quitListener);
-		mAlertDialog.setButton2(getString(R.string.delete_repeat_no),
-				quitListener);
-		mAlertDialog.show();
+		Collect.getInstance().getActivityLogger().logInstanceAction(this, "createDeleteRepeatConfirmDialog", "show");
+		FormController formController = Collect.getInstance().getFormController();
+
+        DialogConstructor.NotificationListener notificationListener = new DialogConstructor.NotificationListener() {
+            @Override
+            public void onPositiveClick() {
+                FormController formController = Collect.getInstance().getFormController();
+                Collect.getInstance().getActivityLogger().logInstanceAction(this, "createDeleteRepeatConfirmDialog", "OK");
+                formController.deleteRepeat();
+                showPreviousView();
+            }
+
+            @Override
+            public void onNegativeClick() {
+                Collect.getInstance().getActivityLogger().logInstanceAction(this, "createDeleteRepeatConfirmDialog", "cancel");
+            }
+        };
+
+        DialogConstructor constructor = new DialogConstructor(this, DialogConstructor.DIALOG_MULTI_ANSWER);
+        constructor.setDoneButtonText(getString(R.string.discard_group), notificationListener);
+        constructor.setCancelButtonText(getString(R.string.delete_repeat_no), notificationListener);
+
+        String name = formController.getLastRepeatedGroupName();
+        int repeatcount = formController.getLastRepeatedGroupRepeatCount();
+        if (repeatcount != -1) {
+            name += " (" + (repeatcount + 1) + ")";
+        }
+
+        constructor.updateDialog(getString(R.string.delete_repeat_ask), getString(R.string.delete_repeat_confirm, name));
+
+		//mAlertDialog = new AlertDialog.Builder(this).create();
+		//mAlertDialog.setIcon(android.R.drawable.ic_dialog_info);
+		//mAlertDialog.setTitle(getString(R.string.delete_repeat_ask));
+		//mAlertDialog.setMessage(getString(R.string.delete_repeat_confirm, name));
+
+//        DialogInterface.OnClickListener quitListener = new DialogInterface.OnClickListener() {
+//			@Override
+//			public void onClick(DialogInterface dialog, int i) {
+//				FormController formController = Collect.getInstance()
+//						.getFormController();
+//				switch (i) {
+//				case DialogInterface.BUTTON_POSITIVE: // yes
+//					Collect.getInstance()
+//							.getActivityLogger()
+//							.logInstanceAction(this,
+//									"createDeleteRepeatConfirmDialog", "OK");
+//					formController.deleteRepeat();
+//					showPreviousView();
+//					break;
+//				case DialogInterface. BUTTON_NEGATIVE: // no
+//					Collect.getInstance()
+//							.getActivityLogger()
+//							.logInstanceAction(this,
+//									"createDeleteRepeatConfirmDialog", "cancel");
+//					break;
+//				}
+//			}
+//		};
+//		mAlertDialog.setCancelable(false);
+//		mAlertDialog.setButton(getString(R.string.discard_group), quitListener);
+//		mAlertDialog.setButton2(getString(R.string.delete_repeat_no), quitListener);
+//		mAlertDialog.show();
 	}
 
 	/**
@@ -1777,98 +1857,137 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	   {
 		   FormController formController = Collect.getInstance().getFormController();
 		   title = (formController == null) ? null : formController.getFormTitle();
-		   if ( title == null ) {
+		   if (title == null) {
 		      title = "<no form loaded>";
 		   }
 	   }
 
-		String[] items;
-		if (mAdminPreferences.getBoolean(AdminPreferencesActivity.KEY_SAVE_MID,
-				true)) {
-			String[] two = { getString(R.string.keep_changes),
-					getString(R.string.do_not_save) };
-			items = two;
-		} else {
-			String[] one = { getString(R.string.do_not_save) };
-			items = one;
-		}
+//		String[] items;
+//		if (mAdminPreferences.getBoolean(AdminPreferencesActivity.KEY_SAVE_MID,
+//				true)) {
+//			String[] two = { getString(R.string.keep_changes),
+//					getString(R.string.do_not_save) };
+//			items = two;
+//		} else {
+//			String[] one = { getString(R.string.do_not_save) };
+//			items = one;
+//		}
 
 		Collect.getInstance().getActivityLogger().logInstanceAction(this, "createQuitDialog", "show");
-		mAlertDialog = new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_info)
-				.setTitle(getString(R.string.quit_application, title))
-				.setNeutralButton(getString(R.string.do_not_exit),
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int id) {
+        DialogConstructor.NotificationListener notificationListener = new DialogConstructor.NotificationListener() {
+            @Override
+            public void onPositiveClick() {
+                // this is slightly complicated because if the
+                // option is disabled in
+                // the admin menu, then case 0 actually becomes
+                // 'discard and exit'
+                // whereas if it's enabled it's 'save and exit'
+                if (mAdminPreferences.getBoolean(AdminPreferencesActivity.KEY_SAVE_MID, true)) {
+                    Collect.getInstance().getActivityLogger().logInstanceAction(this, "createQuitDialog", "saveAndExit");
+                    saveDataToDisk(EXIT, isInstanceComplete(false), null);
 
-                                Collect.getInstance()
-                                        .getActivityLogger()
-                                        .logInstanceAction(this,
-                                                "createQuitDialog", "cancel");
-                                dialog.cancel();
+                    mAutoExit = true;
+                    onBackPressed();
+                } else {
+                    Collect.getInstance().getActivityLogger().logInstanceAction(this, "createQuitDialog", "discardAndExit");
+                    removeTempInstance();
+                    finishReturnInstance();
 
-                            }
-                        })
-				.setItems(items, new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						switch (which) {
-						case 0: // save and exit
-							// this is slightly complicated because if the
-							// option is disabled in
-							// the admin menu, then case 0 actually becomes
-							// 'discard and exit'
-							// whereas if it's enabled it's 'save and exit'
-							if (mAdminPreferences
-									.getBoolean(
-											AdminPreferencesActivity.KEY_SAVE_MID,
-											true)) {
-								Collect.getInstance()
-										.getActivityLogger()
-										.logInstanceAction(this,
-												"createQuitDialog",
-												"saveAndExit");
-								saveDataToDisk(EXIT, isInstanceComplete(false),
-										null);
-							} else {
-								Collect.getInstance()
-										.getActivityLogger()
-										.logInstanceAction(this,
-												"createQuitDialog",
-												"discardAndExit");
-								removeTempInstance();
-								finishReturnInstance();
-							}
-							break;
+                    mAutoExit = true;
+                    onBackPressed();
+                }
+            }
 
-						case 1: // discard changes and exit
-							Collect.getInstance()
-									.getActivityLogger()
-									.logInstanceAction(this,
-											"createQuitDialog",
-											"discardAndExit");
+            @Override
+            public void onNegativeClick() {
+                Collect.getInstance().getActivityLogger().logInstanceAction(this, "createQuitDialog", "discardAndExit");
+                Collect.getInstance().getExternalDataManager().close();
 
-                            // close all open databases of external data.
-                            Collect.getInstance().getExternalDataManager().close();
+                removeTempInstance();
+                finishReturnInstance();
+            }
+        };
 
-							removeTempInstance();
-							finishReturnInstance();
-							break;
+        DialogConstructor constructor = new DialogConstructor(this, DialogConstructor.DIALOG_MULTI_ANSWER);
+        constructor.setDoneButtonText(getString(R.string.keep_changes), notificationListener);
+        constructor.setCancelButtonText(getString(R.string.do_not_save), notificationListener);
+        constructor.updateDialog(getString(R.string.quit_application, title), getString(R.string.quit_application, title));
 
-						case 2:// do nothing
-							Collect.getInstance()
-									.getActivityLogger()
-									.logInstanceAction(this,
-											"createQuitDialog", "cancel");
-							break;
-						}
-
-                        mAutoExit = true;
-                        onBackPressed();
-
-					}
-				}).create();
-		mAlertDialog.show();
+//		mAlertDialog = new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_info)
+//				.setTitle(getString(R.string.quit_application, title))
+//				.setNeutralButton(getString(R.string.do_not_exit),
+//                        new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int id) {
+//
+//                                Collect.getInstance()
+//                                        .getActivityLogger()
+//                                        .logInstanceAction(this,
+//                                                "createQuitDialog", "cancel");
+//                                dialog.cancel();
+//
+//                            }
+//                        })
+//				.setItems(items, new DialogInterface.OnClickListener() {
+//					@Override
+//					public void onClick(DialogInterface dialog, int which) {
+//						switch (which) {
+//						case 0: // save and exit
+//							// this is slightly complicated because if the
+//							// option is disabled in
+//							// the admin menu, then case 0 actually becomes
+//							// 'discard and exit'
+//							// whereas if it's enabled it's 'save and exit'
+//							if (mAdminPreferences
+//									.getBoolean(
+//											AdminPreferencesActivity.KEY_SAVE_MID,
+//											true)) {
+//								Collect.getInstance()
+//										.getActivityLogger()
+//										.logInstanceAction(this,
+//												"createQuitDialog",
+//												"saveAndExit");
+//								saveDataToDisk(EXIT, isInstanceComplete(false),
+//										null);
+//							} else {
+//								Collect.getInstance()
+//										.getActivityLogger()
+//										.logInstanceAction(this,
+//												"createQuitDialog",
+//												"discardAndExit");
+//								removeTempInstance();
+//								finishReturnInstance();
+//							}
+//							break;
+//
+//						case 1: // discard changes and exit
+//							Collect.getInstance()
+//									.getActivityLogger()
+//									.logInstanceAction(this,
+//											"createQuitDialog",
+//											"discardAndExit");
+//
+//                            // close all open databases of external data.
+//                            Collect.getInstance().getExternalDataManager().close();
+//
+//							removeTempInstance();
+//							finishReturnInstance();
+//							break;
+//
+//						case 2:// do nothing
+//							Collect.getInstance()
+//									.getActivityLogger()
+//									.logInstanceAction(this,
+//											"createQuitDialog", "cancel");
+//							break;
+//						}
+//
+//                        mAutoExit = true;
+//                        onBackPressed();
+//
+//					}
+//				}).create();
+//		mAlertDialog.show();
 	}
 
 	/**
@@ -1938,54 +2057,65 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	 * Confirm clear answer dialog
 	 */
 	private void createClearDialog(final QuestionWidget qw) {
-		Collect.getInstance()
-				.getActivityLogger()
-				.logInstanceAction(this, "createClearDialog", "show",
-						qw.getPrompt().getIndex());
-		mAlertDialog = new AlertDialog.Builder(this).create();
-		mAlertDialog.setIcon(android.R.drawable.ic_dialog_info);
+		Collect.getInstance().getActivityLogger().logInstanceAction(this, "createClearDialog", "show", qw.getPrompt().getIndex());
+        DialogConstructor.NotificationListener notificationListener = new DialogConstructor.NotificationListener() {
+            @Override
+            public void onPositiveClick() {
+                Collect.getInstance().getActivityLogger().logInstanceAction(this, "createClearDialog", "clearAnswer", qw.getPrompt().getIndex());
+                clearAnswer(qw);
+                saveAnswersForCurrentScreen(DO_NOT_EVALUATE_CONSTRAINTS);
+            }
 
-		mAlertDialog.setTitle(getString(R.string.clear_answer_ask));
+            @Override
+            public void onNegativeClick() {
+                Collect.getInstance().getActivityLogger().logInstanceAction(this, "createClearDialog", "cancel", qw.getPrompt().getIndex());
+            }
+        };
 
-		String question = qw.getPrompt().getLongText();
-		if (question == null) {
-			question = "";
-		}
-		if (question.length() > 50) {
-			question = question.substring(0, 50) + "...";
-		}
+        String question = qw.getPrompt().getLongText();
+        if (question == null) {
+            question = "";
+        }
+        if (question.length() > 50) {
+            question = question.substring(0, 50) + "...";
+        }
 
-		mAlertDialog.setMessage(getString(R.string.clearanswer_confirm,
-				question));
+        DialogConstructor constructor = new DialogConstructor(this, DialogConstructor.DIALOG_MULTI_ANSWER);
+        constructor.setDoneButtonText(getString(R.string.discard_answer), notificationListener);
+        constructor.setCancelButtonText(getString(R.string.clear_answer_no), notificationListener);
+        constructor.updateDialog(getString(R.string.clear_answer_ask), getString(R.string.clearanswer_confirm, question));
 
-		DialogInterface.OnClickListener quitListener = new DialogInterface.OnClickListener() {
-
-			@Override
-			public void onClick(DialogInterface dialog, int i) {
-				switch (i) {
-				case DialogInterface.BUTTON_POSITIVE: // yes
-					Collect.getInstance()
-							.getActivityLogger()
-							.logInstanceAction(this, "createClearDialog",
-									"clearAnswer", qw.getPrompt().getIndex());
-					clearAnswer(qw);
-					saveAnswersForCurrentScreen(DO_NOT_EVALUATE_CONSTRAINTS);
-					break;
-				case DialogInterface. BUTTON_NEGATIVE: // no
-					Collect.getInstance()
-							.getActivityLogger()
-							.logInstanceAction(this, "createClearDialog",
-									"cancel", qw.getPrompt().getIndex());
-					break;
-				}
-			}
-		};
-		mAlertDialog.setCancelable(false);
-		mAlertDialog
-				.setButton(getString(R.string.discard_answer), quitListener);
-		mAlertDialog.setButton2(getString(R.string.clear_answer_no),
-				quitListener);
-		mAlertDialog.show();
+//		mAlertDialog = new AlertDialog.Builder(this).create();
+//		mAlertDialog.setIcon(android.R.drawable.ic_dialog_info);
+//		mAlertDialog.setTitle(getString(R.string.clear_answer_ask));
+//		mAlertDialog.setMessage(getString(R.string.clearanswer_confirm, question));
+//
+//		DialogInterface.OnClickListener quitListener = new DialogInterface.OnClickListener() {
+//
+//			@Override
+//			public void onClick(DialogInterface dialog, int i) {
+//				switch (i) {
+//				case DialogInterface.BUTTON_POSITIVE: // yes
+//					Collect.getInstance()
+//							.getActivityLogger()
+//							.logInstanceAction(this, "createClearDialog",
+//									"clearAnswer", qw.getPrompt().getIndex());
+//					clearAnswer(qw);
+//					saveAnswersForCurrentScreen(DO_NOT_EVALUATE_CONSTRAINTS);
+//					break;
+//				case DialogInterface. BUTTON_NEGATIVE: // no
+//					Collect.getInstance()
+//							.getActivityLogger()
+//							.logInstanceAction(this, "createClearDialog",
+//									"cancel", qw.getPrompt().getIndex());
+//					break;
+//				}
+//			}
+//		};
+//		mAlertDialog.setCancelable(false);
+//		mAlertDialog.setButton(getString(R.string.discard_answer), quitListener);
+//		mAlertDialog.setButton2(getString(R.string.clear_answer_no), quitListener);
+//		mAlertDialog.show();
 	}
 
 	/**
@@ -2007,7 +2137,8 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 				}
 			}
 		}
-		mAlertDialog = new AlertDialog.Builder(this)
+
+		AlertDialog alertDialog = new AlertDialog.Builder(this)
 				.setSingleChoiceItems(languages, selected,
 						new DialogInterface.OnClickListener() {
 							@Override
@@ -2060,7 +2191,8 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 												"cancel");
 							}
 						}).create();
-		mAlertDialog.show();
+
+		alertDialog.show();
 	}
 
 	/**
@@ -2150,19 +2282,18 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	 */
 	private void dismissDialogs() {
 		Log.e(t, "Dismiss dialogs");
-		if (mAlertDialog != null && mAlertDialog.isShowing()) {
-			mAlertDialog.dismiss();
-		}
+		//if (mAlertDialog != null && mAlertDialog.isShowing()) {
+		//	mAlertDialog.dismiss();
+		//}
 	}
 
 	@Override
 	protected void onPause() {
 		FormController formController = Collect.getInstance().getFormController();
 
-        if (mConstructor != null)
-            mConstructor.stopAnimation();
-
+        mConstructor.stopAnimation();
 		dismissDialogs();
+
 		// make sure we're not already saving to disk. if we are, currentPrompt
 		// is getting constantly updated
 		if (mSaveToDiskTask == null
@@ -2186,11 +2317,11 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 		super.onResume();
 
         if (mErrorMessage != null) {
-            if (mAlertDialog != null && !mAlertDialog.isShowing()) {
+            //if (mAlertDialog != null && !mAlertDialog.isShowing()) {
                 createErrorDialog(mErrorMessage, EXIT);
-            } else {
-                return;
-            }
+            //} else {
+            //    return;
+            //}
         }
 
         FormController formController = Collect.getInstance().getFormController();
@@ -2205,9 +2336,7 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 					loadingComplete(mFormLoaderTask);
 				} else {
 					//dismissDialog(PROGRESS_DIALOG);
-
-                    if (mConstructor != null)
-                        mConstructor.stopAnimation();
+                    mConstructor.stopAnimation();
 
 					FormLoaderTask t = mFormLoaderTask;
 					mFormLoaderTask = null;
@@ -2375,9 +2504,7 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	@Override
 	public void loadingComplete(FormLoaderTask task) {
 		//dismissDialog(PROGRESS_DIALOG);
-
-        if (mConstructor != null)
-            mConstructor.stopAnimation();
+        mConstructor.stopAnimation();
 
 		FormController formController = task.getFormController();
 		boolean pendingActivityResult = task.hasPendingActivityResult();
@@ -2490,9 +2617,7 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	@Override
 	public void loadingError(String errorMsg) {
 		//dismissDialog(PROGRESS_DIALOG);
-
-        if (mConstructor != null)
-            mConstructor.stopAnimation();
+        mConstructor.stopAnimation();
 
 		if (errorMsg != null) {
 			createErrorDialog(errorMsg, EXIT);
@@ -2507,9 +2632,7 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
 	@Override
 	public void savingComplete(SaveResult saveResult) {
 		//dismissDialog(SAVING_DIALOG);
-
-        if (mConstructor != null)
-            mConstructor.stopAnimation();
+        mConstructor.stopAnimation();
 
         int saveStatus = saveResult.getSaveResult();
         switch (saveStatus) {
@@ -2815,14 +2938,4 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
             Toast.makeText(this, getString(R.string.save_point_error, errorMessage), Toast.LENGTH_LONG).show();
         }
     }
-
-	@Override
-	public void onPositiveClick() {
-
-	}
-
-	@Override
-	public void onNegativeClick() {
-
-	}
 }

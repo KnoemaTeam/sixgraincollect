@@ -1,21 +1,30 @@
 package org.odk.collect.android.utilities;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.text.*;
+import android.text.TextUtils;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import org.graindataterminal.helpers.Helper;
+import org.graindataterminal.models.base.BaseCrop;
+import org.graindataterminal.models.base.BaseField;
 import org.graindataterminal.models.base.BaseSurvey;
 import org.graindataterminal.models.base.DataHolder;
 import org.graindataterminal.models.cameroon.CameroonSurvey;
+import org.graindataterminal.models.senegal.SenegalCrop;
+import org.graindataterminal.models.senegal.SenegalField;
 import org.graindataterminal.models.senegal.SenegalSurvey;
 import org.graindataterminal.models.tunisia.TunisiaSurvey;
 import org.graindataterminal.models.zambia.ZambiaSurvey;
 import org.odk.collect.android.R;
+import org.odk.collect.android.activities.FormChooserList;
 import org.odk.collect.android.application.Collect;
 import org.odk.collect.android.constants.Constants;
 
@@ -187,7 +196,7 @@ public class DataUtils {
             Gson gson = new GsonBuilder().create();
             Type objectType = new TypeToken<Map<String, String>>(){}.getType();
 
-            return gson.fromJson(jsonObject,objectType);
+            return gson.fromJson(jsonObject, objectType);
         }
         catch (Exception exception) {
             exception.printStackTrace();
@@ -331,5 +340,138 @@ public class DataUtils {
         }
 
         return null;
+    }
+
+    public static void deleteSurvey() {
+        try {
+            List<BaseSurvey> surveyList = DataHolder.getInstance().getSurveys();
+            BaseSurvey survey = DataHolder.getInstance().getCurrentSurvey();
+            String surveyId = survey.getSurveyVersion().substring(0, 2) + survey.getId();
+
+            File instancesPath = new File(Constants.INSTANCES_PATH);
+            if (instancesPath.isDirectory()) {
+                File[] instancesPaths = instancesPath.listFiles();
+
+                for (File instancePath : instancesPaths) {
+                    if (instancePath.getName().equals("storage"))
+                        continue;
+
+                    if (instancePath.isDirectory() && instancePath.getName().compareToIgnoreCase(surveyId) == 0) {
+                        String basePath = instancePath.getAbsolutePath() + File.separator + instancePath.getName() + ".txt";
+                        File instance = new File(basePath);
+
+                        if (instance.exists() && instance.delete()) {
+                            System.out.println("Successful deleted " + basePath);
+                        }
+
+                        if (instancePath.delete()) {
+                            System.out.println("Successful deleted " + instancePath.getAbsolutePath());
+                        }
+                    }
+                }
+            }
+
+            int index = DataHolder.getInstance().findSurveyIndex(survey.getId());
+
+            String photoPath = survey.getFarmerPhoto();
+            if (!TextUtils.isEmpty(photoPath)) {
+                File photoFile = new File(survey.getFarmerPhoto());
+                if (photoFile.exists() && photoFile.delete()) {
+                    System.out.println("Successful deleted farmer photo");
+                }
+            }
+
+            List fields = survey.getFields();
+            for (Object baseField: fields) {
+                if (TextUtils.isEmpty(((BaseField) baseField).getFieldPhoto()))
+                    continue;
+
+                File photoFile = new File(((BaseField) baseField).getFieldPhoto());
+                if (photoFile.exists() && photoFile.delete()) {
+                    System.out.println("Successful deleted field photo");
+                }
+
+                if (survey instanceof SenegalSurvey) {
+                    List<SenegalCrop> cropsList = ((SenegalField) baseField).getCropList();
+                    for (SenegalCrop crop: cropsList) {
+                        if (TextUtils.isEmpty(crop.getCropPhoto()))
+                            continue;
+
+                        photoFile = new File(crop.getCropPhoto());
+                        if (photoFile.exists() && photoFile.delete()) {
+                            System.out.println("Successful deleted crop photo");
+                        }
+                    }
+                } else {
+                    BaseCrop crop = ((BaseField) baseField).getCrop();
+                    if (crop != null && !TextUtils.isEmpty(crop.getCropPhoto())) {
+                        photoFile = new File(crop.getCropPhoto());
+
+                        if (photoFile.exists() && photoFile.delete()) {
+                            System.out.println("Successful deleted crop photo");
+                        }
+                    }
+                }
+            }
+
+
+            if (index != -1) {
+                surveyList.remove(index);
+                DataUtils.setSurveyList(surveyList);
+            }
+        }
+        catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    public static void deleteField () {
+        try {
+            List<BaseSurvey> surveyList = DataHolder.getInstance().getSurveys();
+            BaseSurvey baseSurvey = DataHolder.getInstance().getCurrentSurvey();
+            BaseField baseField = DataHolder.getInstance().getCurrentField();
+            List fields = baseSurvey.getFields();
+
+            int surveyIndex = DataHolder.getInstance().findSurveyIndex(baseSurvey.getId());
+            int fieldIndex = DataHolder.getInstance().getCurrentFieldIndex();
+
+            String photoPath = baseField.getFieldPhoto();
+            if (!TextUtils.isEmpty(photoPath)) {
+                File photoFile = new File(baseField.getFieldPhoto());
+                if (photoFile.exists() && photoFile.delete()) {
+                    System.out.println("Successful deleted field photo");
+                }
+            }
+
+            if (baseSurvey instanceof SenegalSurvey) {
+                List<SenegalCrop> cropsList = ((SenegalField) baseField).getCropList();
+                for (SenegalCrop crop: cropsList) {
+                    if (TextUtils.isEmpty(crop.getCropPhoto()))
+                        continue;
+
+                    File photoFile = new File(crop.getCropPhoto());
+                    if (photoFile.exists() && photoFile.delete()) {
+                        System.out.println("Successful deleted crop photo");
+                    }
+                }
+            }
+            else {
+                BaseCrop crop = baseField.getCrop();
+                if (crop != null && !TextUtils.isEmpty(crop.getCropPhoto())) {
+                    File photoFile = new File(crop.getCropPhoto());
+                    if (photoFile.exists() && photoFile.delete()) {
+                        System.out.println("Successful deleted crop photo");
+                    }
+                }
+            }
+
+            if (surveyIndex != -1 && fieldIndex <= fields.size() - 1) {
+                fields.remove(fieldIndex);
+                DataUtils.setSurveyList(surveyList);
+            }
+        }
+        catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 }

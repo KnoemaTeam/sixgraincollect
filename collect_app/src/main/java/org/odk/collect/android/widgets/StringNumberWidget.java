@@ -22,6 +22,7 @@ import android.content.Context;
 import android.text.InputType;
 import android.text.method.DigitsKeyListener;
 import android.util.TypedValue;
+import android.view.inputmethod.EditorInfo;
 
 /**
  * Widget that restricts values to integers.
@@ -35,11 +36,11 @@ public class StringNumberWidget extends StringWidget {
 
         mAnswer.setTextSize(TypedValue.COMPLEX_UNIT_DIP, mAnswerFontsize);
         mAnswer.setInputType(InputType.TYPE_NUMBER_FLAG_SIGNED);
-
-        // needed to make long readonly text scroll
         mAnswer.setHorizontallyScrolling(false);
         mAnswer.setSingleLine(false);
 
+        /*
+        mAnswer.setInputType(EditorInfo.TYPE_NUMBER_FLAG_SIGNED);
         mAnswer.setKeyListener(new DigitsKeyListener() {
             @Override
             protected char[] getAcceptedChars() {
@@ -49,6 +50,7 @@ public class StringNumberWidget extends StringWidget {
                 return accepted;
             }
         });
+        */
 
         if (prompt.isReadOnly()) {
             setBackgroundDrawable(null);

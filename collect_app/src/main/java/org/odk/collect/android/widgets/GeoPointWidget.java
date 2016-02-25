@@ -16,6 +16,7 @@ package org.odk.collect.android.widgets;
 
 import java.text.DecimalFormat;
 
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.widget.*;
 import org.javarosa.core.model.data.GeoPointData;
@@ -108,12 +109,13 @@ public class GeoPointWidget extends QuestionWidget implements IBinaryWidget {
 		params.setMargins(7, 5, 7, 5);
 
 		mStringAnswer = new TextView(getContext());
+        mStringAnswer.setTextColor(ContextCompat.getColor(getContext(), R.color.colorAppSubQuestionText));
 		mStringAnswer.setId(QuestionWidget.newUniqueId());
 
 		mAnswerDisplay = new TextView(getContext());
 		mAnswerDisplay.setId(QuestionWidget.newUniqueId());
-		mAnswerDisplay
-				.setTextSize(TypedValue.COMPLEX_UNIT_DIP, mAnswerFontsize);
+		mAnswerDisplay.setTextColor(ContextCompat.getColor(getContext(), R.color.colorAppSubQuestionText));
+		mAnswerDisplay.setTextSize(TypedValue.COMPLEX_UNIT_DIP, mAnswerFontsize);
 		mAnswerDisplay.setGravity(Gravity.CENTER);
 
 		// setup play button

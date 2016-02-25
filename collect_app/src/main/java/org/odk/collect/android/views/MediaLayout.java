@@ -163,14 +163,10 @@ public class MediaLayout extends RelativeLayout implements OnClickListener {
         mVideoURI = videoURI;
 
         // Layout configurations for our elements in the relative layout
-        RelativeLayout.LayoutParams textParams =
-            new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        RelativeLayout.LayoutParams audioParams =
-            new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        RelativeLayout.LayoutParams imageParams =
-            new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        RelativeLayout.LayoutParams videoParams =
-            new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams textParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams audioParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams imageParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams videoParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 
         // First set up the audio button
         if (audioURI != null) {
@@ -187,9 +183,7 @@ public class MediaLayout extends RelativeLayout implements OnClickListener {
         if (videoURI != null) {
             // An video file is specified
             mVideoButton = new ImageButton(getContext());
-            Bitmap b =
-                    BitmapFactory.decodeResource(getContext().getResources(),
-                        android.R.drawable.ic_media_play);
+            Bitmap b = BitmapFactory.decodeResource(getContext().getResources(), android.R.drawable.ic_media_play);
             mVideoButton.setImageBitmap(b);
             mVideoButton.setOnClickListener(new OnClickListener() {
 
@@ -385,8 +379,7 @@ public class MediaLayout extends RelativeLayout implements OnClickListener {
      * @param v
      */
     public void addDivider(ImageView v) {
-        RelativeLayout.LayoutParams dividerParams =
-            new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams dividerParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         if (mImageView != null) {
             dividerParams.addRule(RelativeLayout.BELOW, mImageView.getId());
         } else if (mMissingImage != null) {
@@ -436,5 +429,4 @@ public class MediaLayout extends RelativeLayout implements OnClickListener {
     public void setAudioListener(AudioPlayListener listener) {
         mAudioPlayListener = listener;
     }
-
 }

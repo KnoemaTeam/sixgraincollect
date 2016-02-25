@@ -1,5 +1,6 @@
 package org.graindataterminal.controllers;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import org.graindataterminal.network.LocationService;
 import org.graindataterminal.views.base.BaseFragment;
 import org.graindataterminal.views.base.CustomViewPager;
 import org.graindataterminal.views.system.MessageBox;
+import org.odk.collect.android.utilities.DataUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -272,11 +274,13 @@ public class FieldsPager extends BaseActivity implements BaseDelegate, BaseFragm
     @Override
     public void onDialogPositiveClick(String tag) {
         if (tag.equals(Helper.DELETE_MESSAGE)) {
-            deleteField();
+            DataUtils.deleteField();
         }
         else if (tag.equals(Helper.CLOSE_MESSAGE)) {
-            setResult(RESULT_CANCELED, new Intent());
-            finish();
+            // update this if need
         }
+
+        setResult(RESULT_CANCELED, new Intent());
+        finish();
     }
 }

@@ -102,7 +102,7 @@ public abstract class QuestionWidget extends RelativeLayout implements AudioPlay
         mPrompt = p;
 
         setGravity(Gravity.TOP);
-        setPadding(0, 7, 0, 0);
+        setPadding(0, 5, 0, 5);
 
         mQuestionMediaLayout = createQuestionMediaLayout(p);
         mHelpTextView = createHelpText(p);
@@ -124,8 +124,8 @@ public abstract class QuestionWidget extends RelativeLayout implements AudioPlay
         TextView questionText = new TextView(getContext());
         questionText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, mQuestionFontsize);
         questionText.setTypeface(null, Typeface.BOLD);
-        questionText.setPadding(0, 0, 0, 7);
-        questionText.setText(promptText == null ? "" : TextUtils.textToHtml(promptText));
+        questionText.setPadding(0, 7, 0, 7);
+        questionText.setText(promptText == null ? "" : promptText);
         questionText.setTextColor(ContextCompat.getColor(getContext(), R.color.colorAppQuestionText));
 
         // Wrap to the size of the parent view
@@ -277,6 +277,11 @@ public abstract class QuestionWidget extends RelativeLayout implements AudioPlay
             Log.e(t, "cannot add a null view as helpTextView");
             return;
         }
+        else if (v instanceof TextView) {
+            if (android.text.TextUtils.isEmpty(((TextView) v).getText())) {
+                return;
+            }
+        }
 
         // default for helptext
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -298,6 +303,7 @@ public abstract class QuestionWidget extends RelativeLayout implements AudioPlay
             helpText.setHorizontallyScrolling(false);
             helpText.setTypeface(null, Typeface.ITALIC);
             helpText.setText(TextUtils.textToHtml(s));
+            helpText.setTextColor(ContextCompat.getColor(getContext(), R.color.colorAppSubQuestionText));
             helpText.setMovementMethod(LinkMovementMethod.getInstance());
             return helpText;
         } else {
@@ -318,6 +324,7 @@ public abstract class QuestionWidget extends RelativeLayout implements AudioPlay
             Log.e(t, "cannot add a null view as an answerView");
             return;
         }
+
             // default place to add answer
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
@@ -326,7 +333,7 @@ public abstract class QuestionWidget extends RelativeLayout implements AudioPlay
         } else {
             params.addRule(RelativeLayout.BELOW, mQuestionMediaLayout.getId());
         }
-        params.setMargins(5, 5, 5, 5);
+        params.setMargins(15, 5, 15, 5);
         addView(v, params);
     }
 

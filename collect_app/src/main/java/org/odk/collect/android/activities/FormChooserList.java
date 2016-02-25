@@ -77,7 +77,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class FormChooserList extends BaseActivity implements DiskSyncListener, DeleteInstancesListener, LoaderManager.LoaderCallbacks<Cursor>, DialogConstructor.NotificationListener, InstanceUploaderListener, FormListDownloaderListener, FormDownloaderListener {
+public class FormChooserList extends BaseActivity implements DiskSyncListener, DeleteInstancesListener, LoaderManager.LoaderCallbacks<Cursor>, InstanceUploaderListener, FormListDownloaderListener, FormDownloaderListener {
     public static final int FORM_LIST_VIEW_ID = 111110;
     public static final int DATA_LIST_VIEW_ID = 111111;
     //public static final int INSTANCE_DATA_LIST_ID = 111112;
@@ -612,28 +612,28 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
     	Collect.getInstance().getActivityLogger().logAction(this, "createErrorDialog", "show");
 
         DialogConstructor dialogConstructor = new DialogConstructor(this, DialogConstructor.DIALOG_SINGLE_ANSWER);
-        dialogConstructor.setDoneButtonText(getString(R.string.ok));
+        dialogConstructor.setDoneButtonText(getString(R.string.ok), new DialogConstructor.NotificationListener() {
+            @Override
+            public void onPositiveClick() {
+
+            }
+
+            @Override
+            public void onNegativeClick() {
+                if (mDownloadFormListTask != null) {
+                    mDownloadFormListTask.setDownloaderListener(null);
+                    mDownloadFormListTask.cancel(true);
+                    mDownloadFormListTask = null;
+                }
+
+                if (mDownloadFormsTask != null) {
+                    mDownloadFormsTask.setDownloaderListener(null);
+                    mDownloadFormsTask.cancel(true);
+                    mDownloadFormsTask = null;
+                }
+            }
+        });
         dialogConstructor.updateDialog(getString(R.string.information_message), errorMsg);
-    }
-
-    @Override
-    public void onPositiveClick() {
-
-    }
-
-    @Override
-    public void onNegativeClick() {
-        if (mDownloadFormListTask != null) {
-            mDownloadFormListTask.setDownloaderListener(null);
-            mDownloadFormListTask.cancel(true);
-            mDownloadFormListTask = null;
-        }
-
-        if (mDownloadFormsTask != null) {
-            mDownloadFormsTask.setDownloaderListener(null);
-            mDownloadFormsTask.cancel(true);
-            mDownloadFormsTask = null;
-        }
     }
 
     @Override

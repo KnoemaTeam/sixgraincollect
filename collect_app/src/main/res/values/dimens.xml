@@ -14,4 +14,5 @@
 
     <dimen name="welcome_title">42sp</dimen>
     <dimen name="welcome_message">26sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

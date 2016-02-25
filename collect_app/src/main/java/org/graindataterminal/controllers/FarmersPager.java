@@ -21,6 +21,8 @@ import org.odk.collect.android.R;
 import org.graindataterminal.views.base.BaseFragment;
 import org.graindataterminal.views.base.CustomViewPager;
 import org.graindataterminal.views.system.MessageBox;
+import org.odk.collect.android.activities.FormChooserList;
+import org.odk.collect.android.utilities.DataUtils;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -327,7 +329,11 @@ public class FarmersPager extends BaseActivity implements BaseFragment.FragmentN
     @Override
     public void onDialogPositiveClick(String tag) {
         if (tag.equals(Helper.DELETE_MESSAGE)) {
-            deleteSurvey();
+            DataUtils.deleteSurvey();
+
+            Intent intent = new Intent(this, FormChooserList.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
         }
         else if (tag.equals(Helper.CLOSE_MESSAGE)) {
             setResult(Activity.RESULT_CANCELED, new Intent());
