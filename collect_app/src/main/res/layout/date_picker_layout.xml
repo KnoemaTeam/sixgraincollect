@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<DatePicker xmlns:android="http://schemas.android.com/apk/res/android"
+<org.odk.collect.android.widgets.CustomDatePicker xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/AppTheme.DatePickerTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</DatePicker>
+</org.odk.collect.android.widgets.CustomDatePicker>

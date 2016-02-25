@@ -76,13 +76,11 @@
 
         <activity
             android:name=".activities.MainMenuActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="@string/app_name"/>
+            android:configChanges="keyboardHidden|orientation|screenSize" />
 
         <activity
             android:name=".activities.FormEntryActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:configChanges="keyboardHidden|orientation|screenSize">
 
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -107,19 +105,16 @@
 
         <activity
             android:name=".activities.GoogleDriveActivity"
-            android:label="@string/app_name"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
             android:name=".activities.InstanceChooserList"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="@string/app_name"
             android:launchMode="singleTop" />
 
         <activity
             android:name=".preferences.SettingsActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="@string/app_name"
             android:parentActivityName=".activities.FormChooserList">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -129,7 +124,6 @@
         <activity
             android:name=".activities.DeviceActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="@string/app_name"
             android:parentActivityName=".activities.FormChooserList">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -146,11 +140,12 @@
         </intent-filter>
 
         <activity
-            android:name=".activities.InstanceChooserTabs"
-            android:label="@string/app_name" />
+            android:name=".activities.InstanceChooserTabs" />
+
         <activity
             android:name=".activities.FormChooserList"
-            android:label="@string/app_name">
+            android:configChanges="keyboardHidden|orientation|screenSize">
+
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.EDIT" />
@@ -161,6 +156,7 @@
                 <data android:mimeType="vnd.android.cursor.dir/vnd.sixgrain.form" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activities.FormManagerList"
             android:label="@string/app_name" />
@@ -176,6 +172,7 @@
         <activity
             android:name=".activities.GoogleSheetsUploaderActivity"
             android:label="@string/app_name" />
+
         <activity
             android:name=".activities.InstanceUploaderList"
             android:label="@string/app_name">
@@ -186,6 +183,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activities.InstanceUploaderActivity"
             android:label="@string/app_name" />
@@ -204,10 +202,12 @@
         <activity
             android:name=".preferences.AdminPreferencesActivity"
             android:label="@string/app_name" />
+
         <activity
             android:name=".activities.FormHierarchyActivity"
-            android:label="@string/app_name"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:parentActivityName=".activities.FormEntryActivity">
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.FormEntryActivity" />

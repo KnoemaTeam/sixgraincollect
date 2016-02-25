@@ -137,7 +137,7 @@ public class FarmerRegion extends BaseFragment {
         String governorateText = ((TunisiaSurvey) survey).getGovernorate();
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.governorate_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
 
         Spinner governorateSpinner = (Spinner) parentView.findViewById(R.id.governorateSpinner);
         governorateSpinner.setEnabled(!isModeLocked);
@@ -251,7 +251,7 @@ public class FarmerRegion extends BaseFragment {
         String delegationText = ((TunisiaSurvey) survey).getGovernorate();
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), delegation, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
 
         Spinner delegationSpinner = (Spinner) parentView.findViewById(R.id.delegationSpinner);
         delegationSpinner.setEnabled(!isModeLocked);

@@ -7,6 +7,9 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="windowActionModeOverlay">true</item>
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <item name="colorControlHighlight">@color/colorAccent</item>
+        <item name="colorControlActivated">@color/colorPrimaryDark</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -26,9 +29,9 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
         <item name="android:colorBackground">@color/colorAppBarPopupBackground</item>
-        <item name="android:colorControlNormal">@color/colorAppBarPopupText</item>
         <item name="android:textColor">@color/colorAppBarPopupText</item>
         <item name="android:textColorSecondary">@color/colorAppBarPopupText</item>
+        <item name="colorControlNormal">@color/colorAppBarPopupText</item>
     </style>
 
     <style name="AppTheme.Dialog" parent="Theme.AppCompat.Light.Dialog">
@@ -70,6 +73,13 @@
 
     <style name="NavigationButtonTheme" parent="Theme.AppCompat.Light">
         <item name="android:background">@drawable/navigation_button</item>
+        <item name="android:textColor">@color/colorNavigationButtonFont</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="RoundedNavigationButtonTheme" parent="Theme.AppCompat.Light">
+        <item name="android:background">@drawable/rounded_navigation_button</item>
         <item name="android:textColor">@color/colorNavigationButtonFont</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">18sp</item>

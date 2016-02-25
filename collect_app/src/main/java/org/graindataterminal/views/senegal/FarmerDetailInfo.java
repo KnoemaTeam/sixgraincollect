@@ -429,7 +429,7 @@ public class FarmerDetailInfo extends BaseFragment {
         String nationalityText = ((SenegalSurvey) survey).getNationality();
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.senegal_nationality_list, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
 
         Spinner nationalitySpinner = (Spinner) parentView.findViewById(R.id.nationalitySpinner);
         nationalitySpinner.setEnabled(!isModeLocked);

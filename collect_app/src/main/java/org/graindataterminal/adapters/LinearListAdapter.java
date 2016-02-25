@@ -22,6 +22,7 @@ import org.odk.collect.android.application.Collect;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class LinearListAdapter extends BaseAdapter {
@@ -175,7 +176,7 @@ public class LinearListAdapter extends BaseAdapter {
                     }
 
                     int visibility = View.VISIBLE;
-                    if (survey instanceof CameroonSurvey)
+                    if (survey instanceof CameroonSurvey || Arrays.asList(BaseSurvey.SURVEY_VERSION_NONE).contains(survey.getSurveyVersion()))
                         visibility = View.GONE;
 
                     viewHolder.rowFieldsCountView.setVisibility(visibility);

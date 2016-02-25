@@ -54,7 +54,7 @@ public class FarmerRegion extends BaseFragment {
         String region = ((SenegalSurvey) survey).getRegion();
 
         ArrayAdapter<CharSequence> regionAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.senegal_region_list, android.R.layout.simple_spinner_item);
-        regionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        regionAdapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
 
         Spinner regionSpinner = (Spinner) parentView.findViewById(R.id.regionSpinner);
         regionSpinner.setEnabled(!isModeLocked);
@@ -155,7 +155,7 @@ public class FarmerRegion extends BaseFragment {
         }
 
         ArrayAdapter<CharSequence> departmentAdapter = ArrayAdapter.createFromResource(getActivity(), departments, android.R.layout.simple_spinner_item);
-        departmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        departmentAdapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
 
         Spinner departmentSpinner = (Spinner) parentView.findViewById(R.id.departmentSpinner);
         departmentSpinner.setEnabled(!isModeLocked);
@@ -383,7 +383,7 @@ public class FarmerRegion extends BaseFragment {
         }
 
         ArrayAdapter<CharSequence> boroughAdapter = ArrayAdapter.createFromResource(getActivity(), districts, android.R.layout.simple_spinner_item);
-        boroughAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        boroughAdapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
 
         Spinner districtSpinner = (Spinner) parentView.findViewById(R.id.districtSpinner);
         districtSpinner.setEnabled(!isModeLocked);
@@ -927,7 +927,7 @@ public class FarmerRegion extends BaseFragment {
         }
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), towns, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
 
         Spinner townSpinner = (Spinner) parentView.findViewById(R.id.townSpinner);
         townSpinner.setEnabled(!isModeLocked);

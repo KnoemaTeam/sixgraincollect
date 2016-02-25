@@ -3,6 +3,7 @@
     <color name="colorPrimary">#2087BB</color>
     <color name="colorPrimaryDark">#0079A4</color>
     <color name="colorAccent">#4AAACC</color>
+    <color name="colorControlNormal">#424242</color>
     <color name="colorAppBarText">#FAFAFA</color>
     <color name="colorAppBackground">#FAFAFA</color>
     <color name="colorAppBarPopupText">#FFFFFF</color>

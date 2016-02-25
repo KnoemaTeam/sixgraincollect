@@ -158,7 +158,7 @@ public class FarmerOwner extends BaseActivity {
         String speciesNameText = currentOwner.getName();
 
         ArrayAdapter<CharSequence> speciesAdapter = ArrayAdapter.createFromResource(this, R.array.senegal_species_name_list, android.R.layout.simple_spinner_item);
-        speciesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        speciesAdapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
 
         Spinner speciesSpinner = (Spinner) findViewById(R.id.speciesSpinner);
         speciesSpinner.setEnabled(!isModeLocked);
