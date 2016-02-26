@@ -382,38 +382,41 @@ public class DataUtils {
             }
 
             List fields = survey.getFields();
-            for (Object baseField: fields) {
-                if (TextUtils.isEmpty(((BaseField) baseField).getFieldPhoto()))
-                    continue;
+            if (fields != null && !fields.isEmpty()) {
+                for (Object baseField: fields) {
+                    if (TextUtils.isEmpty(((BaseField) baseField).getFieldPhoto()))
+                        continue;
 
-                File photoFile = new File(((BaseField) baseField).getFieldPhoto());
-                if (photoFile.exists() && photoFile.delete()) {
-                    System.out.println("Successful deleted field photo");
-                }
-
-                if (survey instanceof SenegalSurvey) {
-                    List<SenegalCrop> cropsList = ((SenegalField) baseField).getCropList();
-                    for (SenegalCrop crop: cropsList) {
-                        if (TextUtils.isEmpty(crop.getCropPhoto()))
-                            continue;
-
-                        photoFile = new File(crop.getCropPhoto());
-                        if (photoFile.exists() && photoFile.delete()) {
-                            System.out.println("Successful deleted crop photo");
-                        }
+                    File photoFile = new File(((BaseField) baseField).getFieldPhoto());
+                    if (photoFile.exists() && photoFile.delete()) {
+                        System.out.println("Successful deleted field photo");
                     }
-                } else {
-                    BaseCrop crop = ((BaseField) baseField).getCrop();
-                    if (crop != null && !TextUtils.isEmpty(crop.getCropPhoto())) {
-                        photoFile = new File(crop.getCropPhoto());
 
-                        if (photoFile.exists() && photoFile.delete()) {
-                            System.out.println("Successful deleted crop photo");
+                    if (survey instanceof SenegalSurvey) {
+                        List<SenegalCrop> cropsList = ((SenegalField) baseField).getCropList();
+                        if (cropsList != null && !cropsList.isEmpty()) {
+                            for (SenegalCrop crop: cropsList) {
+                                if (TextUtils.isEmpty(crop.getCropPhoto()))
+                                    continue;
+
+                                photoFile = new File(crop.getCropPhoto());
+                                if (photoFile.exists() && photoFile.delete()) {
+                                    System.out.println("Successful deleted crop photo");
+                                }
+                            }
+                        }
+                    } else {
+                        BaseCrop crop = ((BaseField) baseField).getCrop();
+                        if (crop != null && !TextUtils.isEmpty(crop.getCropPhoto())) {
+                            photoFile = new File(crop.getCropPhoto());
+
+                            if (photoFile.exists() && photoFile.delete()) {
+                                System.out.println("Successful deleted crop photo");
+                            }
                         }
                     }
                 }
             }
-
 
             if (index != -1) {
                 surveyList.remove(index);
@@ -445,13 +448,15 @@ public class DataUtils {
 
             if (baseSurvey instanceof SenegalSurvey) {
                 List<SenegalCrop> cropsList = ((SenegalField) baseField).getCropList();
-                for (SenegalCrop crop: cropsList) {
-                    if (TextUtils.isEmpty(crop.getCropPhoto()))
-                        continue;
+                if (cropsList != null && !cropsList.isEmpty()) {
+                    for (SenegalCrop crop: cropsList) {
+                        if (TextUtils.isEmpty(crop.getCropPhoto()))
+                            continue;
 
-                    File photoFile = new File(crop.getCropPhoto());
-                    if (photoFile.exists() && photoFile.delete()) {
-                        System.out.println("Successful deleted crop photo");
+                        File photoFile = new File(crop.getCropPhoto());
+                        if (photoFile.exists() && photoFile.delete()) {
+                            System.out.println("Successful deleted crop photo");
+                        }
                     }
                 }
             }
