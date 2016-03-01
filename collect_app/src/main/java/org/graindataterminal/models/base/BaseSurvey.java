@@ -35,7 +35,6 @@ public abstract class BaseSurvey implements Cloneable {
     public static Map<String, String> SURVEY_TYPES = new HashMap<String, String>() {{
         put(SURVEY_TYPE_ZAMBIA, "Zambia");
         put(SURVEY_TYPE_TUNISIA, "Tunisia");
-        put(SURVEY_TYPE_SENEGAL, "Senegal");
         put(SURVEY_TYPE_CAMEROON, "Cameroon");
     }};
 

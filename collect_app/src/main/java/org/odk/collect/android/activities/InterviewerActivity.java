@@ -69,8 +69,8 @@ public class InterviewerActivity extends AppCompatActivity {
         String type = DataHolder.getInstance().getSurveysType();
 
         updateInterviewerName();
-        updateControllerName(type.equals(BaseSurvey.SURVEY_TYPE_SENEGAL));
-        updateSupervisorName(type.equals(BaseSurvey.SURVEY_TYPE_SENEGAL));
+        updateControllerName(false);
+        updateSupervisorName(false);
         updateChannelType();
         updateSurveysType();
     }
@@ -161,8 +161,13 @@ public class InterviewerActivity extends AppCompatActivity {
         final Map<String, String> typeMap = DataUtils.getSurveyListType();
         final List<String> nameList = new ArrayList<>();
 
-        for (HashMap.Entry<String, String> entry: typeMap.entrySet())
+        for (HashMap.Entry<String, String> entry: typeMap.entrySet()) {
+            if (entry.getKey().equals(BaseSurvey.SURVEY_TYPE_SENEGAL))
+                continue;
+
             nameList.add(entry.getValue());
+        }
+
 
         Collections.sort(nameList, new Comparator<String>() {
             @Override
@@ -184,9 +189,12 @@ public class InterviewerActivity extends AppCompatActivity {
                     if (entry.getValue().compareToIgnoreCase(name) == 0) {
                         String key = entry.getKey();
 
+                        if (key.equals(BaseSurvey.SURVEY_TYPE_SENEGAL))
+                            continue;
+
                         DataHolder.getInstance().setSurveysType(key);
-                        updateControllerName(BaseSurvey.SURVEY_TYPE_SENEGAL.equals(key));
-                        updateSupervisorName(BaseSurvey.SURVEY_TYPE_SENEGAL.equals(key));
+                        updateControllerName(false);
+                        updateSupervisorName(false);
 
                         break;
                     }

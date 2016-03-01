@@ -329,7 +329,6 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
                 switch (type) {
                     case BaseSurvey.SURVEY_TYPE_ZAMBIA:
                     case BaseSurvey.SURVEY_TYPE_TUNISIA:
-                    case BaseSurvey.SURVEY_TYPE_SENEGAL:
                     case BaseSurvey.SURVEY_TYPE_CAMEROON:
                         createSurvey(FormChooserList.this);
                         break;
@@ -791,12 +790,7 @@ public class FormChooserList extends BaseActivity implements DiskSyncListener, D
         int totalCount;
 
         for (Map<String, String> entry: mFormDataList) {
-            if (entry.get(FORM_ID_KEY).contains("za20160210") ||
-                    entry.get(FORM_ID_KEY).contains("sn20160210") ||
-                    entry.get(FORM_ID_KEY).contains("cm20160208") ||
-                    entry.get(FORM_ID_KEY).contains("gm20160205")) {
-                filesToDownload.add(mFormData.get(entry.get(FORM_DETAIL_KEY)));
-            }
+            filesToDownload.add(mFormData.get(entry.get(FORM_DETAIL_KEY)));
         }
 
         totalCount = filesToDownload.size();
